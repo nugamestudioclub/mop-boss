@@ -9,7 +9,10 @@ var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Player movement parameters
-var walkspeed: float = 1200.0 # meters / second
+const walk_speed := 0.5 # 1.5 # meters / second
+const jump_velocity := 4 # meters / second
+var player_mass: float = self.mass
+var player_damp: float = 10 # self.linear_damp
 var mouse_sensitivity := 0.001
 var min_pitch := -60
 var max_pitch := 60
@@ -67,15 +70,23 @@ func _process(delta: float) -> void:
 		if sprinting: input *= 1.25
 		
 		# twist_pivot to change movement relative to pivot of the rotated twist
-		apply_central_force(twist_pivot.basis * input * 400.0 * delta * 50)
 		
+		var directional_force: Vector3 = twist_pivot.basis * input
+		var move_speed: float = walk_speed * (player_mass / delta)
+		
+		var walk_force = directional_force * move_speed # - damp_force
+		apply_central_force(walk_force)
+		
+		var damp_force = player_damp * Vector3(linear_velocity.x, 0, linear_velocity.z)
+		apply_central_force(-damp_force)
 		# Pauses locking the mouse
 		if Input.is_action_just_pressed("ui_cancel"):
 			Input.set_mouse_mode(pause_mouse_mode)
 		elif Input.is_action_just_released("ui_cancel"):
 			Input.set_mouse_mode(default_mouse_mode)
 		elif Input.is_action_just_pressed("jump") and is_on_floor():
-			apply_central_impulse(Vector3(0, 6.5 * 50, 0))
+			var jump_force = (Vector3.UP * jump_velocity * player_mass)
+			apply_central_impulse(jump_force)
 		elif Input.is_action_just_pressed("sprint"):
 			sprinting = true
 		elif Input.is_action_just_released("sprint"):
@@ -96,38 +107,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = -event.relative.x * mouse_sensitivity
 			pitch_input = -event.relative.y * mouse_sensitivity
-			
-		## Handle raycasting for inspect and pickup of objects
-		#var raycast_result: Dictionary = player_pov.raycast()
-		## Check if there is the player has their mouse over an object
-		#if raycast_result.has("collider"):
-			#target = raycast_result.collider
-		#else:
-			#target = null
-			#
-		#if highlight_object != target:
-			## Unhighlight old node
-			#if highlight_object != null:
-				#inspect_view._hide_outline(highlight_object)
-			## Highlight new node
-			#highlight_object = target
-			## Handles whether if object should be highlighted
-			#if (highlight_object is Node and highlight_object.is_in_group(inspect_group) 
-			#and target.visible and inspected_node == null):
-				#inspect_view._show_outline(highlight_object)
-			#else:
-				#highlight_object = null
-	#elif event is InputEventMouseButton:
-		#if highlight_object != null:
-			#if not event.pressed and target is Node3D:
-				## Start inspecting new node
-				#inspector_gui.show()
-				#inspected_node = target
-				#var copy = inspect_view._set_up_inspected_copy(target.duplicate())
-				#inspected_node_holder.add_child(copy)
-				#target.hide()
-	#elif event is InputEventKey:
-		#if event.pressed: return
-		#if event.keycode == KEY_ESCAPE:
-			#if inspector_gui.visible:
-				#inspect_view._close_inspector()

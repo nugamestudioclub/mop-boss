@@ -4,10 +4,9 @@ extends Node
 
 func raycast_to(origin: Vector3, end: Vector3, exclude: Array = []):
 	var space_state = world.get_world_3d().direct_space_state
-	var mousepos = get_viewport().get_mouse_position()
 
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.collide_with_areas = true
+	query.collide_with_areas = false
 	query.exclude = exclude
 
 	var result = space_state.intersect_ray(query)

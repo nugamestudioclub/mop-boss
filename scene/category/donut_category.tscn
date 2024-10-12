@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpmcwnggfd3dr"]
+
+[ext_resource type="Script" path="res://script/object_category.gd" id="1_kmt3u"]
+[ext_resource type="Script" path="res://script/category_item.gd" id="2_tmpli"]
+[ext_resource type="PackedScene" uid="uid://ch8e4do46sysg" path="res://scene/donut.tscn" id="3_l4sra"]
+[ext_resource type="PackedScene" uid="uid://dqu0xw8djd2iv" path="res://scene/boston_creme_donut.tscn" id="4_n6xb0"]
+
+[node name="DonutCategory" type="Node"]
+script = ExtResource("1_kmt3u")
+
+[node name="FrostedDonut" type="Node" parent="."]
+script = ExtResource("2_tmpli")
+scene = ExtResource("3_l4sra")
+weight = 3
+
+[node name="BostonCremeDonut" type="Node" parent="."]
+script = ExtResource("2_tmpli")
+scene = ExtResource("4_n6xb0")

@@ -1,7 +1,7 @@
-extends StaticBody3D
+extends Area3D
 
 
-func _on_input_event(camera, event, event_position, normal, shape_idx):
+func _on_input_event(_camera, event, _event_position, _normal, shape_idx):
 	if not event is InputEventMouseButton: return
 	if event.pressed: return # check for button released
 	var radians := TAU/10 # TAU is 2 * PI

@@ -7,7 +7,7 @@ var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Highlight parameters
-var outline_shader: ShaderMaterial = preload("res://outline_shader.tres")
+var outline_shader: ShaderMaterial = preload("res://resource/outline_shader.tres")
 
 # Inspected memory
 var inspect_group := "inspectable"
@@ -64,9 +64,10 @@ func _remove_outline(node: Node3D): _resize_outline(node, 0)
 func _add_outline(node: Node3D): _resize_outline(node, 1.05)
 
 """Takes a given object and copies it to the inspect viewport""" 
-func _copy_to_inspect_view(object: RigidBody3D):
-	inspected_copy = target.duplicate()
-	inspected_copy.freeze = true
+func _copy_to_inspect_view(object):
+	inspected_copy = object.duplicate()
+	if inspected_copy is RigidBody3D:
+		inspected_copy.freeze = true
 	_remove_outline(inspected_copy)
 	inspected_copy.position = Vector3.ZERO
 	inspected_copy.rotate_x(PI/4)

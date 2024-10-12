@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch8e4do46sysg"]
 
-[ext_resource type="Script" path="res://donut.gd" id="1_yalra"]
+[ext_resource type="Script" path="res://script/donut.gd" id="1_yalra"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -23,6 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105669, 0)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 freeze = true
+continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0

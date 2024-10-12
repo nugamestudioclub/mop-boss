@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Mop Boss Movement Camera And Inspect"
-run/main_scene="res://world.tscn"
+run/main_scene="res://scene/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Raycast="*res://raycast.gd"
+Raycast="*res://script/raycast.gd"
+NodeHelper="*res://script/node_helper.gd"
 
 [global_group]
 

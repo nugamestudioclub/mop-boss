@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgw1p2k80x3qu"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_xucho"]
-[ext_resource type="Script" path="res://player_pov.gd" id="2_8dgwo"]
-[ext_resource type="Script" path="res://hand.gd" id="3_4db25"]
+[ext_resource type="Script" path="res://script/player.gd" id="1_xucho"]
+[ext_resource type="Script" path="res://script/player_pov.gd" id="2_8dgwo"]
+[ext_resource type="Script" path="res://script/hand.gd" id="3_4db25"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
-friction = 0.1
+friction = 0.0
 bounce = 1.0
 absorbent = true
 
@@ -16,12 +16,10 @@ absorbent = true
 [sub_resource type="SphereMesh" id="SphereMesh_1qfc8"]
 
 [node name="Player" type="RigidBody3D"]
-mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_56f34")
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 10
-linear_damp = 2.5
 script = ExtResource("1_xucho")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -45,4 +43,5 @@ script = ExtResource("3_4db25")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_1qfc8")

@@ -31,7 +31,7 @@ func _cancel_hold(object):
 	#hold_object.freeze = false
 	
 	print("Exiting hold")
-	var material = hold_object.physics_material_override
+	var material = object.physics_material_override
 	material.absorbent = !material.absorbent
 	hold_object = null
 	object_radius = null
@@ -82,48 +82,27 @@ func _physics_process(delta):
 		var origin_object = hold_object.global_transform.origin
 		var origin_hand = self.global_transform.origin
 		
-		var scale_object = hold_object.scale
-		var object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
-		
 		# prevent the hand from phasing through walls
 		var raycast_hand_result = Raycast.raycast_mouse(camera_player, (2 + object_radius), [player, hold_object])
-		var ray_pos: Vector3 = origin_hand
-		print(raycast_hand_result)
+		
 		if raycast_hand_result.has("position"):
-			ray_pos = raycast_hand_result.position
 			var barrier_intersect = raycast_hand_result.position
-			
-			#var direction = (camera_player.global_position - barrier_intersect).normalized()
 			var direction = (camera_player.global_position - barrier_intersect).normalized()
 			
-			#origin_hand = ray_pos
-			#var direction = (barrier_intersect - origin_hand).normalized()
 			origin_hand = barrier_intersect + (direction * object_radius)
 			self.global_position = origin_hand
-			#self.position.x = 0
-			#self.position.y = 0
 		else:
 			self.position = Vector3(0, 0, -2) #broken with offset based on current calculations
 			# probably fix by calculating from expected hand position; used to be (0.2, -0.4, -2)
 		
 		# prevent object from trying to phase through wall
 		
-		var object_colliders = hold_object.get_contact_count()
-		
-		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand) #delta_origin + object_radius)
+		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand, []) #delta_origin + object_radius
 		#print(raycast_result)
 		var move_factor = 1
 		if raycast_object_result.has("position"): #and object_colliders > 0:
-			print("GO TO PLAYER")
+			#print("GO TO PLAYER")
 			origin_hand = camera_player.global_transform.origin
-			
-		#if object_colliders > 0:
-			#var barrier_intersect = raycast_result.position
-			#
-			#var direction = (origin_object - barrier_intersect).normalized()
-			#origin_hand = barrier_intersect + direction * object_radius
-			
-			#hold_object.set_linear_velocity(slide_direction * 240 * move_factor * delta)
 			
 		var delta_origin = (origin_hand - origin_object)
 		hold_object.set_linear_velocity(delta_origin * 240 * delta * move_factor)

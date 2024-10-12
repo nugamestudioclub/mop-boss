@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nyov4ccxlxij"]
+
+[ext_resource type="Script" path="res://script/object_category.gd" id="1_iyqev"]
+[ext_resource type="Script" path="res://script/category_item.gd" id="2_jauhk"]
+[ext_resource type="PackedScene" uid="uid://dsbvdypk28rv7" path="res://scene/lock.tscn" id="3_2rw4y"]
+
+[node name="LockCategory" type="Node"]
+script = ExtResource("1_iyqev")
+
+[node name="PadLock" type="Node" parent="."]
+script = ExtResource("2_jauhk")
+scene = ExtResource("3_2rw4y")
+
+[node name="KeyLock" type="Node" parent="."]
+script = ExtResource("2_jauhk")
+weight = 0
+
+[node name="ElectronicLock" type="Node" parent="."]
+script = ExtResource("2_jauhk")
+weight = 0

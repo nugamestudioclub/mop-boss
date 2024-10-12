@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsbvdypk28rv7"]
+[gd_scene load_steps=12 format=3 uid="uid://dsbvdypk28rv7"]
 
-[ext_resource type="ArrayMesh" uid="uid://be5mc6mdhoaei" path="res://lock.obj" id="1_38jmk"]
-[ext_resource type="Script" path="res://lock.gd" id="1_ty75s"]
-[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://Roboto-Black.ttf" id="2_4er35"]
-[ext_resource type="Script" path="res://lock_code.gd" id="3_7huvo"]
+[ext_resource type="ArrayMesh" uid="uid://be5mc6mdhoaei" path="res://model/lock.obj" id="1_38jmk"]
+[ext_resource type="Script" path="res://script/lock.gd" id="1_ty75s"]
+[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://resource/font/Roboto-Black.ttf" id="2_4er35"]
+[ext_resource type="Script" path="res://script/lock_code.gd" id="3_7huvo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdqyg"]
 friction = 0.5
-bounce = 0.4
+bounce = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lhjq"]
 resource_local_to_scene = true
@@ -33,14 +33,13 @@ albedo_color = Color(0.840042, 0.811195, 0.798764, 1)
 resource_local_to_scene = true
 albedo_color = Color(0.840042, 0.811195, 0.798764, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uafy2"]
-size = Vector3(0.640503, 0.798218, 0.200317)
-
 [node name="LockBody" type="RigidBody3D" groups=["holdable", "inspectable"]]
-mass = 0.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106, 0)
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_gdqyg")
 freeze = true
-max_contacts_reported = 1
+continuous_cd = true
+max_contacts_reported = 4
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_ty75s")
@@ -51,18 +50,17 @@ mesh = ExtResource("1_38jmk")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lhjq")
 surface_material_override/1 = SubResource("StandardMaterial3D_81k8h")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_25l8i")
 
-[node name="LockCode" type="StaticBody3D" parent="."]
+[node name="LockCode" type="Area3D" parent="."]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0.0609591, 0.0120581)
 script = ExtResource("3_7huvo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LockCode"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.52, -1.5, -0.345)
 shape = SubResource("CylinderShape3D_1dw0p")
-disabled = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="LockCode/CollisionShape3D"]
 transform = Transform3D(1, -8.74228e-08, 3.82137e-15, -8.74228e-08, -1, 8.74228e-08, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
@@ -164,7 +162,6 @@ outline_size = 0
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="LockCode"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.52, -1.5, -0.345)
 shape = SubResource("CylinderShape3D_1dw0p")
-disabled = true
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LockCode/CollisionShape3D2"]
 transform = Transform3D(1, -8.74228e-08, 3.82137e-15, -8.74228e-08, -1, 8.74228e-08, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
@@ -266,7 +263,6 @@ outline_size = 0
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="LockCode"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.48, -1.5, -0.345)
 shape = SubResource("CylinderShape3D_1dw0p")
-disabled = true
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="LockCode/CollisionShape3D3"]
 transform = Transform3D(1, -8.74228e-08, 3.82137e-15, -8.74228e-08, -1, 8.74228e-08, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
@@ -368,7 +364,6 @@ outline_size = 0
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="LockCode"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.48, -1.5, -0.345)
 shape = SubResource("CylinderShape3D_1dw0p")
-disabled = true
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="LockCode/CollisionShape3D4"]
 transform = Transform3D(1, -8.74228e-08, 3.82137e-15, -8.74228e-08, -1, 8.74228e-08, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
@@ -466,10 +461,5 @@ text = "9"
 font = ExtResource("2_4er35")
 font_size = 64
 outline_size = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00899393, 0.175232, -0.0155676)
-shape = SubResource("BoxShape3D_uafy2")
-disabled = true
 
 [connection signal="input_event" from="LockCode" to="LockCode" method="_on_input_event"]

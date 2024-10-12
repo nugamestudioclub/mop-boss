@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj0fuwsbur2y0"]
 
-[ext_resource type="Script" path="res://canvas_layer.gd" id="1_a7vqq"]
-[ext_resource type="Script" path="res://sub_viewport.gd" id="2_hs7b0"]
-[ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://inspector_view.tscn" id="3_1tuoq"]
-[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://Roboto-Black.ttf" id="3_h0t1k"]
+[ext_resource type="Script" path="res://script/canvas_layer.gd" id="1_a7vqq"]
+[ext_resource type="Script" path="res://script/sub_viewport.gd" id="2_hs7b0"]
+[ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://scene/inspector_view.tscn" id="3_1tuoq"]
+[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://resource/font/Roboto-Black.ttf" id="3_h0t1k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)

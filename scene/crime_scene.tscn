@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://b1twir2cb7j74"]
 
-[ext_resource type="Script" path="res://crime_scene.gd" id="1_sdols"]
-[ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://node_spawner.tscn" id="2_2r0hw"]
-[ext_resource type="PackedScene" uid="uid://ch8e4do46sysg" path="res://donut.tscn" id="3_krvsg"]
-[ext_resource type="PackedScene" uid="uid://dsbvdypk28rv7" path="res://lock.tscn" id="4_gyyhg"]
+[ext_resource type="Script" path="res://script/crime_scene.gd" id="1_sdols"]
+[ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/node_spawner.tscn" id="2_2r0hw"]
+[ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/category/donut_category.tscn" id="3_h5kpw"]
+[ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/category/lock_category.tscn" id="4_wrrfb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwjlv"]
 albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
@@ -17,14 +17,13 @@ albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p31e"]
 albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i02s6"]
-albedo_color = Color(0.435192, 0.435192, 0.435192, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_6b47y"]
-material = SubResource("StandardMaterial3D_i02s6")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mk8c"]
+friction = 0.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bod3w"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s81t5"]
 
 [node name="CrimeScene" type="Node3D"]
 script = ExtResource("1_sdols")
@@ -36,7 +35,10 @@ material = SubResource("StandardMaterial3D_kwjlv")
 
 [node name="NodeSpawner" parent="CSGBox3D" instance=ExtResource("2_2r0hw")]
 transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
-options = Array[PackedScene]([ExtResource("3_krvsg"), ExtResource("4_gyyhg")])
+
+[node name="DonutCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("3_h5kpw")]
+
+[node name="LockCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("4_wrrfb")]
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0.595983, 0, 2.65)
@@ -45,7 +47,11 @@ material = SubResource("StandardMaterial3D_kwjlv")
 
 [node name="NodeSpawner" parent="CSGBox3D3" instance=ExtResource("2_2r0hw")]
 transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
-options = Array[PackedScene]([ExtResource("3_krvsg"), ExtResource("4_gyyhg")])
+
+[node name="DonutCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("3_h5kpw")]
+weight = 2
+
+[node name="LockCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("4_wrrfb")]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(0.985223, 0.171276, 0, -0.170098, 0.978448, -0.117069, -0.0200511, 0.115339, 0.993124, -1.25069, -0.226013, -1.52604)
@@ -55,7 +61,8 @@ material = SubResource("StandardMaterial3D_hndex")
 
 [node name="NodeSpawner" parent="CSGBox3D2" instance=ExtResource("2_2r0hw")]
 transform = Transform3D(-0.919303, -0.0753009, 0.38628, -0.138691, 0.980543, -0.138925, -0.368303, -0.181287, -0.91186, -0.0923586, 0.531271, -0.0635655)
-options = Array[PackedScene]([ExtResource("3_krvsg"), ExtResource("4_gyyhg")])
+
+[node name="DonutCategory" parent="CSGBox3D2/NodeSpawner" instance=ExtResource("3_h5kpw")]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(0.866641, 0.427655, -0.256991, -0.283037, -0.00278405, -0.959105, -0.410882, 0.903938, 0.118629, -1.66667, 0, 0.0288917)
@@ -65,7 +72,8 @@ material = SubResource("StandardMaterial3D_mrsag")
 
 [node name="NodeSpawner" parent="CSGCylinder3D" instance=ExtResource("2_2r0hw")]
 transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
-options = Array[PackedScene]([ExtResource("4_gyyhg")])
+
+[node name="LockCategory" parent="CSGCylinder3D/NodeSpawner" instance=ExtResource("4_wrrfb")]
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365255, 0, -2.97079)
@@ -75,13 +83,17 @@ material = SubResource("StandardMaterial3D_8p31e")
 
 [node name="NodeSpawner" parent="CSGCylinder3D2" instance=ExtResource("2_2r0hw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49501, 0)
-options = Array[PackedScene]([ExtResource("3_krvsg")])
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="LockCategory" parent="CSGCylinder3D2/NodeSpawner" instance=ExtResource("4_wrrfb")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("PlaneMesh_6b47y")
+physics_material_override = SubResource("PhysicsMaterial_6mk8c")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bod3w")
+
+[node name="Floor" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.03, 0, 0, 0, 2, 0, -0.015, 0)
+mesh = SubResource("BoxMesh_s81t5")
+skeleton = NodePath("../..")

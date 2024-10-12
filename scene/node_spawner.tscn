@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd44n2ohln754"]
 
-[ext_resource type="Script" path="res://node_spawner.gd" id="1_2c6l3"]
+[ext_resource type="Script" path="res://script/node_spawner.gd" id="1_2c6l3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc8du"]
 
