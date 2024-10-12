@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd44n2ohln754"]
+
+[ext_resource type="Script" path="res://node_spawner.gd" id="1_2c6l3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc8du"]
+
+[node name="NodeSpawner" type="Node3D"]
+script = ExtResource("1_2c6l3")
+
+[node name="EditorMarker" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.1)
+material = SubResource("StandardMaterial3D_yc8du")

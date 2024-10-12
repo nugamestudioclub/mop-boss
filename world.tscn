@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://v7ya5kk5gu7j"]
+
+[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://gui.tscn" id="3_tlps2"]
+[ext_resource type="PackedScene" uid="uid://b1twir2cb7j74" path="res://crime_scene.tscn" id="4_1fkpp"]
+[ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://player.tscn" id="5_567bn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
+sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
+
+[sub_resource type="Sky" id="Sky_4a2fm"]
+sky_material = SubResource("ProceduralSkyMaterial_a3dv2")
+
+[sub_resource type="Environment" id="Environment_nowte"]
+background_mode = 2
+sky = SubResource("Sky_4a2fm")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nowte")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957625, 0.28378, 0, 0, 0)
+shadow_enabled = true
+
+[node name="InspectView" parent="." instance=ExtResource("3_tlps2")]
+
+[node name="CrimeScene" parent="." instance=ExtResource("4_1fkpp")]
+
+[node name="Player" parent="." instance=ExtResource("5_567bn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
