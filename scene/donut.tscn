@@ -18,7 +18,9 @@ albedo_color = Color(0.784314, 0.341176, 0.407843, 1)
 height = 0.347328
 radius = 0.429246
 
-[node name="DonutBody" type="RigidBody3D" groups=["holdable", "inspectable"]]
+[node name="Donut2" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["holdable", "inspectable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105669, 0)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -29,16 +31,16 @@ linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_yalra")
 
-[node name="Donut" type="CSGTorus3D" parent="."]
+[node name="Donut" type="CSGTorus3D" parent="RigidBody3D"]
 inner_radius = 0.092
 outer_radius = 0.43686
 material = SubResource("StandardMaterial3D_tfido")
 
-[node name="Frosting" type="CSGTorus3D" parent="Donut"]
+[node name="Frosting" type="CSGTorus3D" parent="RigidBody3D/Donut"]
 transform = Transform3D(0.965, 0, 0, 0, 0.965, 0, 0, 0, 0.965, 0, 0.0398514, 0)
 inner_radius = 0.092
 outer_radius = 0.43686
 material = SubResource("StandardMaterial3D_q3iia")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("CylinderShape3D_7cx3l")

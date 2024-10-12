@@ -70,6 +70,17 @@ func _copy_to_inspect_view(object):
 		inspected_copy.freeze = true
 	_remove_outline(inspected_copy)
 	inspected_copy.position = Vector3.ZERO
+	var furthest_end := Vector3.ZERO
+	var furthest_start := Vector3.ZERO
+	for mesh in NodeHelper.get_children_recursive(inspected_copy):
+		if not mesh is VisualInstance3D: continue
+		var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
+		if aabb.end.length() > furthest_end.length():
+			furthest_end = aabb.end
+		if aabb.position.length() > furthest_start.length():
+			furthest_start = aabb.position
+	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
+	inspected_copy.scale = inspected_copy.scale.normalized() * biggest_axis * 10.0
 	inspected_copy.rotate_x(PI/4)
 	inspected_copy.rotate_z(PI/4)
 	inspected_copy.rotate_y(PI/2)
