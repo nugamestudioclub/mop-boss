@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsbvdypk28rv7"]
+[gd_scene load_steps=12 format=3 uid="uid://doqjlituilgfy"]
 
-[ext_resource type="ArrayMesh" uid="uid://be5mc6mdhoaei" path="res://model/lock.obj" id="1_38jmk"]
-[ext_resource type="Script" path="res://script/lock.gd" id="1_ty75s"]
-[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://resource/font/Roboto-Black.ttf" id="2_4er35"]
-[ext_resource type="Script" path="res://script/lock_code.gd" id="3_7huvo"]
+[ext_resource type="Script" path="res://script/lock.gd" id="1_lg1fw"]
+[ext_resource type="ArrayMesh" uid="uid://be5mc6mdhoaei" path="res://model/lock.obj" id="2_inenj"]
+[ext_resource type="Script" path="res://script/lock_code.gd" id="3_5df8k"]
+[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://resource/font/Roboto-Black.ttf" id="4_spmbw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdqyg"]
 friction = 0.5
@@ -33,7 +33,7 @@ albedo_color = Color(0.840042, 0.811195, 0.798764, 1)
 resource_local_to_scene = true
 albedo_color = Color(0.840042, 0.811195, 0.798764, 1)
 
-[node name="Lock" type="Node3D"]
+[node name="LockTest" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["holdable", "inspectable"]]
@@ -46,10 +46,10 @@ continuous_cd = true
 max_contacts_reported = 4
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_ty75s")
+script = ExtResource("1_lg1fw")
 
 [node name="Lock" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = ExtResource("1_38jmk")
+mesh = ExtResource("2_inenj")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lhjq")
 surface_material_override/1 = SubResource("StandardMaterial3D_81k8h")
 
@@ -58,7 +58,7 @@ shape = SubResource("ConvexPolygonShape3D_25l8i")
 
 [node name="LockCode" type="Area3D" parent="RigidBody3D"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -2.39, 0.49)
-script = ExtResource("3_7huvo")
+script = ExtResource("3_5df8k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/LockCode"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.52, -1.5, -0.345)
@@ -76,7 +76,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "0"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -85,7 +85,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, -0.587785, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "1"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -94,7 +94,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, -0.951056, -1, -4.37114e-08, 7.1
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "2"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -103,7 +103,7 @@ transform = Transform3D(1.35076e-08, -0.309017, -0.951056, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "3"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -112,7 +112,7 @@ transform = Transform3D(3.53632e-08, -0.809017, -0.587785, -1, -4.37114e-08, 1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "4"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -121,7 +121,7 @@ transform = Transform3D(4.37114e-08, -1, 5.96046e-08, -1, -4.37114e-08, 1.77636e
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "5"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -130,7 +130,7 @@ transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 2.66
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "6"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -139,7 +139,7 @@ transform = Transform3D(1.35076e-08, -0.309017, 0.951056, -1, -4.37114e-08, -1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "7"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -148,7 +148,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, 0.951056, -1, -4.37114e-08, -1.2
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "8"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -157,7 +157,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, 0.587785, -1, -4.37114e-08, -1.4
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "9"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -177,7 +177,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "0"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -186,7 +186,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, -0.587785, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "1"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -195,7 +195,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, -0.951056, -1, -4.37114e-08, 7.1
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "2"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -204,7 +204,7 @@ transform = Transform3D(1.35076e-08, -0.309017, -0.951056, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "3"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -213,7 +213,7 @@ transform = Transform3D(3.53632e-08, -0.809017, -0.587785, -1, -4.37114e-08, 1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "4"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -222,7 +222,7 @@ transform = Transform3D(4.37114e-08, -1, 5.96046e-08, -1, -4.37114e-08, 1.77636e
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "5"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -231,7 +231,7 @@ transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 2.66
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "6"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -240,7 +240,7 @@ transform = Transform3D(1.35076e-08, -0.309017, 0.951056, -1, -4.37114e-08, -1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "7"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -249,7 +249,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, 0.951056, -1, -4.37114e-08, -1.2
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "8"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -258,7 +258,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, 0.587785, -1, -4.37114e-08, -1.4
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "9"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -278,7 +278,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "0"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -287,7 +287,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, -0.587785, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "1"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -296,7 +296,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, -0.951056, -1, -4.37114e-08, 7.1
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "2"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -305,7 +305,7 @@ transform = Transform3D(1.35076e-08, -0.309017, -0.951056, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "3"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -314,7 +314,7 @@ transform = Transform3D(3.53632e-08, -0.809017, -0.587785, -1, -4.37114e-08, 1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "4"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -323,7 +323,7 @@ transform = Transform3D(4.37114e-08, -1, 5.96046e-08, -1, -4.37114e-08, 1.77636e
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "5"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -332,7 +332,7 @@ transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 2.66
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "6"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -341,7 +341,7 @@ transform = Transform3D(1.35076e-08, -0.309017, 0.951056, -1, -4.37114e-08, -1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "7"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -350,7 +350,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, 0.951056, -1, -4.37114e-08, -1.2
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "8"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -359,7 +359,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, 0.587785, -1, -4.37114e-08, -1.4
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "9"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -379,7 +379,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "0"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -388,7 +388,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, -0.587785, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "1"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -397,7 +397,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, -0.951056, -1, -4.37114e-08, 7.1
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "2"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -406,7 +406,7 @@ transform = Transform3D(1.35076e-08, -0.309017, -0.951056, -1, -4.37114e-08, 0, 
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "3"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -415,7 +415,7 @@ transform = Transform3D(3.53632e-08, -0.809017, -0.587785, -1, -4.37114e-08, 1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "4"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -424,7 +424,7 @@ transform = Transform3D(4.37114e-08, -1, 5.96046e-08, -1, -4.37114e-08, 1.77636e
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "5"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -433,7 +433,7 @@ transform = Transform3D(3.53633e-08, -0.809017, 0.587785, -1, -4.37114e-08, 2.66
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "6"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -442,7 +442,7 @@ transform = Transform3D(1.35076e-08, -0.309017, 0.951056, -1, -4.37114e-08, -1.0
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "7"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -451,7 +451,7 @@ transform = Transform3D(-1.35076e-08, 0.309017, 0.951056, -1, -4.37114e-08, -1.2
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "8"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 
@@ -460,7 +460,7 @@ transform = Transform3D(-3.53633e-08, 0.809017, 0.587785, -1, -4.37114e-08, -1.4
 pixel_size = 0.012
 modulate = Color(0, 0, 0, 1)
 text = "9"
-font = ExtResource("2_4er35")
+font = ExtResource("4_spmbw")
 font_size = 64
 outline_size = 0
 

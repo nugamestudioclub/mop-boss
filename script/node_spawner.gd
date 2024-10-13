@@ -30,7 +30,7 @@ func spawn():
 	var random = random_child_weighted(self)
 	random = random.pick_node()
 	if random == null: return
-	random.get_child(0).setup()
+	if random.has_method("setup"): random.setup()
 	spawned_node = random
 	add_child(random)
 

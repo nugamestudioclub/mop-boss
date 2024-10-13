@@ -31,6 +31,12 @@ text = "Click on a lock or donut to inspect it
 Press R to respawn the objects with new colors
 Some will always be a donut or always a lock, and others can either by a donut or a lock"
 
+[node name="fps" type="Label" parent="."]
+offset_top = 80.0
+offset_right = 318.0
+offset_bottom = 129.0
+text = "100"
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15

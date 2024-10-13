@@ -97,7 +97,7 @@ func _physics_process(delta):
 		
 		# prevent object from trying to phase through wall
 		
-		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand) #delta_origin + object_radius
+		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand, [hold_object]) #delta_origin + object_radius
 		#print(raycast_result)
 		var move_factor = 1
 		if raycast_object_result.has("position"): #and object_colliders > 0:

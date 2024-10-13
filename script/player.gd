@@ -65,8 +65,8 @@ func is_on_floor():
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # sets default mouse to locked
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+# Called every frame. (delta: float) is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
 	if can_move:
 		# Get direction player wants to move in based on input
 		# For get_axis: returns -1.0 if first, +1.0 if second, 0.0 if none OR both

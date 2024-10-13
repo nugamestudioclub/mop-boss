@@ -126,6 +126,9 @@ func _input(event):
 		
 		# Support for basic key presses here in the future
 
+func _process(delta: float) -> void:
+	$fps.text = "FPS: " + str(Engine.get_frames_per_second()) + "   1/delta: " + str(round(1/delta))
+
 func _on_close_button_gui_input(event):
 	if event is InputEventMouseButton:
 		if not event.pressed:
