@@ -24,6 +24,22 @@ var inspected_copy: Node3D = null
 
 signal toggle_inspect(node: Node3D)
 
+# TODO: Fix this function because I hate you godot why not global scale?
+"""Scales the inputed node (and any children) to fit within an area (bounds)"""
+func _scale_within(node: Node3D, bounds: float): #TODO: change bounds to vector3
+	var furthest_end := Vector3.ZERO
+	var furthest_start := Vector3.ZERO
+	for mesh in NodeHelper.get_children_recursive(node):
+		if not mesh is VisualInstance3D: continue
+		# I hate you affine inverse (it does not work we need a work around)
+		var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
+		if aabb.end.length() > furthest_end.length():
+			furthest_end = aabb.end
+		if aabb.position.length() > furthest_start.length():
+			furthest_start = aabb.position
+	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
+	node.scale = node.scale.normalized() * biggest_axis * bounds
+
 func _enter_inspect():
 	Input.set_mouse_mode(inspect_mouse_mode)
 	player.can_move = false
@@ -71,21 +87,10 @@ func _copy_to_inspect_view(object):
 		inspected_copy.freeze = true
 	_remove_outline(inspected_copy)
 	inspected_copy.position = Vector3.ZERO
-	#var furthest_end := Vector3.ZERO
-	#var furthest_start := Vector3.ZERO
-	#for mesh in NodeHelper.get_children_recursive(inspected_copy):
-		#if not mesh is VisualInstance3D: continue
-		#var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
-		#if aabb.end.length() > furthest_end.length():
-			#furthest_end = aabb.end
-		#if aabb.position.length() > furthest_start.length():
-			#furthest_start = aabb.position
-	#var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
-	#inspected_copy.scale = inspected_copy.scale.normalized() * biggest_axis * 10.0
+	
 	inspected_copy.rotate_x(PI/4)
 	inspected_copy.rotate_z(PI/4)
 	inspected_copy.rotate_y(PI/2)
-	inspected_copy.get_node("CollisionShape3D").disabled = true
 	toggle_inspect.emit(inspected_copy)
 	inspected_node_holder.add_child(inspected_copy)
 	

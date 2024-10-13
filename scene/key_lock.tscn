@@ -148,7 +148,7 @@ height = 0.1
 radius = 0.2
 
 [node name="KeyLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
-mass = 0.2
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 can_sleep = false
 freeze = true

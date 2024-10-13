@@ -286,7 +286,7 @@ radius = 0.235043
 
 [node name="ComboLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00302273, 0.00145587, 0.000302851)
-mass = 0.2
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 freeze = true
 continuous_cd = true
