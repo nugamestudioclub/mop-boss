@@ -9,10 +9,11 @@ var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Player movement parameters
-const walk_speed := 0.5 # 1.5 # meters / second
-const jump_velocity := 4 # meters / second
+const walk_acceleration: float = 14 # meters / second^2
+var player_damp: float = 7 # meters / second^2
+const jump_velocity: float = 4.5 # meters / second
 var player_mass: float = self.mass
-var player_damp: float = 10 # self.linear_damp
+
 var mouse_sensitivity := 0.001
 var min_pitch := -60
 var max_pitch := 60
@@ -63,22 +64,27 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if can_move:
-		var input := Vector3.ZERO # create blank vector3
-		input.x = Input.get_axis("move_left", "move_right") # returns -1.0 if first, 0.0 if none
-		input.z = Input.get_axis("move_forward", "move_back") # returns +1.0 if second, 0.0 if both
+		var cardinal_direction := Vector3.ZERO # create blank vector3
+		cardinal_direction.x = Input.get_axis("move_left", "move_right") # returns -1.0 if first, 0.0 if none
+		cardinal_direction.z = Input.get_axis("move_forward", "move_back") # returns +1.0 if second, 0.0 if both
 		
-		if sprinting: input *= 1.25
+		# Uses twist_pivot to change movement relative to pivot of the rotated twist
 		
-		# twist_pivot to change movement relative to pivot of the rotated twist
+		var directional_vector: Vector3 = twist_pivot.basis * cardinal_direction.normalized() # normalized to fix issue of faster diagonal
+		var move_force: float = (player_mass * walk_acceleration) # F = ma
+		print(delta)
+		# (0.5 * 1) so 0.5 acceleration force applied per second
 		
-		var directional_force: Vector3 = twist_pivot.basis * input
-		var move_speed: float = walk_speed * (player_mass / delta)
+		var walk_force = directional_vector * move_force # no apply delta, central force already time
+		if sprinting: walk_force *= 1.25
 		
-		var walk_force = directional_force * move_speed # - damp_force
-		apply_central_force(walk_force)
+		var damp_force = Vector3(linear_velocity.x, 0, linear_velocity.z) * player_damp 
+		# damp * walk_speed = move_force | damp = move_force/walk_speed
 		
-		var damp_force = player_damp * Vector3(linear_velocity.x, 0, linear_velocity.z)
-		apply_central_force(-damp_force)
+		apply_central_force(walk_force - damp_force)
+		
+		print("VELO", self.linear_velocity.length())
+		
 		# Pauses locking the mouse
 		if Input.is_action_just_pressed("ui_cancel"):
 			Input.set_mouse_mode(pause_mouse_mode)
