@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 # Inspect parameters
-#var cancel_key = KEY_SPACE
 var inspect_button = MOUSE_BUTTON_RIGHT
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -23,6 +22,8 @@ var inspected_copy: Node3D = null
 @onready var inspector_gui = $Control
 @onready var inspected_node_holder = $Control/SubViewportContainer/SubViewport/View/InspectedNode
 
+signal toggle_inspect(node: Node3D)
+
 func _enter_inspect():
 	Input.set_mouse_mode(inspect_mouse_mode)
 	player.can_move = false
@@ -40,7 +41,7 @@ func _cancel_inspect():
 		inspected_node.show()
 	inspected_node = null
 	if inspected_copy != null:
-		inspected_copy.is_inspected = false
+		toggle_inspect.emit(inspected_copy)
 	inspected_copy = null
 	for inspected in inspected_node_holder.get_children():
 		inspected.queue_free()
@@ -70,22 +71,22 @@ func _copy_to_inspect_view(object):
 		inspected_copy.freeze = true
 	_remove_outline(inspected_copy)
 	inspected_copy.position = Vector3.ZERO
-	var furthest_end := Vector3.ZERO
-	var furthest_start := Vector3.ZERO
-	for mesh in NodeHelper.get_children_recursive(inspected_copy):
-		if not mesh is VisualInstance3D: continue
-		var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
-		if aabb.end.length() > furthest_end.length():
-			furthest_end = aabb.end
-		if aabb.position.length() > furthest_start.length():
-			furthest_start = aabb.position
-	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
-	inspected_copy.scale = inspected_copy.scale.normalized() * biggest_axis * 10.0
+	#var furthest_end := Vector3.ZERO
+	#var furthest_start := Vector3.ZERO
+	#for mesh in NodeHelper.get_children_recursive(inspected_copy):
+		#if not mesh is VisualInstance3D: continue
+		#var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
+		#if aabb.end.length() > furthest_end.length():
+			#furthest_end = aabb.end
+		#if aabb.position.length() > furthest_start.length():
+			#furthest_start = aabb.position
+	#var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
+	#inspected_copy.scale = inspected_copy.scale.normalized() * biggest_axis * 10.0
 	inspected_copy.rotate_x(PI/4)
 	inspected_copy.rotate_z(PI/4)
 	inspected_copy.rotate_y(PI/2)
 	inspected_copy.get_node("CollisionShape3D").disabled = true
-	inspected_copy.is_inspected = true
+	toggle_inspect.emit(inspected_copy)
 	inspected_node_holder.add_child(inspected_copy)
 	
 """Checks if an object is inspectable"""
