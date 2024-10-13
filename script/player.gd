@@ -12,7 +12,6 @@ var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 const walk_acceleration: float = 14 # meters / second^2
 var player_damp: float = 7 # meters / second^2
 const jump_velocity: float = 4.5 # meters / second
-var player_mass: float = self.mass
 
 var mouse_sensitivity := 0.001
 var min_pitch := -60
@@ -36,26 +35,31 @@ var target: Node3D = null
 @onready var inspected_node = inspect_view.inspected_node
 @onready var inspect_group = inspect_view.inspect_group
 
+# Character properties
 @onready var character_height = $CollisionShape3D.shape.height
+@onready var player_mass: float = self.mass
 
+# Dot product is_on_floor parameters
 const max_jump_angle = 45
 const min_dot_product =  cos(deg_to_rad(max_jump_angle))
 
-# Adapted from https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679
 """Checks whether the player is on the floor or falling"""
 func is_on_floor():
-	# var raycast_result = Raycast.raycast_length(position, Vector3.DOWN, character_height/2, [self])
-	# return raycast_result.has("collider")
-	var state = PhysicsServer3D.body_get_direct_state(get_rid())
-	var on_floor = false
-	var i := 0
-	while i < state.get_contact_count():
-		var normal := state.get_contact_local_normal(i)
-		# The dot product is equal to cos of the desired angle (cos of 45 degrees = 0.7)
-		on_floor = normal.dot(Vector3.UP) > min_dot_product #  1.0 UP / 0.0 SIDE / -1.0 DOWN 
-		if on_floor: break 
-		i += 1
-	return on_floor
+	# Method #1, shoot a raycast right under player, check if there is an object under
+	var raycast_result = Raycast.raycast_length(position, Vector3.DOWN, character_height/2, [self])
+	return raycast_result.has("collider")
+	
+	# Method #2, get normals of objects player is touching (check if it's flat)
+	#var state = PhysicsServer3D.body_get_direct_state(get_rid())
+	#var on_floor = false
+	#var i := 0
+	#while i < state.get_contact_count():
+		#var normal := state.get_contact_local_normal(i)
+		## The dot product is equal to cos of the desired angle (cos of 45 degrees = 0.7)
+		#on_floor = normal.dot(Vector3.UP) > min_dot_product #  1.0 UP / 0.0 SIDE / -1.0 DOWN 
+		#if on_floor: break 
+		#i += 1
+	#return on_floor
 
 # Called when the node enters the scene tree for the **first time.**
 func _ready() -> void:
@@ -64,40 +68,45 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if can_move:
-		var cardinal_direction := Vector3.ZERO # create blank vector3
-		cardinal_direction.x = Input.get_axis("move_left", "move_right") # returns -1.0 if first, 0.0 if none
-		cardinal_direction.z = Input.get_axis("move_forward", "move_back") # returns +1.0 if second, 0.0 if both
+		# Get direction player wants to move in based on input
+		# For get_axis: returns -1.0 if first, +1.0 if second, 0.0 if none OR both
+		var cardinal_direction := Vector3.ZERO
+		cardinal_direction.x = Input.get_axis("move_left", "move_right")
+		cardinal_direction.z = Input.get_axis("move_forward", "move_back")
 		
-		# Uses twist_pivot to change movement relative to pivot of the rotated twist
+		# Calculate movement direction relative to twist_pivot | normalized to fix diagonal
+		# Use the mass and acceleration to calculate force | F = ma
+		var directional_vector: Vector3 = twist_pivot.basis * cardinal_direction.normalized()
+		var move_force: float = (player_mass * walk_acceleration)
 		
-		var directional_vector: Vector3 = twist_pivot.basis * cardinal_direction.normalized() # normalized to fix issue of faster diagonal
-		var move_force: float = (player_mass * walk_acceleration) # F = ma
-		print(delta)
-		# (0.5 * 1) so 0.5 acceleration force applied per second
-		
-		var walk_force = directional_vector * move_force # no apply delta, central force already time
+		var walk_force = directional_vector * move_force
 		if sprinting: walk_force *= 1.25
 		
-		var damp_force = Vector3(linear_velocity.x, 0, linear_velocity.z) * player_damp 
 		# damp * walk_speed = move_force | damp = move_force/walk_speed
+		var damp_force = Vector3(linear_velocity.x, 0, linear_velocity.z) * player_damp 
 		
+		# For future reference, apply_central force based on time already, so no * delta
 		apply_central_force(walk_force - damp_force)
 		
-		print("VELO", self.linear_velocity.length())
+		# Debug velocity
+		#print("CURR_VELOCITY: ", self.linear_velocity.length())
 		
-		# Pauses locking the mouse
+		# Pause locking the mouse
 		if Input.is_action_just_pressed("ui_cancel"):
 			Input.set_mouse_mode(pause_mouse_mode)
 		elif Input.is_action_just_released("ui_cancel"):
 			Input.set_mouse_mode(default_mouse_mode)
+		# Apply a one-time impulse for jump force
 		elif Input.is_action_just_pressed("jump") and is_on_floor():
 			var jump_force = (Vector3.UP * jump_velocity * player_mass)
 			apply_central_impulse(jump_force)
+		# Check if player is sprinting
 		elif Input.is_action_just_pressed("sprint"):
 			sprinting = true
 		elif Input.is_action_just_released("sprint"):
 			sprinting = false
-			
+		
+		# Rotate charcter based on mouse motion detected previously
 		twist_pivot.rotate_y(twist_input)
 		pitch_pivot.rotate_x(pitch_input)
 		pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
@@ -109,7 +118,7 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		# Handle twist and pitch movement of camera
+		# Calculate amount to twist and pitch character based on mouse motion
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = -event.relative.x * mouse_sensitivity
 			pitch_input = -event.relative.y * mouse_sensitivity
