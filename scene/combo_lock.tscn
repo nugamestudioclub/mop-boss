@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://buirpxtoqte7x"]
+[gd_scene load_steps=28 format=4 uid="uid://buirpxtoqte7x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
 friction = 0.5
@@ -276,7 +276,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_he6e2")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5law1"]
+height = 0.55
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8dy7r"]
+height = 0.0578944
+radius = 0.235043
+
 [node name="ComboLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00302273, 0.00145587, 0.000302851)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 freeze = true
@@ -286,41 +295,49 @@ linear_damp = 1.0
 angular_damp = 1.0
 
 [node name="combo_s5_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0, -0.1, 0, 0.1, 0, 1.19026e-05, 0.0895432, -0.116496)
+transform = Transform3D(0.1, 0, 0, 0, 0, -0.1, 0, 0.1, 0, 1.19026e-05, 0.0895432, -0.142962)
 mesh = SubResource("ArrayMesh_qifij")
 skeleton = NodePath("")
 
 [node name="combo_s4_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0382684, 1.93371e-09, -0.092388, -0.092388, 7.25253e-09, -0.0382684, 5.96047e-09, 0.1, 4.56194e-09, 1.19026e-05, 0.0895432, -0.0724955)
+transform = Transform3D(0.0382684, 1.93371e-09, -0.092388, -0.092388, 7.25253e-09, -0.0382684, 5.96047e-09, 0.1, 4.56194e-09, 1.19026e-05, 0.0895432, -0.0989615)
 mesh = SubResource("ArrayMesh_m1ubk")
 skeleton = NodePath("")
 
 [node name="combo_s3_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 5.96047e-09, -0.1, -0.1, 5.96047e-09, 3.55271e-16, 5.96047e-09, 0.1, 5.96047e-09, 1.19026e-05, 0.0895432, -0.0284954)
+transform = Transform3D(0, 5.96047e-09, -0.1, -0.1, 5.96047e-09, 3.55271e-16, 5.96047e-09, 0.1, 5.96047e-09, 1.19026e-05, 0.0895432, -0.0549614)
 mesh = SubResource("ArrayMesh_23h5s")
 skeleton = NodePath("")
 
 [node name="combo_s2_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.19026e-05, 0.0895432, 0.0155045)
+transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.19026e-05, 0.0895432, -0.0109615)
 mesh = SubResource("ArrayMesh_fh0vg")
 skeleton = NodePath("")
 
 [node name="combo_s1_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0707107, -6.17226e-10, -0.0707107, -0.0707107, 3.59746e-09, -0.0707107, 2.98023e-09, 0.1, 2.10734e-09, 1.19026e-05, 0.0895432, 0.0595045)
+transform = Transform3D(0.0707107, -6.17226e-10, -0.0707107, -0.0707107, 3.59746e-09, -0.0707107, 2.98023e-09, 0.1, 2.10734e-09, 1.19026e-05, 0.0895432, 0.0330385)
 mesh = SubResource("ArrayMesh_6djko")
 skeleton = NodePath("")
 
 [node name="combo_rod_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 1.19026e-05, 0.0895432, 0.0245045)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 1.19026e-05, 0.0895432, -0.00196152)
 mesh = SubResource("ArrayMesh_if6d3")
 skeleton = NodePath("")
 
 [node name="combo_middle_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.69143e-05, 0.0911244, 0.0245045)
+transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.69143e-05, 0.0911244, -0.00196152)
 mesh = SubResource("ArrayMesh_sljen")
 skeleton = NodePath("")
 
 [node name="combo_body_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.19026e-05, 0.0895432, 0.0745045)
+transform = Transform3D(0.092388, -4.65113e-09, -0.0382684, -0.0382684, -1.12288e-08, -0.092388, 0, 0.1, -1.2154e-08, 1.19026e-05, 0.0895432, 0.0480385)
 mesh = SubResource("ArrayMesh_g0nhy")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_5law1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.259068, 0)
+shape = SubResource("CylinderShape3D_8dy7r")
