@@ -24,6 +24,7 @@ NodeHelper="*res://script/node_helper.gd"
 
 inspectable=""
 holdable=""
+node_spawner="Nodes that signify where puzzle elements can spawn."
 
 [input]
 

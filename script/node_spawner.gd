@@ -4,35 +4,24 @@ extends Node3D
 
 var spawned_node: Node3D = null
 
-
-func total_weight(node: Node):
-	return node.get_children().reduce(func(acc, n): return n.weight + acc, 0)
-
-
-func random_child_weighted(node: Node) -> Node:
-	var pick = randi_range(1, total_weight(node))
-	var sum = 0
-	var sorted_children = node.get_children()
-	sorted_children.sort_custom(func(child_a, child_b): return child_b.weight >= child_a.weight)
-	for child in sorted_children:
-		sum += child.weight
-		if sum >= pick:
-			return child
-	return null
-
-
 func _ready():
-	$EditorMarker.free()
+	$EditorMarker.queue_free()
 
-
-func spawn():
-	if get_child_count() == 0: return
-	var random = random_child_weighted(self)
+func spawn_random():
+	#if self.get_child_count() > 0: await(NodeHelper.destroy_children(self.get_children())) #self.get_child(0).free() #NodeHelper.destroy_children(self.get_children())
+	#var categories = self.get_children().filter(func(child): return child is Category)
+	var random = NodeHelper.random_child_weighted(self)
 	random = random.pick_node()
 	if random == null: return
-	if random.has_method("setup"): random.setup()
-	spawned_node = random
-	add_child(random)
+	spawn(random)
+	
+
+func spawn(scene: PackedScene):
+	if spawned_node != null: return
+	self.remove_from_group("node_spawner")
+	spawned_node = scene.instantiate()
+	if spawned_node.has_method("setup"): spawned_node.setup()
+	add_child(spawned_node)
 
 
 func despawn():

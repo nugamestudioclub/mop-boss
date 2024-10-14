@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://v7ya5kk5gu7j"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/gui.tscn" id="1_a67bd"]
-[ext_resource type="PackedScene" uid="uid://b1twir2cb7j74" path="res://scene/crime_scene.tscn" id="2_tjl34"]
+[ext_resource type="PackedScene" uid="uid://b1twir2cb7j74" path="res://scene/alley_level.tscn" id="2_tjl34"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player.tscn" id="3_11mai"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]

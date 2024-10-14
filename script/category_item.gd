@@ -1,5 +1,5 @@
-extends Node
+class_name CategoryItem
+extends Category
 
 
 @export var scene: PackedScene
-@export var weight: int = 1

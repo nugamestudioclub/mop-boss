@@ -7,6 +7,7 @@ func _toggle_inspect(node: Node3D):
 
 
 func _ready():
+	# Listens in for toggle inspect signal
 	NodeHelper.inspector_canvas_layer_node.toggle_inspect.connect(_toggle_inspect)
 
 
@@ -19,3 +20,10 @@ func _on_input_event(_camera, event, _event_position, _normal, shape_idx):
 		MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_RIGHT:
 			radians *= -1
 	get_child(shape_idx).rotate_x(radians)
+
+
+# setup function : give it random color, code, etc
+
+# puzzle function : activates when inspect mode
+
+# check state function : checks state of object and updates to either altered or unaltered
