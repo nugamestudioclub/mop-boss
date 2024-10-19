@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://docb2y0goq6n1"
-path="res://.godot/imported/combo_lock.31.glb-68ed7988b36b0ae5c1820779ced6fda4.scn"
+uid="uid://cuwuyr03akhje"
+path="res://.godot/imported/combo_lock.36.glb-29392ebbacb535e5f3be77ce82fd6dcb.scn"
 
 [deps]
 
-source_file="res://model/combo_lock.31.glb"
-dest_files=["res://.godot/imported/combo_lock.31.glb-68ed7988b36b0ae5c1820779ced6fda4.scn"]
+source_file="res://model/combo_lock.36.glb"
+dest_files=["res://.godot/imported/combo_lock.36.glb-29392ebbacb535e5f3be77ce82fd6dcb.scn"]
 
 [params]
 
