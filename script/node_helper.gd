@@ -2,10 +2,11 @@ extends Node
 
 @onready var inspector_canvas_layer_node := $"/root/World/InspectView"
 
-func get_children_recursive(in_node: Node, array: Array[Node] = []) -> Array[Node]:
-	array.push_back(in_node)
+func get_descendants(in_node: Node, array: Array[Node] = []) -> Array[Node]:
+	#array.push_back(in_node)
 	for child in in_node.get_children():
-		array = get_children_recursive(child, array)
+		array.push_back(child)
+		array = get_descendants(child, array)
 	return array
 
 func destroy_children(children):
