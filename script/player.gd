@@ -25,15 +25,7 @@ var pitch_input := 0.0
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var player_pov := $TwistPivot/PitchPivot/PlayerPov
 
-# Player inspect parameters
-@onready var inspect_view = $"../InspectView"
-@onready var inspected_node_holder = inspect_view.inspected_node_holder
-@onready var inspector_gui = inspect_view.inspector_gui
-
 var target: Node3D = null
-@onready var highlight_object = inspect_view.highlight_object
-@onready var inspected_node = inspect_view.inspected_node
-@onready var inspect_group = inspect_view.inspect_group
 
 # Character properties
 @onready var character_height = $CollisionShape3D.shape.height

@@ -4,7 +4,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc8du"]
 
-[node name="NodeSpawner" type="Node3D" groups=["node_spawner"]]
+[node name="NodeSpawner" type="Node3D" groups=["empty_spawner"]]
 script = ExtResource("1_2c6l3")
 
 [node name="EditorMarker" type="CSGBox3D" parent="."]
