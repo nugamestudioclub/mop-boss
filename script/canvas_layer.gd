@@ -14,7 +14,8 @@ var highlight_object: Node3D = null
 var target: Node3D = null
 
 var inspected_node: Node3D = null
-var inspected_copy: Node3D = null
+var inspected_node_parent: Node3D = null
+var inspected_copy_transform: Transform3D = Transform3D.IDENTITY
 
 # Node paths
 @onready var player: RigidBody3D = $"../Player"
@@ -29,7 +30,7 @@ signal toggle_inspect(node: Node3D)
 func _scale_within(node: Node3D, bounds: float): #TODO: change bounds to vector3
 	var furthest_end := Vector3.ZERO
 	var furthest_start := Vector3.ZERO
-	for mesh in NodeHelper.get_children_recursive(node):
+	for mesh in NodeHelper.get_descendants(node):
 		if not mesh is VisualInstance3D: continue
 		# I hate you affine inverse (it does not work we need a work around)
 		var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
@@ -45,8 +46,7 @@ func _enter_inspect():
 	player.can_move = false
 	inspector_gui.show()
 	inspected_node = target
-	_copy_to_inspect_view(target)
-	target.hide()
+	_move_to_inspect_view(target)
 
 """Closes the inspection window, puts object back"""
 func _cancel_inspect():
@@ -54,13 +54,11 @@ func _cancel_inspect():
 	player.can_move = true
 	$Control.hide()
 	if inspected_node != null:
-		inspected_node.show()
+		toggle_inspect.emit(inspected_node)
+	inspected_node.reparent(inspected_node_parent)
+	inspected_node.transform = inspected_copy_transform
+	inspected_node.freeze = false
 	inspected_node = null
-	if inspected_copy != null:
-		toggle_inspect.emit(inspected_copy)
-	inspected_copy = null
-	for inspected in inspected_node_holder.get_children():
-		inspected.queue_free()
 
 """Sets the outline around an object based on size"""
 func _resize_outline(node: Node3D, size: float):
@@ -81,19 +79,16 @@ func _remove_outline(node: Node3D): _resize_outline(node, 0)
 func _add_outline(node: Node3D): _resize_outline(node, 1.05)
 
 """Takes a given object and copies it to the inspect viewport""" 
-func _copy_to_inspect_view(object):
-	inspected_copy = object.duplicate()
-	if inspected_copy is RigidBody3D:
-		inspected_copy.freeze = true
-	_remove_outline(inspected_copy)
-	inspected_copy.position = Vector3.ZERO
-	
-	inspected_copy.rotate_x(PI/4)
-	inspected_copy.rotate_z(PI/4)
-	inspected_copy.rotate_y(PI/2)
-	toggle_inspect.emit(inspected_copy)
-	inspected_node_holder.add_child(inspected_copy)
-	
+func _move_to_inspect_view(object: Node3D):
+	inspected_node_parent = object.get_parent()
+	inspected_copy_transform = object.transform
+	if object is RigidBody3D:
+		object.freeze = true
+	_remove_outline(object)
+	object.global_position = Vector3.ZERO
+	object.reparent(inspected_node_holder)
+	toggle_inspect.emit(object)
+
 """Checks if an object is inspectable"""
 func _can_inspect(object):
 	return (object is Node and 
