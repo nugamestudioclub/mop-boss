@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://v7ya5kk5gu7j"]
+[gd_scene load_steps=8 format=3 uid="uid://v7ya5kk5gu7j"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/gui.tscn" id="1_a67bd"]
 [ext_resource type="PackedScene" uid="uid://b1twir2cb7j74" path="res://scene/alley_level.tscn" id="2_tjl34"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player.tscn" id="3_11mai"]
+[ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/bowling_pin.tscn" id="4_gu0lp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -32,3 +33,27 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_11mai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="BowlingPin" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44331, 0, 1.32234)
+
+[node name="BowlingPin2" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.32234)
+
+[node name="BowlingPin3" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.6769)
+
+[node name="BowlingPin4" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 0.962018)
+
+[node name="BowlingPin5" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.13732)
+
+[node name="BowlingPin6" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.47602)
+
+[node name="BowlingPin7" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.88993)
+
+[node name="BowlingPin8" parent="." instance=ExtResource("4_gu0lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 0.734812)
