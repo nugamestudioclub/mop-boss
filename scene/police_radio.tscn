@@ -1,11 +1,17 @@
-[gd_scene load_steps=32 format=4 uid="uid://dqv2jwjbxx0b5"]
+[gd_scene load_steps=38 format=4 uid="uid://dqv2jwjbxx0b5"]
 
 [ext_resource type="Texture2D" uid="uid://co8yul5ja5nu5" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_BaseColor.png" id="1_2b5oj"]
+[ext_resource type="Texture2D" uid="uid://dgufx7r4ueht6" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_Normal.png" id="2_013cb"]
 [ext_resource type="Texture2D" uid="uid://cffwcm8opbvwf" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_BaseColor.png" id="2_e2ood"]
 [ext_resource type="Texture2D" uid="uid://bjte7r55jnhqj" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_BaseColor.png" id="3_y724l"]
+[ext_resource type="Texture2D" uid="uid://bmy48aqcrn6be" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_Normal.png" id="4_glgqw"]
 [ext_resource type="Texture2D" uid="uid://cpbh1bvr56xll" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_BaseColor.png" id="4_lia8a"]
 [ext_resource type="Texture2D" uid="uid://dqqxndg7tf1dx" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_BaseColor.png" id="5_hb20m"]
 [ext_resource type="Texture2D" uid="uid://rs1q08vmp13k" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_BaseColor.png" id="6_nqqbm"]
+[ext_resource type="Texture2D" uid="uid://b2hj24cotng6k" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_Normal.png" id="6_yrg8q"]
+[ext_resource type="Texture2D" uid="uid://dms8235fhnc6y" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_Normal.png" id="8_3x7ix"]
+[ext_resource type="Texture2D" uid="uid://b30i7vcyjw8s8" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_Normal.png" id="10_pillg"]
+[ext_resource type="Texture2D" uid="uid://duw4a4w3ocfxu" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_Normal.png" id="12_p2qp5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -13,6 +19,8 @@ bounce = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkchu"]
 albedo_texture = ExtResource("1_2b5oj")
+normal_enabled = true
+normal_texture = ExtResource("2_013cb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1ryq"]
 resource_name = "Body"
@@ -56,6 +64,8 @@ shadow_mesh = SubResource("ArrayMesh_4wkuq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjlfi"]
 albedo_texture = ExtResource("2_e2ood")
+normal_enabled = true
+normal_texture = ExtResource("4_glgqw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl5sq"]
 resource_name = "Knob1"
@@ -99,6 +109,8 @@ shadow_mesh = SubResource("ArrayMesh_pmunk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgve1"]
 albedo_texture = ExtResource("3_y724l")
+normal_enabled = true
+normal_texture = ExtResource("6_yrg8q")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdhhs"]
 resource_name = "Knob2"
@@ -142,6 +154,8 @@ shadow_mesh = SubResource("ArrayMesh_elfeh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6nug"]
 albedo_texture = ExtResource("4_lia8a")
+normal_enabled = true
+normal_texture = ExtResource("8_3x7ix")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5ipn"]
 resource_name = "Anthena"
@@ -185,6 +199,8 @@ shadow_mesh = SubResource("ArrayMesh_sfaxv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3eok"]
 albedo_texture = ExtResource("5_hb20m")
+normal_enabled = true
+normal_texture = ExtResource("10_pillg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3vjk"]
 resource_name = "Switch"
@@ -228,6 +244,8 @@ shadow_mesh = SubResource("ArrayMesh_jinx1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdiio"]
 albedo_texture = ExtResource("6_nqqbm")
+normal_enabled = true
+normal_texture = ExtResource("12_p2qp5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mev11"]
 resource_name = "Piece"
