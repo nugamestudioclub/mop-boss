@@ -1,17 +1,29 @@
-[gd_scene load_steps=38 format=4 uid="uid://dqv2jwjbxx0b5"]
+[gd_scene load_steps=52 format=4 uid="uid://dqv2jwjbxx0b5"]
 
 [ext_resource type="Texture2D" uid="uid://co8yul5ja5nu5" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_BaseColor.png" id="1_2b5oj"]
 [ext_resource type="Texture2D" uid="uid://dgufx7r4ueht6" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_Normal.png" id="2_013cb"]
 [ext_resource type="Texture2D" uid="uid://cffwcm8opbvwf" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_BaseColor.png" id="2_e2ood"]
+[ext_resource type="Texture2D" uid="uid://c7w6jbihech0d" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_Metallic.png" id="2_on8rp"]
 [ext_resource type="Texture2D" uid="uid://bjte7r55jnhqj" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_BaseColor.png" id="3_y724l"]
 [ext_resource type="Texture2D" uid="uid://bmy48aqcrn6be" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_Normal.png" id="4_glgqw"]
+[ext_resource type="Texture2D" uid="uid://bcx06lbyj7ye2" path="res://model/Police Radio/Police Radio Texture/Police Radio_Body_Roughness.png" id="4_leecd"]
 [ext_resource type="Texture2D" uid="uid://cpbh1bvr56xll" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_BaseColor.png" id="4_lia8a"]
 [ext_resource type="Texture2D" uid="uid://dqqxndg7tf1dx" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_BaseColor.png" id="5_hb20m"]
 [ext_resource type="Texture2D" uid="uid://rs1q08vmp13k" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_BaseColor.png" id="6_nqqbm"]
+[ext_resource type="Texture2D" uid="uid://dxbfh01fxsyt2" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_Metallic.png" id="6_prro3"]
 [ext_resource type="Texture2D" uid="uid://b2hj24cotng6k" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_Normal.png" id="6_yrg8q"]
 [ext_resource type="Texture2D" uid="uid://dms8235fhnc6y" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_Normal.png" id="8_3x7ix"]
+[ext_resource type="Texture2D" uid="uid://b0cf01hl1ll7a" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_Roughness.png" id="8_8om7k"]
+[ext_resource type="Texture2D" uid="uid://ci4ed6dsae0of" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_Metallic.png" id="10_byipl"]
 [ext_resource type="Texture2D" uid="uid://b30i7vcyjw8s8" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_Normal.png" id="10_pillg"]
+[ext_resource type="Texture2D" uid="uid://b5u1no8v77vjl" path="res://model/Police Radio/Police Radio Texture/Police Radio_Knob2_Roughness.png" id="12_dnmpy"]
 [ext_resource type="Texture2D" uid="uid://duw4a4w3ocfxu" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_Normal.png" id="12_p2qp5"]
+[ext_resource type="Texture2D" uid="uid://bpgngsnjvctal" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_Metallic.png" id="14_6roni"]
+[ext_resource type="Texture2D" uid="uid://casuxb8ruokat" path="res://model/Police Radio/Police Radio Texture/Police Radio_Anthena_Roughness.png" id="16_hoygm"]
+[ext_resource type="Texture2D" uid="uid://llgl1640uaxd" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_Metallic.png" id="18_p1wpb"]
+[ext_resource type="Texture2D" uid="uid://cx15owr1t80vt" path="res://model/Police Radio/Police Radio Texture/Police Radio_Switch_Roughness.png" id="20_8mcqw"]
+[ext_resource type="Texture2D" uid="uid://caua8dpf8w0dm" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_Metallic.png" id="22_4ngnx"]
+[ext_resource type="Texture2D" uid="uid://cfrbdvf46w6dk" path="res://model/Police Radio/Police Radio Texture/Police Radio_Piece_Roughness.png" id="24_ge454"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -19,6 +31,9 @@ bounce = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkchu"]
 albedo_texture = ExtResource("1_2b5oj")
+metallic = 1.0
+metallic_texture = ExtResource("2_on8rp")
+roughness_texture = ExtResource("4_leecd")
 normal_enabled = true
 normal_texture = ExtResource("2_013cb")
 
@@ -64,6 +79,9 @@ shadow_mesh = SubResource("ArrayMesh_4wkuq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjlfi"]
 albedo_texture = ExtResource("2_e2ood")
+metallic = 1.0
+metallic_texture = ExtResource("6_prro3")
+roughness_texture = ExtResource("8_8om7k")
 normal_enabled = true
 normal_texture = ExtResource("4_glgqw")
 
@@ -109,6 +127,9 @@ shadow_mesh = SubResource("ArrayMesh_pmunk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgve1"]
 albedo_texture = ExtResource("3_y724l")
+metallic = 1.0
+metallic_texture = ExtResource("10_byipl")
+roughness_texture = ExtResource("12_dnmpy")
 normal_enabled = true
 normal_texture = ExtResource("6_yrg8q")
 
@@ -154,6 +175,9 @@ shadow_mesh = SubResource("ArrayMesh_elfeh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6nug"]
 albedo_texture = ExtResource("4_lia8a")
+metallic = 1.0
+metallic_texture = ExtResource("14_6roni")
+roughness_texture = ExtResource("16_hoygm")
 normal_enabled = true
 normal_texture = ExtResource("8_3x7ix")
 
@@ -199,6 +223,9 @@ shadow_mesh = SubResource("ArrayMesh_sfaxv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3eok"]
 albedo_texture = ExtResource("5_hb20m")
+metallic = 1.0
+metallic_texture = ExtResource("18_p1wpb")
+roughness_texture = ExtResource("20_8mcqw")
 normal_enabled = true
 normal_texture = ExtResource("10_pillg")
 
@@ -244,6 +271,9 @@ shadow_mesh = SubResource("ArrayMesh_jinx1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdiio"]
 albedo_texture = ExtResource("6_nqqbm")
+metallic = 1.0
+metallic_texture = ExtResource("22_4ngnx")
+roughness_texture = ExtResource("24_ge454")
 normal_enabled = true
 normal_texture = ExtResource("12_p2qp5")
 
@@ -287,6 +317,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g1qtu")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kqxv"]
+size = Vector3(0.125, 0.35, 0.075)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rb3jk"]
+size = Vector3(0.015, 0.3, 0.015)
+
 [node name="PoliceRadio" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -296,37 +332,45 @@ linear_damp = 1.0
 angular_damp = 1.0
 
 [node name="Police_Radio_Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63549e-05, 0.158184, 0.00979443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63549e-05, 0.158184, 0.000214919)
 material_override = SubResource("StandardMaterial3D_kkchu")
 mesh = SubResource("ArrayMesh_i2y5r")
 skeleton = NodePath("")
 
 [node name="Police_Radio_Knob1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038816, 0.342022, 0.017095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038816, 0.342022, 0.00751544)
 material_override = SubResource("StandardMaterial3D_cjlfi")
 mesh = SubResource("ArrayMesh_rqtwj")
 skeleton = NodePath("")
 
 [node name="Police_Radio_Knob2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.948571, 0, -0.925118, 0, 1.78457, 0, 0.945676, 0, 0.92795, 0.0166482, 0.343626, 0.0169542)
+transform = Transform3D(0.948571, 0, -0.925118, 0, 1.78457, 0, 0.945676, 0, 0.92795, 0.0166482, 0.343626, 0.00737473)
 material_override = SubResource("StandardMaterial3D_wgve1")
 mesh = SubResource("ArrayMesh_y1t5w")
 skeleton = NodePath("")
 
 [node name="Police_Radio_Anthena" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.27858, 0, 0, 0, 1, 0, 0, 0, 1.27858, 0.0448373, 0.485587, -0.00314993)
+transform = Transform3D(1.27858, 0, 0, 0, 1, 0, 0, 0, 1.27858, 0.0448373, 0.485587, -0.0127294)
 material_override = SubResource("StandardMaterial3D_e6nug")
 mesh = SubResource("ArrayMesh_x3556")
 skeleton = NodePath("")
 
 [node name="Police_Radio_Switch" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.383247, 0, 0, 0, 0.383247, 0, 0, 0, 0.383247, -0.0383385, 0.348579, -0.00651391)
+transform = Transform3D(0.383247, 0, 0, 0, 0.383247, 0, 0, 0, 0.383247, -0.0383385, 0.348579, -0.0160934)
 material_override = SubResource("StandardMaterial3D_u3eok")
 mesh = SubResource("ArrayMesh_034oa")
 skeleton = NodePath("")
 
 [node name="Police_Radio_Cover_Piece" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.39605, 0, 0, 0, 1.33213, 0, 0, 0, 1, 0.00110434, 0.348531, -0.012128)
+transform = Transform3D(5.39605, 0, 0, 0, 1.33213, 0, 0, 0, 1, 0.00110434, 0.348531, -0.0217075)
 material_override = SubResource("StandardMaterial3D_pdiio")
 mesh = SubResource("ArrayMesh_dmqq0")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170819, 0)
+shape = SubResource("BoxShape3D_3kqxv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0449365, 0.478163, -0.0113365)
+shape = SubResource("BoxShape3D_rb3jk")
