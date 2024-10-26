@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://script/object_category.gd" id="1_kmt3u"]
 [ext_resource type="Script" path="res://script/category_item.gd" id="2_tmpli"]
-[ext_resource type="PackedScene" uid="uid://ct1rgk4k3gc5p" path="res://scene/donut_test.tscn" id="3_qfxqj"]
-[ext_resource type="PackedScene" uid="uid://dhp510coi32lj" path="res://scene/donut_frosted.tscn" id="3_xiujg"]
-[ext_resource type="PackedScene" uid="uid://beo1kydw854me" path="res://scene/donut_sprinkles.tscn" id="4_2o5ui"]
-[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/donut_boston.tscn" id="6_gi1wj"]
-[ext_resource type="PackedScene" uid="uid://sjx1lyny6oc6" path="res://scene/donut_jelly.tscn" id="7_r32jc"]
+[ext_resource type="PackedScene" uid="uid://ct1rgk4k3gc5p" path="res://scene/temp/donut_test.tscn" id="3_qfxqj"]
+[ext_resource type="PackedScene" uid="uid://dhp510coi32lj" path="res://scene/puzzle/donut_frosted.tscn" id="3_xiujg"]
+[ext_resource type="PackedScene" uid="uid://beo1kydw854me" path="res://scene/puzzle/donut_sprinkles.tscn" id="4_2o5ui"]
+[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut_boston.tscn" id="6_gi1wj"]
+[ext_resource type="PackedScene" uid="uid://sjx1lyny6oc6" path="res://scene/puzzle/donut_jelly.tscn" id="7_r32jc"]
 
 [node name="DonutCategory" type="Node"]
 script = ExtResource("1_kmt3u")

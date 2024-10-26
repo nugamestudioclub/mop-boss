@@ -49,6 +49,7 @@ func generate_level():
 		for spawner in all_group(empty_tag):
 			if _spawner_has_category(spawner, category.name):
 				if category is CategoryItem:
+					if category.scene == null: print(category)
 					spawner.spawn(category.scene)
 					break
 				elif category is Category:
