@@ -386,7 +386,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0133398, 0)
 shape = SubResource("CylinderShape3D_plwtk")
 
 [node name="Knob2" type="Area3D" parent="."]
-transform = Transform3D(0.592013, 0, -0.805928, 0, 1, 0, 0.805928, 0, 0.592013, 0.0166482, 0.167844, 0.00737473)
+transform = Transform3D(0.925481, 0, 0.378794, 0, 1, 0, -0.378794, 0, 0.925481, 0.0166482, 0.167844, 0.00737473)
 
 [node name="Police_Radio_Knob2" type="MeshInstance3D" parent="Knob2"]
 transform = Transform3D(0.445274, 0, -1.2358, 0, 1.78457, 0, 1.26326, 0, 0.435594, 0, 0, 0)

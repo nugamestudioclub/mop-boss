@@ -2,15 +2,33 @@ extends Puzzle
 
 var unlocked = false
 
-const FACES := 16
-const DEGREE_PER_TURN := 360/FACES
-const RADS_PER_TURN := deg_to_rad(DEGREE_PER_TURN)
+@onready var combo_rod = $LockPivot/combo_rod
+
+const FACES: int = 16
+const RADS_PER_TURN := TAU/FACES
+
+var correct_combo = [0, 0, 0, 0, 0]
+var current_combo = [0, 0, 0, 0, 0]
+
+func _randomize_combo():
+	var combo_length = len(correct_combo)
+	for i in range(combo_length):
+		correct_combo[i] = randi_range(0, FACES - 1)
+	print(correct_combo)
+
+func _update_combo(shape_idx, spin_direction: int) -> void:
+	var position = current_combo[shape_idx]
+	if spin_direction > 0:
+		position = (position - 1 + FACES) % FACES  # Increment and wrap around
+	elif spin_direction < 0:
+		position = (position + 1) % FACES  # Decrement and wrap around
+	current_combo[shape_idx] = position
 
 func is_altered() -> bool:
 	return unlocked
 
 func is_solved() -> bool:
-	return false
+	return current_combo == correct_combo
 
 func on_enter_level() -> void:
 	var material = StandardMaterial3D.new()
@@ -20,12 +38,14 @@ func on_enter_level() -> void:
 	for child in NodeHelper.get_descendants(self):
 		if child is MeshInstance3D:
 			child.material_override = material
+	
+	_randomize_combo()
 
 func get_input_axis(posAction: String, negAction):
 	var direction = 0
-	if Input.is_action_just_pressed(posAction):
+	if Input.is_action_just_released(posAction):
 		direction = -1
-	elif Input.is_action_just_pressed(negAction):
+	elif Input.is_action_just_released(negAction):
 		direction = 1
 	return direction
 
@@ -37,8 +57,17 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 	var spin_direction = get_input_axis("rotate_view_down", "rotate_view_up")
 	dial_delta *= spin_direction
 
+	# Spin the dial if there is one
 	if collision_object == $Dials:
 		$Dials.get_child(shape_idx).rotate_z(dial_delta)
+	
+	_update_combo(shape_idx, spin_direction)
+	
+	# Unlock if not already
+	if not unlocked and is_solved():
+		unlocked = true
+		
+		combo_rod.rotate_y(90)
 
 #func _process(delta: float) -> void:
 	#print(Input.get_axis("rotate_view_down", "rotate_view_up"))
