@@ -9,11 +9,7 @@ const KNOB1_RADS_PER_TURN = TAU/KNOB1_TICKS
 const KNOB2_MIN_TICKS := 0
 const KNOB2_MAX_TICKS := 5
 const KNOB2_RADS_PER_TURN = PI/KNOB2_MAX_TICKS
-
 var KNOB2_TICKS = 0
-
-@onready var KNOB2_MAX_RADS = 0 # knob2.rotation.y #deg_to_rad(25)
-@onready var KNOB2_MIN_RADS = KNOB2_MAX_RADS - PI #-PI #deg_to_rad(-155)
 
 func is_clamped(value, min_value, max_value) -> bool:
 	return value >= min_value and value <= max_value
@@ -49,11 +45,8 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		knob_delta *= KNOB2_RADS_PER_TURN
 		
 		if not is_clamped(KNOB2_TICKS - spin_direction, KNOB2_MIN_TICKS, KNOB2_MAX_TICKS):
-			knob_delta = 0
+			spin_direction = 0
 		else:
 			KNOB2_TICKS -= spin_direction
-		
-		#var knob_basis = collision_object.rotation
-		#if not is_clamped(knob_basis.y + knob_delta, KNOB2_MIN_RADS, KNOB2_MAX_RADS):
-			#knob_delta = 0
+	
 	collision_object.rotate_y(knob_delta)
