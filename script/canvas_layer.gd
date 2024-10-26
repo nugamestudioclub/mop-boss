@@ -30,16 +30,17 @@ signal toggle_inspect(node: Node3D)
 func _scale_within(node: Node3D, bounds: float): #TODO: change bounds to vector3
 	var furthest_end := Vector3.ZERO
 	var furthest_start := Vector3.ZERO
-	for mesh in NodeHelper.get_descendants(node):
+	for mesh in node.get_children():
 		if not mesh is VisualInstance3D: continue
-		# I hate you affine inverse (it does not work we need a work around)
-		var aabb: AABB = mesh.global_transform.affine_inverse() * mesh.get_aabb()
+		var aabb = mesh.get_aabb()
+		aabb.position *= mesh.scale
+		aabb.end *= mesh.scale
 		if aabb.end.length() > furthest_end.length():
 			furthest_end = aabb.end
 		if aabb.position.length() > furthest_start.length():
 			furthest_start = aabb.position
 	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
-	node.scale = node.scale.normalized() * biggest_axis * bounds
+	node.scale = node.scale.normalized() * bounds / biggest_axis
 
 func _enter_inspect():
 	Input.set_mouse_mode(inspect_mouse_mode)
@@ -86,6 +87,7 @@ func _move_to_inspect_view(object: Node3D):
 		object.freeze = true
 	_remove_outline(object)
 	object.global_position = Vector3.ZERO
+	_scale_within(object, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
 	object.reparent(inspected_node_holder)
 	toggle_inspect.emit(object)
 
