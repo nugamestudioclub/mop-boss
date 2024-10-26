@@ -1,6 +1,5 @@
 extends SubViewport
 
-
 var MOUSE_SENSITIVITY := 0.5
 var degree_per_press := 3
 

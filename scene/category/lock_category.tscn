@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://nyov4ccxlxij"]
+[gd_scene load_steps=6 format=3 uid="uid://nyov4ccxlxij"]
 
 [ext_resource type="Script" path="res://script/object_category.gd" id="1_iyqev"]
 [ext_resource type="Script" path="res://script/category_item.gd" id="2_jauhk"]
 [ext_resource type="PackedScene" uid="uid://cn05psfb42ija" path="res://scene/puzzle/pad_lock.tscn" id="3_tpndb"]
 [ext_resource type="PackedScene" uid="uid://beqmn7aj6n046" path="res://scene/puzzle/combo_lock.tscn" id="4_lvsup"]
 [ext_resource type="PackedScene" uid="uid://cs445ri13mdsu" path="res://scene/puzzle/key_lock.tscn" id="5_ilygs"]
-[ext_resource type="PackedScene" uid="uid://doqjlituilgfy" path="res://scene/temp/lock_test.tscn" id="6_ry1kx"]
 
 [node name="LockCategory" type="Node"]
 script = ExtResource("1_iyqev")
@@ -21,8 +20,3 @@ scene = ExtResource("4_lvsup")
 [node name="KeyLock" type="Node" parent="."]
 script = ExtResource("2_jauhk")
 scene = ExtResource("5_ilygs")
-
-[node name="TestLock" type="Node" parent="."]
-script = ExtResource("2_jauhk")
-scene = ExtResource("6_ry1kx")
-weight = 0
