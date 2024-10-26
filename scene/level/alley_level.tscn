@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1twir2cb7j74"]
+[gd_scene load_steps=16 format=3 uid="uid://b1twir2cb7j74"]
 
 [ext_resource type="Script" path="res://script/alley_level.gd" id="1_ow7fa"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut_boston.tscn" id="5_8dpmd"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/generation/node_spawner.tscn" id="6_4exd3"]
 [ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/category/donut_category.tscn" id="7_555ks"]
+[ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/category/note_category.tscn" id="8_b2dvn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwjlv"]
 albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
@@ -89,6 +90,17 @@ material = SubResource("StandardMaterial3D_mrsag")
 transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
 
 [node name="LockCategory" parent="CSGCylinder3D/NodeSpawner" instance=ExtResource("3_owdbc")]
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.492672, 0.858403, 0.142898, -0.283037, -0.00278406, -0.959105, -0.8229, -0.512969, 0.244331, -1.66667, 0, 1.71961)
+use_collision = true
+height = 0.5
+material = SubResource("StandardMaterial3D_mrsag")
+
+[node name="NodeSpawner" parent="CSGCylinder3D3" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
+
+[node name="NoteCategory" parent="CSGCylinder3D3/NodeSpawner" instance=ExtResource("8_b2dvn")]
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365255, 0, -2.97079)

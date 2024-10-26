@@ -1,0 +1,60 @@
+[gd_resource type="JSON" format=3 uid="uid://c8wajsofrn7y2"]
+
+[resource]
+data = [{
+"erase": [],
+"forge": [{
+"forged": "Bruno Macchia",
+"signature": "Don Scarpelli"
+}],
+"rip_line_index": -1.0,
+"take": false,
+"text": "Dear Tony, 
+I deeply regret my actions 
+I will improve my reactions 
+My life is like a rose 
+I need to improve my prose 
+I hid the body under the stump 
+And I accidently left on the oil pump 
+Love, 
+Don Scarpelli"
+}, {
+"erase": ["Don Scarpelli"],
+"forge": [],
+"rip_line_index": -1.0,
+"take": false,
+"text": "Heat is fast approaching 
+Enigmas are all around us 
+Late to coaching 
+People are taking the bus 
+May my assistance be as a warm hug 
+Ensure Don Scarpelli's grave is dug"
+}, {
+"erase": [],
+"forge": [],
+"rip_line_index": 1.0,
+"take": false,
+"text": "Dear Tony, make sure you turn 
+off the oven next time. 
+I can't afford any mistakes 
+this time around"
+}, {
+"erase": ["Hexagons", "hexagon"],
+"forge": [],
+"rip_line_index": -1.0,
+"take": false,
+"text": "Hexagons are the best 
+Extra are provided at the gathering 
+Lab has the secret hexagon 
+Please don't forget 
+My love is 
+Fleeting 
+Don Scarpelli"
+}, {
+"erase": [],
+"forge": [],
+"rip_line_index": -1.0,
+"take": true,
+"text": "Dad i fergot where i lef my 
+toyz i thinc it under the red drawr"
+}]

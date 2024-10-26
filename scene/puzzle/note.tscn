@@ -286,7 +286,7 @@ font_size = 31
 outline_size = 0
 horizontal_alignment = 0
 vertical_alignment = 0
-line_spacing = 25.47
+line_spacing = 24.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)

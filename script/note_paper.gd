@@ -1,5 +1,6 @@
 extends Puzzle
 
+var note_options: Array = preload("res://resource/puzzle/notes.tres").data
 
 func is_altered() -> bool:
 	return false
@@ -10,8 +11,9 @@ func is_solved() -> bool:
 
 
 func on_enter_level() -> void:
-	pass
-	# TODO: pick random text or use:
+	var random_note = note_options.pick_random()
+	$MeshInstance3D2/Label3D.text = random_note.text
+	# TODO: or use:
 # sudo code
 # list of sentence structures: {"I saw the {noun} {verb} the {noun} the other day.}
 # dictionary for nouns and verbs: {[noun: "dog", "cat"], [verb: "attacked", "hit"]}
