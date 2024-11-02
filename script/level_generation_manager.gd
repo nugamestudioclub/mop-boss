@@ -28,8 +28,44 @@ func _count_categories(nodes: Array[Node]) -> Dictionary:
 func all_group(group_name):
 	return get_tree().get_nodes_in_group(group_name)
 
+# Function to retrieve nodes that are in all specified groups
+func get_nodes_in_all_groups(list_groups: Array[String]) -> Array:
+	# Start with nodes from the first group
+	var result = get_tree().get_nodes_in_group(list_groups[0])
+			
+	
+	# Iterate through the remaining groups and filter the result
+	for current_group in list_groups:
+		result = result.filter(func(node):
+			return node.is_in_group(current_group)
+		)
+	return result
+
 func _ready() -> void:
-	# find how many optoins each category has within the scene
+	get_level_requirements()
+	generate_level()
+
+func clear_level():
+	for spawner in all_group(full_tag):
+		spawner.despawn()
+
+func generate_level():
+	for category in required_categories:
+		for spawner in all_group(empty_tag):
+			if _spawner_has_category(spawner, category.name):
+				if category is CategoryItem:
+					if category.scene == null: print(category)
+					spawner.spawn(category.scene)
+					break
+				elif category is Category:
+					spawner.spawn(category.pick_node())
+					break
+	
+	for spawner in all_group(empty_tag):
+		spawner.spawn_random()
+
+func get_level_requirements():
+		# find how many optoins each category has within the scene
 	var empty_spawners = all_group(empty_tag)
 	
 	var required_category_option_count: Dictionary = _count_categories(empty_spawners)
@@ -38,13 +74,9 @@ func _ready() -> void:
 	pairs.sort_custom(func(pair1, pair2): return pair1[1] < pair2[1])
 	# should be a sorted array of the categories from least options to most options (availability)
 	required_categories = pairs.map(func(pair): return pair[0])
-	generate_level()
 
-func delete_level():
-	for spawner in all_group(full_tag):
-		spawner.despawn()
 
-func generate_level():
+func generate_level2():
 	for category in required_categories:
 		for spawner in all_group(empty_tag):
 			if _spawner_has_category(spawner, category.name):

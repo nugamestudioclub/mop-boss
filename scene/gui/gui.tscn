@@ -21,7 +21,7 @@ fog_enabled = true
 [sub_resource type="World3D" id="World3D_kosc6"]
 environment = SubResource("Environment_nowte")
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="InspectLayer" type="CanvasLayer"]
 script = ExtResource("1_a7vqq")
 
 [node name="TempInstructionsLabel" type="Label" parent="."]

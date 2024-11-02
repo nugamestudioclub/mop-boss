@@ -1,6 +1,6 @@
 extends Node
 
-@onready var inspector_canvas_layer_node := $"/root/World/InspectView"
+@onready var inspector_canvas_layer_node := $"/root/World/InspectLayer"
 
 func get_descendants(in_node: Node, array: Array[Node] = []) -> Array[Node]:
 	#array.push_back(in_node)

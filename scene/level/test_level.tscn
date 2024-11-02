@@ -1,0 +1,147 @@
+[gd_scene load_steps=17 format=3 uid="uid://cjbspfnu0uvwg"]
+
+[ext_resource type="Script" path="res://script/alley_level.gd" id="1_h0w8c"]
+[ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_lbpwj"]
+[ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/category/lock_category.tscn" id="3_rfxug"]
+[ext_resource type="Script" path="res://script/category_item.gd" id="4_w5vrx"]
+[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut/donut_boston.tscn" id="5_lp3ij"]
+[ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/generation/node_spawner.tscn" id="6_fhj15"]
+[ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/category/donut_category.tscn" id="7_v83bm"]
+[ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/category/note_category.tscn" id="8_u84ib"]
+[ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/misc/bowling_pin.tscn" id="9_p1twj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwjlv"]
+albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hndex"]
+albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrsag"]
+albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p31e"]
+albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mk8c"]
+friction = 0.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bod3w"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s81t5"]
+
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_h0w8c")
+
+[node name="LevelGenerationManager" parent="." instance=ExtResource("2_lbpwj")]
+
+[node name="LockCategory" parent="LevelGenerationManager" instance=ExtResource("3_rfxug")]
+
+[node name="BostonDonut" type="Node" parent="LevelGenerationManager"]
+script = ExtResource("4_w5vrx")
+scene = ExtResource("5_lp3ij")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595983, 0, -1.80722)
+use_collision = true
+material = SubResource("StandardMaterial3D_kwjlv")
+
+[node name="NodeSpawner" parent="CSGBox3D" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
+
+[node name="DonutCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("7_v83bm")]
+
+[node name="LockCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("3_rfxug")]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0.595983, 0, 2.65)
+use_collision = true
+material = SubResource("StandardMaterial3D_kwjlv")
+
+[node name="NodeSpawner" parent="CSGBox3D3" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
+
+[node name="DonutCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("7_v83bm")]
+weight = 2
+
+[node name="LockCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("3_rfxug")]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.985223, 0.171276, 0, -0.170098, 0.978448, -0.117069, -0.0200511, 0.115339, 0.993124, -1.25069, -0.226013, -1.52604)
+use_collision = true
+size = Vector3(1, 0.547974, 1)
+material = SubResource("StandardMaterial3D_hndex")
+
+[node name="NodeSpawner" parent="CSGBox3D2" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(-0.919303, -0.0753009, 0.38628, -0.138691, 0.980543, -0.138925, -0.368303, -0.181287, -0.91186, -0.0923586, 0.531271, -0.0635655)
+
+[node name="DonutCategory" parent="CSGBox3D2/NodeSpawner" instance=ExtResource("7_v83bm")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.866641, 0.427655, -0.256991, -0.283037, -0.00278405, -0.959105, -0.410882, 0.903938, 0.118629, -1.66667, 0, 0.0288917)
+use_collision = true
+height = 0.5
+material = SubResource("StandardMaterial3D_mrsag")
+
+[node name="NodeSpawner" parent="CSGCylinder3D" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
+
+[node name="LockCategory" parent="CSGCylinder3D/NodeSpawner" instance=ExtResource("3_rfxug")]
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.492672, 0.858403, 0.142898, -0.283037, -0.00278406, -0.959105, -0.8229, -0.512969, 0.244331, -1.66667, 0, 1.71961)
+use_collision = true
+height = 0.5
+material = SubResource("StandardMaterial3D_mrsag")
+
+[node name="NodeSpawner" parent="CSGCylinder3D3" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
+
+[node name="NoteCategory" parent="CSGCylinder3D3/NodeSpawner" instance=ExtResource("8_u84ib")]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365255, 0, -2.97079)
+use_collision = true
+height = 2.5
+material = SubResource("StandardMaterial3D_8p31e")
+
+[node name="NodeSpawner" parent="CSGCylinder3D2" groups=["node_spawner", "spawner"] instance=ExtResource("6_fhj15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49501, 0)
+
+[node name="LockCategory" parent="CSGCylinder3D2/NodeSpawner" instance=ExtResource("3_rfxug")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_6mk8c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bod3w")
+
+[node name="Floor" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.03, 0, 0, 0, 2, 0, -0.015, 0)
+mesh = SubResource("BoxMesh_s81t5")
+skeleton = NodePath("../..")
+
+[node name="BowlingPin" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44331, 0, 1.32234)
+
+[node name="BowlingPin2" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.32234)
+
+[node name="BowlingPin3" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.6769)
+
+[node name="BowlingPin4" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 0.962018)
+
+[node name="BowlingPin5" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.13732)
+
+[node name="BowlingPin6" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.47602)
+
+[node name="BowlingPin7" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.88993)
+
+[node name="BowlingPin8" parent="." instance=ExtResource("9_p1twj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 0.734812)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgw1p2k80x3qu"]
 
-[ext_resource type="Script" path="res://script/player.gd" id="1_xucho"]
-[ext_resource type="Script" path="res://script/player_pov.gd" id="2_8dgwo"]
-[ext_resource type="Script" path="res://script/hand.gd" id="3_4db25"]
+[ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
+[ext_resource type="Script" path="res://script/player/player_pov.gd" id="2_8dgwo"]
+[ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
 friction = 0.0

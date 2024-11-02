@@ -1,36 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1twir2cb7j74"]
+[gd_scene load_steps=13 format=3 uid="uid://b1twir2cb7j74"]
 
-[ext_resource type="Script" path="res://script/alley_level.gd" id="1_ow7fa"]
+[ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/category/lock_category.tscn" id="3_owdbc"]
 [ext_resource type="Script" path="res://script/category_item.gd" id="4_gsakb"]
-[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut_boston.tscn" id="5_8dpmd"]
+[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut/donut_boston.tscn" id="5_8dpmd"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/generation/node_spawner.tscn" id="6_4exd3"]
 [ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/category/donut_category.tscn" id="7_555ks"]
+[ext_resource type="PackedScene" uid="uid://7nt3rprfhbn" path="res://scene/prop/dumpster.tscn" id="7_xcaps"]
 [ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/category/note_category.tscn" id="8_b2dvn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwjlv"]
-albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hndex"]
-albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrsag"]
-albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p31e"]
-albedo_color = Color(0.228642, 0.421096, 0.206127, 1)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mk8c"]
-friction = 0.0
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bod3w"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_s81t5"]
+[ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/prop/desk.tscn" id="8_rc1ap"]
+[ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/prop/police_radio.tscn" id="9_f48pa"]
+[ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/misc/bowling_pin.tscn" id="9_r5qke"]
 
 [node name="AlleyLevel" type="Node3D"]
-script = ExtResource("1_ow7fa")
+script = ExtResource("1_i44v8")
 
 [node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
 
@@ -40,87 +24,109 @@ script = ExtResource("1_ow7fa")
 script = ExtResource("4_gsakb")
 scene = ExtResource("5_8dpmd")
 
-[node name="BostonDonut2" type="Node" parent="LevelGenerationManager"]
-script = ExtResource("4_gsakb")
-scene = ExtResource("5_8dpmd")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595983, 0, -1.80722)
+[node name="AlleyFloor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185337, -0.0265951, -0.000857353)
 use_collision = true
-material = SubResource("StandardMaterial3D_kwjlv")
+size = Vector3(30, 0.1, 10)
 
-[node name="NodeSpawner" parent="CSGBox3D" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
+[node name="Dumpster" parent="." instance=ExtResource("7_xcaps")]
+transform = Transform3D(19.9845, 0, -0.787987, 0, 20, 0, 0.787987, 0, 19.9845, 7.87116, 0.815009, -4.09674)
 
-[node name="DonutCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("7_555ks")]
+[node name="Dumpster2" parent="." instance=ExtResource("7_xcaps")]
+transform = Transform3D(-19.5164, 0, 4.37172, 0, 20, 0, -4.37172, 0, -19.5164, 0.51456, 0.781009, 3.05437)
 
-[node name="LockCategory" parent="CSGBox3D/NodeSpawner" instance=ExtResource("3_owdbc")]
+[node name="Dumpster3" parent="." instance=ExtResource("7_xcaps")]
+transform = Transform3D(19.9917, 0, 0.576578, 0, 20, 0, -0.576578, 0, 19.9917, -5.72895, 0.781009, -3.92913)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0.595983, 0, 2.65)
-use_collision = true
-material = SubResource("StandardMaterial3D_kwjlv")
+[node name="Desk" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 6.39771, 0.828343, 3.63486)
 
-[node name="NodeSpawner" parent="CSGBox3D3" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.999945, 0, 0.0104544, 0, 1, 0, -0.0104544, 0, -0.999945, 0, 0.778287, 0)
+[node name="Desk2" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.0083108, 0.318192, 5.5138, 0.900933, -4.05003)
 
-[node name="DonutCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("7_555ks")]
-weight = 2
+[node name="Desk3" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.0083108, 0.318192, -7.72634, 0.900933, 1.29857)
 
-[node name="LockCategory" parent="CSGBox3D3/NodeSpawner" instance=ExtResource("3_owdbc")]
+[node name="Desk4" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(-0.857088, 0.0212095, 4.92595, 0.00959396, 4.99995, -0.0198588, -4.92598, 0.00604771, -0.85712, -8.61459, 0.900933, -0.091827)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.985223, 0.171276, 0, -0.170098, 0.978448, -0.117069, -0.0200511, 0.115339, 0.993124, -1.25069, -0.226013, -1.52604)
-use_collision = true
-size = Vector3(1, 0.547974, 1)
-material = SubResource("StandardMaterial3D_hndex")
+[node name="Desk5" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(4.35569, -0.018109, -2.45513, 0.00959396, 4.99995, -0.0198588, 2.45518, 0.0125889, 4.35568, -9.82576, 0.900933, 1.83764)
 
-[node name="NodeSpawner" parent="CSGBox3D2" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.919303, -0.0753009, 0.38628, -0.138691, 0.980543, -0.138925, -0.368303, -0.181287, -0.91186, -0.0923586, 0.531271, -0.0635655)
+[node name="Desk6" parent="." instance=ExtResource("8_rc1ap")]
+transform = Transform3D(1.5992, -0.0218842, -4.73731, 0.00959396, 4.99995, -0.0198588, 4.73735, -0.00273826, 1.59922, -8.77432, 1.96372, 0.800921)
 
-[node name="DonutCategory" parent="CSGBox3D2/NodeSpawner" instance=ExtResource("7_555ks")]
+[node name="PoliceRadio" parent="." instance=ExtResource("9_f48pa")]
+transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 7.23314, 1.05138, 3.17469)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(0.866641, 0.427655, -0.256991, -0.283037, -0.00278405, -0.959105, -0.410882, 0.903938, 0.118629, -1.66667, 0, 0.0288917)
-use_collision = true
-height = 0.5
-material = SubResource("StandardMaterial3D_mrsag")
+[node name="BowlingPin" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.864019, 0, -3.38106)
 
-[node name="NodeSpawner" parent="CSGCylinder3D" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
+[node name="BowlingPin2" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.759403, 0, -3.74437)
 
-[node name="LockCategory" parent="CSGCylinder3D/NodeSpawner" instance=ExtResource("3_owdbc")]
+[node name="BowlingPin3" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 1.10012, 0, -3.84248)
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
-transform = Transform3D(-0.492672, 0.858403, 0.142898, -0.283037, -0.00278406, -0.959105, -0.8229, -0.512969, 0.244331, -1.66667, 0, 1.71961)
-use_collision = true
-height = 0.5
-material = SubResource("StandardMaterial3D_mrsag")
+[node name="BowlingPin4" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.413151, 0, -3.64466)
 
-[node name="NodeSpawner" parent="CSGCylinder3D3" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(1, 0, 5.21541e-08, -8.9407e-08, 1, 2.23517e-08, 3.72529e-09, 1.49012e-08, 1, -0.174345, -0.00171494, -0.59079)
+[node name="BowlingPin5" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.469227, 0, -4.08344)
 
-[node name="NoteCategory" parent="CSGCylinder3D3/NodeSpawner" instance=ExtResource("8_b2dvn")]
+[node name="BowlingPin6" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.794702, 0, -4.17716)
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365255, 0, -2.97079)
-use_collision = true
-height = 2.5
-material = SubResource("StandardMaterial3D_8p31e")
+[node name="BowlingPin7" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 1.19245, 0, -4.2917)
 
-[node name="NodeSpawner" parent="CSGCylinder3D2" groups=["node_spawner", "spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49501, 0)
+[node name="BowlingPin8" parent="." instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.0824356, 0, -3.97206)
 
-[node name="LockCategory" parent="CSGCylinder3D2/NodeSpawner" instance=ExtResource("3_owdbc")]
+[node name="NodeSpawner" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9437, 0.904375, 3.57785)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-physics_material_override = SubResource("PhysicsMaterial_6mk8c")
+[node name="DonutCategory" parent="NodeSpawner" instance=ExtResource("7_555ks")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bod3w")
+[node name="NodeSpawner2" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26748, 0.0719674, 3.60438)
 
-[node name="Floor" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 0.03, 0, 0, 0, 2, 0, -0.015, 0)
-mesh = SubResource("BoxMesh_s81t5")
-skeleton = NodePath("../..")
+[node name="DonutCategory" parent="NodeSpawner2" instance=ExtResource("7_555ks")]
+
+[node name="NoteCategory" parent="NodeSpawner2" instance=ExtResource("8_b2dvn")]
+
+[node name="NodeSpawner3" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27705, 0.0719674, -4.14242)
+
+[node name="DonutCategory" parent="NodeSpawner3" instance=ExtResource("7_555ks")]
+
+[node name="NoteCategory" parent="NodeSpawner3" instance=ExtResource("8_b2dvn")]
+
+[node name="NodeSpawner4" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53025, 0.0808261, -2.89323)
+
+[node name="LockCategory" parent="NodeSpawner4" instance=ExtResource("3_owdbc")]
+
+[node name="NodeSpawner5" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48302, 0.988811, 1.63257)
+
+[node name="LockCategory" parent="NodeSpawner5" instance=ExtResource("3_owdbc")]
+
+[node name="NodeSpawner6" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98658, 0.988669, 2.13004)
+
+[node name="NoteCategory" parent="NodeSpawner6" instance=ExtResource("8_b2dvn")]
+
+[node name="DonutCategory" parent="NodeSpawner6" instance=ExtResource("7_555ks")]
+
+[node name="NodeSpawner7" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.315, 0.988028, -0.158637)
+
+[node name="LockCategory" parent="NodeSpawner7" instance=ExtResource("3_owdbc")]
+
+[node name="DonutCategory" parent="NodeSpawner7" instance=ExtResource("7_555ks")]
+
+[node name="NodeSpawner8" parent="." instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98966, 0.077199, -4.50883)
+
+[node name="LockCategory" parent="NodeSpawner8" instance=ExtResource("3_owdbc")]

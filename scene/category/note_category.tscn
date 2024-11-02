@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/object_category.gd" id="1_sve6v"]
 [ext_resource type="Script" path="res://script/category_item.gd" id="2_q0w5r"]
-[ext_resource type="PackedScene" uid="uid://c5jwmdf7s7xg2" path="res://scene/puzzle/note.tscn" id="3_8hc24"]
+[ext_resource type="PackedScene" uid="uid://c5jwmdf7s7xg2" path="res://scene/puzzle/document/note.tscn" id="3_8hc24"]
 
 [node name="NoteCategory" type="Node"]
 script = ExtResource("1_sve6v")

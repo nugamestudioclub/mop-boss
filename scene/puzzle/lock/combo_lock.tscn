@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://beqmn7aj6n046"]
 
-[ext_resource type="Script" path="res://script/combo_lock.gd" id="1_h1eiu"]
+[ext_resource type="Script" path="res://script/puzzle/combo_lock.gd" id="1_h1eiu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
 friction = 0.5

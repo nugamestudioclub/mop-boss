@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://v7ya5kk5gu7j"]
+[gd_scene load_steps=8 format=3 uid="uid://v7ya5kk5gu7j"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/gui/gui.tscn" id="1_a67bd"]
 [ext_resource type="PackedScene" uid="uid://b1twir2cb7j74" path="res://scene/level/alley_level.tscn" id="2_tjl34"]
-[ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player.tscn" id="3_11mai"]
-[ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/temp/bowling_pin.tscn" id="4_gu0lp"]
-[ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/puzzle/police_radio.tscn" id="5_jkj0i"]
+[ext_resource type="PackedScene" uid="uid://cf3g8q41lvu3c" path="res://scene/level/office_level.tscn" id="2_uhwh5"]
+[ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player/player.tscn" id="3_11mai"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -21,43 +20,19 @@ fog_enabled = true
 
 [node name="World" type="Node3D"]
 
+[node name="InspectLayer" parent="." instance=ExtResource("1_a67bd")]
+
+[node name="OfficeLevel" parent="." instance=ExtResource("2_uhwh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37)
+
+[node name="AlleyLevel" parent="." instance=ExtResource("2_tjl34")]
+
+[node name="Player" parent="." instance=ExtResource("3_11mai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05998, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nowte")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957625, 0.28378, 0, 0, 0)
 shadow_enabled = true
-
-[node name="InspectView" parent="." instance=ExtResource("1_a67bd")]
-
-[node name="CrimeScene" parent="." instance=ExtResource("2_tjl34")]
-
-[node name="Player" parent="." instance=ExtResource("3_11mai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05998, 0)
-
-[node name="BowlingPin" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44331, 0, 1.32234)
-
-[node name="BowlingPin2" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.32234)
-
-[node name="BowlingPin3" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 1.6769)
-
-[node name="BowlingPin4" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82138, 0, 0.962018)
-
-[node name="BowlingPin5" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.13732)
-
-[node name="BowlingPin6" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.47602)
-
-[node name="BowlingPin7" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 1.88993)
-
-[node name="BowlingPin8" parent="." instance=ExtResource("4_gu0lp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22751, 0, 0.734812)
-
-[node name="PoliceRadio" parent="." instance=ExtResource("5_jkj0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33285, 0.2017, -2.07824)

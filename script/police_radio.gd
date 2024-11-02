@@ -11,7 +11,7 @@ const KNOB2_MAX_TICKS := 5
 const KNOB2_RADS_PER_TURN = PI/KNOB2_MAX_TICKS
 var KNOB2_TICKS = 0
 
-func is_clamped(value, min_value, max_value) -> bool:
+func is_in_range(value, min_value, max_value) -> bool:
 	return value >= min_value and value <= max_value
 
 func is_altered() -> bool:
@@ -44,9 +44,9 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 	elif collision_object == knob2:
 		knob_delta *= KNOB2_RADS_PER_TURN
 		
-		if not is_clamped(KNOB2_TICKS - spin_direction, KNOB2_MIN_TICKS, KNOB2_MAX_TICKS):
-			spin_direction = 0
-		else:
+		if is_in_range(KNOB2_TICKS - spin_direction, KNOB2_MIN_TICKS, KNOB2_MAX_TICKS):
 			KNOB2_TICKS -= spin_direction
+		else:
+			knob_delta = 0
 	
 	collision_object.rotate_y(knob_delta)

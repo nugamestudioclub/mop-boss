@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf3g8q41lvu3c"]
+
+[ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/prop/desk.tscn" id="1_n72gg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmiey"]
+albedo_color = Color(0.829446, 0, 0.185604, 1)
+metallic_specular = 0.0
+
+[node name="OfficeLevel" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(10, 0.1, 10)
+
+[node name="Floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.8, 0)
+use_collision = true
+size = Vector3(0.2, 3.5, 10)
+
+[node name="Floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 1.8, 0)
+use_collision = true
+size = Vector3(0.2, 3.5, 10)
+
+[node name="Floor4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.14186e-07, 1.8, 4.9)
+use_collision = true
+size = Vector3(0.2, 3.5, 10)
+
+[node name="Floor5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.14186e-07, 1.8, -4.9)
+use_collision = true
+size = Vector3(0.2, 3.5, 10)
+
+[node name="Desk" parent="." instance=ExtResource("1_n72gg")]
+transform = Transform3D(-0.0115429, 0.019881, 4.99995, 0.00959396, 4.99995, -0.0198588, -4.99998, 0.00954801, -0.0115809, -0.783427, 0.828343, -1.83957)
+
+[node name="Desk2" parent="." instance=ExtResource("1_n72gg")]
+transform = Transform3D(-4.99828, 0.00907101, -0.130858, 0.00959396, 4.99995, -0.0198588, 0.130821, -0.0201031, -4.99825, 0.636456, 0.818983, -2.26959)
+
+[node name="Desk3" parent="." instance=ExtResource("1_n72gg")]
+transform = Transform3D(-4.99828, 0.00907101, -0.130858, 0.00959396, 4.99995, -0.0198588, 0.130821, -0.0201031, -4.99825, 0.636456, 0.818983, -3.62695)
+
+[node name="Rug" type="CSGBox3D" parent="."]
+transform = Transform3D(0.980928, 0, 0.194371, 0, 1, 0, -0.194371, 0, 0.980928, -0.16034, 0.0585327, 0.747321)
+material_override = SubResource("StandardMaterial3D_cmiey")
+use_collision = true
+size = Vector3(5.81262, 0.0203857, 2.41058)

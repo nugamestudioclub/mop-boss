@@ -22,8 +22,10 @@ func on_enter_level() -> void:
 # have a random sentence.
 
 
-func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
+func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 	if not event is InputEventMouseButton: return
 	if event.pressed: return # check for button released
+	print(event_position)
+	
 	# TODO: erasing, ripping, and forging signatures
