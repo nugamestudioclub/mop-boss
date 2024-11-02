@@ -2,10 +2,12 @@ extends Puzzle
 
 var unlocked = false
 
-@onready var combo_rod = $LockPivot/combo_rod
+#@onready var combo_rod = $LockPivot/combo_rod
+@onready var collision_rod = $collision_rod
+@onready var pivot = $UnlockPivot
 
 const FACES: int = 16
-const RADS_PER_TURN := TAU/FACES
+const RADS_PER_TURN := PI/FACES
 
 var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
@@ -23,6 +25,7 @@ func _update_combo(shape_idx, spin_direction: int) -> void:
 	elif spin_direction < 0:
 		position = (position + 1) % FACES  # Decrement and wrap around
 	current_combo[shape_idx] = position
+	print(current_combo)
 
 func is_altered() -> bool:
 	return unlocked
@@ -61,13 +64,15 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 	if collision_object == $Dials:
 		$Dials.get_child(shape_idx).rotate_z(dial_delta)
 	
-	_update_combo(shape_idx, spin_direction)
+		_update_combo(shape_idx, spin_direction)
 	
 	# Unlock if not already
 	if not unlocked and is_solved():
 		unlocked = true
 		
-		combo_rod.rotate_y(90)
+		#combo_rod.rotate_y(PI)
+		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, 180)
+		collision_rod.position += Vector3(0, 0.1, 0)
 
 #func _process(delta: float) -> void:
 	#print(Input.get_axis("rotate_view_down", "rotate_view_up"))

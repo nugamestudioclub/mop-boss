@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://buc3dhky52ld5"
-path="res://.godot/imported/pad_lock.31.glb-31682bfc51b3858ba91acaa4257e49b7.scn"
+uid="uid://dnuawenyl1acv"
+path="res://.godot/imported/pad_lock.38.glb-46491da258b2ccc275986cf7ff928dc2.scn"
 
 [deps]
 
-source_file="res://model/locks/pad_lock.31.glb"
-dest_files=["res://.godot/imported/pad_lock.31.glb-31682bfc51b3858ba91acaa4257e49b7.scn"]
+source_file="res://model/locks/pad_lock/pad_lock.38.glb"
+dest_files=["res://.godot/imported/pad_lock.38.glb-46491da258b2ccc275986cf7ff928dc2.scn"]
 
 [params]
 
