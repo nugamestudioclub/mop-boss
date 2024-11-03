@@ -5,6 +5,7 @@ var unlocked = false
 #@onready var combo_rod = $LockPivot/combo_rod
 @onready var collision_rod = $collision_rod
 @onready var pivot = $UnlockPivot
+@onready var anchor_point = $AnchorPoint
 
 const FACES: int = 16
 const RADS_PER_TURN := PI/FACES
@@ -71,8 +72,11 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		unlocked = true
 		
 		#combo_rod.rotate_y(PI)
-		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, 180)
+		var rotate_vector = Vector3(0, 180, 0)
+		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 		collision_rod.position += Vector3(0, 0.1, 0)
+		
+		anchor_point.queue_free()
 
 #func _process(delta: float) -> void:
 	#print(Input.get_axis("rotate_view_down", "rotate_view_up"))

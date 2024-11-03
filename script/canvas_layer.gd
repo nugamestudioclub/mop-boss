@@ -16,6 +16,7 @@ var target: Node3D = null
 var inspected_node: Node3D = null
 var inspected_node_parent: Node3D = null
 var inspected_copy_transform: Transform3D = Transform3D.IDENTITY
+var insepcted_freeze_original = null
 
 # Node paths
 @onready var player: RigidBody3D = $"../Player"
@@ -58,7 +59,9 @@ func _cancel_inspect():
 		toggle_inspect.emit(inspected_node)
 	inspected_node.reparent(inspected_node_parent)
 	inspected_node.transform = inspected_copy_transform
-	inspected_node.freeze = false
+	
+	inspected_node.freeze = insepcted_freeze_original
+	
 	inspected_node = null
 
 """Sets the outline around an object based on size"""
@@ -80,11 +83,13 @@ func _remove_outline(node: Node3D): _resize_outline(node, 0)
 func _add_outline(node: Node3D): _resize_outline(node, 1.05)
 
 """Takes a given object and copies it to the inspect viewport""" 
-func _move_to_inspect_view(object: Node3D):
+func _move_to_inspect_view(object: RigidBody3D):
 	inspected_node_parent = object.get_parent()
 	inspected_copy_transform = object.transform
-	if object is RigidBody3D:
-		object.freeze = true
+	
+	insepcted_freeze_original = object.freeze
+	object.freeze = true
+	
 	_remove_outline(object)
 	object.global_position = Vector3.ZERO
 	_scale_within(object, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size

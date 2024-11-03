@@ -33,20 +33,60 @@ func random_child_weighted(node: Node) -> Node:
 	return null
 
 """ Rotates an object around a coordinate point (on y axis)"""
-func rotate_around_point(object: Node, world_position: Vector3, angle_degrees: float):
-	# Convert the angle from degrees to radians
-	var angle_radians = deg_to_rad(angle_degrees)
-	
-	# Calculate the object's current position relative to the rotation center
-	var relative_position = object.global_transform.origin - world_position
-	
-	# Calculate the new rotated position using the rotation matrix for 3D
-	var rotated_x = relative_position.x * cos(angle_radians) - relative_position.z * sin(angle_radians)
-	var rotated_z = relative_position.x * sin(angle_radians) + relative_position.z * cos(angle_radians)
-	
-	# Update the position by applying the rotation, keeping the y position constant
-	var new_position = Vector3(rotated_x, relative_position.y, rotated_z) + world_position
-	object.global_transform.origin = new_position
+#func rotate_around_local_x(object: Node, world_position: Vector3, angle_degrees: float):
+	## Convert the angle from degrees to radians
+	#var angle_radians = deg_to_rad(angle_degrees)
+#
+	## Get the object's current global transform
+	#var transform = object.global_transform
+#
+	## Calculate the object's current position relative to the rotation center
+	#var relative_position = transform.origin - world_position
+#
+	## Define a rotation basis around the object's local X-axis
+	#var local_x_axis = transform.basis.x.normalized()
+	#var rotation_basis = Basis(local_x_axis, angle_radians)
+#
+	## Rotate the relative position around the local X-axis
+	#var rotated_position = rotation_basis * relative_position
+#
+	## Calculate the new global position by adding the rotated position to the world_position
+	#transform.origin = world_position + rotated_position
+#
+	## Update the object's global transform
+	#object.global_transform = transform
+
+""" Rotates an object around a coordinate point using Vector3 rotations """
+func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: Vector3):
+	# Convert angles to radians for rotation
+	var angles_radians = Vector3(
+		deg_to_rad(angles_degrees.x),
+		deg_to_rad(angles_degrees.y),
+		deg_to_rad(angles_degrees.z)
+	)
+
+	# Get the object's current global transform
+	var transform = object.global_transform
+
+	# Calculate the object's position relative to the rotation center
+	var relative_position = transform.origin - world_position
+
+	# Create a combined rotation basis using Euler angles
+	var rotation_basis = Basis()
+	rotation_basis = rotation_basis.rotated(Vector3(1, 0, 0), angles_radians.x) # Rotate around local X
+	rotation_basis = rotation_basis.rotated(Vector3(0, 1, 0), angles_radians.y) # Rotate around local Y
+	rotation_basis = rotation_basis.rotated(Vector3(0, 0, 1), angles_radians.z) # Rotate around local Z
+
+	# Rotate both the relative position and the object's basis
+	var rotated_position = rotation_basis * relative_position
+	var rotated_basis = rotation_basis * transform.basis
+
+	# Set the object's new global transform, updating both position and orientation
+	transform.origin = world_position + rotated_position
+	transform.basis = rotated_basis
+
+	object.global_transform = transform
+
 
 #""" Rotates an object around a coordinate point (on y axis)"""
 #func rotate_around_point(object: Node, world_position: Vector3, angle_degrees: float):

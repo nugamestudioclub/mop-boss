@@ -6,6 +6,7 @@ var unlocked = false
 @onready var collision_rod = $collision_rod
 @onready var padlock_codes = $Dial/padlock_codes
 @onready var pivot = $UnlockPivot
+@onready var anchor_point = $AnchorPoint
 
 const NOTCHES: int = 40
 const RADS_PER_TURN := PI/NOTCHES
@@ -73,10 +74,17 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		unlocked = true
 		
 		#collision_rod.rotate_y(PI)
-		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, 180)
+		var rotate_vector = Vector3(0, 180, 0)
+		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 		collision_rod.position += Vector3(0, 0.1, 0)
+		
+		anchor_point.queue_free()
+		# in the future, can add code that checks for all ancestors ->
+		# changes dumpster lids to be unlocked / holdable so player can open them
 	
-	
+	# future implementation, only check if it matches after the lock has been at position
+	# for more than say 0.5 seconds, then play a click / sound corresponding to
+	# how close it is to correct, also reset currnt_combo if incorrect I assume
 	if not unlocked and current_combo[-1] == correct_combo[current_combo.size() - 1]:
 		print("WOOOOHOO")
 		current_combo.append(current_combo[-1])

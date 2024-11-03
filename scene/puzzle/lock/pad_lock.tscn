@@ -252,3 +252,10 @@ shape = SubResource("CylinderShape3D_0dyaq")
 
 [node name="UnlockPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174949, 0.162366)
+
+[node name="AnchorPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.53147, 0)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
+node_a = NodePath("../..")
+node_b = NodePath("..")

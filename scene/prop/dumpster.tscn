@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://7nt3rprfhbn"]
+[gd_scene load_steps=11 format=4 uid="uid://7nt3rprfhbn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmf2q"]
 resource_name = "standardSurface1"
@@ -145,7 +145,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0jlia")
 
-[node name="Dumpster" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvyit"]
+size = Vector3(0.141418, 0.0839844, 0.0787964)
+
+[node name="Dumpster" type="StaticBody3D"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="Metal_Cylinder" type="MeshInstance3D" parent="."]
@@ -167,3 +170,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88178e-18, 0.00416934, -0.00215294)
 mesh = SubResource("ArrayMesh_72lkq")
 skeleton = NodePath("")
+
+[node name="collision_body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000274658, 0.00317383, 0.000152588)
+shape = SubResource("BoxShape3D_mvyit")

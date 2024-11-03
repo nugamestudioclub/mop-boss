@@ -21,7 +21,7 @@ func _enter_hold(object):
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
 	print("Entering hold")
 	
-	hold_object.freeze = false
+	#hold_object.freeze = false
 	hold_object.linear_damp = 3
 	var material = hold_object.physics_material_override
 	material.absorbent = !material.absorbent

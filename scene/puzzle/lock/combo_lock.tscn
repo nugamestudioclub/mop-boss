@@ -293,7 +293,6 @@ shadow_mesh = SubResource("ArrayMesh_j2tn3")
 [node name="ComboLock" type="RigidBody3D" groups=["inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
-freeze = true
 continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
@@ -372,4 +371,11 @@ mesh = SubResource("ArrayMesh_byn6s")
 skeleton = NodePath("")
 
 [node name="UnlockPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00014466, -1.49012e-08, 0.20125)
+
+[node name="AnchorPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.264168, 0)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
+node_a = NodePath("../..")
+node_b = NodePath("..")

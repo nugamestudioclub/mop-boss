@@ -151,7 +151,6 @@ radius = 0.2
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 can_sleep = false
-freeze = true
 continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
@@ -184,3 +183,10 @@ shape = SubResource("BoxShape3D_b7kdx")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.204553, 0)
 shape = SubResource("CylinderShape3D_w8mcc")
+
+[node name="AnchorPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.394135, 0)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
+node_a = NodePath("../..")
+node_b = NodePath("..")
