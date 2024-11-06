@@ -290,7 +290,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j2tn3")
 
-[node name="ComboLock" type="RigidBody3D" groups=["inspectable"]]
+[node name="ComboLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 continuous_cd = true
