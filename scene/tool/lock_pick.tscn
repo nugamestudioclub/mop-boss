@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0hxu2w2j17xr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vr3ws"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="LockPick" type="RigidBody3D" groups=["tool"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.915157, 0.104003, 0.38945, 0, 0.966142, -0.25801, -0.403098, 0.236119, 0.884172, 0.00178528, 0, 0.000793457)
+use_collision = true
+size = Vector3(0.05, 1, 0.05)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.958557, 0.0982457, 0.267423, -0.101959, 0.994789, 0, -0.26603, -0.0272663, 0.963579, -0.161033, 0, 0.000793457)
+use_collision = true
+size = Vector3(0.05, 1, 0.05)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vr3ws")

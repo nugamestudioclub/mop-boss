@@ -95,6 +95,9 @@ func _move_to_inspect_view(object: RigidBody3D):
 	_scale_within(object, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
 	object.reparent(inspected_node_holder)
 	toggle_inspect.emit(object)
+	
+	if object is Puzzle:
+		object.active_tool = player.hand
 
 """Checks if an object is inspectable"""
 func _can_inspect(object):

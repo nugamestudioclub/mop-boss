@@ -1,7 +1,9 @@
 class_name Puzzle
-extends Node3D
+extends RigidBody3D
 
 @onready var original_global_position := global_position
+
+var active_tool: Node3D = null
 
 const DISTANCE_TOLERANCE := 1.25
 # Don't change this
@@ -45,7 +47,7 @@ func _toggle_inspect(node: Node3D):
 		for child in get_children():
 			if not child is CollisionShape3D: continue
 			child.disabled = _is_inspected
-			
+
 
 func _ready():
 	NodeHelper.inspector_canvas_layer_node.toggle_inspect.connect(_toggle_inspect)
