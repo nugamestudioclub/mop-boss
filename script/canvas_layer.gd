@@ -97,7 +97,7 @@ func _move_to_inspect_view(object: RigidBody3D):
 	toggle_inspect.emit(object)
 	
 	if object is Puzzle:
-		object.active_tool = player.hand
+		object.active_tool = player.hand.hold_object
 
 """Checks if an object is inspectable"""
 func _can_inspect(object):

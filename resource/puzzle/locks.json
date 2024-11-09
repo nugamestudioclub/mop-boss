@@ -1,0 +1,95 @@
+{
+    "colors": {
+        "green": "0x00FF00"
+    },
+    "numbers": {
+        "north_wall": "NorthWall",
+        "south_wall": "SouthWall",
+        "west_dumpster_ground": "WestDumpsterGround",
+        "west_dumpster_surface": "WestDumpsterSurface"
+    },
+    "special": {
+        "use_hammer": {
+            "tool": "Hammer"
+        },
+        "use_lock_pick": {
+            "tool": "LockPick"
+        },
+        "leave_alone": {}
+    },
+    "key_lock": {
+        "green": {
+            "special": "use_hammer"
+        },
+        "blue": {
+            "special": "use_lock_pick"
+        }
+    },
+    "pad_lock": {
+        "green": {
+            "numbers": "north_wall"
+        },
+        "purple": {
+            "numbers": "west_dumpster_ground"
+        },
+        "yellow": {
+            "numbers": "south_wall",
+            "order": "reverse"
+        },
+        "red": {
+            "numbers": "north_wall",
+            "order": "reverse"
+        },
+        "blue": {
+            "numbers": "west_dumpster_ground",
+            "order": "reverse"
+        },
+        "orange": {
+            "numbers": "west_dumpster_surface"
+        }
+    },
+    "combo_lock_3_digits": {
+        "red": {
+            "numbers": "west_dumpster_ground"
+        },
+        "blue": {
+            "numbers": "north_wall"
+        },
+        "green": {
+            "const": "C73"
+        },
+        "purple": {
+            "numbers": "south_wall"
+        }
+    },
+    "combo_lock_4_digits": {
+        "red": {
+            "numbers": "west_dumpster_ground",
+            "order": "descending"
+        },
+        "blue": {
+            "const": "1234"
+        },
+        "green": {
+            "special": "leave_alone"
+        },
+        "purple": {
+            "numbers": "west_dumpster_ground",
+            "order": "ascending"
+        }
+    },
+    "combo_lock_5_digits": {
+        "red": {
+            "special": "use_lock_pick"
+        },
+        "blue": {
+            "numbers": "west_dumpster_ground"
+        },
+        "green": {
+            "numbers": "south_wall"
+        },
+        "purple": {
+            "special": "use_hammer"
+        }
+    }
+}

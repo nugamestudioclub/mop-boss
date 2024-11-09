@@ -1,6 +1,6 @@
 extends Puzzle
 
-var note_options: Array = preload("res://resource/puzzle/notes.tres").data
+var note_options: Array = preload("res://resource/puzzle/notes.json").data
 
 func is_altered() -> bool:
 	return false
