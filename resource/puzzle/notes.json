@@ -1,0 +1,42 @@
+[
+	{
+		"erase": [],
+		"forge": [
+			{
+				"forged": "Bruno Macchia",
+				"signature": "Don Scarpelli"
+			}
+		],
+		"rip_line_index": -1,
+		"take": false,
+		"text": "Dear Tony, \nI deeply regret my actions \nI will improve my reactions \nMy life is like a rose \nI need to improve my prose \nI hid the body under the stump \nAnd I accidently left on the oil pump \nLove, \nDon Scarpelli"
+	},
+	{
+		"erase": ["Don Scarpelli"],
+		"forge": [],
+		"rip_line_index": -1,
+		"take": false,
+		"text": "Heat is fast approaching \nEnigmas are all around us \nLate to coaching \nPeople are taking the bus \nMay my assistance be as a warm hug \nEnsure Don Scarpelli's grave is dug"
+	},
+	{
+		"erase": [],
+		"forge": [],
+		"rip_line_index": 1,
+		"take": false,
+		"text": "Dear Tony, make sure you turn \noff the oven next time. \nI can't afford any mistakes \nthis time around"
+	},
+	{
+		"erase": ["Hexagons", "hexagon"],
+		"forge": [],
+		"rip_line_index": -1,
+		"take": false,
+		"text": "Hexagons are the best \nExtra are provided at the gathering \nLab has the secret hexagon \nPlease don't forget \nMy love is \nFleeting \nDon Scarpelli"
+	},
+	{
+		"erase": [],
+		"forge": [],
+		"rip_line_index": -1,
+		"take": true,
+		"text": "Dad i fergot where i lef my \ntoyz i thinc it under the red drawr"
+	}
+]
