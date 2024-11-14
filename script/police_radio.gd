@@ -50,3 +50,63 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 			knob_delta = 0
 	
 	collision_object.rotate_y(knob_delta)
+
+
+var LEVEL_MAX_TIME = 110
+var LEVEL_MIN_TIME = 90
+
+var EVENT_MAX_TIME_BETWEEN = 30
+var EVENT_MIN_TIME_BETWEEN = 20
+
+var EVENT_TYPES = [
+	"stop for donuts", 
+	"speed up (too much coffee)", 
+	"clear their throat",
+	"run out of donuts :("
+	]
+var EVENT_TIMELINE = []
+var EVENT_MAX = 6
+var EVENT_MIN = 4
+
+func _generate_radio_events() -> void:
+	var event_total = randi_range(EVENT_MIN, EVENT_MAX)
+	EVENT_TIMELINE = []
+	
+	for i in range(event_total):
+		var new_event = EVENT_TYPES.pick_random()
+		EVENT_TIMELINE.append(new_event)
+
+func _play_next_event():
+	if EVENT_TIMELINE == []:
+		print("no more events")
+		return null
+	
+	var current_event = EVENT_TIMELINE[0]
+	
+	print("play the chatter over radio")
+	print("something something about time left")
+	
+	EVENT_TIMELINE.remove_at(0)
+	return true
+
+func wait(seconds) -> void:
+	print(seconds)
+	await get_tree().create_timer(seconds).timeout
+
+func _ready() -> void:
+	_generate_radio_events()
+	
+	var explain_events = "the police will: "
+	for event in EVENT_TIMELINE:
+		explain_events += (event + " and... ")
+	print(explain_events)
+	
+	while true:
+		var event_time_between = randi_range(EVENT_MIN_TIME_BETWEEN, EVENT_MAX_TIME_BETWEEN)
+		await wait(event_time_between)
+		
+		var event_played = _play_next_event()
+		print(EVENT_TIMELINE)
+		
+		if event_played == null:
+			break
