@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Raycast="*res://script/raycast.gd"
 NodeHelper="*res://script/node_helper.gd"
+LockHelpers="*res://script/lock_helpers.gd"
 
 [global_group]
 

@@ -48,6 +48,5 @@ func _toggle_inspect(node: Node3D):
 			if not child is CollisionShape3D: continue
 			child.disabled = _is_inspected
 
-
 func _ready():
 	NodeHelper.inspector_canvas_layer_node.toggle_inspect.connect(_toggle_inspect)

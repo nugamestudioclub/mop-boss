@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1twir2cb7j74"]
+[gd_scene load_steps=15 format=3 uid="uid://b1twir2cb7j74"]
 
 [ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/prop/desk.tscn" id="8_rc1ap"]
 [ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/prop/police_radio.tscn" id="9_f48pa"]
 [ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/misc/bowling_pin.tscn" id="9_r5qke"]
+[ext_resource type="Script" path="res://scene/level/lock_codes.gd" id="13_h5l1k"]
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://resource/font/edosz.ttf" id="13_qxlqj"]
 
 [node name="AlleyLevel" type="Node3D"]
@@ -163,6 +164,7 @@ transform = Transform3D(1.5992, -0.0218842, -4.73731, 0.00959396, 4.99995, -0.01
 transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 7.23314, 1.05138, 3.17469)
 
 [node name="LockCodes" type="Node3D" parent="."]
+script = ExtResource("13_h5l1k")
 
 [node name="SouthWall" type="Label3D" parent="LockCodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62583, -4.97392)
@@ -173,6 +175,20 @@ outline_size = 0
 
 [node name="NorthWall" type="Label3D" parent="LockCodes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.70982, 1.62583, 4.94325)
+text = "3 A E 5 8"
+font = ExtResource("13_qxlqj")
+font_size = 92
+outline_size = 0
+
+[node name="WestDumpsterGround" type="Label3D" parent="LockCodes"]
+transform = Transform3D(0.773907, 0.6333, 2.76824e-08, 0, -4.37114e-08, 1, 0.6333, -0.773907, -3.38285e-08, 8.32463, 0.001, -2.42941)
+text = "3 A E 5 8"
+font = ExtResource("13_qxlqj")
+font_size = 92
+outline_size = 0
+
+[node name="WestDumpsterSurface" type="Label3D" parent="LockCodes"]
+transform = Transform3D(0.999194, 0, -0.0401318, 0, 1, 0, 0.0401318, 0, 0.999194, 7.53445, 0.560554, -3.33187)
 text = "3 A E 5 8"
 font = ExtResource("13_qxlqj")
 font_size = 92

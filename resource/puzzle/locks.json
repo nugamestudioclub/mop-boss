@@ -1,95 +1,143 @@
 {
-    "colors": {
-        "green": "0x00FF00"
-    },
-    "numbers": {
-        "north_wall": "NorthWall",
-        "south_wall": "SouthWall",
-        "west_dumpster_ground": "WestDumpsterGround",
-        "west_dumpster_surface": "WestDumpsterSurface"
-    },
-    "special": {
-        "use_hammer": {
-            "tool": "Hammer"
-        },
-        "use_lock_pick": {
-            "tool": "LockPick"
-        },
-        "leave_alone": {}
-    },
-    "key_lock": {
-        "green": {
-            "special": "use_hammer"
-        },
-        "blue": {
-            "special": "use_lock_pick"
-        }
-    },
-    "pad_lock": {
-        "green": {
-            "numbers": "north_wall"
-        },
-        "purple": {
-            "numbers": "west_dumpster_ground"
-        },
-        "yellow": {
-            "numbers": "south_wall",
-            "order": "reverse"
-        },
-        "red": {
-            "numbers": "north_wall",
-            "order": "reverse"
-        },
-        "blue": {
-            "numbers": "west_dumpster_ground",
-            "order": "reverse"
-        },
-        "orange": {
-            "numbers": "west_dumpster_surface"
-        }
-    },
-    "combo_lock_3_digits": {
-        "red": {
-            "numbers": "west_dumpster_ground"
-        },
-        "blue": {
-            "numbers": "north_wall"
-        },
-        "green": {
-            "const": "C73"
-        },
-        "purple": {
-            "numbers": "south_wall"
-        }
-    },
-    "combo_lock_4_digits": {
-        "red": {
-            "numbers": "west_dumpster_ground",
-            "order": "descending"
-        },
-        "blue": {
-            "const": "1234"
-        },
-        "green": {
-            "special": "leave_alone"
-        },
-        "purple": {
-            "numbers": "west_dumpster_ground",
-            "order": "ascending"
-        }
-    },
-    "combo_lock_5_digits": {
-        "red": {
-            "special": "use_lock_pick"
-        },
-        "blue": {
-            "numbers": "west_dumpster_ground"
-        },
-        "green": {
-            "numbers": "south_wall"
-        },
-        "purple": {
-            "special": "use_hammer"
-        }
-    }
+	"definitions": {
+		"colors": {
+			"green": "00FF00",
+			"blue": "0000FF",
+			"yellow": "FFFF00",
+			"red": "FF0000",
+			"purple": "800080",
+			"orange": "FFA500"
+		},
+		"hidden_number_codes": {
+			"north_wall": "NorthWall",
+			"south_wall": "SouthWall",
+			"west_dumpster_ground": "WestDumpsterGround",
+			"west_dumpster_surface": "WestDumpsterSurface"
+		},
+		"specials": {
+			"use_hammer": {
+				"tool": "Hammer"
+			},
+			"use_lock_pick": {
+				"tool": "LockPick"
+			},
+			"leave_alone": {
+
+			}
+		}
+	},
+	"locks": [
+		{
+			"name": "key_lock",
+			"variants": [
+				{
+					"color": "green",
+					"special": "use_hammer"
+				},
+				{
+					"color": "blue",
+					"special": "use_lock_pick"
+				}
+			]
+		},
+		{
+			"name": "pad_lock",
+			"variants": [
+				{
+					"color": "green",
+					"numbers": "north_wall"
+				},
+				{
+					"color": "purple",
+					"numbers": "west_dumpster_ground"
+				},
+				{
+					"color": "yellow",
+					"numbers": "south_wall",
+					"order": "reverse"
+				},
+				{
+					"color": "red",
+					"numbers": "north_wall",
+					"order": "reverse"
+				},
+				{
+					"color": "blue",
+					"numbers": "west_dumpster_ground",
+					"order": "reverse"
+				},
+				{
+					"color": "orange",
+					"numbers": "west_dumpster_surface"
+				}
+			]
+		},
+		{
+			"name": "combo_lock_3_digits",
+			"variants": [
+				{
+					"color": "red",
+					"numbers": "west_dumpster_ground"
+				},
+				{
+					"color": "blue",
+					"numbers": "north_wall"
+				},
+				{
+					"color": "green",
+					"const": "C73"
+				},
+				{
+					"color": "purple",
+					"numbers": "south_wall"
+				}
+			]
+		},
+		{
+			"name": "combo_lock_4_digits",
+			"variants": [
+				{
+					"color": "red",
+					"numbers": "west_dumpster_ground",
+					"order": "descending"
+				},
+				{
+					"color": "blue",
+					"const": "1234"
+				},
+				{
+					"color": "green",
+					"special": "leave_alone"
+				},
+				{
+					"color": "purple",
+					"numbers": "west_dumpster_ground",
+					"order": "ascending"
+				}
+			]
+		},
+		{
+			"name": "combo_lock_5_digits",
+			"variants": [
+				{
+					"color": "red",
+					"special": "use_lock_pick"
+				},
+				{
+					"color": "blue",
+					"numbers": "west_dumpster_ground",
+					"modifier": 1
+				},
+				{
+					"color": "green",
+					"numbers": "south_wall",
+					"modifier": -2
+				},
+				{
+					"color": "purple",
+					"special": "use_hammer"
+				}
+			]
+		}
+	]
 }
