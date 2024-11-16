@@ -5,6 +5,7 @@ var chosen_variant: Dictionary
 var lock_definitions: Dictionary = preload("res://resource/puzzle/locks.json").data["definitions"]
 
 var unlocked = false
+var dumpster = null
 
 #@onready var padlock_rod = $padlock_rod
 @onready var collision_rod = $collision_rod
@@ -64,6 +65,11 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		anchor_point.queue_free()
 		# in the future, can add code that checks for all ancestors ->
 		# changes dumpster lids to be unlocked / holdable so player can open them
+		print("UNLOCK")
+		print(dumpster)
+		if dumpster and dumpster.has_method("unlock"):
+			print("SHOULD UNLOCK")
+			dumpster.unlock()
 	
 	# future implementation, only check if it matches after the lock has been at position
 	# for more than say 0.5 seconds, then play a click / sound corresponding to

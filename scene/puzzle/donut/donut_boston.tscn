@@ -126,8 +126,6 @@ radius = 0.256552
 [node name="DonutBoston" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
-can_sleep = false
-freeze = true
 continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0

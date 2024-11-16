@@ -106,3 +106,7 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 	## Calculate the new position in world space
 	#var new_position = rotated_position + world_position
 	#object.global_transform.origin = new_position
+
+
+func has_variable(variableName: String, node: Node):
+	return (variableName in node)

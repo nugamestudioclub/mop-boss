@@ -7,6 +7,7 @@ var hold_group = "holdable"
 # Idk hand parameters
 var hold_object: RigidBody3D = null
 var object_radius = null
+var object_mass = null
 
 @onready var player: RigidBody3D = self.get_owner()
 @onready var camera_player: Camera3D = $"../PlayerPov"
@@ -19,6 +20,7 @@ func _enter_hold(object):
 	hold_object = object
 	var scale_object = hold_object.scale
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
+	object_mass = object.mass
 	print("Entering hold")
 	
 	#hold_object.freeze = false
@@ -35,6 +37,7 @@ func _cancel_hold(object):
 	material.absorbent = !material.absorbent
 	hold_object = null
 	object_radius = null
+	object_mass = null
 	return
 
 func _can_hold(object):
@@ -58,7 +61,7 @@ func _input(event):
 		if hold_object != null:
 			var throw_strength = hold_object.global_position  - player.global_position
 			
-			hold_object.apply_central_impulse(throw_strength)
+			hold_object.apply_central_impulse(throw_strength * object_mass * 8)
 			_cancel_hold(hold_object)
 
 

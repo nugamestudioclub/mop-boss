@@ -1,6 +1,7 @@
 extends Puzzle
 
 var unlocked = false
+var dumpster = null
 
 var combolock_variants: Array = LockHelpers.get_lock_variants("combo_lock_5_digits")
 var chosen_variant: Dictionary

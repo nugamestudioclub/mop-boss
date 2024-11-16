@@ -16,8 +16,9 @@ func spawn_random():
 	var random = NodeHelper.random_child_weighted(self)
 	random = random.pick_node()
 	if random == null: return
-	spawn(random)
 	
+	var spawned_node = spawn(random)
+	return spawned_node;
 
 func spawn(scene: PackedScene):
 	if spawned_node != null: return
@@ -28,7 +29,7 @@ func spawn(scene: PackedScene):
 	spawned_node = scene.instantiate()
 	if spawned_node.has_method("on_enter_level"): spawned_node.on_enter_level()
 	add_child(spawned_node)
-
+	return spawned_node
 
 func despawn():
 	if spawned_node == null: return
