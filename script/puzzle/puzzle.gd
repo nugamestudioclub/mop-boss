@@ -2,6 +2,7 @@ class_name Puzzle
 extends RigidBody3D
 
 @onready var original_global_position := global_position
+@onready var inspector_canvas_layer_node = get_tree().current_scene.get_node("InspectLayer") #$"/root/World/InspectLayer"
 
 var active_tool: Node3D = null
 
@@ -49,4 +50,4 @@ func _toggle_inspect(node: Node3D):
 			child.disabled = _is_inspected
 
 func _ready():
-	NodeHelper.inspector_canvas_layer_node.toggle_inspect.connect(_toggle_inspect)
+	inspector_canvas_layer_node.toggle_inspect.connect(_toggle_inspect)

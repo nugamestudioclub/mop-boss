@@ -20,7 +20,7 @@ var insepcted_freeze_original = null
 
 # Node paths
 @onready var player: RigidBody3D = $"../Player"
-@onready var camera_player = $"../Player/TwistPivot/PitchPivot/PlayerPov"
+@onready var camera_player = player.get_node("TwistPivot/PitchPivot/PlayerPov")
 @onready var inspector_gui = $Control
 @onready var inspected_node_holder = $Control/SubViewportContainer/SubViewport/View/InspectedNode
 

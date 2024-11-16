@@ -11,6 +11,8 @@ const KNOB2_MAX_TICKS := 5
 const KNOB2_RADS_PER_TURN = PI/KNOB2_MAX_TICKS
 var KNOB2_TICKS = 0
 
+@onready var level_manager = $"../.."
+
 func is_in_range(value, min_value, max_value) -> bool:
 	return value >= min_value and value <= max_value
 
@@ -55,8 +57,8 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 var LEVEL_MAX_TIME = 110
 var LEVEL_MIN_TIME = 90
 
-var EVENT_MAX_TIME_BETWEEN = 30
-var EVENT_MIN_TIME_BETWEEN = 20
+var EVENT_MAX_TIME_BETWEEN = .30
+var EVENT_MIN_TIME_BETWEEN = .20
 
 var EVENT_TYPES = [
 	"stop for donuts", 
@@ -109,4 +111,5 @@ func _ready() -> void:
 		print(EVENT_TIMELINE)
 		
 		if event_played == null:
+			level_manager.end_level()
 			break

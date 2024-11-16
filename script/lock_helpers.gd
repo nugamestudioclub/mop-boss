@@ -2,7 +2,7 @@ extends Node
 
 
 var lock_definitions: Dictionary = preload("res://resource/puzzle/locks.json").data["definitions"]
-@onready var alley_level = $"/root/World/AlleyLevel"
+@onready var alley_level = get_tree().current_scene #$"/root/AlleyLevel"
 
 
 func get_lock_variants(lock_name: String) -> Array:
@@ -52,11 +52,11 @@ func randomize_combo(chosen_variant: Dictionary, combo_length: int, notches: int
 	return new_combo
 
 
-func get_input_axis(posAction: String, negAction):
+func get_input_axis(negAction: String, posAction: String):
 	var direction = 0
-	if Input.is_action_just_released(posAction):
+	if Input.is_action_just_released(negAction):
 		direction = -1
-	elif Input.is_action_just_released(negAction):
+	elif Input.is_action_just_released(posAction):
 		direction = 1
 	return direction
 

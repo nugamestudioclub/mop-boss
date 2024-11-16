@@ -15,7 +15,7 @@ absorbent = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_1qfc8"]
 
-[node name="Player" type="RigidBody3D"]
+[node name="Player" type="RigidBody3D" groups=["player"]]
 physics_material_override = SubResource("PhysicsMaterial_56f34")
 lock_rotation = true
 contact_monitor = true

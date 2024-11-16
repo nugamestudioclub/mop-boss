@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mop Boss Movement Camera And Inspect"
-run/main_scene="res://scene/world.tscn"
+run/main_scene="res://scene/level/alley_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,6 +28,8 @@ holdable=""
 empty_spawner=""
 full_spawner="Nodes that signify where puzzle elements can spawn."
 tool="This is a tool that can be used on puzzles"
+player="this is a player"
+active_scene="why"
 
 [input]
 
