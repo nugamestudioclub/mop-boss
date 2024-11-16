@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=10 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/gui/gui.tscn" id="1_eeakp"]
 [ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/prop/desk.tscn" id="1_n72gg"]
+[ext_resource type="Script" path="res://scene/level/office_level.gd" id="1_v3o8y"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player/player.tscn" id="2_vm0w1"]
+[ext_resource type="PackedScene" uid="uid://csrkimu2q5ycs" path="res://scene/prop/classic_phone.tscn" id="5_hsbu2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmiey"]
 albedo_color = Color(0.829446, 0, 0.185604, 1)
@@ -22,6 +24,7 @@ glow_enabled = true
 fog_enabled = true
 
 [node name="OfficeLevel" type="Node3D"]
+script = ExtResource("1_v3o8y")
 
 [node name="InspectLayer" parent="." instance=ExtResource("1_eeakp")]
 
@@ -64,7 +67,7 @@ material_override = SubResource("StandardMaterial3D_cmiey")
 use_collision = true
 size = Vector3(5.81262, 0.0203857, 2.41058)
 
-[node name="Player" parent="." groups=["active_scene"] instance=ExtResource("2_vm0w1")]
+[node name="Player" parent="." instance=ExtResource("2_vm0w1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -73,3 +76,6 @@ environment = SubResource("Environment_i66h2")
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957625, 0.28378, 0, 0, 0)
 shadow_enabled = true
+
+[node name="ClassicPhone" parent="." instance=ExtResource("5_hsbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2)

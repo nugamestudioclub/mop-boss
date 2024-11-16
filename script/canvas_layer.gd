@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 # Inspect parameters
+const DEFAULT_VIEW_FOV = 75
 var inspect_button = MOUSE_BUTTON_RIGHT
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -22,7 +23,10 @@ var insepcted_freeze_original = null
 @onready var player: RigidBody3D = $"../Player"
 @onready var camera_player = player.get_node("TwistPivot/PitchPivot/PlayerPov")
 @onready var inspector_gui = $Control
-@onready var inspected_node_holder = $Control/SubViewportContainer/SubViewport/View/InspectedNode
+@onready var inspector_view = $Control/SubViewportContainer/SubViewport/View
+@onready var inspector_camera = inspector_view.get_node("Camera3D")
+@onready var inspected_node_holder = inspector_view.get_node("InspectedNode")
+
 
 signal toggle_inspect(node: Node3D)
 
@@ -41,7 +45,8 @@ func _scale_within(node: Node3D, bounds: float): #TODO: change bounds to vector3
 		if aabb.position.length() > furthest_start.length():
 			furthest_start = aabb.position
 	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
-	node.scale = node.scale.normalized() * bounds / biggest_axis
+	#node.scale = node.scale.normalized() * bounds / biggest_axis
+	print(biggest_axis)
 
 func _enter_inspect():
 	Input.set_mouse_mode(inspect_mouse_mode)
@@ -92,7 +97,9 @@ func _move_to_inspect_view(object: RigidBody3D):
 	
 	_remove_outline(object)
 	object.global_position = Vector3.ZERO
+	inspector_camera.fov = DEFAULT_VIEW_FOV
 	_scale_within(object, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
+	
 	object.reparent(inspected_node_holder)
 	toggle_inspect.emit(object)
 	
@@ -131,6 +138,11 @@ func _input(event):
 	elif Input.is_action_just_pressed("ui_cancel"):
 		if inspector_gui.visible:
 			_cancel_inspect()
+	
+	elif Input.is_action_just_pressed("zoom_in"):
+		inspector_camera.fov = clamp(inspector_camera.fov - 5, 5, DEFAULT_VIEW_FOV)
+	elif Input.is_action_just_pressed("zoom_out"):
+		inspector_camera.fov = clamp(inspector_camera.fov + 5, 5, DEFAULT_VIEW_FOV)
 
 	elif event is InputEventKey:
 		if event.pressed: return

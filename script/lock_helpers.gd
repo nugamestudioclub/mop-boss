@@ -2,7 +2,7 @@ extends Node
 
 
 var lock_definitions: Dictionary = preload("res://resource/puzzle/locks.json").data["definitions"]
-@onready var alley_level = get_tree().current_scene #$"/root/AlleyLevel"
+#@onready var alley_level = get_tree().current_scene #$"/root/AlleyLevel"
 
 
 func get_lock_variants(lock_name: String) -> Array:
@@ -46,6 +46,8 @@ func randomize_combo(chosen_variant: Dictionary, combo_length: int, notches: int
 				new_combo.reverse()
 			_: pass
 	if location != null:
+		# TODO: FIX? kind of annoying to get current scene everytime
+		var alley_level = get_tree().current_scene
 		alley_level.get_node("LockCodes/" + location).text = hex_code
 	print("Correct: ", new_combo, chosen_variant)
 	print("Location: ", location)

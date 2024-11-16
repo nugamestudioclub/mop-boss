@@ -57,8 +57,8 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 var LEVEL_MAX_TIME = 110
 var LEVEL_MIN_TIME = 90
 
-var EVENT_MAX_TIME_BETWEEN = .30
-var EVENT_MIN_TIME_BETWEEN = .20
+var EVENT_MAX_TIME_BETWEEN = 20
+var EVENT_MIN_TIME_BETWEEN = 10
 
 var EVENT_TYPES = [
 	"stop for donuts", 

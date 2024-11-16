@@ -1,7 +1,5 @@
 extends Node
 
-#@onready var world: Node3D = $"/root/".get_child(-1) # assuming world node is last node in root
-
 func raycast_to(origin: Vector3, end: Vector3, exclude: Array = []):
 	var current_scene = get_tree().current_scene
 	var space_state = current_scene.get_world_3d().direct_space_state

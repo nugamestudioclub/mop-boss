@@ -30,7 +30,7 @@ tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
 
-[node name="AlleyLevel" type="Node3D" groups=["active_scene"]]
+[node name="AlleyLevel" type="Node3D"]
 script = ExtResource("1_i44v8")
 
 [node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
