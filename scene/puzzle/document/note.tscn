@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5jwmdf7s7xg2"]
+[gd_scene load_steps=15 format=3 uid="uid://c5jwmdf7s7xg2"]
 
 [ext_resource type="Script" path="res://script/note_paper.gd" id="1_fvhw8"]
 [ext_resource type="Texture2D" uid="uid://btpn2feqe0j3f" path="res://resource/note.png" id="2_e3cin"]
@@ -20,7 +20,6 @@ albedo_texture = ExtResource("2_e3cin")
 material = SubResource("StandardMaterial3D_3lmk8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72eis"]
-transparency = 1
 cull_mode = 1
 albedo_texture = ExtResource("2_e3cin")
 
@@ -30,6 +29,10 @@ material = SubResource("StandardMaterial3D_72eis")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
 size = Vector3(0.816956, 0.0334778, 0.816772)
 
+[sub_resource type="SphereMesh" id="SphereMesh_b8hlg"]
+radius = 0.05
+height = 0.1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr0ds"]
 transparency = 1
 albedo_texture = ExtResource("4_haep4")
@@ -37,6 +40,7 @@ albedo_texture = ExtResource("4_haep4")
 [sub_resource type="PlaneMesh" id="PlaneMesh_lggv1"]
 material = SubResource("StandardMaterial3D_wr0ds")
 size = Vector2(0.05, 0.05)
+center_offset = Vector3(0.025, 0, 0)
 
 [node name="Note" type="RigidBody3D" groups=["inspectable"]]
 mass = 0.4
@@ -88,6 +92,18 @@ width = 539.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
 shape = SubResource("BoxShape3D_kheio")
 
-[node name="Crossout" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.66, 0, 0, 0, 1, 0, 0, 0, 1, -0.074876, 0.0343369, 0.0273928)
+[node name="Test" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_b8hlg")
+
+[node name="Crossout" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.340368, 0.0317333, -0.304388)
+
+[node name="Image" type="MeshInstance3D" parent="Crossout"]
+transform = Transform3D(2.11, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_lggv1")
+skeleton = NodePath("../..")
+
+[node name="PreviouslyCrossedOut" type="Node3D" parent="."]
+
+[connection signal="mouse_exited" from="Actions" to="." method="_on_actions_mouse_exited"]
