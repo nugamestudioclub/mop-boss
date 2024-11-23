@@ -1,0 +1,218 @@
+[gd_scene load_steps=23 format=3 uid="uid://b1twir2cb7j74"]
+
+[ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
+[ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
+[ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/category/lock_category.tscn" id="3_owdbc"]
+[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/gui/gui.tscn" id="3_ryyl0"]
+[ext_resource type="Script" path="res://script/category_item.gd" id="4_gsakb"]
+[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/puzzle/donut/donut_boston.tscn" id="5_8dpmd"]
+[ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/generation/node_spawner.tscn" id="6_4exd3"]
+[ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/category/donut_category.tscn" id="7_555ks"]
+[ext_resource type="PackedScene" uid="uid://7nt3rprfhbn" path="res://scene/prop/dumpster.tscn" id="7_xcaps"]
+[ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/category/note_category.tscn" id="8_b2dvn"]
+[ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/prop/desk.tscn" id="8_rc1ap"]
+[ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/prop/police_radio.tscn" id="9_f48pa"]
+[ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/misc/bowling_pin.tscn" id="9_r5qke"]
+[ext_resource type="Script" path="res://scene/level/lock_codes.gd" id="13_h5l1k"]
+[ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://resource/font/edosz.ttf" id="13_qxlqj"]
+[ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player/player.tscn" id="15_biuw2"]
+[ext_resource type="FontFile" uid="uid://brid1anviro53" path="res://resource/font/punk kid.ttf" id="15_xvcf3"]
+[ext_resource type="FontFile" uid="uid://bmsxjry3su0rr" path="res://resource/font/Urban Starblues Demo.otf" id="17_smqsb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
+albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_516dq"]
+sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
+
+[sub_resource type="Sky" id="Sky_4a2fm"]
+sky_material = SubResource("ProceduralSkyMaterial_516dq")
+
+[sub_resource type="Environment" id="Environment_uifmc"]
+background_mode = 2
+sky = SubResource("Sky_4a2fm")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+
+[node name="AlleyLevel" type="Node3D"]
+script = ExtResource("1_i44v8")
+
+[node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
+
+[node name="LockCategory" parent="LevelGenerationManager" instance=ExtResource("3_owdbc")]
+
+[node name="BostonDonut" type="Node" parent="LevelGenerationManager"]
+script = ExtResource("4_gsakb")
+scene = ExtResource("5_8dpmd")
+
+[node name="InspectLayer" parent="." instance=ExtResource("3_ryyl0")]
+
+[node name="NodeSpawner1" parent="." groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27705, 0.0719674, -4.14242)
+
+[node name="DonutCategory" parent="NodeSpawner1" instance=ExtResource("7_555ks")]
+
+[node name="NoteCategory" parent="NodeSpawner1" instance=ExtResource("8_b2dvn")]
+
+[node name="NodeSpawner2" parent="." groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98966, 0.077199, -4.50883)
+
+[node name="NoteCategory" parent="NodeSpawner2" instance=ExtResource("8_b2dvn")]
+
+[node name="DonutCategory" parent="NodeSpawner2" instance=ExtResource("7_555ks")]
+
+[node name="Bowling" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.49466)
+
+[node name="BowlingPin" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.114637, 0, 0.403279)
+
+[node name="BowlingPin2" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.0100207, 0, 0.0399686)
+
+[node name="BowlingPin3" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.350738, 0, -0.0581414)
+
+[node name="BowlingPin4" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, -0.336231, 0, 0.139679)
+
+[node name="BowlingPin5" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, -0.280155, 0, -0.299101)
+
+[node name="BowlingPin6" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.0453197, 0, -0.392821)
+
+[node name="BowlingPin7" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.443068, 0, -0.507361)
+
+[node name="BowlingPin8" parent="Bowling" instance=ExtResource("9_r5qke")]
+transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, -0.666947, 0, -0.187721)
+
+[node name="Boundaries" type="Node3D" parent="."]
+
+[node name="AlleyFloor" type="CSGBox3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185337, -0.50474, -0.000857353)
+use_collision = true
+size = Vector3(45, 1, 10)
+material = SubResource("StandardMaterial3D_cg16n")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.21731, -5.48625)
+use_collision = true
+size = Vector3(45, 11, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0983, 4.217, 0)
+use_collision = true
+size = Vector3(1, 11, 11)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4466, 4.217, 0)
+use_collision = true
+size = Vector3(1, 11, 11)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.21731, 5.44791)
+use_collision = true
+size = Vector3(45, 11, 1)
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Dumpster" parent="Props" instance=ExtResource("7_xcaps")]
+transform = Transform3D(0.999224, 0, -0.0393993, 0, 1, 0, 0.0393993, 0, 0.999224, 7.87116, 0.815009, -4.09674)
+
+[node name="Dumpster2" parent="Props" instance=ExtResource("7_xcaps")]
+transform = Transform3D(-0.975818, 0, 0.218586, 0, 1, 0, -0.218586, 0, -0.975818, 0.51456, 0.781009, 3.05437)
+
+[node name="Dumpster3" parent="Props" instance=ExtResource("7_xcaps")]
+transform = Transform3D(0.999584, 0, 0.0288289, 0, 1, 0, -0.0288289, 0, 0.999584, -5.72895, 0.781009, -3.92913)
+
+[node name="Desk" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 6.39771, 0.828343, 3.63486)
+
+[node name="NodeSpawner" parent="Props/Desk" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(-0.0208614, 0.000383758, -0.198908, 0.000830049, 0.199998, 0.000298805, 0.198907, -0.000794356, -0.0208628, 0.0208401, 0.0148123, -0.0891776)
+
+[node name="DonutCategory" parent="Props/Desk/NodeSpawner" instance=ExtResource("7_555ks")]
+
+[node name="Desk2" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.0083108, 0.318192, 5.5138, 0.900933, -4.05003)
+
+[node name="Desk3" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.0083108, 0.318192, -7.72634, 0.900933, 1.29857)
+
+[node name="NodeSpawner5" parent="Props/Desk3" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(0.0127262, 0.000383758, 0.199594, -0.000817162, 0.199998, -0.000332432, -0.199593, -0.000794353, 0.0127277, 0.0697947, 0.0172655, -0.044384)
+
+[node name="NoteCategory" parent="Props/Desk3/NodeSpawner5" instance=ExtResource("8_b2dvn")]
+
+[node name="Desk4" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(-0.857088, 0.0212095, 4.92595, 0.00959396, 4.99995, -0.0198588, -4.92598, 0.00604771, -0.85712, -8.61459, 0.900933, -0.091827)
+
+[node name="NodeSpawner7" parent="Props/Desk4" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(-0.0342835, 0.000383758, -0.197039, 0.000848378, 0.199998, 0.000241909, 0.197038, -0.000794353, -0.0342848, 0.0372101, 0.0168085, -0.135786)
+
+[node name="DonutCategory" parent="Props/Desk4/NodeSpawner7" instance=ExtResource("7_555ks")]
+
+[node name="Desk5" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(4.35569, -0.018109, -2.45513, 0.00959396, 4.99995, -0.0198588, 2.45518, 0.0125889, 4.35568, -9.82576, 0.900933, 1.83764)
+
+[node name="NodeSpawner6" parent="Props/Desk5" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(0.174227, 0.000383757, 0.098207, -0.000724361, 0.199998, 0.000503555, -0.0982052, -0.000794353, 0.174227, 0.000730634, 0.0178107, 0.0666685)
+
+[node name="NoteCategory" parent="Props/Desk5/NodeSpawner6" instance=ExtResource("8_b2dvn")]
+
+[node name="DonutCategory" parent="Props/Desk5/NodeSpawner6" instance=ExtResource("7_555ks")]
+
+[node name="Desk6" parent="Props" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(1.5992, -0.0218842, -4.73731, 0.00959396, 4.99995, -0.0198588, 4.73735, -0.00273826, 1.59922, -8.77432, 1.96372, 0.800921)
+
+[node name="PoliceRadio" parent="Props" instance=ExtResource("9_f48pa")]
+transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 7.23314, 1.05138, 3.17469)
+
+[node name="LockCodes" type="Node3D" parent="."]
+script = ExtResource("13_h5l1k")
+
+[node name="SouthWall" type="Label3D" parent="LockCodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62583, -4.97392)
+modulate = Color(0.184314, 0.27451, 0.992157, 1)
+text = "3 A E 5 8"
+font = ExtResource("15_xvcf3")
+font_size = 104
+outline_size = 0
+
+[node name="NorthWall" type="Label3D" parent="LockCodes"]
+transform = Transform3D(-0.991881, -0.127168, -8.6713e-08, -0.127168, 0.991881, -1.11174e-08, 8.74228e-08, 0, -1, 7.70982, 1.67434, 4.94325)
+pixel_size = 0.02
+modulate = Color(0.938106, 0.780886, 0.887358, 1)
+text = "3 A E 5 8"
+font = ExtResource("13_qxlqj")
+font_size = 110
+outline_size = 0
+
+[node name="WestDumpsterGround" type="Label3D" parent="LockCodes"]
+transform = Transform3D(0.978517, -0.20617, -9.01196e-09, -1.37474e-15, -4.37114e-08, 1, -0.20617, -0.978517, -4.27723e-08, 8.32463, 0.001, -2.11047)
+modulate = Color(0.352941, 0.835294, 0.615686, 1)
+text = "3 A E 5 8"
+font = ExtResource("13_qxlqj")
+font_size = 92
+outline_size = 0
+
+[node name="WestDumpsterSurface" type="Label3D" parent="LockCodes"]
+transform = Transform3D(0.998923, 0, -0.0463917, 0, 1, 0, 0.0463917, 0, 0.998923, 7.90033, 0.560554, -3.29628)
+modulate = Color(0.922539, 0.721593, 0.858375, 1)
+text = "3 A E 5 8"
+font = ExtResource("17_smqsb")
+font_size = 92
+outline_size = 0
+
+[node name="Player" parent="." instance=ExtResource("15_biuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05998, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uifmc")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957625, 0.28378, 0, 0, 0)
+shadow_enabled = true
