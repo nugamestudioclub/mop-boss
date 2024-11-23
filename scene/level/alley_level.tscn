@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1twir2cb7j74"]
+[gd_scene load_steps=23 format=3 uid="uid://b1twir2cb7j74"]
 
 [ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://scene/level/lock_codes.gd" id="13_h5l1k"]
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://resource/font/edosz.ttf" id="13_qxlqj"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player/player.tscn" id="15_biuw2"]
+[ext_resource type="FontFile" uid="uid://brid1anviro53" path="res://resource/font/punk kid.ttf" id="15_xvcf3"]
+[ext_resource type="FontFile" uid="uid://bmsxjry3su0rr" path="res://resource/font/Urban Starblues Demo.otf" id="17_smqsb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
@@ -174,29 +176,32 @@ script = ExtResource("13_h5l1k")
 
 [node name="SouthWall" type="Label3D" parent="LockCodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62583, -4.97392)
+modulate = Color(0.184314, 0.27451, 0.992157, 1)
 text = "3 A E 5 8"
-font = ExtResource("13_qxlqj")
-font_size = 92
+font = ExtResource("15_xvcf3")
+font_size = 104
 outline_size = 0
 
 [node name="NorthWall" type="Label3D" parent="LockCodes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.70982, 1.62583, 4.94325)
+transform = Transform3D(-0.991881, -0.127168, -8.6713e-08, -0.127168, 0.991881, -1.11174e-08, 8.74228e-08, 0, -1, 7.70982, 1.67434, 4.94325)
+pixel_size = 0.02
 text = "3 A E 5 8"
 font = ExtResource("13_qxlqj")
-font_size = 92
+font_size = 110
 outline_size = 0
 
 [node name="WestDumpsterGround" type="Label3D" parent="LockCodes"]
-transform = Transform3D(0.773907, 0.6333, 2.76824e-08, 0, -4.37114e-08, 1, 0.6333, -0.773907, -3.38285e-08, 8.32463, 0.001, -2.42941)
+transform = Transform3D(0.978517, -0.20617, -9.01196e-09, -1.37474e-15, -4.37114e-08, 1, -0.20617, -0.978517, -4.27723e-08, 8.32463, 0.001, -2.11047)
+modulate = Color(0.352941, 0.835294, 0.615686, 1)
 text = "3 A E 5 8"
 font = ExtResource("13_qxlqj")
 font_size = 92
 outline_size = 0
 
 [node name="WestDumpsterSurface" type="Label3D" parent="LockCodes"]
-transform = Transform3D(0.999194, 0, -0.0401318, 0, 1, 0, 0.0401318, 0, 0.999194, 7.53445, 0.560554, -3.33187)
+transform = Transform3D(0.998923, 0, -0.0463917, 0, 1, 0, 0.0463917, 0, 0.998923, 7.90033, 0.560554, -3.29628)
 text = "3 A E 5 8"
-font = ExtResource("13_qxlqj")
+font = ExtResource("17_smqsb")
 font_size = 92
 outline_size = 0
 
