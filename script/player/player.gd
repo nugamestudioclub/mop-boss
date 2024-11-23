@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 		var move_force: float = (player_mass * walk_acceleration)
 		
 		var walk_force = directional_vector * move_force
-		if sprinting: walk_force *= 1.25
+		if sprinting: walk_force *= 2
 		
 		# damp * walk_speed = move_force | damp = move_force/walk_speed
 		var damp_force = Vector3(linear_velocity.x, 0, linear_velocity.z) * player_damp 

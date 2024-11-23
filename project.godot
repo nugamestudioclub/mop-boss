@@ -94,6 +94,7 @@ zoom_out={
 [physics]
 
 common/physics_ticks_per_second=144
+3d/physics_engine="GodotPhysics3D"
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 3d/time_before_sleep=1.0
