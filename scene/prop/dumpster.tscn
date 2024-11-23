@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://7nt3rprfhbn"]
+[gd_scene load_steps=23 format=4 uid="uid://7nt3rprfhbn"]
 
 [ext_resource type="Script" path="res://scene/prop/dumpster.gd" id="1_iinq5"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/generation/node_spawner.tscn" id="2_g8y2q"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/category/lock_category.tscn" id="3_ou7dt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3sid"]
+albedo_color = Color(0.282353, 0.290196, 0.27451, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmf2q"]
 resource_name = "standardSurface1"
@@ -46,6 +49,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kgd0c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u6kg"]
+albedo_color = Color(0.165656, 0.165656, 0.165656, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0jlia"]
 _surfaces = [{
@@ -92,6 +98,9 @@ size = Vector3(0.00556934, 0.0532532, 0.0735397)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rb0x0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uefnk"]
+albedo_color = Color(0.0890473, 0.26296, 0.0881058, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_shfjs"]
 _surfaces = [{
 "aabb": AABB(-0.0342772, -0.0223151, -0.00191566, 0.0691114, 0.0243797, 0.0785858),
@@ -130,6 +139,9 @@ shadow_mesh = SubResource("ArrayMesh_shfjs")
 size = Vector3(1.41165, 0.104698, 1.59371)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_id6e1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqgcp"]
+albedo_color = Color(0.0890473, 0.26296, 0.0881058, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bsbib"]
 _surfaces = [{
@@ -173,11 +185,13 @@ script = ExtResource("1_iinq5")
 
 [node name="Metal_Cylinder" type="MeshInstance3D" parent="Dumpster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0431803, -0.0382596)
+material_override = SubResource("StandardMaterial3D_a3sid")
 mesh = SubResource("ArrayMesh_bp7ub")
 skeleton = NodePath("")
 
 [node name="Dumpster_main_body" type="MeshInstance3D" parent="Dumpster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88178e-18, 0.00416934, -0.00215294)
+material_override = SubResource("StandardMaterial3D_8u6kg")
 mesh = SubResource("ArrayMesh_72lkq")
 skeleton = NodePath("")
 
@@ -209,6 +223,7 @@ freeze = true
 
 [node name="Dumpster_left" type="MeshInstance3D" parent="DoorLeft"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uefnk")
 mesh = SubResource("ArrayMesh_c8pys")
 skeleton = NodePath("")
 
@@ -228,6 +243,7 @@ freeze = true
 
 [node name="Dumpster_right" type="MeshInstance3D" parent="DoorRight"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.0690951, 0, 0)
+material_override = SubResource("StandardMaterial3D_lqgcp")
 mesh = SubResource("ArrayMesh_g7ouq")
 skeleton = NodePath("")
 

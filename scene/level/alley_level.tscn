@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1twir2cb7j74"]
+[gd_scene load_steps=21 format=3 uid="uid://b1twir2cb7j74"]
 
 [ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://scene/level/lock_codes.gd" id="13_h5l1k"]
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://resource/font/edosz.ttf" id="13_qxlqj"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/player/player.tscn" id="15_biuw2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
+albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_516dq"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -90,6 +93,7 @@ transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185337, -0.50474, -0.000857353)
 use_collision = true
 size = Vector3(45, 1, 10)
+material = SubResource("StandardMaterial3D_cg16n")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.21731, -5.48625)
