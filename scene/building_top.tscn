@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cfr3ixqn46ve6"]
+[gd_scene load_steps=34 format=4 uid="uid://ckruny88i4mn"]
 
 [ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://model/building/Variant A Round Window/Building Texture Round Window_BaseColor.png" id="1_8bd8c"]
 [ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://model/building/Variant A Round Window/Building Texture Round Window_Metallic.png" id="2_g0kb6"]
@@ -492,7 +492,7 @@ mesh = SubResource("ArrayMesh_1kqta")
 skeleton = NodePath("")
 
 [node name="Roof2" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -96.3256, 338.052, -100.144)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -96.3256, 338.052, -100.144)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_qy0i8")
 skeleton = NodePath("")
@@ -504,7 +504,7 @@ mesh = SubResource("ArrayMesh_4j73j")
 skeleton = NodePath("")
 
 [node name="Roof4" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 96.3083, 338.052, -100.144)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 96.3083, 338.052, -100.144)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_1dibe")
 skeleton = NodePath("")
