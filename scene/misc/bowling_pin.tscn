@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://uxvfsbplmkwq"]
+[gd_scene load_steps=10 format=4 uid="uid://uxvfsbplmkwq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -11,6 +11,9 @@ height = 0.5
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kff5x"]
 radius = 0.08
 height = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xi87"]
+albedo_color = Color(0.74558, 0.74558, 0.74558, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpabg"]
 
@@ -46,6 +49,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6lc2g")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_ds0ns"]
+top_radius = 0.06
+bottom_radius = 0.065
+height = 0.2
+radial_segments = 8
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n16n8"]
+albedo_color = Color(1, 0.0901961, 0.129412, 1)
+
 [node name="BowlingPin" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -64,5 +77,11 @@ shape = SubResource("CapsuleShape3D_kff5x")
 
 [node name="Pin_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7xi87")
 mesh = SubResource("ArrayMesh_0p4vo")
 skeleton = NodePath("")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.565105, 0)
+mesh = SubResource("CylinderMesh_ds0ns")
+material = SubResource("StandardMaterial3D_n16n8")
