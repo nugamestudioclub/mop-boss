@@ -10,7 +10,7 @@ var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Player movement parameters
 const walk_acceleration: float = 14 # meters / second^2
-var player_damp: float = 7 # meters / second^2
+var player_damp: float = 14 # meters / second^2
 const jump_velocity: float = 4.5 # meters / second
 
 var mouse_sensitivity := 0.001

@@ -598,7 +598,7 @@ shadow_mesh = SubResource("ArrayMesh_6b227")
 transform = Transform3D(0.0328084, 0, 0, 0, 0.0328084, 0, 0, 0, 0.0328084, 0.0642891, 0, 0)
 
 [node name="Walls" type="MeshInstance3D" parent="Building_Bottom_Block"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84087e-14, 163.334, -100.279)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 163.334, 0)
 material_override = SubResource("StandardMaterial3D_7ll53")
 mesh = SubResource("ArrayMesh_ek5o6")
 skeleton = NodePath("")
@@ -606,6 +606,7 @@ skeleton = NodePath("")
 [node name="Roof" type="Node3D" parent="Building_Bottom_Block"]
 
 [node name="Door" type="Node3D" parent="Building_Bottom_Block"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
 
 [node name="Door2" type="MeshInstance3D" parent="Building_Bottom_Block/Door"]
 transform = Transform3D(3.36296, 0, 0, 0, 7.03273, 0, 0, 0, 0.48511, -9.7458e-15, 41.2591, -7.37815)
@@ -634,30 +635,31 @@ skeleton = NodePath("")
 [node name="Concrete_Bottom" type="Node3D" parent="Building_Bottom_Block"]
 
 [node name="Concrete_Bottom1" type="MeshInstance3D" parent="Building_Bottom_Block/Concrete_Bottom"]
-transform = Transform3D(21.6, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.00317099, 4.00154, -190.179)
+transform = Transform3D(21.6, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.003, 4.002, -89.9)
 material_override = SubResource("StandardMaterial3D_1jgae")
 mesh = SubResource("ArrayMesh_nel7k")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom2" type="MeshInstance3D" parent="Building_Bottom_Block/Concrete_Bottom"]
-transform = Transform3D(0, 0, -2.37777, 0, 0.86447, 0, 21.746, 0, 0, -90.4642, 4.00154, -100.213)
+transform = Transform3D(0, 0, -2.37777, 0, 0.86447, 0, 21.746, 0, 0, -90.464, 4.002, 0)
 material_override = SubResource("StandardMaterial3D_1jgae")
 mesh = SubResource("ArrayMesh_c7dee")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom3" type="MeshInstance3D" parent="Building_Bottom_Block/Concrete_Bottom"]
-transform = Transform3D(0, 0, 2.37777, 0, 0.86447, 0, 21.746, 0, 0, 90.4642, 4.00154, -100.213)
+transform = Transform3D(0, 0, 2.37777, 0, 0.86447, 0, 21.746, 0, 0, 90.464, 4.002, 0)
 material_override = SubResource("StandardMaterial3D_1jgae")
 mesh = SubResource("ArrayMesh_3piix")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom4" type="MeshInstance3D" parent="Building_Bottom_Block/Concrete_Bottom"]
-transform = Transform3D(21.59, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.00316987, 4.00154, -10.1774)
+transform = Transform3D(21.59, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.003, 4.002, 90.102)
 material_override = SubResource("StandardMaterial3D_1jgae")
 mesh = SubResource("ArrayMesh_m6pmm")
 skeleton = NodePath("")
 
 [node name="Window_Concrete_Front" type="Node3D" parent="Building_Bottom_Block"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
 
 [node name="Concrete_WIndow_Bottom1" type="MeshInstance3D" parent="Building_Bottom_Block/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
@@ -672,7 +674,7 @@ mesh = SubResource("ArrayMesh_jsp4h")
 skeleton = NodePath("")
 
 [node name="Window_Concrete_Side" type="Node3D" parent="Building_Bottom_Block"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -99.6285, 0, -99.9582)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -99.629, 0, 0)
 
 [node name="Concrete_WIndow_Bottom12" type="MeshInstance3D" parent="Building_Bottom_Block/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
@@ -693,7 +695,7 @@ mesh = SubResource("ArrayMesh_gmg20")
 skeleton = NodePath("")
 
 [node name="Window_Concrete_Side1" type="Node3D" parent="Building_Bottom_Block"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 96.1555, 0, -99.9582)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 96.156, 0, 0)
 
 [node name="Concrete_WIndow_Bottom13" type="MeshInstance3D" parent="Building_Bottom_Block/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
