@@ -5,7 +5,7 @@ friction = 0.5
 bounce = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tgbd2"]
-height = 0.792069
+height = 0.502217
 radius = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ef24"]
