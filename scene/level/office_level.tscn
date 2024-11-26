@@ -78,4 +78,4 @@ transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.
 shadow_enabled = true
 
 [node name="ClassicPhone" parent="." instance=ExtResource("5_hsbu2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25756, -2)

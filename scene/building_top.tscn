@@ -1,8 +1,8 @@
 [gd_scene load_steps=34 format=4 uid="uid://cfr3ixqn46ve6"]
 
-[ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://model/building/Variant A Round Window/Building Texture Round Window_BaseColor.png" id="1_8bd8c"]
-[ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://model/building/Variant A Round Window/Building Texture Round Window_Metallic.png" id="2_g0kb6"]
-[ext_resource type="Texture2D" uid="uid://ch0n3qfdxhqtb" path="res://model/building/Variant A Round Window/Building Texture Round Window_Normal.png" id="3_in5p4"]
+[ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://mesh/building/Variant A Round Window/Building Texture Round Window_BaseColor.png" id="1_8bd8c"]
+[ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://mesh/building/Variant A Round Window/Building Texture Round Window_Metallic.png" id="2_g0kb6"]
+[ext_resource type="Texture2D" uid="uid://ch0n3qfdxhqtb" path="res://mesh/building/Variant A Round Window/Building Texture Round Window_Normal.png" id="3_in5p4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbr07"]
 albedo_texture = ExtResource("1_8bd8c")
@@ -474,99 +474,99 @@ shadow_mesh = SubResource("ArrayMesh_mk4yp")
 
 [node name="BuildingTop" type="Node3D"]
 
-[node name="Building_Top_Block" type="Node3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(0.033, 0, 0, 0, 0.033, 0, 0, 0, 0.033, 0, 0, 0)
 
-[node name="Walls" type="MeshInstance3D" parent="Building_Top_Block"]
+[node name="Walls" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.62, 0)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_f6pcl")
 skeleton = NodePath("")
 
-[node name="Roof" type="Node3D" parent="Building_Top_Block"]
+[node name="Roof" type="Node3D" parent="Mesh"]
 
-[node name="Roof1" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
+[node name="Roof1" type="MeshInstance3D" parent="Mesh/Roof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 151.098, 100.279)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_1kqta")
 skeleton = NodePath("")
 
-[node name="Roof2" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
+[node name="Roof2" type="MeshInstance3D" parent="Mesh/Roof"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -96.326, 151.098, 0)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_qy0i8")
 skeleton = NodePath("")
 
-[node name="Roof3" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
+[node name="Roof3" type="MeshInstance3D" parent="Mesh/Roof"]
 transform = Transform3D(-1, 0, -1.22461e-16, 0, 1, 0, 1.22461e-16, 0, -1, 0, 151.098, -97.381)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_4j73j")
 skeleton = NodePath("")
 
-[node name="Roof4" type="MeshInstance3D" parent="Building_Top_Block/Roof"]
+[node name="Roof4" type="MeshInstance3D" parent="Mesh/Roof"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 96.308, 151.098, 0)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_1dibe")
 skeleton = NodePath("")
 
-[node name="Window_Concrete_Front" type="Node3D" parent="Building_Top_Block"]
+[node name="Window_Concrete_Front" type="Node3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
 
-[node name="Concrete_Window_Top1" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Front"]
+[node name="Concrete_Window_Top1" type="MeshInstance3D" parent="Mesh/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_a1re0")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top2" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Front"]
+[node name="Concrete_Window_Top2" type="MeshInstance3D" parent="Mesh/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58007e-15, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_a7ec2")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top3" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Front"]
+[node name="Concrete_Window_Top3" type="MeshInstance3D" parent="Mesh/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_huh83")
 skeleton = NodePath("")
 
-[node name="Window_Concrete_Side" type="Node3D" parent="Building_Top_Block"]
+[node name="Window_Concrete_Side" type="Node3D" parent="Mesh"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -99.629, 0, 0)
 
-[node name="Concrete_Window_Top12" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side"]
+[node name="Concrete_Window_Top12" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 69.888, -1.77966)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_8n4e1")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top22" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side"]
+[node name="Concrete_Window_Top22" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58007e-15, 69.888, -1.77966)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_s7rv0")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top32" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side"]
+[node name="Concrete_Window_Top32" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 69.888, -1.77966)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_rod6n")
 skeleton = NodePath("")
 
-[node name="Window_Concrete_Side1" type="Node3D" parent="Building_Top_Block"]
+[node name="Window_Concrete_Side1" type="Node3D" parent="Mesh"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 96.156, 0, 0)
 
-[node name="Concrete_Window_Top13" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side1"]
+[node name="Concrete_Window_Top13" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_8wrj0")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top23" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side1"]
+[node name="Concrete_Window_Top23" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58007e-15, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_gfc4f")
 skeleton = NodePath("")
 
-[node name="Concrete_Window_Top33" type="MeshInstance3D" parent="Building_Top_Block/Window_Concrete_Side1"]
+[node name="Concrete_Window_Top33" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 69.888, -1.77967)
 material_override = SubResource("StandardMaterial3D_gbr07")
 mesh = SubResource("ArrayMesh_ufbuc")

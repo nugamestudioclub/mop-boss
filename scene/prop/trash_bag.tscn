@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://c7tlhfmkggm4n"]
 
-[ext_resource type="Texture2D" uid="uid://dctue4jvqafep" path="res://model/Garbage Bag/Trash Bag Textures/Garbage Bag_BaseColor.png" id="1_eo8t1"]
-[ext_resource type="Texture2D" uid="uid://cbh4qur5h4xf6" path="res://model/Garbage Bag/Trash Bag Textures/Garbage Bag_Normal.png" id="2_e7wbk"]
-[ext_resource type="Texture2D" uid="uid://5jmofyccbn17" path="res://model/Garbage Bag/Trash Bag Textures/Garbage Bag_Roughness.png" id="3_lvst1"]
+[ext_resource type="Texture2D" uid="uid://dctue4jvqafep" path="res://mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_BaseColor.png" id="1_eo8t1"]
+[ext_resource type="Texture2D" uid="uid://cbh4qur5h4xf6" path="res://mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Normal.png" id="2_e7wbk"]
+[ext_resource type="Texture2D" uid="uid://5jmofyccbn17" path="res://mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Roughness.png" id="3_lvst1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

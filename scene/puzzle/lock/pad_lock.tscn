@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=4 uid="uid://cn05psfb42ija"]
 
 [ext_resource type="Script" path="res://script/pad_lock.gd" id="1_e27pp"]
-[ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://model/locks/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
+[ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://mesh/locks/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
