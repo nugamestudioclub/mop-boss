@@ -9,9 +9,11 @@ func _input(event):
 		elif event.keycode == KEY_R:
 			start_level()
 
+
 func start_level():
 	$LevelGenerationManager.clear_level()
 	$LevelGenerationManager.generate_level()
+
 
 func end_level():
 	get_tree().change_scene_to_file("res://scene/level/office_level.tscn")

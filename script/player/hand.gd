@@ -12,6 +12,9 @@ var object_mass = null
 @onready var player: RigidBody3D = self.get_owner()
 @onready var camera_player: Camera3D = $"../PlayerPov"
 
+signal enter_hold_on_node(node: Node3D)
+signal drop_hold_on_node(node: Node3D)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -21,18 +24,19 @@ func _enter_hold(object):
 	var scale_object = hold_object.scale
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
 	object_mass = object.mass
+	enter_hold_on_node.emit(object)
 	print("Entering hold")
 	
 	#hold_object.freeze = false
 	hold_object.linear_damp = 3
 	var material = hold_object.physics_material_override
 	material.absorbent = !material.absorbent
-	return
 
 func _cancel_hold(object):
 	#hold_object.freeze = false
 	
 	print("Exiting hold")
+	drop_hold_on_node.emit(object)
 	var material = object.physics_material_override
 	material.absorbent = !material.absorbent
 	hold_object = null

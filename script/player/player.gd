@@ -106,6 +106,13 @@ func _process(_delta: float) -> void:
 	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
 		deg_to_rad(min_pitch),
 		deg_to_rad(max_pitch))
+	if hand.hold_object != null:
+		hand.hold_object.rotate_y(twist_input)
+		#pitch_pivot.rotate_x(pitch_input)
+		#pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
+			#deg_to_rad(min_pitch),
+			#deg_to_rad(max_pitch))
+	
 	twist_input = 0.0
 	pitch_input = 0.0
 	
