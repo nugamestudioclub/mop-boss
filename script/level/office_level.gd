@@ -9,12 +9,26 @@ func _ready() -> void:
 
 # Start office level
 func start_level():
+	G_game_state.fade_in_scene()
+	
 	# if the player came back from a cleanup
-	if total_evidences != null:
-		print(total_evidences)
-		print(cleaned_evidences)
+	var checkPerformance: bool = (total_evidences != null)
+	
+	print(total_evidences)
+	print(cleaned_evidences)
 	# TODO: create a ring / call to phone
+	call_player(checkPerformance)
 
 # End office level
 func end_level():
+	G_game_state.fade_out_scene()
+	
 	get_tree().change_scene_to_file("res://scene/level/alley_level.tscn")
+
+# Send the player a phone call from the boss
+func call_player(checkPerformance: bool):
+	if checkPerformance:
+		print("Voice lines based on performance")
+	
+	# New task voicelines
+	print("Voice lines for new cleanup job")
