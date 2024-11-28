@@ -13,7 +13,7 @@ func _ready():
 func spawn_random():
 	#if self.get_child_count() > 0: await(NodeHelper.destroy_children(self.get_children())) #self.get_child(0).free() #NodeHelper.destroy_children(self.get_children())
 	#var categories = self.get_children().filter(func(child): return child is Category)
-	var random = NodeHelper.random_child_weighted(self)
+	var random = G_node.random_child_weighted(self)
 	random = random.pick_node()
 	if random == null: return
 	

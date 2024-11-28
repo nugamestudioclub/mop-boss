@@ -40,7 +40,7 @@ const min_dot_product =  cos(deg_to_rad(max_jump_angle))
 """Checks whether the player is on the floor or falling"""
 func is_on_floor():
 	# Method #1, shoot a raycast right under player, check if there is an object under
-	var raycast_result = Raycast.raycast_length(position, Vector3.DOWN, character_height/2, [self])
+	var raycast_result = G_raycast.raycast_length(position, Vector3.DOWN, character_height/2, [self])
 	return raycast_result.has("collider")
 	
 	# Method #2, get normals of objects player is touching (check if it's flat)

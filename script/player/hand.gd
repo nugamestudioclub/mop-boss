@@ -19,7 +19,7 @@ signal drop_hold_on_node(node: Node3D)
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _enter_hold(object):
+func _start_hold(object):
 	hold_object = object
 	var scale_object = hold_object.scale
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
@@ -32,7 +32,7 @@ func _enter_hold(object):
 	var material = hold_object.physics_material_override
 	material.absorbent = !material.absorbent
 
-func _cancel_hold(object):
+func _stop_hold(object):
 	#hold_object.freeze = false
 	
 	print("Exiting hold")
@@ -53,20 +53,20 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed: return
 		
-		var target = Raycast.get_mouse_target(camera_player)
+		var target = G_raycast.get_mouse_target(camera_player)
 		
 		if event.button_index == hold_button and player.can_move:
 			if hold_object != null:
-				_cancel_hold(hold_object)
+				_stop_hold(hold_object)
 			elif _can_hold(target):
-				_enter_hold(target)
+				_start_hold(target)
 				
 	elif Input.is_action_just_pressed("interact"):
 		if hold_object != null:
 			var throw_strength = hold_object.global_position  - player.global_position
 			
 			hold_object.apply_central_impulse(throw_strength * object_mass * 8)
-			_cancel_hold(hold_object)
+			_stop_hold(hold_object)
 
 
 #func shapecast(origin, end, RAYLENGTH):
@@ -92,7 +92,7 @@ func _physics_process(delta):
 		var rotation_hand = self.global_rotation
 		
 		# prevent the hand from phasing through walls
-		var raycast_hand_result = Raycast.raycast_mouse(camera_player, (2 + object_radius), [player, hold_object])
+		var raycast_hand_result = G_raycast.raycast_mouse(camera_player, (2 + object_radius), [player, hold_object])
 		
 		if raycast_hand_result.has("position"):
 			var barrier_intersect = raycast_hand_result.position
@@ -106,7 +106,7 @@ func _physics_process(delta):
 		
 		# prevent object from trying to phase through wall
 		
-		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand, [hold_object]) #delta_origin + object_radius
+		var raycast_object_result = G_raycast.raycast_to(origin_object, origin_hand, [hold_object]) #delta_origin + object_radius
 		#print(raycast_result)
 		var move_factor = 2
 		if raycast_object_result.has("position"): #and object_colliders > 0:

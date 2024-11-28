@@ -1,34 +1,22 @@
-extends Node
+extends Node3D
 
-""" Gets children, children of children, etc """
-func get_descendants(in_node: Node, array: Array[Node] = []) -> Array[Node]:
-	#array.push_back(in_node)
-	for child in in_node.get_children():
-		array.push_back(child)
-		array = get_descendants(child, array)
-	return array
-
-""" Destroys the children """
-func destroy_children(children):
-	for child in children:
-		print("begone ", child)
-		child.free()
-
-""" Gets total weight of all children """
-func total_weight(node: Node):
-	return node.get_children().filter(func(child): return child is Category).reduce(func(acc, child): return child.weight + acc, 0)
-
-""" Gets a random child based on all children weights """
-func random_child_weighted(node: Node) -> Node:
-	var pick = randi_range(1, total_weight(node))
-	var sum = 0
-	var sorted_children = node.get_children().filter(func(child): return child is Category)
-	sorted_children.sort_custom(func(child_a, child_b): return child_b.weight >= child_a.weight)
-	for child in sorted_children:
-		sum += child.weight
-		if sum >= pick:
-			return child
-	return null
+# TODO: Fix this function because I hate you godot why not global scale?
+"""Scales the inputed node (and any children) to fit within an area (bounds)"""
+func scale_to_fit(node: Node3D, bounds: float): #TODO: change bounds to vector3
+	var furthest_end := Vector3.ZERO
+	var furthest_start := Vector3.ZERO
+	for mesh in node.get_children():
+		if not mesh is VisualInstance3D: continue
+		var aabb = mesh.get_aabb()
+		aabb.position *= mesh.scale
+		aabb.end *= mesh.scale
+		if aabb.end.length() > furthest_end.length():
+			furthest_end = aabb.end
+		if aabb.position.length() > furthest_start.length():
+			furthest_start = aabb.position
+	var biggest_axis = AABB(furthest_start, furthest_end - furthest_start).get_longest_axis_size()
+	#node.scale = node.scale.normalized() * bounds / biggest_axis
+	print(biggest_axis)
 
 """ Rotates an object around a coordinate point (on y axis)"""
 #func rotate_around_local_x(object: Node, world_position: Vector3, angle_degrees: float):
@@ -85,7 +73,6 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 
 	object.global_transform = transform
 
-
 #""" Rotates an object around a coordinate point (on y axis)"""
 #func rotate_around_point(object: Node, world_position: Vector3, angle_degrees: float):
 	## Convert the angle from degrees to radians
@@ -104,7 +91,3 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 	## Calculate the new position in world space
 	#var new_position = rotated_position + world_position
 	#object.global_transform.origin = new_position
-
-
-func has_variable(variableName: String, node: Node):
-	return (variableName in node)

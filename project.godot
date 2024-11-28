@@ -17,9 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Raycast="*res://script/global/raycast.gd"
-NodeHelper="*res://script/global/node_helper.gd"
-LockHelpers="*res://script/global/lock_helpers.gd"
+G_raycast="*res://script/global/G_raycast.gd"
+G_node="*res://script/global/G_node.gd"
+G_lock="*res://script/global/G_lock.gd"
+G_node3d="*res://script/global/G_node3d.gd"
+G_highlight="*res://script/global/G_highlight.gd"
 
 [global_group]
 

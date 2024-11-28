@@ -3,7 +3,7 @@ extends Puzzle
 var unlocked = false
 var dumpster = null
 
-var combolock_variants: Array = LockHelpers.get_lock_variants("combo_lock_5_digits")
+var combolock_variants: Array = G_lock.get_lock_variants("combo_lock_5_digits")
 var chosen_variant: Dictionary
 var lock_definitions: Dictionary = preload("res://asset/json/puzzle/locks.json").data["definitions"]
 
@@ -31,25 +31,25 @@ func on_enter_level() -> void:
 	material.roughness = 0.3
 	material.metallic = 0.6
 	# TODO: overriding textures, problematic
-	for child in NodeHelper.get_descendants(self):
+	for child in G_node.get_descendants(self):
 		if child is MeshInstance3D:
 			child.material_override = material
 	
-	correct_combo = LockHelpers.randomize_combo(chosen_variant, 5, FACES)
+	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
 
 func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 
 	# Spin the dial based on input type
 	var dial_delta = RADS_PER_TURN
-	var spin_direction = LockHelpers.get_input_axis("rotate_view_down", "rotate_view_up")
+	var spin_direction = G_lock.get_input_axis("rotate_view_down", "rotate_view_up")
 	dial_delta *= spin_direction
 
 	# Spin the dial if there is one
 	if collision_object == $Dials:
 		$Dials.get_child(shape_idx).rotate_z(dial_delta)
 	
-		current_combo[shape_idx] = LockHelpers.update_combo(current_combo, shape_idx, spin_direction, FACES)
+		current_combo[shape_idx] = G_lock.update_combo(current_combo, shape_idx, spin_direction, FACES)
 	
 	# Unlock if not already
 	if not unlocked and is_solved():
@@ -57,7 +57,7 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		
 		#combo_rod.rotate_y(PI)
 		var rotate_vector = Vector3(0, 180, 0)
-		NodeHelper.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
+		G_node.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 		collision_rod.position += Vector3(0, 0.1, 0)
 		
 		anchor_point.queue_free()

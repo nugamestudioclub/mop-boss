@@ -6,6 +6,6 @@ extends Node
 
 
 func pick_node() -> PackedScene:
-	var child = NodeHelper.random_child_weighted(self)
+	var child = G_node.random_child_weighted(self)
 	if child == null or child.scene == null: return null
 	return child.scene
