@@ -24,4 +24,4 @@ func remove_highlight(node: Node3D):
 
 """Adds a highlight to an object"""
 func add_highlight(node: Node3D): 
-	resize_outline(node, 1.05)
+	resize_outline(node, 1.025)
