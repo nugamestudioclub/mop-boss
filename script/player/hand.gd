@@ -11,6 +11,7 @@ var object_mass = null
 
 @onready var player: RigidBody3D = self.get_owner()
 @onready var camera_player: Camera3D = $"../PlayerPov"
+@onready var rotate_joint = $Generic6DOFJoint3D
 
 signal enter_hold_on_node(node: Node3D)
 signal drop_hold_on_node(node: Node3D)
@@ -21,22 +22,24 @@ func _ready() -> void:
 
 func _start_hold(object):
 	hold_object = object
+	
+	rotate_joint.set_node_b(hold_object.get_path())
+	
 	var scale_object = hold_object.scale
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
 	object_mass = object.mass
 	enter_hold_on_node.emit(object)
 	print("Entering hold")
 	
-	#hold_object.freeze = false
 	hold_object.linear_damp = 3
 	var material = hold_object.physics_material_override
 	material.absorbent = !material.absorbent
 
 func _stop_hold(object):
-	#hold_object.freeze = false
-	
 	print("Exiting hold")
 	drop_hold_on_node.emit(object)
+	rotate_joint.set_node_b(rotate_joint.get_path())
+	
 	var material = object.physics_material_override
 	material.absorbent = !material.absorbent
 	hold_object = null
@@ -68,22 +71,6 @@ func _input(event):
 			hold_object.apply_central_impulse(throw_strength * object_mass * 8)
 			_stop_hold(hold_object)
 
-
-#func shapecast(origin, end, RAYLENGTH):
-	#var boxShape3D = new BoxShape3D{
-		#Size = new Vector3(2, 1, 3.5f)
-	#}     
-	#var physicsParams = new PhysicsShapeQueryParameters3D{
-		#ShapeRid = boxShape3D.GetRid(),
-		#Transform = Transform
-	#}
-	#var spaceState = GetWorld3D().DirectSpaceState;
-	#var results = spaceState.IntersectShape(physicsParams)
-	#if(results.Count > 0)
-		#var collider = results[0]["collider"].AsGodotObject()
-		#if(collider is StaticBody3D staticBody3D){
-			#GD.Print(staticBody3D.Position)
-
 func _physics_process(delta):
 	if hold_object != null:
 		var origin_object = hold_object.global_transform.origin
@@ -112,10 +99,7 @@ func _physics_process(delta):
 		if raycast_object_result.has("position"): #and object_colliders > 0:
 			#print("GO TO PLAYER")
 			origin_hand = camera_player.global_transform.origin
-			
+		
 		var delta_origin = (origin_hand - origin_object)
 		
-		var delta_rotation = rotation_hand - rotation_object
-		print(delta_rotation)
 		hold_object.set_linear_velocity(delta_origin * 240 * delta * move_factor)
-		hold_object.set_angular_velocity(delta_rotation * delta * 100)

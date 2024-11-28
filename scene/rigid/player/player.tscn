@@ -35,10 +35,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 [node name="PlayerPov" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
-[node name="Hand" type="Node3D" parent="TwistPivot/PitchPivot"]
+[node name="Hand" type="StaticBody3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 script = ExtResource("3_4db25")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_1qfc8")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="TwistPivot/PitchPivot/Hand"]
+node_a = NodePath("..")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+angular_limit_x/softness = 0.1
+angular_limit_x/force_limit = 1.0
+angular_limit_x/erp = 0.1
+angular_limit_y/softness = 0.1
+angular_limit_y/force_limit = 1.0
+angular_limit_y/erp = 0.1
+angular_limit_z/softness = 0.1
+angular_limit_z/force_limit = 1.0
+angular_limit_z/erp = 0.1
