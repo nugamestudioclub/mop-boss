@@ -23,6 +23,7 @@ var inspected_original_freeze: Dictionary = {}
 @onready var inspector_world = inspector_gui.get_node("SubViewportContainer/Viewport/World")
 @onready var inspector_camera = inspector_world.get_node("Camera3D")
 
+"""Opens the inspect viewport"""
 func _enter_inspect_mode():
 	# Player
 	Input.set_mouse_mode(inspect_mouse_mode)
@@ -32,6 +33,7 @@ func _enter_inspect_mode():
 	inspector_gui.show()
 	inspector_camera.fov = DEFAULT_VIEW_FOV
 
+"""Moves object to inspect view saving previous state"""
 func _start_inspecting(node: Node3D):
 	# Player
 	Input.set_mouse_mode(inspect_mouse_mode)
@@ -53,10 +55,10 @@ func _start_inspecting(node: Node3D):
 		node.active_tool = player.get_node("TwistPivot/PitchPivot/Hand")
 	
 	# Tell object its inspected
-	if node.has_method("_enter_inspect_mode()"):
-		node._enter_inspect_mode()
+	if node.has_method("enter_inspect_mode"):
+		node.enter_inspect_mode()
 
-"""Closes the inspection window, puts object back"""
+"""Closes the inspect viewport, removes all objects"""
 func _exit_inspect_mode():
 	# Player
 	Input.set_mouse_mode(default_mouse_mode)
@@ -67,18 +69,17 @@ func _exit_inspect_mode():
 	
 	# Remove all nodes from inspector
 	for node in inspector_world.get_children():
-		print(inspector_world.get_children())
 		if node.is_in_group(inspect_group):
 			_stop_inspecting(node)
-			print(node.name)
 
+"""Moves object from inspect window into previous state"""
 func _stop_inspecting(node: Node3D):
 	# Load previous state
 	_load_state(node)
 	
 	# Tell object its not inspected
-	if node.has_method("_exit_inspect_mode()"):
-		node._exit_inspect_mode()
+	if node.has_method("exit_inspect_mode"):
+		node.exit_inspect_mode()
 
 """Checks if an object is inspectable"""
 func _is_inspectable(object):

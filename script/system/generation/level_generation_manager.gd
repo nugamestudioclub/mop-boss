@@ -41,15 +41,13 @@ func get_nodes_in_all_groups(list_groups: Array[String]) -> Array:
 		)
 	return result
 
-func _ready() -> void:
-	get_level_requirements()
-	generate_level()
-
 func clear_level():
 	for spawner in all_group(full_tag):
 		spawner.despawn()
 
 func generate_level():
+	get_level_requirements()
+	
 	for category in required_categories:
 		for spawner in all_group(empty_tag):
 			if _spawner_has_category(spawner, category.name):

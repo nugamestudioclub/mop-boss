@@ -22,6 +22,7 @@ G_node="*res://script/global/G_node.gd"
 G_lock="*res://script/global/G_lock.gd"
 G_node3d="*res://script/global/G_node3d.gd"
 G_highlight="*res://script/global/G_highlight.gd"
+G_game_state="*res://script/global/G_game_state.gd"
 
 [global_group]
 

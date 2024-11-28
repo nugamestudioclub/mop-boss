@@ -9,11 +9,11 @@ const MOUSE_SENSITIVITY := 0.5
 const DEG_PER_PRESS := 3
 
 # Object has entered inspect mode
-func _enter_inspect_mode():
+func enter_inspect_mode():
 	is_inspected = true
 
 # Object has exited inspect mode
-func _exit_inspect_mode():
+func exit_inspect_mode():
 	is_inspected = false
 
 # Player created an input
