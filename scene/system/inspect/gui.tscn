@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj0fuwsbur2y0"]
+[gd_scene load_steps=8 format=3 uid="uid://dj0fuwsbur2y0"]
 
 [ext_resource type="Script" path="res://script/system/inspect/canvas_layer.gd" id="1_a7vqq"]
 [ext_resource type="Script" path="res://script/system/inspect/sub_viewport.gd" id="2_hs7b0"]
 [ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://scene/system/inspect/inspector_view.tscn" id="3_1tuoq"]
-[ext_resource type="FontFile" uid="uid://bn5mm6wpu4cc3" path="res://asset/font/Roboto-Black.ttf" id="3_h0t1k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -23,19 +22,6 @@ environment = SubResource("Environment_nowte")
 
 [node name="InspectLayer" type="CanvasLayer"]
 script = ExtResource("1_a7vqq")
-
-[node name="TempInstructionsLabel" type="Label" parent="."]
-offset_right = 318.0
-offset_bottom = 49.0
-text = "Click on a lock or donut to inspect it
-Press R to respawn the objects with new colors
-Some will always be a donut or always a lock, and others can either by a donut or a lock"
-
-[node name="fps" type="Label" parent="."]
-offset_top = 80.0
-offset_right = 318.0
-offset_bottom = 129.0
-text = "100"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -70,7 +56,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+[node name="Viewport" type="SubViewport" parent="Control/SubViewportContainer"]
 world_3d = SubResource("World3D_kosc6")
 transparent_bg = true
 handle_input_locally = false
@@ -79,21 +65,4 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 script = ExtResource("2_hs7b0")
 
-[node name="View" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("3_1tuoq")]
-
-[node name="CloseButton" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -99.0
-offset_bottom = 96.0
-grow_horizontal = 0
-mouse_filter = 0
-theme_override_fonts/font = ExtResource("3_h0t1k")
-theme_override_font_sizes/font_size = 48
-text = "x"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="gui_input" from="Control/CloseButton" to="." method="_on_close_button_gui_input"]
+[node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("3_1tuoq")]

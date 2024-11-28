@@ -23,9 +23,9 @@ var insepcted_freeze_original = null
 @onready var player: RigidBody3D = $"../Player"
 @onready var camera_player = player.get_node("TwistPivot/PitchPivot/PlayerPov")
 @onready var inspector_gui = $Control
-@onready var inspector_view = $Control/SubViewportContainer/SubViewport/View
-@onready var inspector_camera = inspector_view.get_node("Camera3D")
-@onready var inspected_node_holder = inspector_view.get_node("InspectedNode")
+@onready var inspector_world = $Control/SubViewportContainer/Viewport/World
+@onready var inspector_camera = inspector_world.get_node("Camera3D")
+@onready var inspected_node_holder = inspector_world.get_node("InspectedNode")
 
 
 signal toggle_inspect(node: Node3D)
@@ -54,9 +54,11 @@ func _enter_inspect():
 	inspector_gui.show()
 	inspected_node = target
 	_move_to_inspect_view(target)
+	if inspected_node.has_method("_enter_inspect_mode()"):
+		inspected_node._enter_inspect_mode()
 
 """Closes the inspection window, puts object back"""
-func _cancel_inspect():
+func _exit_inspect():
 	Input.set_mouse_mode(default_mouse_mode)
 	player.can_move = true
 	$Control.hide()
@@ -67,6 +69,8 @@ func _cancel_inspect():
 	
 	inspected_node.freeze = insepcted_freeze_original
 	
+	if inspected_node.has_method("_enter_inspect_mode()"):
+		inspected_node._exit_inspect_mode()
 	inspected_node = null
 
 """Sets the outline around an object based on size"""
@@ -137,7 +141,7 @@ func _input(event):
 
 	elif Input.is_action_just_pressed("ui_cancel"):
 		if inspector_gui.visible:
-			_cancel_inspect()
+			_exit_inspect()
 	
 	elif Input.is_action_just_pressed("zoom_in"):
 		inspector_camera.fov = clamp(inspector_camera.fov - 5, 5, DEFAULT_VIEW_FOV)
@@ -147,12 +151,4 @@ func _input(event):
 	elif event is InputEventKey:
 		if event.pressed: return
 		
-		# Support for basic key presses here in the future
-
-func _process(delta: float) -> void:
-	$fps.text = "FPS: " + str(Engine.get_frames_per_second()) + "   1/delta: " + str(round(1/delta))
-
-func _on_close_button_gui_input(event):
-	if event is InputEventMouseButton:
-		if not event.pressed:
-			_cancel_inspect()
+	# TODO: Support for basic key presses here in the future
