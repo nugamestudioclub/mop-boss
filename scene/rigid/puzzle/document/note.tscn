@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5jwmdf7s7xg2"]
+
+[ext_resource type="Script" path="res://script/puzzle/note/note_paper.gd" id="1_fvhw8"]
+[ext_resource type="Texture2D" uid="uid://btpn2feqe0j3f" path="res://asset/image/note.png" id="2_e3cin"]
+[ext_resource type="FontFile" uid="uid://bvpi8agp3sir0" path="res://asset/font/CourierPrime-Regular.ttf" id="3_k685s"]
+[ext_resource type="Texture2D" uid="uid://biqpl53erb20s" path="res://asset/image/crossout.png" id="4_haep4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgplj"]
+size = Vector3(0.851394, 0.01, 0.7888)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lmk8"]
+transparency = 1
+albedo_texture = ExtResource("2_e3cin")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l3ind"]
+material = SubResource("StandardMaterial3D_3lmk8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72eis"]
+cull_mode = 1
+albedo_texture = ExtResource("2_e3cin")
+
+[sub_resource type="QuadMesh" id="QuadMesh_212kk"]
+material = SubResource("StandardMaterial3D_72eis")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
+size = Vector3(0.816956, 0.0334778, 0.816772)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b8hlg"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr0ds"]
+transparency = 1
+albedo_texture = ExtResource("4_haep4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lggv1"]
+material = SubResource("StandardMaterial3D_wr0ds")
+size = Vector2(0.05, 0.05)
+center_offset = Vector3(0.025, 0, 0)
+
+[node name="Note" type="RigidBody3D" groups=["inspectable"]]
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_80xyh")
+freeze = true
+continuous_cd = true
+max_contacts_reported = 1
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_fvhw8")
+
+[node name="Actions" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Actions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0806968, 0.06, 0.0643999)
+shape = SubResource("BoxShape3D_vgplj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_l3ind")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_212kk")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D2"]
+transform = Transform3D(0.27, 0, 0, 0, -0.27, -2.36041e-08, 0, 2.36041e-08, -0.27, -0.339036, -0.318972, -0.02)
+double_sided = false
+render_priority = 1
+modulate = Color(0, 0, 0, 0.964706)
+text = "Dear Tony,
+I deeply regret my actions
+I will improve my reactions
+My life is like a rose
+I need to improve my prose
+I hid the body under the stump
+And I accidently left on the oil pump
+Love,
+Don Scarpelli"
+font = ExtResource("3_k685s")
+font_size = 24
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+line_spacing = 33.025
+width = 539.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
+shape = SubResource("BoxShape3D_kheio")
+
+[node name="Test" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_b8hlg")
+
+[node name="Crossout" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.340368, 0.0317333, -0.304388)
+
+[node name="Image" type="MeshInstance3D" parent="Crossout"]
+transform = Transform3D(2.11, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_lggv1")
+skeleton = NodePath("../..")
+
+[node name="PreviouslyCrossedOut" type="Node3D" parent="."]
+
+[connection signal="mouse_exited" from="Actions" to="." method="_on_actions_mouse_exited"]
