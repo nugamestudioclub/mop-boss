@@ -22,8 +22,8 @@
 [ext_resource type="FontFile" uid="uid://bmsxjry3su0rr" path="res://resource/font/Urban Starblues Demo.otf" id="17_smqsb"]
 [ext_resource type="PackedScene" uid="uid://dq82iqjy5fsw0" path="res://scene/building_middle.tscn" id="18_i0hb8"]
 [ext_resource type="PackedScene" uid="uid://drwrvxea14kdc" path="res://scene/building_bottom.tscn" id="19_ml08j"]
-[ext_resource type="PackedScene" path="res://scene/prop/trash_bag.tscn" id="22_ivc8r"]
-[ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/tool/black_light.tscn" id="23_qpe6i"]
+[ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/prop/trash_bag.tscn" id="22_ivc8r"]
+[ext_resource type="PackedScene" uid="uid://cunusd0yusk6q" path="res://scene/tool/black_light.tscn" id="23_qpe6i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)

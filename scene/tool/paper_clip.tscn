@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bpwyxaec5rtng"]
+[gd_scene load_steps=6 format=4 uid="uid://do4lmctebur1x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

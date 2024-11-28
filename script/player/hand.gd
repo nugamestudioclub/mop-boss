@@ -87,7 +87,9 @@ func _input(event):
 func _physics_process(delta):
 	if hold_object != null:
 		var origin_object = hold_object.global_transform.origin
+		var rotation_object = hold_object.global_rotation
 		var origin_hand = self.global_transform.origin
+		var rotation_hand = self.global_rotation
 		
 		# prevent the hand from phasing through walls
 		var raycast_hand_result = Raycast.raycast_mouse(camera_player, (2 + object_radius), [player, hold_object])
@@ -106,10 +108,14 @@ func _physics_process(delta):
 		
 		var raycast_object_result = Raycast.raycast_to(origin_object, origin_hand, [hold_object]) #delta_origin + object_radius
 		#print(raycast_result)
-		var move_factor = 1
+		var move_factor = 2
 		if raycast_object_result.has("position"): #and object_colliders > 0:
 			#print("GO TO PLAYER")
 			origin_hand = camera_player.global_transform.origin
 			
 		var delta_origin = (origin_hand - origin_object)
+		
+		var delta_rotation = rotation_hand - rotation_object
+		print(delta_rotation)
 		hold_object.set_linear_velocity(delta_origin * 240 * delta * move_factor)
+		hold_object.set_angular_velocity(delta_rotation * delta * 100)
