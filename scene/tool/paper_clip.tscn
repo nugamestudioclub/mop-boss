@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://do4lmctebur1x"]
+[gd_scene load_steps=7 format=4 uid="uid://bpwyxaec5rtng"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
 bounce = 0.5
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_o4st2"]
-height = 1.97259
-radius = 0.12
+[sub_resource type="BoxShape3D" id="BoxShape3D_81nqg"]
+size = Vector3(0.049, 0.38, 0.04)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agcgg"]
+albedo_color = Color(0.65834, 0.65834, 0.65834, 1)
+metallic = 0.74
+roughness = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjamj"]
 
@@ -51,12 +55,13 @@ linear_damp = 1.0
 angular_damp = 1.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.8944, -0.0844453, 0)
-shape = SubResource("CylinderShape3D_o4st2")
+transform = Transform3D(-4.37114e-08, -1, -1.44939e-22, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.000908554, 0.00878292, -0.00188205)
+shape = SubResource("BoxShape3D_81nqg")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.475815, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, -0.084, 0.002, 0.017)
 
 [node name="Circle" type="MeshInstance3D" parent="Mesh"]
+material_override = SubResource("StandardMaterial3D_agcgg")
 mesh = SubResource("ArrayMesh_blqdt")
 skeleton = NodePath("")

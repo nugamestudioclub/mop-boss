@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=4 uid="uid://clqoe4uvw2yq3"]
+[gd_scene load_steps=10 format=4 uid="uid://clqoe4uvw2yq3"]
+
+[ext_resource type="Script" path="res://scene/tool/chemical_bottle.gd" id="1_3un6c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
 bounce = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tgbd2"]
-height = 0.502217
+height = 0.737753
 radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkhhx"]
+resource_local_to_scene = true
+albedo_color = Color(0.565067, 0.860763, 0.506227, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ef24"]
 resource_name = "standardSurface1"
@@ -92,16 +98,18 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_3un6c")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.329225, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.370612, 0)
 shape = SubResource("CylinderShape3D_tgbd2")
 
 [node name="Bottle" type="Node3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.314673, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.382219, 0)
 
 [node name="Bottle_Body" type="MeshInstance3D" parent="Bottle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57195e-05, -0.000719887, 1.11022e-18)
+material_override = SubResource("StandardMaterial3D_dkhhx")
 mesh = SubResource("ArrayMesh_fpfxm")
 skeleton = NodePath("")
 

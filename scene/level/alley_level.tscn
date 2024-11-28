@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=37 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="Script" path="res://script/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -21,9 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://cfr3ixqn46ve6" path="res://scene/building_top.tscn" id="17_cs0rt"]
 [ext_resource type="FontFile" uid="uid://bmsxjry3su0rr" path="res://resource/font/Urban Starblues Demo.otf" id="17_smqsb"]
 [ext_resource type="PackedScene" uid="uid://dq82iqjy5fsw0" path="res://scene/building_middle.tscn" id="18_i0hb8"]
+[ext_resource type="PackedScene" uid="uid://clqoe4uvw2yq3" path="res://scene/tool/chemical_bottle.tscn" id="18_jc5e5"]
 [ext_resource type="PackedScene" uid="uid://drwrvxea14kdc" path="res://scene/building_bottom.tscn" id="19_ml08j"]
-[ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/prop/trash_bag.tscn" id="22_ivc8r"]
-[ext_resource type="PackedScene" uid="uid://cunusd0yusk6q" path="res://scene/tool/black_light.tscn" id="23_qpe6i"]
+[ext_resource type="PackedScene" uid="uid://bpwyxaec5rtng" path="res://scene/tool/paper_clip.tscn" id="19_mmnbt"]
+[ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/tool/hammer.tscn" id="20_ev0ie"]
+[ext_resource type="PackedScene" path="res://scene/prop/trash_bag.tscn" id="22_ivc8r"]
+[ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/tool/black_light.tscn" id="23_qpe6i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
@@ -127,7 +130,7 @@ size = Vector3(45, 11, 1)
 transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 7.23314, 1.20201, 3.17469)
 
 [node name="BlackLight" parent="Props" instance=ExtResource("23_qpe6i")]
-transform = Transform3D(0.156434, -0.987688, 0, 0.987688, 0.156434, 0, 0, 0, 1, 7.159, 1.083, 3.94)
+transform = Transform3D(0.156434, -0.987688, 0, 0.987688, 0.156434, 0, 0, 0, 1, 7.159, 1.148, 3.873)
 
 [node name="Bowling" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0, -3.49466)
@@ -190,9 +193,12 @@ transform = Transform3D(0.999584, 0, 0.0288289, 0, 1, 0, -0.0288289, 0, 0.999584
 transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 6.39771, -0.000904262, 3.63486)
 
 [node name="NodeSpawner" parent="Props/Desks/Desk" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.0208614, 0.000383758, -0.198908, 0.000830049, 0.199998, 0.000298805, 0.198907, -0.000794356, -0.0208628, 0.0186387, 0.214818, -0.0653242)
+transform = Transform3D(-0.0208614, 0.000383758, -0.198908, 0.000830049, 0.199998, 0.000298805, 0.198907, -0.000794356, -0.0208628, 0.029, 0.215, -0.15)
 
 [node name="DonutCategory" parent="Props/Desks/Desk/NodeSpawner" instance=ExtResource("7_555ks")]
+
+[node name="Desk7" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
+transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 8.70389, -0.000904262, 3.63486)
 
 [node name="Desk2" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
 transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.00831079, 0.318192, 0.729703, 0.00787449, -5.2759)
@@ -235,6 +241,27 @@ mesh = SubResource("PlaneMesh_amngm")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/TempFence"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 21.2616, 0.821846, 7.51938)
 mesh = SubResource("PlaneMesh_amngm")
+
+[node name="ChemicalBottle" parent="Props" instance=ExtResource("18_jc5e5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.278, 1.10075, 3.302)
+
+[node name="ChemicalBottle2" parent="Props" instance=ExtResource("18_jc5e5")]
+transform = Transform3D(0.937889, 0, -0.346936, 0, 1, 0, 0.346936, 0, 0.937889, 9.2134, 1.10076, 3.72448)
+contents = 1
+
+[node name="ChemicalBottle3" parent="Props" instance=ExtResource("18_jc5e5")]
+transform = Transform3D(0.852778, 0.0140033, 0.522085, -0.0128116, 0.999901, -0.00589268, -0.522116, -0.0016636, 0.852873, 8.47585, 1.10076, 3.72448)
+contents = 2
+
+[node name="ChemicalBottle4" parent="Props" instance=ExtResource("18_jc5e5")]
+transform = Transform3D(-0.0115557, 0.00574471, 0.999917, -0.0128116, 0.999901, -0.00589268, -0.999851, -0.0128786, -0.011481, 8.476, 1.10075, 3.316)
+contents = 3
+
+[node name="PaperClip" parent="Props" instance=ExtResource("19_mmnbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.886, 1.208, 3.27)
+
+[node name="Hammer" parent="Props" instance=ExtResource("20_ev0ie")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.322, 1.101, 3.515)
 
 [node name="LockCodes" type="Node3D" parent="."]
 script = ExtResource("13_h5l1k")

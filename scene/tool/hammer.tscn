@@ -1,16 +1,19 @@
-[gd_scene load_steps=9 format=4 uid="uid://btke687tawn11"]
+[gd_scene load_steps=11 format=4 uid="uid://dmlv4mrgrwdpf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
 bounce = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0lqyw"]
-height = 0.42
-radius = 0.03
+height = 0.664573
+radius = 0.045
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0bqs5"]
 height = 0.17474
 radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gok83"]
+albedo_color = Color(0.20871, 0.20871, 0.20871, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cpb7"]
 resource_name = "standardSurface1"
@@ -55,6 +58,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x0hp5")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8f4"]
+albedo_color = Color(0.621498, 0.227267, 0.148358, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_6c23x"]
 _surfaces = [{
 "aabb": AABB(-0.0238042, -0.24111, -0.0296723, 0.0476083, 0.417938, 0.0593446),
@@ -98,22 +104,24 @@ linear_damp = 1.0
 angular_damp = 1.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.195666, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294, 0)
 shape = SubResource("CylinderShape3D_0lqyw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.464389, 0.012)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.696, 0.018)
 shape = SubResource("CylinderShape3D_0bqs5")
 
 [node name="Hammer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452147, 0.0236554)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.678, 0.0559516)
 
 [node name="Hammer_Head" type="MeshInstance3D" parent="Hammer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00650413, -0.0151272)
+material_override = SubResource("StandardMaterial3D_gok83")
 mesh = SubResource("ArrayMesh_1jhnn")
 skeleton = NodePath("")
 
 [node name="Hammer_wood_handle" type="MeshInstance3D" parent="Hammer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238405, -0.0385399)
+material_override = SubResource("StandardMaterial3D_kj8f4")
 mesh = SubResource("ArrayMesh_df2xh")
 skeleton = NodePath("")
