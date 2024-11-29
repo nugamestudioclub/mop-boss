@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpmcwnggfd3dr"]
 
-[ext_resource type="Script" path="res://script/system/category/object_category.gd" id="1_kmt3u"]
-[ext_resource type="Script" path="res://script/system/category/category_item.gd" id="2_tmpli"]
+[ext_resource type="Script" path="res://script/class/category/object_category.gd" id="1_kmt3u"]
+[ext_resource type="Script" path="res://script/class/category/category_item.gd" id="2_tmpli"]
 [ext_resource type="PackedScene" uid="uid://dhp510coi32lj" path="res://scene/rigid/evidence/donut/donut_frosted.tscn" id="3_xiujg"]
 [ext_resource type="PackedScene" uid="uid://beo1kydw854me" path="res://scene/rigid/evidence/donut/donut_sprinkles.tscn" id="4_2o5ui"]
 [ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/rigid/evidence/donut/donut_boston.tscn" id="6_gi1wj"]

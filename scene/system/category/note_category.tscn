@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fp31eix4h4je"]
 
-[ext_resource type="Script" path="res://script/system/category/object_category.gd" id="1_sve6v"]
-[ext_resource type="Script" path="res://script/system/category/category_item.gd" id="2_q0w5r"]
+[ext_resource type="Script" path="res://script/class/category/object_category.gd" id="1_sve6v"]
+[ext_resource type="Script" path="res://script/class/category/category_item.gd" id="2_q0w5r"]
 [ext_resource type="PackedScene" uid="uid://c5jwmdf7s7xg2" path="res://scene/rigid/evidence/document/note.tscn" id="3_8hc24"]
 
 [node name="NoteCategory" type="Node"]

@@ -1,7 +1,6 @@
 class_name NodeSpawner
 extends Node3D
 
-
 var spawned_node: Node3D = null
 
 const empty_tag = "empty_spawner"

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="3_ryyl0"]
-[ext_resource type="Script" path="res://script/system/category/category_item.gd" id="4_gsakb"]
+[ext_resource type="Script" path="res://script/class/category/category_item.gd" id="4_gsakb"]
 [ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/rigid/evidence/donut/donut_boston.tscn" id="5_8dpmd"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/system/generation/node_spawner.tscn" id="6_4exd3"]
 [ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/system/category/donut_category.tscn" id="7_555ks"]
