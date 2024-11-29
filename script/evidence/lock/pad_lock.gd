@@ -1,8 +1,8 @@
-extends Puzzle
+extends Evidence
 
 var padlock_variants: Array = G_lock.get_lock_variants("pad_lock")
 var chosen_variant: Dictionary
-var lock_definitions: Dictionary = preload("res://asset/json/puzzle/locks.json").data["definitions"]
+var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json").data["definitions"]
 
 var unlocked = false
 var dumpster = null

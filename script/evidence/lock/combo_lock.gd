@@ -1,11 +1,11 @@
-extends Puzzle
+extends Evidence
 
 var unlocked = false
 var dumpster = null
 
 var combolock_variants: Array = G_lock.get_lock_variants("combo_lock_5_digits")
 var chosen_variant: Dictionary
-var lock_definitions: Dictionary = preload("res://asset/json/puzzle/locks.json").data["definitions"]
+var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json").data["definitions"]
 
 #@onready var combo_rod = $LockPivot/combo_rod
 @onready var collision_rod = $collision_rod
@@ -37,7 +37,7 @@ func on_enter_level() -> void:
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
 
-func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
+func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 
 	# Spin the dial based on input type

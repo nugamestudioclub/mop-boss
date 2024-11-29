@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://script/system/category/object_category.gd" id="1_iyqev"]
 [ext_resource type="Script" path="res://script/system/category/category_item.gd" id="2_jauhk"]
-[ext_resource type="PackedScene" uid="uid://cn05psfb42ija" path="res://scene/rigid/puzzle/lock/pad_lock.tscn" id="3_tpndb"]
-[ext_resource type="PackedScene" uid="uid://beqmn7aj6n046" path="res://scene/rigid/puzzle/lock/combo_lock.tscn" id="4_lvsup"]
-[ext_resource type="PackedScene" uid="uid://cs445ri13mdsu" path="res://scene/rigid/puzzle/lock/key_lock.tscn" id="5_ilygs"]
+[ext_resource type="PackedScene" uid="uid://cn05psfb42ija" path="res://scene/rigid/evidence/lock/pad_lock.tscn" id="3_tpndb"]
+[ext_resource type="PackedScene" uid="uid://beqmn7aj6n046" path="res://scene/rigid/evidence/lock/combo_lock.tscn" id="4_lvsup"]
+[ext_resource type="PackedScene" uid="uid://cs445ri13mdsu" path="res://scene/rigid/evidence/lock/key_lock.tscn" id="5_ilygs"]
 
 [node name="LockCategory" type="Node"]
 script = ExtResource("1_iyqev")

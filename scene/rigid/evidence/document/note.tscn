@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c5jwmdf7s7xg2"]
 
-[ext_resource type="Script" path="res://script/puzzle/note/note_paper.gd" id="1_fvhw8"]
+[ext_resource type="Script" path="res://script/evidence/note/note_paper.gd" id="1_fvhw8"]
 [ext_resource type="Texture2D" uid="uid://btpn2feqe0j3f" path="res://asset/image/note.png" id="2_e3cin"]
 [ext_resource type="FontFile" uid="uid://bvpi8agp3sir0" path="res://asset/font/CourierPrime-Regular.ttf" id="3_k685s"]
 [ext_resource type="Texture2D" uid="uid://biqpl53erb20s" path="res://asset/image/crossout.png" id="4_haep4"]

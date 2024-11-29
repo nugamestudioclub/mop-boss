@@ -8,15 +8,48 @@ var is_inspected := false
 const MOUSE_SENSITIVITY := 0.5
 const DEG_PER_PRESS := 3
 
+# INPUT LISTENING MEMORY
+var input_event_reference := {}
+
 # Object has entered inspect mode
 func enter_inspect_mode():
 	is_inspected = true
+	_start_input_listening()
+	print("ENTER INSPECT")
 
 # Object has exited inspect mode
 func exit_inspect_mode():
 	is_inspected = false
+	_stop_input_listening()
+	print("EXIT INSPECT")
 
-# Player created an input
+# Start listening for inputs from all object colliders
+func _start_input_listening():
+	for collider in G_node.get_descendants(self):
+		if not collider is CollisionObject3D: continue
+		var callable := func(camera, event, event_position, normal, shape_idx):
+				_input_event_collider(camera, event, event_position, normal, shape_idx, collider)
+		collider.input_event.connect(callable)
+		input_event_reference[collider] = callable
+
+# Stop listening for inputs from all object colliders
+func _stop_input_listening():
+	for collider in G_node.get_descendants(self):
+		if not collider is CollisionObject3D: continue
+		collider.input_event.disconnect(input_event_reference[collider])
+
+# Player created an input in collision area of object
+func _input_event_collider(
+	camera: Camera3D,
+	event: InputEvent,
+	event_position: Vector3,
+	normal: Vector3,
+	shape_idx: int,
+	collider: CollisionObject3D):
+	pass
+	print("HIIIIIII")
+
+# Player created an input in general
 func _input(event):
 	if not is_inspected: return
 	if event is InputEventMouseMotion:
@@ -38,12 +71,3 @@ func _handle_event_key(event):
 	
 	rotate_x(deg_to_rad(input.x * DEG_PER_PRESS))
 	rotate_z(deg_to_rad(input.z * DEG_PER_PRESS))
-
-# TODO: GHOST CODE... Oooo Spooky
-#func _enable_input_listening() -> void:
-	#if not get_tree().is_connected("input_event", self, "_on_input_event"):
-		#get_tree().connect("input_event", self, "_on_input_event")
-#
-#func _disable_input_listening() -> void:
-	#if get_tree().is_connected("input_event", self, "_on_input_event"):
-		#get_tree().disconnect("input_event", self, "_on_input_event")

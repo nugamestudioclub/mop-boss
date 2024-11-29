@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://clqoe4uvw2yq3"]
 
-[ext_resource type="Script" path="res://script/puzzle/chemical/chemical_bottle.gd" id="1_3un6c"]
+[ext_resource type="Script" path="res://script/evidence/chemical/chemical_bottle.gd" id="1_3un6c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

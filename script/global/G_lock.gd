@@ -1,12 +1,12 @@
 extends Node
 
 
-var lock_definitions: Dictionary = preload("res://asset/json/puzzle/locks.json").data["definitions"]
+var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json").data["definitions"]
 #@onready var alley_level = get_tree().current_scene #$"/root/AlleyLevel"
 
 
 func get_lock_variants(lock_name: String) -> Array:
-	return preload("res://asset/json/puzzle/locks.json").data["locks"].filter(func(x): return x["name"] == lock_name)[0]["variants"]
+	return preload("res://asset/json/evidence/locks.json").data["locks"].filter(func(x): return x["name"] == lock_name)[0]["variants"]
 
 
 func randomize_combo(chosen_variant: Dictionary, combo_length: int, notches: int) -> Array:

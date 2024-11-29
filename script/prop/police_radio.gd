@@ -1,4 +1,4 @@
-extends Puzzle
+extends Evidence
 
 @onready var knob1 = $Knob1
 @onready var knob2 = $Knob2
@@ -33,7 +33,7 @@ func get_input_axis(posAction: String, negAction):
 		direction = 1
 	return direction
 
-func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
+func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 	
 	# Spin the dial based on input type

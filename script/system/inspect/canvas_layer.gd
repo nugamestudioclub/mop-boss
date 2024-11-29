@@ -51,7 +51,7 @@ func _start_inspecting(node: Node3D):
 	G_node3d.scale_to_fit(node, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
 	
 	# TODO: FIX, this sucks lol
-	if node is Puzzle:
+	if node is Evidence:
 		node.active_tool = player.get_node("TwistPivot/PitchPivot/Hand")
 	
 	# Tell object its inspected

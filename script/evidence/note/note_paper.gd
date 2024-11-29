@@ -1,6 +1,6 @@
-extends Puzzle
+extends Evidence
 
-var note_options: Array = preload("res://asset/json/puzzle/notes.json").data
+var note_options: Array = preload("res://asset/json/evidence/notes.json").data
 var erased_words = []
 
 func is_altered() -> bool:
