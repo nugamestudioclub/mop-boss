@@ -63,12 +63,12 @@ func get_input_axis(negAction: String, posAction: String):
 	return direction
 
 
-func update_combo(current_combo: Array, shape_idx, spin_direction: int, max: int) -> int:
+func update_combo(current_combo: Array, shape_idx, spin_direction: int, maximum: int) -> int:
 	var position = current_combo[shape_idx]
 	if spin_direction > 0:
-		position = (position - 1 + max) % max  # Increment and wrap around
+		position = (position - 1 + maximum) % maximum  # Increment and wrap around
 	elif spin_direction < 0:
-		position = (position + 1) % max  # Decrement and wrap around
+		position = (position + 1) % maximum  # Decrement and wrap around
 	print(position)
 	return position
 

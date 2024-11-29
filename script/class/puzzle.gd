@@ -19,7 +19,7 @@ func is_solved() -> bool:
 	return false
 
 # TODO: REMOVE THIS
-func on_enter_level() -> void: # not called when inspected, while _ready is called when inspected
+func on_enter_level() -> void:
 	pass
 
 # TODO: REMOVE THIS

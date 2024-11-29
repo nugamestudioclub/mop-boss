@@ -53,7 +53,7 @@ func _handle_event_key(event: InputEvent):
 @onready var plane := Plane(plane_reference_1.position, plane_reference_2.position, plane_reference_3.position)
 
 var moving_hole_index = -1
-func _on_holes_input_event(camera, event, event_position, normal, shape_idx):
+func _on_holes_input_event(_camera, event, event_position, normal, shape_idx):
 	print(is_inspected)
 	if not is_inspected: return
 	if event is InputEventMouseButton:
@@ -66,4 +66,4 @@ func _on_holes_input_event(camera, event, event_position, normal, shape_idx):
 	elif event is InputEventMouseMotion:
 		if moving_hole_index == -1: return
 		rotary.rotation = rotary_default
-		rotary.rotate(plane.normal, event_position.angle_to(Vector3.ZERO))
+		rotary.rotate(normal, event_position.angle_to(Vector3.ZERO))
