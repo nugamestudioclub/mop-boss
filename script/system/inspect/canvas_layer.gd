@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 # Inspect parameters
-const DEFAULT_VIEW_FOV = 75
+const DEFAULT_FOV = 75
+const ZOOM_INCREMENT = 5
 var inspect_button = MOUSE_BUTTON_RIGHT
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -17,6 +18,7 @@ var inspected_original_freeze: Dictionary = {}
 # Player paths
 @onready var player: RigidBody3D = $"../Player"
 @onready var camera_player = player.get_node("TwistPivot/PitchPivot/PlayerPov")
+@onready var hand_player = player.get_node("TwistPivot/PitchPivot/Hand")
 
 # Inspector paths
 @onready var inspector_gui = $Control
@@ -31,7 +33,7 @@ func _enter_inspect_mode():
 	
 	# Enable viewport pop-up
 	inspector_gui.show()
-	inspector_camera.fov = DEFAULT_VIEW_FOV
+	inspector_camera.fov = DEFAULT_FOV
 
 """Moves object to inspect view saving previous state"""
 func _start_inspecting(node: Node3D):
@@ -83,7 +85,8 @@ func _stop_inspecting(node: Node3D):
 
 """Checks if an object is inspectable"""
 func _is_inspectable(object):
-	return (object is Node and 
+	return (object is RigidBody3D and 
+		object != hand_player.held_object and
 		object.is_in_group(inspect_group) and 
 		object.visible)
 
@@ -132,6 +135,8 @@ func _input(event):
 	
 	# Zooming
 	elif Input.is_action_just_pressed("zoom_in"):
-		inspector_camera.fov = clamp(inspector_camera.fov - 5, 5, DEFAULT_VIEW_FOV)
+		var new_fov =inspector_camera.fov - ZOOM_INCREMENT
+		inspector_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
 	elif Input.is_action_just_pressed("zoom_out"):
-		inspector_camera.fov = clamp(inspector_camera.fov + 5, 5, DEFAULT_VIEW_FOV)
+		var new_fov = inspector_camera.fov + ZOOM_INCREMENT
+		inspector_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
