@@ -1,4 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://dmlv4mrgrwdpf"]
+[gd_scene load_steps=12 format=4 uid="uid://dmlv4mrgrwdpf"]
+
+[ext_resource type="Script" path="res://script/tool/hammer.gd" id="1_am3tr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -102,6 +104,7 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_am3tr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294, 0)

@@ -1,0 +1,2 @@
+class_name PaperClip
+extends RigidBody3D

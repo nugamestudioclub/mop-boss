@@ -52,10 +52,10 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 	)
 
 	# Get the object's current global transform
-	var transform = object.global_transform
+	var transf = object.global_transform
 
 	# Calculate the object's position relative to the rotation center
-	var relative_position = transform.origin - world_position
+	var relative_position = transf.origin - world_position
 
 	# Create a combined rotation basis using Euler angles
 	var rotation_basis = Basis()
@@ -65,13 +65,13 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 
 	# Rotate both the relative position and the object's basis
 	var rotated_position = rotation_basis * relative_position
-	var rotated_basis = rotation_basis * transform.basis
+	var rotated_basis = rotation_basis * transf.basis
 
 	# Set the object's new global transform, updating both position and orientation
 	transform.origin = world_position + rotated_position
 	transform.basis = rotated_basis
 
-	object.global_transform = transform
+	object.global_transform = transf
 
 #""" Rotates an object around a coordinate point (on y axis)"""
 #func rotate_around_point(object: Node, world_position: Vector3, angle_degrees: float):

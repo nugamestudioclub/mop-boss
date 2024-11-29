@@ -2,9 +2,6 @@ extends Node3D
 
 @onready var level_generation_manager = $LevelGenerationManager
 
-@onready var animation_player = $AnimationPlayer
-@onready var fade_layer = $ColorRect
-
 # FOR DEBUGGING PURPOSES
 func _input(event):
 	if event is InputEventKey:
@@ -17,7 +14,6 @@ func _ready() -> void:
 
 func start_level():
 	G_game_state.fade_in_scene()
-	
 	level_generation_manager.clear_level()
 	level_generation_manager.generate_level()
 
