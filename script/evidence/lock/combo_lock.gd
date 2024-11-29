@@ -19,12 +19,14 @@ var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
 
 func is_altered() -> bool:
-	return unlocked
+	var should_leave_alone = chosen_variant.get("special", "") == "leave_alone"
+	var has_combo_been_modified = current_combo.any(func(x): return x != 0)
+	return unlocked or (should_leave_alone and has_combo_been_modified)
 
 func is_solved() -> bool:
 	return current_combo == correct_combo
 
-func on_enter_level() -> void:
+func _ready() -> void:
 	chosen_variant = combolock_variants.pick_random()
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
