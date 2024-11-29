@@ -19,7 +19,9 @@ var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
 
 func is_altered() -> bool:
-	return unlocked
+	var should_leave_alone = chosen_variant.get("special", "") == "leave_alone"
+	var has_combo_been_modified = current_combo.any(func(x): return x != 0)
+	return unlocked or (should_leave_alone and has_combo_been_modified)
 
 func is_solved() -> bool:
 	return current_combo == correct_combo
@@ -36,6 +38,10 @@ func on_enter_level() -> void:
 			child.material_override = material
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
+
+func enter_inspect_mode():
+	if G_lock.has_used_special_tool(chosen_variant, active_tool):
+		current_combo = correct_combo
 
 func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:

@@ -13,14 +13,17 @@ var dumpster = null
 @onready var pivot = $UnlockPivot
 @onready var anchor_point = $AnchorPoint
 
-const NOTCHES: int = 40
+const NOTCHES: int = 16
 const RADS_PER_TURN := PI/NOTCHES
 
-var correct_combo = [0, 0, 0, 0, 0]
-var current_combo = [0]
+var correct_combo = [0, 0, 0]
+var current_combo = [0, 0, 0]
+var current_combo_index = 0
 
 func is_altered() -> bool:
-	return unlocked
+	var should_leave_alone = chosen_variant.get("special", "") == "leave_alone"
+	var has_combo_been_modified = current_combo.any(func(x): return x != 0)
+	return unlocked or (should_leave_alone and has_combo_been_modified)
 
 func is_solved() -> bool:
 	return current_combo == correct_combo
@@ -36,8 +39,12 @@ func on_enter_level() -> void:
 		if child is MeshInstance3D and child.name != "padlock_codes":
 			child.material_override = material
 	
-	correct_combo = G_lock.randomize_combo(chosen_variant, 5, NOTCHES)
+	correct_combo = G_lock.randomize_combo(chosen_variant, 3, NOTCHES)
 
+
+func enter_inspect_mode():
+	if G_lock.has_used_special_tool(chosen_variant, active_tool):
+		current_combo = correct_combo
 
 func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
@@ -51,7 +58,9 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 	if collision_object == $Dial:
 		padlock_codes.rotate_x(dial_delta)
 	
-	current_combo[-1] = G_lock.update_combo(current_combo, -1, spin_direction, NOTCHES)
+	current_combo[current_combo_index] = G_lock.update_combo(current_combo, current_combo_index, spin_direction, NOTCHES)
+	$Timer.stop()
+	$Timer.start()
 	
 	# Unlock if not already
 	if not unlocked and is_solved():
@@ -81,3 +90,11 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 #func _process(delta: float) -> void:
 	#print(Input.get_axis("rotate_view_down", "rotate_view_up"))
 	#var spin_direction = Input.get_axis("rotate_view_down", "rotate_view_up")
+
+
+func _on_timer_timeout():
+	print("lock index: ", current_combo_index)
+	print("current combo: ", current_combo)
+	current_combo_index += 1
+	if current_combo_index >= len(current_combo):
+		current_combo_index = 0

@@ -71,3 +71,14 @@ func update_combo(current_combo: Array, shape_idx, spin_direction: int, max: int
 		position = (position + 1) % max  # Decrement and wrap around
 	print(position)
 	return position
+
+func has_used_special_tool(chosen_variant: Dictionary, tool: Node3D) -> bool:
+	if "special" in chosen_variant:
+		var special = chosen_variant["special"]
+		var used_hammer = tool is Hammer and special == "use_hammer"
+		var used_pick = tool is PaperClip and special == "use_lock_pick"
+		return used_hammer or used_pick
+		# TODO: sound effects
+		# Hi Hazem, if you're reading this and wondering why using a lock pick instantly opens the
+		# lock, we have very little time here so uhhhh this is something we can fix later
+	return false

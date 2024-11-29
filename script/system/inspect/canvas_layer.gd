@@ -49,6 +49,10 @@ func _start_inspecting(node: Node3D):
 	
 	G_highlight.remove_highlight(node)
 	G_node3d.scale_to_fit(node, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
+	if node is DialPhone:
+		node.scale *= 5
+		node.position.y += 0.5
+		node.rotation_degrees = Vector3(45, 100, 0)
 	
 	# TODO: FIX, this sucks lol
 	if node is Puzzle:
@@ -57,6 +61,7 @@ func _start_inspecting(node: Node3D):
 	# Tell object its inspected
 	if node.has_method("enter_inspect_mode"):
 		node.enter_inspect_mode()
+		
 
 """Closes the inspect viewport, removes all objects"""
 func _exit_inspect_mode():
@@ -71,6 +76,9 @@ func _exit_inspect_mode():
 	for node in inspector_world.get_children():
 		if node.is_in_group(inspect_group):
 			_stop_inspecting(node)
+	inspected_original_transform.clear()
+	inspected_original_freeze.clear()
+	inspected_original_parent.clear()
 
 """Moves object from inspect window into previous state"""
 func _stop_inspecting(node: Node3D):
@@ -121,7 +129,7 @@ func _input(event):
 		if event.pressed: return
 		
 		if event.button_index == inspect_button:
-			if _is_inspectable(target):
+			if _is_inspectable(target) and inspected_original_transform.is_empty():
 				_enter_inspect_mode()
 				_start_inspecting(target)
 	

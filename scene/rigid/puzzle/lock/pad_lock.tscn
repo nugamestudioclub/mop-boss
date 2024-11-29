@@ -259,3 +259,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.53147, 0)
 [node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
 node_a = NodePath("../..")
 node_b = NodePath("..")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

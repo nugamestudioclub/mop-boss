@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://6v12aapc3bv"]
+[gd_scene load_steps=37 format=4 uid="uid://6v12aapc3bv"]
 
 [ext_resource type="Script" path="res://script/prop/dial_phone.gd" id="1_68g2q"]
 [ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_xbcc7"]
@@ -348,6 +348,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xblwe")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_72058"]
+height = 0.0197227
+radius = 0.0141247
+
 [node name="DialPhone" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -425,3 +429,55 @@ transform = Transform3D(0.999976, -0.00525139, -0.00443307, 0.00494053, 0.997711
 material_override = SubResource("StandardMaterial3D_cq4x2")
 mesh = SubResource("ArrayMesh_30a3k")
 skeleton = NodePath("")
+
+[node name="Holes" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.0639345, -0.0310445, 0.0803187)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.04627, -0.0134963, 0.0633283)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.0192307, -0.00419658, 0.0517833)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0103123, -0.00362278, 0.0502944)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0391191, -0.0126848, 0.0578825)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0588668, -0.02871, 0.0717593)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0680513, -0.0481555, 0.0931786)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0633467, -0.0692693, 0.115033)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0445664, -0.0912317, 0.128575)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, -0.0184018, -0.101618, 0.137862)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.0121773, -0.102355, 0.141775)
+shape = SubResource("CylinderShape3D_72058")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Holes"]
+transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.0395945, -0.0903195, 0.136313)
+shape = SubResource("CylinderShape3D_72058")
+
+[connection signal="input_event" from="Holes" to="." method="_on_holes_input_event"]
