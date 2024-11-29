@@ -15,12 +15,14 @@ var input_event_reference := {}
 func enter_inspect_mode():
 	is_inspected = true
 	_start_input_listening()
+	_disable_rigid_colliders()
 	print("ENTER INSPECT")
 
 # Object has exited inspect mode
 func exit_inspect_mode():
 	is_inspected = false
 	_stop_input_listening()
+	_enable_rigid_colliders()
 	print("EXIT INSPECT")
 
 # Start listening for inputs from all object colliders
@@ -70,3 +72,15 @@ func _handle_event_key(event):
 	
 	rotate_x(deg_to_rad(input.x * DEG_PER_PRESS))
 	rotate_z(deg_to_rad(input.z * DEG_PER_PRESS))
+
+# Enable rigid body colliders to get in the way
+func _enable_rigid_colliders():
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = false
+
+# Stop rigid body colliders from getting in the way
+func _disable_rigid_colliders():
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = true
