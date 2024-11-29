@@ -25,7 +25,7 @@ func is_altered() -> bool:
 func is_solved() -> bool:
 	return current_combo == correct_combo
 
-func on_enter_level() -> void:
+func _ready() -> void:
 	chosen_variant = padlock_variants.pick_random()
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
@@ -39,7 +39,7 @@ func on_enter_level() -> void:
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, NOTCHES)
 
 
-func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
+func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 
 	# Spin the dial based on input type
@@ -59,7 +59,7 @@ func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, _event_position: 
 		
 		#collision_rod.rotate_y(PI)
 		var rotate_vector = Vector3(0, 180, 0)
-		G_node.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
+		G_node3d.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 		collision_rod.position += Vector3(0, 0.1, 0)
 		
 		anchor_point.queue_free()

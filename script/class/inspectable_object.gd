@@ -47,7 +47,6 @@ func _input_event_collider(
 	shape_idx: int,
 	collider: CollisionObject3D):
 	pass
-	print("HIIIIIII")
 
 # Player created an input in general
 func _input(event):

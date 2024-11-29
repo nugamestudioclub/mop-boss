@@ -50,7 +50,7 @@ func _handle_event_key(event: InputEvent):
 @onready var plane_reference_1 = $Holes/CollisionShape3D
 @onready var plane_reference_2 = $Holes/CollisionShape3D5
 @onready var plane_reference_3 = $Holes/CollisionShape3D9
-@onready var plane := Plane(plane_reference_1.position, plane_reference_2.position, plane_reference_3.position)
+#@onready var plane := Plane(plane_reference_1.position, plane_reference_2.position, plane_reference_3.position)
 
 var moving_hole_index = -1
 func _on_holes_input_event(_camera, event, event_position, normal, shape_idx):
