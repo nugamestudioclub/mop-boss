@@ -61,6 +61,7 @@ func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position
 
 
 func _on_delay_timer_timeout() -> void:
+	if unlocked: return
 	var current_stage = current_combo[-1]
 	var correct_stage = correct_combo[current_combo.size() - 1]
 	
@@ -77,8 +78,9 @@ func _on_delay_timer_timeout() -> void:
 		print("is:", current_stage)
 		print("clack")
 		
-		# to the right, else to the left
-		if (correct_stage - current_stage) < 0:
+		var distance_right = ((correct_stage - current_stage) + NOTCHES) % NOTCHES
+		var distance_left = ((current_stage - correct_stage) + NOTCHES) % NOTCHES
+		if distance_right < distance_left:
 			print("SFX: sound indicating to the right")
 		else:
 			print("SFX : sound indicating to the left")
@@ -89,7 +91,6 @@ func _on_delay_timer_timeout() -> void:
 func _unlock() -> void:
 	print("UNLOCK TIME!!!")
 	unlocked = true
-	delay_timer.free()
 	
 	# Rotate lock out of socket
 	var rotate_vector = Vector3(0, 180, 0)

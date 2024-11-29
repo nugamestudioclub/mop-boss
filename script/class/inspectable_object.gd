@@ -41,6 +41,7 @@ func _stop_input_listening():
 		collider.input_event.disconnect(input_event_reference[collider])
 
 # Player created an input in collision area of object
+@warning_ignore("unused_parameter")
 func _input_event_collider(
 	camera: Camera3D,
 	event: InputEvent,
@@ -60,12 +61,12 @@ func _input(event):
 
 # Player moved their mouse
 func _handle_mouse_motion(event):
-	if event.button_mask != 0:
+	if event.button_mask == 2:
 		rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY))
 		rotate_z(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
 
 # Player pressed a key
-func _handle_event_key(event):
+func _handle_event_key(_event):
 	var input := Vector3.ZERO # create blank vector3
 	input.x = Input.get_axis("move_right", "move_left") # returns -1.0 if first, 0.0 if none
 	input.z = Input.get_axis("move_back", "move_forward") # returns +1.0 if second, 0.0 if both

@@ -74,9 +74,9 @@ func _input(event):
 func _physics_process(delta):
 	if held_object != null:
 		var origin_object = held_object.global_transform.origin
-		var rotation_object = held_object.global_rotation
+		#var rotation_object = held_object.global_rotation
 		var origin_hand = self.global_transform.origin
-		var rotation_hand = self.global_rotation
+		#var rotation_hand = self.global_rotation
 		
 		# prevent the hand from phasing through walls
 		var raycast_hand_result = G_raycast.raycast_mouse(camera_player, (2 + object_radius), [player, held_object])

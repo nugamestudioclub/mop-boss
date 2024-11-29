@@ -2,7 +2,7 @@ extends Node3D
 
 # TODO: Fix this function because I hate you godot why not global scale?
 """Scales the inputed node (and any children) to fit within an area (bounds)"""
-func scale_to_fit(node: Node3D, bounds: float): #TODO: change bounds to vector3
+func scale_to_fit(node: Node3D, _bounds: float): #TODO: change bounds to vector3
 	var furthest_end := Vector3.ZERO
 	var furthest_start := Vector3.ZERO
 	for mesh in node.get_children():
