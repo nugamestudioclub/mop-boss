@@ -11,13 +11,13 @@ var dumpster = null
 @onready var padlock_codes = $Dial/padlock_codes
 @onready var pivot = $UnlockPivot
 @onready var anchor_point = $AnchorPoint
-@onready var delay_timer = Timer.new()
+@onready var delay_timer = $Timer
 
 const NOTCHES: int = 16
 const RADS_PER_TURN := TAU / NOTCHES
 
 var correct_combo = [0, 0, 0, 0, 0]
-var current_combo = [0]
+var current_combo = [0, 0, 0, 0, 0]
 
 func _ready() -> void:
 	chosen_variant = padlock_variants.pick_random()
@@ -31,15 +31,9 @@ func _ready() -> void:
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, NOTCHES)
 
-	# Setup the delay timer
-	delay_timer.one_shot = true
-	delay_timer.wait_time = 2.0
-	delay_timer.connect("timeout", _on_delay_timer_timeout)
-	add_child(delay_timer)
-
 var cooldown = false
-func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
-	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
+func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_position: Vector3,
+	_normal: Vector3, _shape_idx: int, collision_object: CollisionObject3D) -> void:
 	if cooldown == true: return
 	cooldown = true
 	

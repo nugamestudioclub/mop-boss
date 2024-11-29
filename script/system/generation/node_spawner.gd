@@ -17,8 +17,9 @@ func spawn_random():
 	random = random.pick_node()
 	if random == null: return
 	
-	var spawned_node = spawn(random)
-	return spawned_node;
+	var new_spawned_node = spawn(random)
+	spawned_node = new_spawned_node
+	return new_spawned_node
 
 func spawn(scene: PackedScene):
 	if spawned_node != null: return

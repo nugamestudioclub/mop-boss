@@ -18,18 +18,42 @@ func _unhandled_input(event: InputEvent):
 @onready var plane := Plane(plane_reference_1.position, plane_reference_2.position, plane_reference_3.position)
 
 var moving_hole_index = -1
-func _on_holes_input_event(_camera, event, event_position, normal, shape_idx):
-	print(is_inspected)
+var elapsed: float = 0.0
+var end = 0.0
+var go_back = false
+func _on_holes_input_event(_camera, event, _event_position, _normal, shape_idx):
 	if not is_inspected: return
 	if event is InputEventMouseButton:
-		if event.button_index == 0:
-			print("hi")
-			if event.pressed:
-				print(shape_idx)
-				moving_hole_index = shape_idx
+		# check rotaty isn't being moved right now
+		# and user is left clicking
+		if event.button_index == 1 and not event.pressed and rotary.rotation == rotary_default:
+			moving_hole_index = shape_idx
+			elapsed = 0.0
+			go_back = false
+			end = (moving_hole_index * PI/6) + PI/6
+
+func _process(delta: float):
+	if moving_hole_index != -1:
+		if not go_back:
+			var lerped = lerp(0.0, end, elapsed)
+			if abs(lerped - end) > 0.05: # run this rotation thing until it gets very close to the end
+				rotary.rotation = rotary_default
+				rotary.rotate(plane.normal, lerped)
+				elapsed += 2.5 * delta / end
 			else:
-				moving_hole_index = -1
-	elif event is InputEventMouseMotion:
-		if moving_hole_index == -1: return
-		rotary.rotation = rotary_default
-		rotary.rotate(normal, event_position.angle_to(Vector3.ZERO))
+				# move towards reset
+				elapsed = 0
+				go_back = true
+		else:
+			# opposite direction
+			var lerped = lerp(end, 0.0, elapsed)
+			if lerped > 0.05: # run this rotation thing until it gets very close to the start
+				rotary.rotation = rotary_default
+				rotary.rotate(plane.normal, lerped)
+				elapsed += 4 * delta / end
+			else:
+				if rotary.rotation != rotary_default:
+					# rotation is done
+					if moving_hole_index == 0:
+						get_tree().get_current_scene().end_level()
+					rotary.rotation = rotary_default

@@ -39,7 +39,7 @@ func _ready() -> void:
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
 
-func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
+func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 
 	# Spin the dial based on input type

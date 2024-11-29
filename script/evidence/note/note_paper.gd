@@ -11,7 +11,7 @@ func is_solved() -> bool:
 	return false
 
 func _split_up_text(txt: String) -> Array:
-	return Array(txt.split("\n")).map(func(line): return Array(line.split(" ")).filter(func(x: String): return not x.is_empty()))
+	return Array(txt.split("\n")).map(func(txt_line): return Array(txt_line.split(" ")).filter(func(x: String): return not x.is_empty()))
 
 var random_note: Dictionary
 var text: String
@@ -67,7 +67,7 @@ func change_word(direction: int):
 
 func _get_position_of_word(text_line: int, text_word: int):
 	var words = text_lines[text_line]
-	var word_length = len(words[text_word])
+	#var word_length = len(words[text_word])
 	var chars_before_word = 0
 	for i in range(text_word):
 		chars_before_word += len(words[i]) + 1
@@ -114,8 +114,8 @@ func _input(event: InputEvent):
 		_move_crossout_to_word()
 
 
-func _on_puzzle_interact(_camera: Camera3D, event: InputEvent, event_position: Vector3,
-		normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
+func _input_event_collider(_camera: Camera3D, _event: InputEvent, event_position: Vector3,
+		_normal: Vector3, _shape_idx: int, _collision_object: CollisionObject3D) -> void:
 	#if not event is InputEventMouseButton: return
 	#if event.pressed: return # check for button released
 	$Crossout.show()

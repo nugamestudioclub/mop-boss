@@ -33,8 +33,8 @@ func get_input_axis(posAction: String, negAction):
 		direction = 1
 	return direction
 
-func _input_event_collider(_camera: Camera3D, event: InputEvent, _event_position: Vector3,
-	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
+func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_position: Vector3,
+	_normal: Vector3, _shape_idx: int, collision_object: CollisionObject3D) -> void:
 	
 	# Spin the dial based on input type
 	var spin_direction = get_input_axis("rotate_view_down", "rotate_view_up")
@@ -83,7 +83,7 @@ func _play_next_event():
 		print("no more events")
 		return null
 	
-	var current_event = EVENT_TIMELINE[0]
+	#var current_event = EVENT_TIMELINE[0]
 	
 	print("play the chatter over radio")
 	print("something something about time left")
