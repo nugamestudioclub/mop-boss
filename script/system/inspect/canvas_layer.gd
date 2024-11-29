@@ -129,7 +129,7 @@ func _input(event):
 				_start_inspecting(target)
 	
 	# Exit inspect	
-	elif Input.is_action_just_pressed("ui_cancel"):
+	elif Input.is_action_just_released("ui_cancel"):
 		if inspector_gui.visible:
 			_exit_inspect_mode()
 	
