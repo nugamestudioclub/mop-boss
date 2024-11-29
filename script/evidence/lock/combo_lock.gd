@@ -13,7 +13,7 @@ var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json
 @onready var anchor_point = $AnchorPoint
 
 const FACES: int = 16
-const RADS_PER_TURN := PI/FACES
+const RADS_PER_TURN := TAU/FACES
 
 var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
