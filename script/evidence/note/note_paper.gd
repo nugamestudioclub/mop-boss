@@ -1,13 +1,15 @@
 extends Evidence
 
 var note_options: Array = preload("res://asset/json/evidence/notes.json").data
-var erased_words = []
+var erased_words := []
+var cut := 100
+var trashed := false
 
 func is_altered() -> bool:
-	return false
+	return not erased_words.is_empty() or cut < 100 or trashed
 
 func is_solved() -> bool:
-	return false
+	return (trashed and should_take) or ((correct_rip_line == -1 or cut == correct_rip_line) and len(correct_erased) == len(erased_words) and not erased_words.any(func(x): return not x in correct_erased))
 
 func _split_up_text(txt: String) -> Array:
 	return Array(txt.split("\n")).map(func(txt_line): return Array(txt_line.split(" ")).filter(func(x: String): return not x.is_empty()))
@@ -16,9 +18,15 @@ var random_note: Dictionary
 var text: String
 var text_lines: Array
 var word_positions = []
+var correct_erased = []
+var correct_rip_line: int
+var should_take: bool = false
 
 func _ready() -> void:
 	random_note = note_options.pick_random()
+	correct_rip_line = random_note["rip_line_index"]
+	correct_erased = random_note["erase"]
+	should_take = random_note["take"]
 	text = random_note.text
 	text_lines = _split_up_text(text)
 	$MeshInstance3D2/Label3D.text = text
@@ -35,12 +43,21 @@ func _ready() -> void:
 # selected sentence structure, then replaces the first occurence, repeat till you
 # have a random sentence.
 
+
+var knife_mode = false
 func enter_inspect_mode():
 	super.enter_inspect_mode()
 	
 	print("entered with tool: ", active_tool)
 	if active_tool is Tool and active_tool.type == Tool.Type.KNIFE:
-		print("used cut")
+		knife_mode = true
+	else:
+		knife_mode = false
+		if active_tool is Tool and active_tool.type == Tool.Type.TRASH_BAG:
+			get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
+			hide()
+			_disable_rigid_colliders()
+			trashed = true
 
 # made by
 # 15AAC
@@ -82,11 +99,32 @@ func _get_position_of_word(text_line: int, text_word: int):
 
 
 func _move_crossout_to_word():
+	if line > cut: return
 	# Reset position
 	$Crossout.position = crossout_origin
 	# Locally (accounting for rotation) move it to the word
 	$Crossout.translate_object_local(_get_position_of_word(line, word))
 	$Crossout/Image.scale = Vector3(len(text_lines[line][word]) * 0.375, 1, 1)
+
+
+func _confirm_crossout():
+	for erased in erased_words:
+		if erased[0] == line and erased[1] == word: return
+	var copy = $Crossout.duplicate()
+	$PreviouslyCrossedOut.add_child(copy)
+	erased_words.append([line, word, text_lines[line][word]])
+	print("used pen to crossout SFX")
+
+
+func _confirm_cut():
+	if cut >= line:
+		cut = line
+		$MeshInstance3D2/Label3D.text = "\n".join(text.split("\n").slice(0, cut))
+		print("sliced SFX")
+
+func _move_cut():
+	if cut >= line:
+		$MeshInstance3D2.mesh.material.set_shader_parameter("line", line)
 
 
 @onready var crossout_origin = $Crossout.position
@@ -103,22 +141,24 @@ func _unhandled_key_input(event: InputEvent):
 			KEY_UP:
 				change_line(-1)
 			KEY_SPACE, KEY_DELETE, KEY_BACKSPACE:
-				#var old_text = _split_up_text($MeshInstance3D2/Label3D.text)
-				#var blank_word = ""
-				#var old_word = old_text[line][word]
-				#if "\u200e" in old_word: return
-				#for i in range(len(old_word)):
-					#blank_word += "\u200e"
-				#old_text[line][word] = blank_word
-				#$MeshInstance3D2/Label3D.text = "\n".join(old_text.map(func(x): return " ".join(x)))
-				for erased in erased_words:
-					if erased[0] == line and erased[1] == word: return
-				var copy = $Crossout.duplicate()
-				$PreviouslyCrossedOut.add_child(copy)
-				erased_words.append([line, word, text_lines[line][word]])
+				if knife_mode:
+					_confirm_cut()
+				else:
+					_confirm_crossout()
 			_:
 				return
-		_move_crossout_to_word()
+		if knife_mode:
+			_move_cut()
+		else:
+			_move_crossout_to_word()
+
+
+func _handle_mouse_button(event):
+	if not event.pressed and event.button_index == 1:
+		if knife_mode:
+			_confirm_cut()
+		else:
+			_confirm_crossout()
 
 
 func _input_event_collider(_camera: Camera3D, event: InputEvent, event_position: Vector3,
@@ -134,13 +174,20 @@ func _input_event_collider(_camera: Camera3D, event: InputEvent, event_position:
 		if distance > new_dist:
 			distance = new_dist
 			nearest = word_pos
-	if nearest != null:
-		line = nearest[0]
-		word = nearest[1]
-		_move_crossout_to_word()
+	if knife_mode:
+		if nearest == null:
+			line = 100
+		else:
+			line = nearest[0] + 1
+		_move_cut()
 	else:
-		$Crossout.position = crossout_origin
-		$Crossout.hide()
+		if nearest != null:
+			line = nearest[0]
+			word = nearest[1]
+			_move_crossout_to_word()
+		else:
+			$Crossout.position = crossout_origin
+			$Crossout.hide()
 	# TODO: ripping, and forging signatures
 
 

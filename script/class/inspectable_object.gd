@@ -58,6 +58,8 @@ func _input(event):
 	if not is_inspected: return
 	if event is InputEventMouseMotion:
 		_handle_mouse_motion(event)
+	elif event is InputEventMouseButton:
+		_handle_mouse_button(event)
 	elif event is InputEventKey:
 		_handle_event_key(event)
 
@@ -66,6 +68,9 @@ func _handle_mouse_motion(event):
 	if event.button_mask == 2:
 		rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY))
 		rotate_z(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
+
+func _handle_mouse_button(_event):
+	pass
 
 # Player pressed a key
 func _handle_event_key(_event):
