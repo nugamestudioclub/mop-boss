@@ -26,4 +26,6 @@ func end_level():
 	G_game_state.cleaned_evidences = cleaned_evidences
 	G_game_state.fade_out_scene()
 	
+	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
+	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://scene/level/office_level.tscn")
