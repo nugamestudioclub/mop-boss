@@ -11,7 +11,6 @@ var object_mass = null
 
 @onready var player: RigidBody3D = self.get_owner()
 @onready var camera_player: Camera3D = $"../PlayerPov"
-@onready var rotate_joint = $Generic6DOFJoint3D
 
 signal enter_hold_on_node(node: Node3D)
 signal drop_hold_on_node(node: Node3D)
@@ -22,8 +21,6 @@ func _ready() -> void:
 
 func _start_holding(object):
 	held_object = object
-	
-	rotate_joint.set_node_b(held_object.get_path())
 	
 	var scale_object = held_object.scale
 	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
@@ -38,7 +35,6 @@ func _start_holding(object):
 func _stop_holding(object):
 	print("Exiting hold")
 	drop_hold_on_node.emit(object)
-	rotate_joint.set_node_b(rotate_joint.get_path())
 	
 	var material = object.physics_material_override
 	material.absorbent = !material.absorbent
