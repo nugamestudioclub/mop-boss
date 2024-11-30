@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5jwmdf7s7xg2"]
+[gd_scene load_steps=17 format=3 uid="uid://c5jwmdf7s7xg2"]
 
 [ext_resource type="Script" path="res://script/evidence/note/note_paper.gd" id="1_fvhw8"]
 [ext_resource type="Texture2D" uid="uid://btpn2feqe0j3f" path="res://asset/image/note.png" id="2_e3cin"]
@@ -41,6 +41,13 @@ albedo_texture = ExtResource("4_haep4")
 material = SubResource("StandardMaterial3D_wr0ds")
 size = Vector2(0.05, 0.05)
 center_offset = Vector3(0.025, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic3fo"]
+albedo_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_btmlk"]
+material = SubResource("StandardMaterial3D_ic3fo")
+size = Vector2(1, 0.01)
 
 [node name="Note" type="RigidBody3D" groups=["inspectable"]]
 mass = 0.4
@@ -106,5 +113,9 @@ mesh = SubResource("PlaneMesh_lggv1")
 skeleton = NodePath("../..")
 
 [node name="PreviouslyCrossedOut" type="Node3D" parent="."]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025479, -0.0251695)
+mesh = SubResource("PlaneMesh_btmlk")
 
 [connection signal="mouse_exited" from="Actions" to="." method="_on_actions_mouse_exited"]

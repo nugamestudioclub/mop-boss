@@ -380,6 +380,20 @@ weight = 100
 
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner7" instance=ExtResource("26_bxjnx")]
 
+[node name="NodeSpawner1" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2771, 0.071967, -4.14242)
+
+[node name="DonutCategory" parent="Props/NodeSpawner1" instance=ExtResource("7_555ks")]
+
+[node name="NoteCategory" parent="Props/NodeSpawner1" instance=ExtResource("8_b2dvn")]
+
+[node name="NodeSpawner2" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9897, 0.077199, -4.50883)
+
+[node name="NoteCategory" parent="Props/NodeSpawner2" instance=ExtResource("8_b2dvn")]
+
+[node name="DonutCategory" parent="Props/NodeSpawner2" instance=ExtResource("7_555ks")]
+
 [node name="Buildings" parent="." instance=ExtResource("27_k1spg")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg5b4qlf8dmql"]
+[gd_scene load_steps=5 format=3 uid="uid://dg5b4qlf8dmql"]
 
 [ext_resource type="PackedScene" uid="uid://drwrvxea14kdc" path="res://scene/static/building/building_bottom.tscn" id="1_w8ic0"]
 [ext_resource type="PackedScene" uid="uid://dq82iqjy5fsw0" path="res://scene/static/building/building_middle.tscn" id="2_b65gm"]
 [ext_resource type="PackedScene" uid="uid://cfr3ixqn46ve6" path="res://scene/static/building/building_top.tscn" id="3_wcn54"]
-[ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/system/generation/node_spawner.tscn" id="4_c4r81"]
-[ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/system/category/donut_category.tscn" id="5_31pwf"]
-[ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/system/category/note_category.tscn" id="6_bqd26"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koy60"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
@@ -738,26 +735,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.4, 0)
 
 [node name="Boundaries" type="Node3D" parent="."]
 
-[node name="AlleyFloor" type="CSGBox3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3884, -0.50474, -2.49065)
-use_collision = true
-size = Vector3(207.166, 1, 173.213)
-material = SubResource("StandardMaterial3D_koy60")
-
-[node name="NodeSpawner1" parent="Boundaries/AlleyFloor" groups=["empty_spawner"] instance=ExtResource("4_c4r81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6655, 0.576707, -1.65177)
-
-[node name="DonutCategory" parent="Boundaries/AlleyFloor/NodeSpawner1" instance=ExtResource("5_31pwf")]
-
-[node name="NoteCategory" parent="Boundaries/AlleyFloor/NodeSpawner1" instance=ExtResource("6_bqd26")]
-
-[node name="NodeSpawner2" parent="Boundaries/AlleyFloor" groups=["empty_spawner"] instance=ExtResource("4_c4r81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3987, 0.581939, -2.01818)
-
-[node name="NoteCategory" parent="Boundaries/AlleyFloor/NodeSpawner2" instance=ExtResource("6_bqd26")]
-
-[node name="DonutCategory" parent="Boundaries/AlleyFloor/NodeSpawner2" instance=ExtResource("5_31pwf")]
-
 [node name="CSGBox3D" type="CSGBox3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.217, -6.047)
 visible = false
@@ -765,10 +742,10 @@ use_collision = true
 size = Vector3(45, 11, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.574, 4.217, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.574, 2.36822, 0)
 visible = false
 use_collision = true
-size = Vector3(1, 11, 11)
+size = Vector3(1, 5.68, 11)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1844, 4.217, 0)
@@ -781,3 +758,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.217, 5.829)
 visible = false
 use_collision = true
 size = Vector3(45, 11, 1)
+
+[node name="AlleyFloor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3884, -0.50474, -2.49065)
+use_collision = true
+size = Vector3(207.166, 1, 173.213)
+material = SubResource("StandardMaterial3D_koy60")

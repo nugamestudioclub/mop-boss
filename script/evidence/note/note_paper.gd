@@ -39,7 +39,7 @@ func enter_inspect_mode():
 	super.enter_inspect_mode()
 	
 	print("entered with tool: ", active_tool)
-	if active_tool.type == Tool.Type.KNIFE:
+	if active_tool is Tool and active_tool.type == Tool.Type.KNIFE:
 		print("used cut")
 
 # made by
