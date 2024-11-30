@@ -45,7 +45,10 @@ func _stop_holding(object):
 	held_object = null
 	object_radius = null
 	object_mass = null
-	return
+
+func force_stop_holding_hand():
+	if held_object == null: return
+	_stop_holding(held_object)
 
 func _can_hold(object):
 	return (object is RigidBody3D and 

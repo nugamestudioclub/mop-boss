@@ -120,10 +120,9 @@ func _unhandled_key_input(event: InputEvent):
 		_move_crossout_to_word()
 
 
-func _input_event_collider(_camera: Camera3D, _event: InputEvent, event_position: Vector3,
+func _input_event_collider(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		_normal: Vector3, _shape_idx: int, _collision_object: CollisionObject3D) -> void:
-	#if not event is InputEventMouseButton: return
-	#if event.pressed: return # check for button released
+	if not event is InputEventMouseMotion: return
 	$Crossout.show()
 	var nearest = null
 	var distance = 0.02

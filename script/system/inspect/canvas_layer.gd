@@ -54,6 +54,7 @@ func _start_inspecting(node: Node3D):
 	
 	if node is Evidence:
 		node.active_tool = player.hand.held_object
+		player.hand.force_stop_holding_hand()
 	
 	# Tell object its inspected
 	if node.has_method("enter_inspect_mode"):
