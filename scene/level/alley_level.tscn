@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=39 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
 [ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/prop/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
+[ext_resource type="PackedScene" uid="uid://cjerhiu7dcu21" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
 
 [sub_resource type="GDScript" id="GDScript_58cnf"]
@@ -97,7 +98,8 @@ volumetric_fog_enabled = true
 noise = SubResource("FastNoiseLite_ybxwp")
 
 [sub_resource type="FogMaterial" id="FogMaterial_detjd"]
-density = 0.75
+density = 0.6
+albedo = Color(0.662682, 0.767038, 0.800834, 1)
 density_texture = SubResource("NoiseTexture3D_5a5n2")
 
 [node name="AlleyLevel" type="Node3D"]
@@ -340,6 +342,32 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.322,
 
 [node name="Knife" parent="Props" instance=ExtResource("25_fye0o")]
 transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 7.95408, 1.101, 3.515)
+
+[node name="Blood" type="Node3D" parent="Props"]
+
+[node name="NodeSpawner" parent="Props/Blood" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -2.2937, 0.0498284, -0.684826)
+
+[node name="BloodCategory" parent="Props/Blood/NodeSpawner" instance=ExtResource("25_f04sn")]
+surface = "asphalt"
+
+[node name="NodeSpawner2" parent="Props/Blood" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -3.85942, 0.0498284, -2.19308)
+
+[node name="BloodCategory" parent="Props/Blood/NodeSpawner2" instance=ExtResource("25_f04sn")]
+surface = "asphalt"
+
+[node name="NodeSpawner3" parent="Props/Blood" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(-0.999998, -8.74228e-08, 3.82136e-15, 0, -4.37114e-08, -0.999997, 8.74226e-08, -1, 4.37113e-08, -3.19507, 1.23778, 5.35038)
+
+[node name="BloodCategory" parent="Props/Blood/NodeSpawner3" instance=ExtResource("25_f04sn")]
+surface = "brick"
+
+[node name="NodeSpawner4" parent="Props/Blood" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -3.35122, 0.0581399, 4.24724)
+
+[node name="BloodCategory" parent="Props/Blood/NodeSpawner4" instance=ExtResource("25_f04sn")]
+surface = "concrete"
 
 [node name="Buildings" type="Node3D" parent="."]
 

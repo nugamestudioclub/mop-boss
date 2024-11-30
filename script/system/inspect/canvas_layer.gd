@@ -62,7 +62,7 @@ func _start_inspecting(node: Node3D):
 		node.enter_inspect_mode()
 
 """Closes the inspect viewport, removes all objects"""
-func _exit_inspect_mode():
+func exit_inspect_mode():
 	# Player
 	Input.set_mouse_mode(default_mouse_mode)
 	player.can_move = true
@@ -134,7 +134,7 @@ func _input(event):
 	# Exit inspect	
 	elif Input.is_action_just_released("ui_cancel"):
 		if inspector_gui.visible:
-			_exit_inspect_mode()
+			exit_inspect_mode()
 	
 	# Zooming
 	elif Input.is_action_just_pressed("zoom_in"):

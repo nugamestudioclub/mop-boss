@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlv2vknbtjxwk"]
+
+[ext_resource type="Script" path="res://script/evidence/body_part/blood.gd" id="1_2gmyb"]
+[ext_resource type="Texture2D" uid="uid://bftkl262bjhli" path="res://asset/image/blood_a.png" id="2_g0ptj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km054"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+albedo_texture = ExtResource("2_g0ptj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pftpq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_km054")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
+size = Vector3(0.816956, 0.0334778, 0.816772)
+
+[node name="Blood" type="RigidBody3D" groups=["inspectable"]]
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_80xyh")
+freeze = true
+continuous_cd = true
+max_contacts_reported = 1
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_2gmyb")
+surface = "asphalt"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_pftpq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
+shape = SubResource("BoxShape3D_kheio")

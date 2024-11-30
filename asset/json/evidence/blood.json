@@ -1,0 +1,25 @@
+{
+    "chemicals": {
+        "B": "BLEACH",
+        "A": "ACID",
+        "T": "TOMATO_JUICE",
+        "S": "SOAPY_WATER"
+    },
+    "blood_type": {
+        "A": {
+            "asphalt": "SBA",
+            "concrete": "TS",
+            "brick": "T"
+        },
+        "B": {
+            "asphalt": "BS",
+            "concrete": "AS",
+            "brick": "BA"
+        },
+        "C": {
+            "asphalt": "T",
+            "concrete": "BA",
+            "brick": "SAB"
+        }
+    }
+}

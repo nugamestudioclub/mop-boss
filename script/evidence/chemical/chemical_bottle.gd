@@ -1,3 +1,4 @@
+class_name ChemicalBottle
 extends Evidence
 
 @onready var bottle_body = $Bottle/Bottle_Body

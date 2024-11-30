@@ -91,7 +91,7 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_released("ui_cancel"):
 		Input.set_mouse_mode(default_mouse_mode)
 	# Apply a one-time impulse for jump force
-	elif Input.is_action_just_pressed("jump") and is_on_floor():
+	elif Input.is_action_just_pressed("jump") and is_on_floor() and get_tree().current_scene.get_node("InspectLayer").inspected_original_parent.is_empty():
 		var jump_force = (Vector3.UP * jump_velocity * player_mass)
 		apply_central_impulse(jump_force)
 	# Check if player is sprinting
