@@ -85,9 +85,12 @@ func _stop_inspecting(node: Node3D):
 
 """Checks if an object is inspectable"""
 func _is_inspectable(object):
-	return (object is RigidBody3D and 
-		object.is_in_group(inspect_group) and 
-		object.visible)
+	return (object is InspectableObject and object.visible)
+
+#func _is_inspectable(object):
+	#return (object is RigidBody3D and 
+		#object.is_in_group(inspect_group) and 
+		#object.visible)
 
 func _save_state(object):
 	inspected_original_parent[object] = object.get_parent()
@@ -109,7 +112,7 @@ func _input(event):
 	# Attempt highlight
 	if event is InputEventMouseMotion:
 		var exclude = []
-		exclude.append(hand_player.held_object)
+		if hand_player.held_object: exclude.append(hand_player.held_object)
 		target = G_raycast.get_mouse_target(camera_player, exclude)
 		
 		if highlighted_node != target:
