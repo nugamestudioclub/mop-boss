@@ -54,6 +54,11 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 	# Restart the timer
 	delay_timer.start()
 
+func enter_inspect_mode():
+	super.enter_inspect_mode()
+	if active_tool is Hammer and chosen_variant.get("special", "") == "use_hammer":
+		current_combo = correct_combo
+		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
 
 func _on_delay_timer_timeout() -> void:
 	if unlocked: return

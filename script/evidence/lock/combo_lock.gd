@@ -39,6 +39,14 @@ func _ready() -> void:
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
 
+
+
+func enter_inspect_mode():
+	super.enter_inspect_mode()
+	if active_tool is Hammer and chosen_variant.get("special", "") == "use_hammer":
+		current_combo = correct_combo
+		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
+
 func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:
 
@@ -63,7 +71,3 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 		collision_rod.position += Vector3(0, 0.1, 0)
 		
 		anchor_point.queue_free()
-
-#func _process(delta: float) -> void:
-	#print(Input.get_axis("rotate_view_down", "rotate_view_up"))
-	#var spin_direction = Input.get_axis("rotate_view_down", "rotate_view_up")

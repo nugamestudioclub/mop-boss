@@ -8,10 +8,10 @@ friction = 0.5
 bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bauye"]
-size = Vector3(0.208496, 0.804199, 0.0640869)
+size = Vector3(0.122009, 0.533447, 0.0404358)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oquvu"]
-size = Vector3(0.128174, 0.755737, 0.0312195)
+size = Vector3(0.10788, 0.405212, 0.0312195)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a60lp"]
 albedo_texture = ExtResource("1_gwbgh")
@@ -108,15 +108,15 @@ angular_damp = 1.0
 script = ExtResource("1_8c771")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.278332, -0.0539981, -0.00238037)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.142956, -0.0367557, -0.00169373)
 shape = SubResource("BoxShape3D_bauye")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.501759, -0.013837, -0.00126648)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.326497, -0.0209628, -0.00126648)
 shape = SubResource("BoxShape3D_oquvu")
 
 [node name="Knife" type="Node3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
 
 [node name="Handle" type="MeshInstance3D" parent="Knife"]
 transform = Transform3D(1, 0, 0, 0, 1.07434, 0, 0, 0, 1, 0.0123329, -0.00299377, 0)

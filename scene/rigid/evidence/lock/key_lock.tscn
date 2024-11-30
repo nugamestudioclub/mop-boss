@@ -159,8 +159,11 @@ linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_t6qea")
 
-[node name="keylock_rod_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.155228, 0)
+[node name="Rod" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0410052, 0.158844)
+
+[node name="keylock_rod_001" type="MeshInstance3D" parent="Rod"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.114223, -0.158844)
 mesh = SubResource("ArrayMesh_lqwxy")
 skeleton = NodePath("")
 

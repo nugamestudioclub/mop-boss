@@ -49,8 +49,8 @@ func randomize_combo(chosen_variant: Dictionary, combo_length: int, notches: int
 		# TODO: FIX? kind of annoying to get current scene everytime
 		var alley_level = get_tree().current_scene
 		alley_level.get_node("LockCodes/" + location).text = hex_code
-	print("Correct: ", new_combo, chosen_variant)
-	print("Location: ", location)
+	#print("Correct: ", new_combo, chosen_variant)
+	#print("Location: ", location)
 	return new_combo
 
 

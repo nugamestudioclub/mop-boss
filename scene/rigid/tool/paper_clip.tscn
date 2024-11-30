@@ -7,12 +7,13 @@ friction = 0.5
 bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81nqg"]
-size = Vector3(0.049, 0.38, 0.04)
+size = Vector3(0.049, 0.38, 0.065)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agcgg"]
 albedo_color = Color(0.65834, 0.65834, 0.65834, 1)
 metallic = 0.74
 roughness = 0.2
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjamj"]
 
@@ -68,3 +69,7 @@ transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-1
 material_override = SubResource("StandardMaterial3D_agcgg")
 mesh = SubResource("ArrayMesh_blqdt")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.2
+omni_range = 1.0

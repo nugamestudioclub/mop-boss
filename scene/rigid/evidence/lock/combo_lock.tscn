@@ -379,3 +379,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.264168, 0)
 [node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
 node_a = NodePath("../..")
 node_b = NodePath("..")
+
+[node name="Rod" type="Node3D" parent="."]

@@ -1,2 +1,2 @@
 class_name PaperClip
-extends RigidBody3D
+extends InspectableObject
