@@ -20,6 +20,7 @@ var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
 
 func _ready() -> void:
+	super._ready()
 	chosen_variant = padlock_variants.pick_random()
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])

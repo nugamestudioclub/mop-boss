@@ -8,6 +8,9 @@ var active_tool: Node3D = null
 const DISTANCE_TOLERANCE := 1.25
 const DISTANCE_TOLERANCE_SQUARED = pow(DISTANCE_TOLERANCE, 2)
 
+func _ready():
+	add_to_group("evidence")
+
 func is_moved() -> bool:
 	return original_global_position.distance_squared_to(global_position) < DISTANCE_TOLERANCE_SQUARED
 

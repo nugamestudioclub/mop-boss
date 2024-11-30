@@ -31,6 +31,7 @@ holdable=""
 empty_spawner=""
 full_spawner="Nodes that signify where puzzle elements can spawn."
 tool="This is a tool that can be used on puzzles"
+evidence=""
 
 [input]
 

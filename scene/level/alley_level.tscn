@@ -1,6 +1,5 @@
 [gd_scene load_steps=38 format=3 uid="uid://b4d3iiivouw3k"]
 
-[ext_resource type="Script" path="res://script/level/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="3_ryyl0"]
@@ -28,6 +27,44 @@
 [ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/prop/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
+
+[sub_resource type="GDScript" id="GDScript_58cnf"]
+script/source = "extends Node3D
+
+@onready var level_generation_manager = $LevelGenerationManager
+
+# FOR DEBUGGING PURPOSES
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed: return
+		elif event.keycode == KEY_R:
+			start_level()
+
+func _ready() -> void:
+	start_level()
+
+func start_level():
+	G_game_state.fade_in_scene()
+	level_generation_manager.clear_level()
+	level_generation_manager.generate_level()
+
+func end_level():
+	# TODO: pass information to office scene, like performance stats (so boss can call and say hey)
+	var total_evidences = 0
+	var cleaned_evidences = 0
+	for evidence in get_tree().get_nodes_in_group(\"evidence\"):
+		total_evidences += 1
+		if evidence.is_altered():
+			cleaned_evidences +=1
+	
+	G_game_state.total_evidences = total_evidences
+	G_game_state.cleaned_evidences = cleaned_evidences
+	G_game_state.fade_out_scene()
+	
+	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
+	await get_tree().process_frame
+	get_tree().change_scene_to_file(\"res://scene/level/office_level.tscn\")
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
@@ -64,7 +101,7 @@ density = 0.75
 density_texture = SubResource("NoiseTexture3D_5a5n2")
 
 [node name="AlleyLevel" type="Node3D"]
-script = ExtResource("1_i44v8")
+script = SubResource("GDScript_58cnf")
 
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05998, 0)
