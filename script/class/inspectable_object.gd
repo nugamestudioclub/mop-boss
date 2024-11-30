@@ -39,8 +39,8 @@ func _stop_input_listening():
 	for collider in G_node.get_descendants(self):
 		if not collider is CollisionObject3D: continue
 		if not input_event_reference.has(collider): continue
-		input_event_reference.erase(collider)
 		collider.input_event.disconnect(input_event_reference[collider])
+		input_event_reference.erase(collider)
 
 # Player created an input in collision area of object
 @warning_ignore("unused_parameter")
