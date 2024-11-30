@@ -237,7 +237,6 @@ node_a = NodePath("..")
 
 [node name="DoorRight" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.617753, 0.862046, -0.763784)
-collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_id6e1")
 freeze = true
 
