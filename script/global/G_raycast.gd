@@ -22,8 +22,8 @@ func raycast_mouse(camera: Camera3D, ray_length: float = 1000, exclude: Array = 
 	return raycast_to(origin, end, exclude)
 
 """Gets the object the player's mouse is targetting, or null if not targetting anything with a collider."""
-func get_mouse_target(camera: Camera3D):
-	var raycast_result: Dictionary = raycast_mouse(camera)
+func get_mouse_target(camera: Camera3D, exclude: Array = []):
+	var raycast_result: Dictionary = raycast_mouse(camera, 1000, exclude)
 	var target = null
 	if raycast_result.has("collider"):
 		target = raycast_result.collider
