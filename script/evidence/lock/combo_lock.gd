@@ -3,7 +3,11 @@ extends Evidence
 var unlocked = false
 var dumpster = null
 
-var combolock_variants: Array = G_lock.get_lock_variants("combo_lock_5_digits")
+var combolock_variants = {
+	5: G_lock.get_lock_variants("combo_lock_5_digits"),
+	4: G_lock.get_lock_variants("combo_lock_4_digits"),
+	3: G_lock.get_lock_variants("combo_lock_3_digits")
+}
 var chosen_variant: Dictionary
 var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json").data["definitions"]
 
@@ -18,6 +22,9 @@ const RADS_PER_TURN := TAU/FACES
 var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
 
+
+signal on_unlock()
+
 func is_altered() -> bool:
 	var should_leave_alone = chosen_variant.get("special", "") == "leave_alone"
 	var has_combo_been_modified = current_combo.any(func(x): return x != 0)
@@ -27,7 +34,10 @@ func is_solved() -> bool:
 	return current_combo == correct_combo
 
 func _ready() -> void:
-	chosen_variant = combolock_variants.pick_random()
+	randomize()
+	var dial_count = randi_range(3, 5)
+	print("i have a dial count of ", dial_count)
+	chosen_variant = combolock_variants[dial_count].pick_random()
 	var material = StandardMaterial3D.new()
 	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
 	material.roughness = 0.3
@@ -36,8 +46,14 @@ func _ready() -> void:
 	for child in G_node.get_descendants(self):
 		if child is MeshInstance3D:
 			child.material_override = material
-	
-	correct_combo = G_lock.randomize_combo(chosen_variant, 5, FACES)
+	# get rid of extra dials
+	for i in range($Dials.get_child_count()):
+		if i >= dial_count:
+			$Dials.get_child(i).queue_free()
+	correct_combo = G_lock.randomize_combo(chosen_variant, dial_count, FACES)
+	current_combo = correct_combo.map(func(x): return 0)
+	print(correct_combo)
+	print(current_combo)
 
 
 
@@ -67,7 +83,7 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 		
 		#combo_rod.rotate_y(PI)
 		var rotate_vector = Vector3(0, 180, 0)
-		G_node.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
+		G_node3d.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 		collision_rod.position += Vector3(0, 0.1, 0)
-		
 		anchor_point.queue_free()
+		on_unlock.emit()

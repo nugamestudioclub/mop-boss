@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://beqmn7aj6n046"]
+[gd_scene load_steps=32 format=4 uid="uid://beqmn7aj6n046"]
 
 [ext_resource type="Script" path="res://script/evidence/lock/combo_lock.gd" id="1_h1eiu"]
 
@@ -290,6 +290,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j2tn3")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cle23"]
+albedo_color = Color(1, 0.32103, 0.285022, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gd1ux"]
+material = SubResource("StandardMaterial3D_cle23")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.005
+
 [node name="ComboLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
@@ -380,4 +389,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.264168, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
-[node name="Rod" type="Node3D" parent="."]
+[node name="RedDot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RedDot"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.100644, -0.123303, 0.191754)
+mesh = SubResource("CylinderMesh_gd1ux")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RedDot"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.100525, -0.123303, -0.194378)
+mesh = SubResource("CylinderMesh_gd1ux")
+skeleton = NodePath("../..")
