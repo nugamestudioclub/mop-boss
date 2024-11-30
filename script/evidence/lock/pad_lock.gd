@@ -19,6 +19,8 @@ const RADS_PER_TURN := TAU / NOTCHES
 var correct_combo = [0, 0, 0, 0, 0]
 var current_combo = [0, 0, 0, 0, 0]
 
+signal on_unlock()
+
 func _ready() -> void:
 	super._ready()
 	chosen_variant = padlock_variants.pick_random()
@@ -97,10 +99,7 @@ func _unlock() -> void:
 	G_node3d.rotate_around_point(collision_rod, pivot.global_position, rotate_vector)
 	collision_rod.position += Vector3(0, 0.1, 0)
 	anchor_point.queue_free()
-	
-	# Unlock dumpster its attached to
-	if dumpster and dumpster.has_method("unlock"):
-		dumpster.unlock()
+	on_unlock.emit()
 
 func is_solved() -> bool:
 	return current_combo == correct_combo

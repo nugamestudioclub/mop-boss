@@ -84,8 +84,8 @@ func _stop_inspecting(node: Node3D):
 		node.exit_inspect_mode()
 
 """Checks if an object is inspectable"""
-func _is_inspectable(object):
-	return (object is InspectableObject and object.visible)
+func _is_inspectable(object: Node):
+	return (object is InspectableObject and object.visible and object.is_in_group("inspectable"))
 
 #func _is_inspectable(object):
 	#return (object is RigidBody3D and 
@@ -118,7 +118,7 @@ func _input(event):
 		if highlighted_node != null:
 			G_highlight.remove_highlight(highlighted_node)
 			highlighted_node = null
-		if _is_inspectable(target):
+		if target.is_in_group("holdable") and target.visible:
 			G_highlight.add_highlight(target)
 			highlighted_node = target
 	

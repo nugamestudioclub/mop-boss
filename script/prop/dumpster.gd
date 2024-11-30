@@ -8,6 +8,8 @@ var spawned_lock: Node = null
 @onready var door_left = $"../DoorLeft"
 @onready var door_right = $"../DoorRight"
 
+var door_script = preload("res://script/prop/dumpster_door.gd")
+
 func _on_spawn_my_lock(node: Node3D):
 	spawned_lock = node
 	if "on_unlock" in spawned_lock:
@@ -24,5 +26,7 @@ func _unlock() -> void:
 	print("Dumpster doors are now unlocked!")
 	door_left.freeze = false
 	door_left.add_to_group("holdable")
+	door_left.script = door_script
 	door_right.freeze = false
 	door_right.add_to_group("holdable")
+	door_right.script = door_script
