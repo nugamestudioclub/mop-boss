@@ -98,6 +98,7 @@ mesh = SubResource("SphereMesh_b8hlg")
 
 [node name="Crossout" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.340368, 0.0317333, -0.304388)
+visible = false
 
 [node name="Image" type="MeshInstance3D" parent="Crossout"]
 transform = Transform3D(2.11, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

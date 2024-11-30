@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=38 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="Script" path="res://script/level/start_level.gd" id="1_i44v8"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
 [ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/prop/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
+[ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg16n"]
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
@@ -299,6 +300,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.886, 1.208, 3.27)
 
 [node name="Hammer" parent="Props" instance=ExtResource("20_ev0ie")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.322, 1.101, 3.515)
+
+[node name="Knife" parent="Props" instance=ExtResource("25_fye0o")]
+transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 7.95408, 1.101, 3.515)
 
 [node name="Buildings" type="Node3D" parent="."]
 

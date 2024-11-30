@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://b3ldwjlv1f6iy"]
+[gd_scene load_steps=13 format=4 uid="uid://b3ldwjlv1f6iy"]
+
+[ext_resource type="Script" path="res://script/tool/knife.gd" id="1_8c771"]
+[ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_gwbgh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
 bounce = 0.5
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_o4st2"]
-height = 1.97259
-radius = 0.12
+[sub_resource type="BoxShape3D" id="BoxShape3D_bauye"]
+size = Vector3(0.208496, 0.804199, 0.0640869)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oquvu"]
+size = Vector3(0.128174, 0.755737, 0.0312195)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a60lp"]
+albedo_texture = ExtResource("1_gwbgh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4lck"]
 resource_name = "standardSurface1"
@@ -85,6 +93,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hdpgs")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g218j"]
+albedo_color = Color(0.641934, 0.641934, 0.641934, 1)
+metallic = 0.8
+roughness = 0.3
+
 [node name="Knife" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -92,16 +105,22 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_8c771")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0949594, -0.0522891, 0)
-shape = SubResource("CylinderShape3D_o4st2")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.278332, -0.0539981, -0.00238037)
+shape = SubResource("BoxShape3D_bauye")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.501759, -0.013837, -0.00126648)
+shape = SubResource("BoxShape3D_oquvu")
 
 [node name="Knife" type="Node3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="Handle" type="MeshInstance3D" parent="Knife"]
 transform = Transform3D(1, 0, 0, 0, 1.07434, 0, 0, 0, 1, 0.0123329, -0.00299377, 0)
+material_override = SubResource("StandardMaterial3D_a60lp")
 mesh = SubResource("ArrayMesh_ga8np")
 skeleton = NodePath("")
 
@@ -109,3 +128,4 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0221856, -0.00144031, 0)
 mesh = SubResource("ArrayMesh_alq7q")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_g218j")

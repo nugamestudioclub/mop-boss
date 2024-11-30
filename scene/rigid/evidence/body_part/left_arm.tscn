@@ -59,6 +59,6 @@ angular_damp = 1.0
 script = ExtResource("1_yw424")
 
 [node name="Left_Arm" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061282, 0.0115401, 0.0213438)
+transform = Transform3D(22.6551, -8.30674, 0, 8.30674, 22.6551, 0, 0, 0, 24.13, 0.000908293, 0.0145016, -0.00530919)
 mesh = SubResource("ArrayMesh_iv8wa")
 skeleton = NodePath("")

@@ -17,7 +17,7 @@ var random_note: Dictionary
 var text: String
 var text_lines: Array
 var word_positions = []
-func on_enter_level() -> void:
+func _ready() -> void:
 	random_note = note_options.pick_random()
 	text = random_note.text
 	text_lines = _split_up_text(text)
@@ -34,6 +34,12 @@ func on_enter_level() -> void:
 # function loops for each key in dictionary checking if {key} in the randomly
 # selected sentence structure, then replaces the first occurence, repeat till you
 # have a random sentence.
+
+func enter_inspect_mode():
+	print("hi")
+	print("entered with tool: ", active_tool)
+	if active_tool is Knife:
+		print("used cut")
 
 # made by
 # 15AAC
@@ -83,7 +89,7 @@ func _move_crossout_to_word():
 
 
 @onready var crossout_origin = $Crossout.position
-func _input(event: InputEvent):
+func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey:
 		if not event.pressed or event.echo: return
 		match event.keycode:
