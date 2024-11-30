@@ -46,18 +46,18 @@ func clear_level():
 		spawner.despawn()
 
 func generate_level():
+	randomize()
 	get_level_requirements()
 	
 	for category in required_categories:
-		for spawner in all_group(empty_tag):
-			if _spawner_has_category(spawner, category.name):
-				if category is CategoryItem:
-					if category.scene == null: print(category)
-					spawner.spawn(category.scene)
-					break
-				elif category is Category:
-					spawner.spawn(category.pick_node())
-					break
+		var options = all_group(empty_tag).filter(func(x): return _spawner_has_category(x, category.name))
+		var random_index = randi_range(0, len(options) - 1)
+		var random_option = options[random_index]
+		if category is CategoryItem:
+			if category.scene == null: print(category)
+			random_option.spawn(category.scene)
+		elif category is Category:
+			random_option.spawn(category.pick_node())
 	
 	for spawner in all_group(empty_tag):
 		spawner.spawn_random()
@@ -72,19 +72,3 @@ func get_level_requirements():
 	pairs.sort_custom(func(pair1, pair2): return pair1[1] < pair2[1])
 	# should be a sorted array of the categories from least options to most options (availability)
 	required_categories = pairs.map(func(pair): return pair[0])
-
-
-func generate_level2():
-	for category in required_categories:
-		for spawner in all_group(empty_tag):
-			if _spawner_has_category(spawner, category.name):
-				if category is CategoryItem:
-					if category.scene == null: print(category)
-					spawner.spawn(category.scene)
-					break
-				elif category is Category:
-					spawner.spawn(category.pick_node())
-					break
-	
-	for spawner in all_group(empty_tag):
-		spawner.spawn_random()
