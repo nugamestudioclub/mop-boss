@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bkpnjy6ux6b6y"]
+[gd_scene load_steps=9 format=4 uid="uid://bkpnjy6ux6b6y"]
 
-[ext_resource type="Script" path="res://script/prop/police_radio.gd" id="1_jccsv"]
+[ext_resource type="Script" path="res://script/evidence/body_part/body_part.gd" id="1_cixyw"]
+[ext_resource type="Material" uid="uid://bxq4r3sds4ni" path="res://asset/image/body_part_material.tres" id="2_a1387"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -49,6 +50,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nbmug")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_05myi"]
+height = 0.786346
+radius = 0.0890203
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5eqvh"]
+height = 0.185459
+radius = 0.0560914
+
 [node name="RightLeg" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -56,9 +65,18 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_jccsv")
+script = ExtResource("1_cixyw")
 
 [node name="Right_Leg" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0619622, 0.00339833, 0.00101728)
+transform = Transform3D(51.08, 0, 0, 0, 51.08, 0, 0, 0, 51.08, 0.023349, -0.00347343, 0.00101728)
+material_override = ExtResource("2_a1387")
 mesh = SubResource("ArrayMesh_1ymje")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0241097, 0, -0.0853111)
+shape = SubResource("CylinderShape3D_05myi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.387764, 0, 0.100148)
+shape = SubResource("CylinderShape3D_5eqvh")

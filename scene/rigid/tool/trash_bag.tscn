@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://c7tlhfmkggm4n"]
+[gd_scene load_steps=11 format=4 uid="uid://c7tlhfmkggm4n"]
 
 [ext_resource type="Texture2D" uid="uid://dctue4jvqafep" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_BaseColor.png" id="1_eo8t1"]
+[ext_resource type="Script" path="res://script/tool/trash_bag.gd" id="1_klq7r"]
 [ext_resource type="Texture2D" uid="uid://cbh4qur5h4xf6" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Normal.png" id="2_e7wbk"]
 [ext_resource type="Texture2D" uid="uid://5jmofyccbn17" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Roughness.png" id="3_lvst1"]
 
@@ -68,6 +69,7 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_klq7r")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0666721, 0.274122, -0.0330945)

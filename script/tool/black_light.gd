@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends InspectableObject
 
 @onready var alley_level = $"/root/AlleyLevel"
 @onready var lock_codes = alley_level.get_node("LockCodes")

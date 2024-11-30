@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://devs7xh7q8fqr"]
+[gd_scene load_steps=8 format=4 uid="uid://devs7xh7q8fqr"]
 
-[ext_resource type="Script" path="res://script/prop/police_radio.gd" id="1_dqv3e"]
+[ext_resource type="Script" path="res://script/evidence/body_part/body_part.gd" id="1_h0akl"]
+[ext_resource type="Material" uid="uid://bxq4r3sds4ni" path="res://asset/image/body_part_material.tres" id="2_nys8f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -49,6 +50,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nn1du")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh2pc"]
+size = Vector3(0.275909, 0.0572891, 0.241455)
+
 [node name="RightHand" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -56,9 +60,17 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_dqv3e")
+script = ExtResource("1_h0akl")
 
-[node name="Right_Hand" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0.0545058)
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(43.385, 0, 0, 0, 43.385, 0, 0, 0, 43.385, 0, -0.0424665, 0)
+
+[node name="Right_Hand" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(-0.94728, 0.310827, 0.0777631, -0.311771, -0.950157, 0, 0.0738872, -0.0242443, 0.996972, -0.0573593, -0.00768587, -0.016733)
+material_override = ExtResource("2_nys8f")
 mesh = SubResource("ArrayMesh_uu0n0")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00279236, 0.0135765, 0.0108643)
+shape = SubResource("BoxShape3D_qh2pc")

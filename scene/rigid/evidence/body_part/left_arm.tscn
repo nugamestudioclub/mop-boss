@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://cvvyy68ab0106"]
+[gd_scene load_steps=8 format=4 uid="uid://cvvyy68ab0106"]
 
-[ext_resource type="Script" path="res://script/prop/police_radio.gd" id="1_yw424"]
+[ext_resource type="Script" path="res://script/evidence/body_part/body_part.gd" id="1_o0bsw"]
+[ext_resource type="Material" uid="uid://bxq4r3sds4ni" path="res://asset/image/body_part_material.tres" id="2_jg7c4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -49,6 +50,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vtxo5")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mcfck"]
+height = 0.735911
+radius = 0.0686586
+
 [node name="LeftArm" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -56,9 +61,14 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_yw424")
+script = ExtResource("1_o0bsw")
 
 [node name="Left_Arm" type="MeshInstance3D" parent="."]
-transform = Transform3D(22.6551, -8.30674, 0, 8.30674, 22.6551, 0, 0, 0, 24.13, 0.000908293, 0.0145016, -0.00530919)
+transform = Transform3D(40.7332, -14.9353, 0, 14.9353, 40.7332, 0, 0, 0, 43.385, 0.000908293, 0.0145016, -0.00530919)
+material_override = ExtResource("2_jg7c4")
 mesh = SubResource("ArrayMesh_iv8wa")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0140983, -0.026859, 0.012087)
+shape = SubResource("CylinderShape3D_mcfck")

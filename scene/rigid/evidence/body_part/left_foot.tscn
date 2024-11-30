@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bklabnmd3pxkl"]
+[gd_scene load_steps=8 format=4 uid="uid://bklabnmd3pxkl"]
 
-[ext_resource type="Script" path="res://script/prop/police_radio.gd" id="1_8fhum"]
+[ext_resource type="Script" path="res://script/evidence/body_part/body_part.gd" id="1_cb1k8"]
+[ext_resource type="Material" uid="uid://bxq4r3sds4ni" path="res://asset/image/body_part_material.tres" id="2_dl0vr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -49,6 +50,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oahrg")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fjedh"]
+radius = 0.076581
+height = 0.357378
+
 [node name="LeftFoot" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -56,9 +61,14 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_8fhum")
+script = ExtResource("1_cb1k8")
 
 [node name="Left_foot" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0557786, 0.00350808, 0.00969982)
+transform = Transform3D(51.08, 0, 0, 0, 51.08, 0, 0, 0, 51.08, -0.0557786, 0.00350808, 0.00969982)
+material_override = ExtResource("2_dl0vr")
 mesh = SubResource("ArrayMesh_62bkp")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0425451, 0, 0)
+shape = SubResource("CapsuleShape3D_fjedh")

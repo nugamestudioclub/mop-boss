@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://dohw5wohedra"]
+
+[ext_resource type="Script" path="res://script/class/category/object_category.gd" id="1_kuds3"]
+[ext_resource type="Script" path="res://script/class/category/category_item.gd" id="2_t3vhs"]
+[ext_resource type="PackedScene" uid="uid://cvvyy68ab0106" path="res://scene/rigid/evidence/body_part/left_arm.tscn" id="3_2jr4p"]
+[ext_resource type="PackedScene" uid="uid://bklabnmd3pxkl" path="res://scene/rigid/evidence/body_part/left_foot.tscn" id="4_xt150"]
+[ext_resource type="PackedScene" uid="uid://devs7xh7q8fqr" path="res://scene/rigid/evidence/body_part/right_hand.tscn" id="5_ayyue"]
+[ext_resource type="PackedScene" uid="uid://bkpnjy6ux6b6y" path="res://scene/rigid/evidence/body_part/right_leg.tscn" id="6_ftanj"]
+
+[node name="BodyPartsCategory" type="Node"]
+script = ExtResource("1_kuds3")
+
+[node name="LeftArm" type="Node" parent="."]
+script = ExtResource("2_t3vhs")
+scene = ExtResource("3_2jr4p")
+
+[node name="LeftFoot" type="Node" parent="."]
+script = ExtResource("2_t3vhs")
+scene = ExtResource("4_xt150")
+
+[node name="RightHand" type="Node" parent="."]
+script = ExtResource("2_t3vhs")
+scene = ExtResource("5_ayyue")
+
+[node name="RightLeg" type="Node" parent="."]
+script = ExtResource("2_t3vhs")
+scene = ExtResource("6_ftanj")
