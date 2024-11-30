@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://7nt3rprfhbn" path="res://scene/static/prop/dumpster.tscn" id="7_xcaps"]
 [ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/system/category/note_category.tscn" id="8_b2dvn"]
 [ext_resource type="PackedScene" uid="uid://devs7xh7q8fqr" path="res://scene/rigid/evidence/body_part/right_hand.tscn" id="8_c8bai"]
-[ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/static/prop/desk.tscn" id="8_rc1ap"]
 [ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/rigid/prop/police_radio.tscn" id="9_f48pa"]
 [ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/rigid/prop/bowling_pin.tscn" id="9_r5qke"]
 [ext_resource type="PackedScene" uid="uid://bkpnjy6ux6b6y" path="res://scene/rigid/evidence/body_part/right_leg.tscn" id="9_ydcr3"]
@@ -25,12 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://clqoe4uvw2yq3" path="res://scene/rigid/tool/chemical_bottle.tscn" id="18_jc5e5"]
 [ext_resource type="PackedScene" uid="uid://bpwyxaec5rtng" path="res://scene/rigid/tool/paper_clip.tscn" id="19_mmnbt"]
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
-[ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
+[ext_resource type="PackedScene" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
-[ext_resource type="PackedScene" uid="uid://cjerhiu7dcu21" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
+[ext_resource type="PackedScene" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
-[ext_resource type="PackedScene" uid="uid://dohw5wohedra" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
+[ext_resource type="PackedScene" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
 [ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
+[ext_resource type="PackedScene" uid="uid://dvmc56pfj4tfj" path="res://scene/rigid/prop/pallet.tscn" id="32_pa76a"]
 
 [sub_resource type="GDScript" id="GDScript_58cnf"]
 script/source = "extends Node3D
@@ -106,7 +106,7 @@ density_texture = SubResource("NoiseTexture3D_5a5n2")
 script = SubResource("GDScript_58cnf")
 
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56498, 0)
 
 [node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
 
@@ -174,39 +174,43 @@ outline_size = 0
 [node name="Props" type="Node3D" parent="."]
 
 [node name="PoliceRadio" parent="Props" instance=ExtResource("9_f48pa")]
-transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 7.23314, 1.20201, 3.17469)
+transform = Transform3D(-0.806135, 0, 0.591732, 0, 1, 0, -0.591732, 0, -0.806135, 12.6929, 1.05407, 4.1531)
 
 [node name="Tools" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="BlackLight" parent="Props/Tools" instance=ExtResource("23_qpe6i")]
-transform = Transform3D(0.156434, -0.987688, 0, 0.987688, 0.156434, 0, 0, 0, 1, 7.159, 1.148, 3.873)
+transform = Transform3D(0.0963857, -0.608557, 0.787635, 0.995038, 0.0785338, -0.0610881, -0.0246803, 0.789614, 0.613107, 11.8441, 0.358174, 3.96966)
 
 [node name="ChemicalBottle" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.278, 1.10075, 3.302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28361, 0.243991, 3.71034)
 
 [node name="ChemicalBottle2" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(0.937889, 0, -0.346936, 0, 1, 0, 0.346936, 0, 0.937889, 9.2134, 1.10076, 3.72448)
+transform = Transform3D(0.937889, 0, -0.346936, 0, 1, 0, 0.346936, 0, 0.937889, 9.21901, 0.244001, 4.13282)
 contents = 1
 
 [node name="ChemicalBottle3" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(0.852778, 0.0140033, 0.522085, -0.0128116, 0.999901, -0.00589268, -0.522116, -0.0016636, 0.852873, 8.47585, 1.10076, 3.72448)
+transform = Transform3D(0.852778, 0.0140033, 0.522085, -0.0128116, 0.999901, -0.00589268, -0.522116, -0.0016636, 0.852873, 8.48146, 0.244001, 4.13282)
 contents = 2
 
 [node name="ChemicalBottle4" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(-0.0115557, 0.00574471, 0.999917, -0.0128116, 0.999901, -0.00589268, -0.999851, -0.0128786, -0.011481, 8.476, 1.10075, 3.316)
+transform = Transform3D(-0.0115557, 0.00574471, 0.999917, -0.0128116, 0.999901, -0.00589268, -0.999851, -0.0128786, -0.011481, 8.48161, 0.243991, 3.72434)
 contents = 3
 
 [node name="PaperClip" parent="Props/Tools" instance=ExtResource("19_mmnbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.886, 1.208, 3.27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5711, 0.455057, 3.52853)
+script = null
 
 [node name="Hammer" parent="Props/Tools" instance=ExtResource("20_ev0ie")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.322, 1.101, 3.515)
+transform = Transform3D(-4.35046e-08, -0.995268, -0.097166, 1, -4.37114e-08, 0, -4.24726e-09, -0.097166, 0.995268, 11.7656, 0.348057, 3.61103)
+script = null
 
 [node name="Knife" parent="Props/Tools" instance=ExtResource("25_fye0o")]
-transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 7.95408, 1.101, 3.515)
+transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 12.191, 0.273572, 3.77353)
+script = null
 
 [node name="Tetractys" type="Node3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0, -3.49466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0.605, -3.49466)
 
 [node name="BowlingPin" parent="Props/Tetractys" instance=ExtResource("9_r5qke")]
 transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.114637, 0, 0.403279)
@@ -233,12 +237,43 @@ transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711
 transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, -0.666947, 0, -0.187721)
 
 [node name="TrashBags" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="TrashBag" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
-transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 2.36821, -0.00474, 3.19936)
+transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 2.46821, -0.00474, 3.99936)
+
+[node name="TrashBag6" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 1.86821, -0.00474, 3.19936)
+
+[node name="TrashBag7" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.450549, -0.5, 0.739598, -0.260125, 0.866025, 0.427007, -0.854014, 0, -0.52025, -8.93179, -0.00474, 4.89936)
+
+[node name="TrashBag8" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.723558, 0, 0.690264, 0, 1, 0, -0.690264, 0, -0.723558, -9.43179, -0.00474, 4.29936)
+
+[node name="TrashBag10" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, -10.6318, -0.00474, 4.29936)
+
+[node name="TrashBag11" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(0.479473, 0, 0.877557, 0, 1, 0, -0.877557, 0, 0.479473, -11.0318, -0.00474, 3.79936)
+
+[node name="TrashBag13" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(0.479473, 0, 0.877557, 0, 1, 0, -0.877557, 0, 0.479473, -10.0318, -0.00474, 3.79936)
+
+[node name="TrashBag14" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, -10.0318, 0.39526, 4.49936)
+
+[node name="TrashBag15" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(-0.367872, 0.707107, 0.603879, 0.367872, 0.707107, -0.603879, -0.854014, -1.43934e-08, -0.52025, -11.6318, 0.39526, 4.49936)
+
+[node name="TrashBag12" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(0.877557, 0, -0.479473, 0, 1, 0, 0.479473, 0, 0.877557, -11.0318, -0.00474, 4.89936)
+
+[node name="TrashBag9" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
+transform = Transform3D(0.236007, 0, 0.971751, 0, 1, 0, -0.971751, 0, 0.236007, -9.93179, -0.00474, 4.89936)
 
 [node name="TrashBag2" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
-transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 2.36821, -0.00474, 3.84445)
+transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 2.36821, -0.00474, 4.74445)
 
 [node name="TrashBag3" parent="Props/TrashBags" instance=ExtResource("22_ivc8r")]
 transform = Transform3D(-0.0235423, 0, 0.999723, 0, 1, 0, -0.999723, 0, -0.0235423, 9.78292, -0.00474, -4.10799)
@@ -250,62 +285,22 @@ transform = Transform3D(0.865396, 0, 0.501088, 0, 1, 0, -0.501088, 0, 0.865396, 
 transform = Transform3D(-0.798341, 0, -0.602205, 0, 1, 0, 0.602205, 0, -0.798341, 9.80635, -0.00474, -4.83693)
 
 [node name="Dumpsters" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="Dumpster" parent="Props/Dumpsters" instance=ExtResource("7_xcaps")]
 transform = Transform3D(0.999224, 0, -0.0393993, 0, 1, 0, 0.0393993, 0, 0.999224, 7.87116, 0.815009, -4.09674)
 
 [node name="Dumpster2" parent="Props/Dumpsters" instance=ExtResource("7_xcaps")]
-transform = Transform3D(-0.975818, 0, 0.218586, 0, 1, 0, -0.218586, 0, -0.975818, 0.51456, 0.781009, 3.05437)
+transform = Transform3D(-0.975818, 0, 0.218586, 0, 1, 0, -0.218586, 0, -0.975818, 0.41456, 0.781009, 4.25437)
 
 [node name="Dumpster3" parent="Props/Dumpsters" instance=ExtResource("7_xcaps")]
 transform = Transform3D(0.999584, 0, 0.0288289, 0, 1, 0, -0.0288289, 0, 0.999584, -5.72895, 0.781009, -3.92913)
 
 [node name="Desks" type="Node3D" parent="Props"]
-
-[node name="Desk" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 6.39771, -0.000904262, 3.63486)
-
-[node name="NodeSpawner" parent="Props/Desks/Desk" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.0208614, 0.000383758, -0.198908, 0.000830049, 0.199998, 0.000298805, 0.198907, -0.000794356, -0.0208628, 0.029, 0.215, -0.15)
-
-[node name="DonutCategory" parent="Props/Desks/Desk/NodeSpawner" instance=ExtResource("7_555ks")]
-
-[node name="Desk7" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(-0.521536, 0.0207513, 4.97268, 0.00959396, 4.99995, -0.0198588, -4.97272, 0.00747012, -0.521571, 8.70389, -0.000904262, 3.63486)
-
-[node name="Desk2" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.00831079, 0.318192, 0.729703, 0.00787449, -5.2759)
-
-[node name="Desk3" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(0.318156, -0.0204291, -4.98983, 0.00959396, 4.99995, -0.0198588, 4.98986, -0.0083108, 0.318192, -7.72634, -0.04286, 1.29857)
-
-[node name="NodeSpawner5" parent="Props/Desks/Desk3" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.0127262, 0.000383758, 0.199594, -0.000817162, 0.199998, -0.000332432, -0.199593, -0.000794353, 0.0127277, 0.0697947, 0.0172655, -0.044384)
-
-[node name="NoteCategory" parent="Props/Desks/Desk3/NodeSpawner5" instance=ExtResource("8_b2dvn")]
-
-[node name="Desk4" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(-0.857088, 0.0212095, 4.92595, 0.00959396, 4.99995, -0.0198588, -4.92598, 0.00604771, -0.85712, -8.61459, -0.04286, -0.091827)
-
-[node name="NodeSpawner7" parent="Props/Desks/Desk4" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(-0.0342835, 0.000383758, -0.197039, 0.000848378, 0.199998, 0.000241909, 0.197038, -0.000794353, -0.0342848, 0.0372101, 0.0168085, -0.135786)
-
-[node name="DonutCategory" parent="Props/Desks/Desk4/NodeSpawner7" instance=ExtResource("7_555ks")]
-
-[node name="Desk5" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(4.35569, -0.018109, -2.45513, 0.00959396, 4.99995, -0.0198588, 2.45518, 0.0125889, 4.35568, -9.82576, -0.04286, 1.83764)
-
-[node name="NodeSpawner6" parent="Props/Desks/Desk5" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.174227, 0.000383757, 0.098207, -0.000724361, 0.199998, 0.000503555, -0.0982052, -0.000794353, 0.174227, 0.000730634, 0.0178107, 0.0666685)
-
-[node name="NoteCategory" parent="Props/Desks/Desk5/NodeSpawner6" instance=ExtResource("8_b2dvn")]
-
-[node name="DonutCategory" parent="Props/Desks/Desk5/NodeSpawner6" instance=ExtResource("7_555ks")]
-
-[node name="Desk6" parent="Props/Desks" instance=ExtResource("8_rc1ap")]
-transform = Transform3D(1.5992, -0.0218842, -4.73731, 0.00959396, 4.99995, -0.0198588, 4.73735, -0.00273826, 1.59922, -8.77432, 1.01993, 0.800921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="TempFence" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/TempFence"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 21.2616, 0.821846, -1.26789)
@@ -316,9 +311,10 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 21.261
 mesh = SubResource("PlaneMesh_amngm")
 
 [node name="MurderElements" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
 [node name="NodeSpawner" parent="Props/MurderElements" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -2.2937, 0.0498284, -0.684826)
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -2.2937, -0.0501716, -0.684826)
 
 [node name="BloodCategory" parent="Props/MurderElements/NodeSpawner" instance=ExtResource("25_f04sn")]
 surface = "asphalt"
@@ -327,7 +323,7 @@ weight = 100
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner" instance=ExtResource("26_bxjnx")]
 
 [node name="NodeSpawner2" parent="Props/MurderElements" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -3.85942, 0.0498284, -2.19308)
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -3.85942, -0.0501716, -2.19308)
 
 [node name="BloodCategory" parent="Props/MurderElements/NodeSpawner2" instance=ExtResource("25_f04sn")]
 surface = "asphalt"
@@ -351,7 +347,7 @@ weight = 100
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner4" instance=ExtResource("26_bxjnx")]
 
 [node name="NodeSpawner5" parent="Props/MurderElements" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -1.01173, 0.0498284, -2.2741)
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -1.01173, -0.0501716, -2.2741)
 
 [node name="BloodCategory" parent="Props/MurderElements/NodeSpawner5" instance=ExtResource("25_f04sn")]
 surface = "asphalt"
@@ -360,7 +356,7 @@ weight = 100
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner5" instance=ExtResource("26_bxjnx")]
 
 [node name="NodeSpawner6" parent="Props/MurderElements" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -4.98091, 0.0498284, 0.444565)
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -4.98091, -0.0501716, 0.444565)
 
 [node name="BloodCategory" parent="Props/MurderElements/NodeSpawner6" instance=ExtResource("25_f04sn")]
 surface = "asphalt"
@@ -369,7 +365,7 @@ weight = 100
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner6" instance=ExtResource("26_bxjnx")]
 
 [node name="NodeSpawner7" parent="Props/MurderElements" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -2.96518, 0.0498284, 1.82362)
+transform = Transform3D(0.999998, -3.25963e-09, -1.41561e-07, 5.58794e-09, 1, 4.88944e-09, -1.49012e-08, 1.13505e-09, 0.999997, -2.96518, -0.0501716, 1.82362)
 
 [node name="BloodCategory" parent="Props/MurderElements/NodeSpawner7" instance=ExtResource("25_f04sn")]
 surface = "asphalt"
@@ -378,14 +374,14 @@ weight = 100
 [node name="BodyPartsCategory" parent="Props/MurderElements/NodeSpawner7" instance=ExtResource("26_bxjnx")]
 
 [node name="NodeSpawner1" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2771, 0.071967, -4.14242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2771, 0.676967, -4.14242)
 
 [node name="DonutCategory" parent="Props/NodeSpawner1" instance=ExtResource("7_555ks")]
 
 [node name="NoteCategory" parent="Props/NodeSpawner1" instance=ExtResource("8_b2dvn")]
 
 [node name="NodeSpawner2" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9897, 0.077199, -4.50883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9897, 0.682199, -4.50883)
 
 [node name="NoteCategory" parent="Props/NodeSpawner2" instance=ExtResource("8_b2dvn")]
 
@@ -405,3 +401,9 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.716, 0.22, -1.326)
 size = Vector3(47.86, 1.5, 15.42)
 material = SubResource("FogMaterial_detjd")
+
+[node name="Pallet" parent="." instance=ExtResource("32_pa76a")]
+transform = Transform3D(0.0773803, 0, 0.997002, 0, 1, 0, -0.997002, 0, 0.0773803, 8.83498, 0.724314, 3.89314)
+
+[node name="Pallet2" parent="." instance=ExtResource("32_pa76a")]
+transform = Transform3D(-0.100501, 0, 0.994937, 0, 1, 0, -0.994937, 0, -0.100501, 11.7483, 0.724314, 3.89314)
