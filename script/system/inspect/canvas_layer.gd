@@ -128,7 +128,7 @@ func _input(event):
 	if hand_player.held_object: exclude.append(hand_player.held_object)
 	target = G_raycast.get_mouse_target(camera_player, exclude)
 	
-	if highlighted_node != target:
+	if highlighted_node != target and target != null:
 		if highlighted_node != null:
 			G_highlight.remove_highlight(highlighted_node)
 			highlighted_node = null

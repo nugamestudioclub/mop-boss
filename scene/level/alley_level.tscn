@@ -25,12 +25,12 @@
 [ext_resource type="PackedScene" uid="uid://clqoe4uvw2yq3" path="res://scene/rigid/tool/chemical_bottle.tscn" id="18_jc5e5"]
 [ext_resource type="PackedScene" uid="uid://bpwyxaec5rtng" path="res://scene/rigid/tool/paper_clip.tscn" id="19_mmnbt"]
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
-[ext_resource type="PackedScene" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
+[ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
-[ext_resource type="PackedScene" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
+[ext_resource type="PackedScene" uid="uid://cjerhiu7dcu21" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
-[ext_resource type="PackedScene" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
-[ext_resource type="PackedScene" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
+[ext_resource type="PackedScene" uid="uid://dohw5wohedra" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
+[ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
 
 [sub_resource type="GDScript" id="GDScript_58cnf"]
 script/source = "extends Node3D
@@ -198,15 +198,12 @@ contents = 3
 
 [node name="PaperClip" parent="Props/Tools" instance=ExtResource("19_mmnbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.886, 1.208, 3.27)
-script = null
 
 [node name="Hammer" parent="Props/Tools" instance=ExtResource("20_ev0ie")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.322, 1.101, 3.515)
-script = null
 
 [node name="Knife" parent="Props/Tools" instance=ExtResource("25_fye0o")]
 transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 7.95408, 1.101, 3.515)
-script = null
 
 [node name="Tetractys" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0, -3.49466)
