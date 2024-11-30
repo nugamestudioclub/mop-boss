@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://beo1kydw854me"]
+[gd_scene load_steps=13 format=4 uid="uid://beo1kydw854me"]
+
+[ext_resource type="Script" path="res://script/evidence/donut/donut_hole.gd" id="1_c61ve"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -115,6 +117,7 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_c61ve")
 
 [node name="frosted_s_sprinkles_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00483083, -0.00146617, -0.00389719, -0.00286631, 0.00978027, 0.00263312, 0.0027404, 0.00764503, -0.00411594, 0.155918, 0.0116855, -0.0317888)

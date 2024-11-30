@@ -110,21 +110,20 @@ func _ready():
 
 func _input(event):
 	# Attempt highlight
-	if event is InputEventMouseMotion:
-		var exclude = []
-		if hand_player.held_object: exclude.append(hand_player.held_object)
-		target = G_raycast.get_mouse_target(camera_player, exclude)
-		
-		if highlighted_node != target:
-			if highlighted_node != null:
-				G_highlight.remove_highlight(highlighted_node)
-				highlighted_node = null
-			if _is_inspectable(target):
-				G_highlight.add_highlight(target)
-				highlighted_node = target
+	var exclude = []
+	if hand_player.held_object: exclude.append(hand_player.held_object)
+	target = G_raycast.get_mouse_target(camera_player, exclude)
+	
+	if highlighted_node != target:
+		if highlighted_node != null:
+			G_highlight.remove_highlight(highlighted_node)
+			highlighted_node = null
+		if _is_inspectable(target):
+			G_highlight.add_highlight(target)
+			highlighted_node = target
 	
 	# Attempt inspect
-	elif event is InputEventMouseButton:
+	if event is InputEventMouseButton:
 		if event.pressed: return
 		
 		if event.button_index == inspect_button:

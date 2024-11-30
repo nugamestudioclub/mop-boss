@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://sjx1lyny6oc6"]
+[gd_scene load_steps=10 format=4 uid="uid://sjx1lyny6oc6"]
+
+[ext_resource type="Script" path="res://script/evidence/donut/donut_whole.gd" id="1_l0cn2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -96,6 +98,7 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_l0cn2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0207353, 0)

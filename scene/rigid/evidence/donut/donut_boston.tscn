@@ -1,4 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://qnoci234wh17"]
+[gd_scene load_steps=12 format=4 uid="uid://qnoci234wh17"]
+
+[ext_resource type="Script" path="res://script/evidence/donut/donut_whole.gd" id="1_0h2ii"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -130,6 +132,7 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
+script = ExtResource("1_0h2ii")
 
 [node name="boston_frosting_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
