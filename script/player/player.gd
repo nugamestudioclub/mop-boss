@@ -75,7 +75,37 @@ func _process(_delta: float) -> void:
 
 		walk_force = directional_vector * walk_acceleration
 		if sprinting: walk_force *= sprint_factor
+		
+		# Pause locking the mouse
+		if Input.is_action_just_pressed("ui_cancel"):
+			Input.set_mouse_mode(pause_mouse_mode)
+		elif Input.is_action_just_released("ui_cancel"):
+			Input.set_mouse_mode(default_mouse_mode)
+		# Apply a one-time impulse for jump force
+		elif Input.is_action_just_pressed("jump") and is_on_floor():
+			var jump_force = (Vector3.UP * jump_velocity * player_mass)
+			apply_central_impulse(jump_force)
+		# Check if player is sprinting
+		elif Input.is_action_just_pressed("sprint"):
+			sprinting = true
+		elif Input.is_action_just_released("sprint"):
+			sprinting = false
+		
+		# Rotate charcter based on mouse motion detected previously
+		twist_pivot.rotate_y(twist_input)
+		pitch_pivot.rotate_x(pitch_input)
+		pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
+			deg_to_rad(min_pitch),
+			deg_to_rad(max_pitch))
+			#pitch_pivot.rotate_x(pitch_input)
+			#pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
+				#deg_to_rad(min_pitch),
+				#deg_to_rad(max_pitch))
+		
+		twist_input = 0.0
+		pitch_input = 0.0
 	
+	# Damp the player / apply net movement
 	var damp_acceleration = walk_acceleration * walk_velocity
 	var damp_force = Vector3(linear_velocity.x, 0, linear_velocity.z) * damp_acceleration 
 	
@@ -84,36 +114,6 @@ func _process(_delta: float) -> void:
 	
 	# Debug velocity
 	#print("CURR_VELOCITY: ", self.linear_velocity.length())
-	
-	# Pause locking the mouse
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(pause_mouse_mode)
-	elif Input.is_action_just_released("ui_cancel"):
-		Input.set_mouse_mode(default_mouse_mode)
-	# Apply a one-time impulse for jump force
-	elif Input.is_action_just_pressed("jump") and is_on_floor() and get_tree().current_scene.get_node("InspectLayer").inspected_original_parent.is_empty():
-		var jump_force = (Vector3.UP * jump_velocity * player_mass)
-		apply_central_impulse(jump_force)
-	# Check if player is sprinting
-	elif Input.is_action_just_pressed("sprint"):
-		sprinting = true
-	elif Input.is_action_just_released("sprint"):
-		sprinting = false
-	
-	# Rotate charcter based on mouse motion detected previously
-	twist_pivot.rotate_y(twist_input)
-	pitch_pivot.rotate_x(pitch_input)
-	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-		deg_to_rad(min_pitch),
-		deg_to_rad(max_pitch))
-		#pitch_pivot.rotate_x(pitch_input)
-		#pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-			#deg_to_rad(min_pitch),
-			#deg_to_rad(max_pitch))
-	
-	twist_input = 0.0
-	pitch_input = 0.0
-	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
