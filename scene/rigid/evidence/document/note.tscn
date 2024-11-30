@@ -66,6 +66,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1dgu"]
+resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_t46uq")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -82,9 +83,11 @@ shader_parameter/line = 100
 shader_parameter/texture_albedo = ExtResource("2_e3cin")
 
 [sub_resource type="QuadMesh" id="QuadMesh_l3ind"]
+resource_local_to_scene = true
 material = SubResource("ShaderMaterial_n1dgu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_212kk"]
+resource_local_to_scene = true
 material = SubResource("ShaderMaterial_n1dgu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
@@ -99,10 +102,9 @@ material = SubResource("StandardMaterial3D_wr0ds")
 size = Vector2(0.05, 0.05)
 center_offset = Vector3(0.025, 0, 0)
 
-[node name="Note" type="RigidBody3D" groups=["inspectable"]]
+[node name="Note" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
-freeze = true
 continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
