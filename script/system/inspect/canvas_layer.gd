@@ -108,7 +108,8 @@ func _ready():
 func _input(event):
 	# Attempt highlight
 	if event is InputEventMouseMotion:
-		target = G_raycast.get_mouse_target(camera_player, [hand_player.held_object])
+		var held_object = hand_player.held_object if hand_player.held_object else []
+		target = G_raycast.get_mouse_target(camera_player, held_object)
 		
 		if highlighted_node != target:
 			if highlighted_node != null:
