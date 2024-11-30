@@ -51,6 +51,7 @@ func enter_inspect_mode():
 	print("entered with tool: ", active_tool)
 	if active_tool is Tool and active_tool.type == Tool.Type.KNIFE:
 		knife_mode = true
+		print("cutting")
 	else:
 		knife_mode = false
 		if active_tool is Tool and active_tool.type == Tool.Type.TRASH_BAG:
@@ -99,32 +100,43 @@ func _get_position_of_word(text_line: int, text_word: int):
 
 
 func _move_crossout_to_word():
-	if line > cut: return
+	if line >= cut: return
 	# Reset position
 	$Crossout.position = crossout_origin
 	# Locally (accounting for rotation) move it to the word
 	$Crossout.translate_object_local(_get_position_of_word(line, word))
 	$Crossout/Image.scale = Vector3(len(text_lines[line][word]) * 0.375, 1, 1)
 
-
+var recorded_erased := {}
 func _confirm_crossout():
 	for erased in erased_words:
 		if erased[0] == line and erased[1] == word: return
 	var copy = $Crossout.duplicate()
 	$PreviouslyCrossedOut.add_child(copy)
 	erased_words.append([line, word, text_lines[line][word]])
+	if not line in recorded_erased:
+		recorded_erased[line] = []
+	recorded_erased[line].append(copy)
 	print("used pen to crossout SFX")
 
 
 func _confirm_cut():
 	if cut >= line:
 		cut = line
-		$MeshInstance3D2/Label3D.text = "\n".join(text.split("\n").slice(0, cut))
 		print("sliced SFX")
+		$MeshInstance3D2/Label3D.text = "\n".join(text.split("\n").slice(0, cut))
+		print(recorded_erased)
+		for i in recorded_erased.keys():
+			print(i, " >? ", cut)
+			if i > cut - 2:
+				for crossed in recorded_erased[i]:
+					crossed.queue_free()
+				recorded_erased[i].clear()
 
 func _move_cut():
 	if cut >= line:
 		$MeshInstance3D2.mesh.material.set_shader_parameter("line", line)
+		
 
 
 @onready var crossout_origin = $Crossout.position
@@ -164,7 +176,8 @@ func _handle_mouse_button(event):
 func _input_event_collider(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		_normal: Vector3, _shape_idx: int, _collision_object: CollisionObject3D) -> void:
 	if not event is InputEventMouseMotion: return
-	$Crossout.show()
+	if not knife_mode:
+		$Crossout.show()
 	var nearest = null
 	var distance = 0.02
 	for word_pos in word_positions:
