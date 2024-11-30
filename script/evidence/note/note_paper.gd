@@ -60,6 +60,11 @@ func enter_inspect_mode():
 			_disable_rigid_colliders()
 			trashed = true
 
+func exit_inspect_mode():
+	super.exit_inspect_mode()
+	line = cut
+	_move_cut()
+
 # made by
 # 15AAC
 # and
@@ -124,23 +129,24 @@ func _confirm_cut():
 	if cut >= line:
 		cut = line
 		print("sliced SFX")
-		$MeshInstance3D2/Label3D.text = "\n".join(text.split("\n").slice(0, cut))
-		print(recorded_erased)
-		for i in recorded_erased.keys():
-			print(i, " >? ", cut)
-			if i > cut - 2:
-				for crossed in recorded_erased[i]:
-					crossed.queue_free()
-				recorded_erased[i].clear()
 
 func _move_cut():
 	if cut >= line:
 		$MeshInstance3D2.mesh.material.set_shader_parameter("line", line)
+		$MeshInstance3D2/Label3D.text = "\n".join(text.split("\n").slice(0, line))
+		for i in recorded_erased.keys():
+			if i > cut - 1 or i > line - 1:
+				for crossed in recorded_erased[i]:
+					crossed.hide()
+			else:
+				for crossed in recorded_erased[i]:
+					crossed.show()
 		
 
 
 @onready var crossout_origin = $Crossout.position
 func _unhandled_key_input(event: InputEvent):
+	if not is_inspected: return
 	if event is InputEventKey:
 		if not event.pressed or event.echo: return
 		match event.keycode:
@@ -166,6 +172,7 @@ func _unhandled_key_input(event: InputEvent):
 
 
 func _handle_mouse_button(event):
+	if not is_inspected: return
 	if not event.pressed and event.button_index == 1:
 		if knife_mode:
 			_confirm_cut()
