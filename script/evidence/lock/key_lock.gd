@@ -50,7 +50,11 @@ func _unlock() -> void:
 
 func enter_inspect_mode():
 	super.enter_inspect_mode()
-	if active_tool is Tool and ((active_tool.type == Tool.Type.HAMMER and chosen_variant.get("special", "") == "use_hammer") or \
-		(active_tool.type == Tool.Type.PAPER_CLIP and chosen_variant.get("special", "") == "use_lock_pick")):
+	print(active_tool)
+	if not active_tool is Tool: return
+	var can_lock_pick = active_tool.type == Tool.Type.PAPER_CLIP and chosen_variant.get("special", "") == "use_lock_pick"
+	var can_hammer = (active_tool.type == Tool.Type.HAMMER and chosen_variant.get("special", "") == "use_hammer")
+	print(can_lock_pick, can_hammer)
+	if can_hammer or can_lock_pick:
 		_unlock()
 		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
