@@ -51,7 +51,7 @@ func _ready() -> void:
 		if i >= dial_count:
 			$Dials.get_child(i).queue_free()
 	correct_combo = G_lock.randomize_combo(chosen_variant, dial_count, FACES)
-	current_combo = correct_combo.map(func(x): return 0)
+	current_combo = correct_combo.map(func(_x): return 0)
 	print(correct_combo)
 	print(current_combo)
 
@@ -59,7 +59,7 @@ func _ready() -> void:
 
 func enter_inspect_mode():
 	super.enter_inspect_mode()
-	if active_tool is Hammer and chosen_variant.get("special", "") == "use_hammer":
+	if active_tool.type == Tool.Type.HAMMER and chosen_variant.get("special", "") == "use_hammer":
 		current_combo = correct_combo
 		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
 

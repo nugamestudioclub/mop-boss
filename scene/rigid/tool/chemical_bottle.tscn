@@ -99,6 +99,7 @@ max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_3un6c")
+type = 4
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.370612, 0)

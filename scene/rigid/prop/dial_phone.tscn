@@ -480,4 +480,8 @@ shape = SubResource("CylinderShape3D_72058")
 transform = Transform3D(0.999599, -0.0158339, -0.0234802, -0.00703159, 0.664373, -0.747368, 0.0274334, 0.747234, 0.663995, 0.0395945, -0.0903195, 0.136313)
 shape = SubResource("CylinderShape3D_72058")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="input_event" from="Holes" to="." method="_on_holes_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

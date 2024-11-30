@@ -109,6 +109,20 @@ func _ready():
 	inspector_gui.hide()
 
 func _input(event):
+	# Exit inspect	
+	if Input.is_action_just_released("ui_cancel"):
+		if inspector_gui.visible:
+			exit_inspect_mode()
+	# Zooming
+	elif Input.is_action_just_pressed("zoom_in"):
+		var new_fov =world_camera.fov - ZOOM_INCREMENT
+		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
+	elif Input.is_action_just_pressed("zoom_out"):
+		var new_fov = world_camera.fov + ZOOM_INCREMENT
+		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
+	
+	
+	if inspector_gui.visible: return
 	# Attempt highlight
 	var exclude = []
 	if hand_player.held_object: exclude.append(hand_player.held_object)
@@ -130,16 +144,3 @@ func _input(event):
 			if _is_inspectable(target):
 				_enter_inspect_mode()
 				_start_inspecting(target)
-	
-	# Exit inspect	
-	elif Input.is_action_just_released("ui_cancel"):
-		if inspector_gui.visible:
-			exit_inspect_mode()
-	
-	# Zooming
-	elif Input.is_action_just_pressed("zoom_in"):
-		var new_fov =world_camera.fov - ZOOM_INCREMENT
-		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
-	elif Input.is_action_just_pressed("zoom_out"):
-		var new_fov = world_camera.fov + ZOOM_INCREMENT
-		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)

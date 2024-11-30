@@ -1,5 +1,5 @@
 class_name ChemicalBottle
-extends Evidence
+extends Tool
 
 @onready var bottle_body = $Bottle/Bottle_Body
 

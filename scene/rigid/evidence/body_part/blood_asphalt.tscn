@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_km054")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
 size = Vector3(0.816956, 0.0334778, 0.816772)
 
-[node name="Blood" type="RigidBody3D" groups=["inspectable"]]
+[node name="Blood" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 freeze = true

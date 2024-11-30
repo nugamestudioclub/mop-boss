@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://bpwyxaec5rtng"]
 
-[ext_resource type="Script" path="res://script/tool/paper_clip.gd" id="1_htcf1"]
+[ext_resource type="Script" path="res://script/class/tool.gd" id="1_l7mx1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -56,7 +56,8 @@ continuous_cd = true
 max_contacts_reported = 1
 linear_damp = 1.0
 angular_damp = 1.0
-script = ExtResource("1_htcf1")
+script = ExtResource("1_l7mx1")
+type = 1
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -1.44939e-22, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.000908554, 0.00878292, -0.00188205)

@@ -31,9 +31,10 @@ func _on_holes_input_event(_camera, event, _event_position, _normal, shape_idx):
 			moving_hole_index = shape_idx
 			elapsed = 0.0
 			go_back = false
-			end = (moving_hole_index * PI/6) + PI/6
+			end = (moving_hole_index * TAU/14) + TAU/10
 
 func _process(delta: float):
+	if not $Timer.is_stopped(): return
 	if moving_hole_index != -1:
 		if not go_back:
 			var lerped = lerp(0.0, end, elapsed)
@@ -44,7 +45,7 @@ func _process(delta: float):
 			else:
 				# move towards reset
 				elapsed = 0
-				go_back = true
+				$Timer.start()
 		else:
 			# opposite direction
 			var lerped = lerp(end, 0.0, elapsed)
@@ -58,3 +59,7 @@ func _process(delta: float):
 					if moving_hole_index == 0:
 						get_tree().get_current_scene().end_level()
 					rotary.rotation = rotary_default
+
+
+func _on_timer_timeout():
+				go_back = true
