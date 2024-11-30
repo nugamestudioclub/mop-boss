@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=40 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
@@ -19,7 +19,6 @@
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://asset/font/edosz.ttf" id="13_qxlqj"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/rigid/player/player.tscn" id="15_biuw2"]
 [ext_resource type="FontFile" uid="uid://brid1anviro53" path="res://asset/font/punk kid.ttf" id="15_xvcf3"]
-[ext_resource type="Texture2D" uid="uid://inxj6sotxy2v" path="res://asset/image/fence.png" id="16_vgs5n"]
 [ext_resource type="FontFile" uid="uid://bmsxjry3su0rr" path="res://asset/font/Urban Starblues Demo.otf" id="17_smqsb"]
 [ext_resource type="PackedScene" uid="uid://clqoe4uvw2yq3" path="res://scene/rigid/tool/chemical_bottle.tscn" id="18_jc5e5"]
 [ext_resource type="PackedScene" uid="uid://bpwyxaec5rtng" path="res://scene/rigid/tool/paper_clip.tscn" id="19_mmnbt"]
@@ -30,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
 [ext_resource type="PackedScene" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
 [ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
+[ext_resource type="PackedScene" uid="uid://dhuw8hkjapuv6" path="res://scene/static/fence/fence_end.tscn" id="31_sfo7y"]
+[ext_resource type="PackedScene" uid="uid://bqs86sis2c5fp" path="res://scene/static/fence/fence_middle.tscn" id="32_1u30x"]
 [ext_resource type="PackedScene" uid="uid://dvmc56pfj4tfj" path="res://scene/rigid/prop/pallet.tscn" id="32_pa76a"]
 
 [sub_resource type="GDScript" id="GDScript_58cnf"]
@@ -69,14 +70,6 @@ func end_level():
 	await get_tree().process_frame
 	get_tree().change_scene_to_file(\"res://scene/level/office_level.tscn\")
 "
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ni5j"]
-transparency = 1
-albedo_texture = ExtResource("16_vgs5n")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_amngm"]
-material = SubResource("StandardMaterial3D_3ni5j")
-size = Vector2(7.345, 14.77)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_516dq"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -299,17 +292,6 @@ transform = Transform3D(0.999584, 0, 0.0288289, 0, 1, 0, -0.0288289, 0, 0.999584
 [node name="Desks" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
-[node name="TempFence" type="Node3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/TempFence"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 21.2616, 0.821846, -1.26789)
-mesh = SubResource("PlaneMesh_amngm")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/TempFence"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 21.2616, 0.821846, 7.51938)
-mesh = SubResource("PlaneMesh_amngm")
-
 [node name="MurderElements" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
@@ -407,3 +389,12 @@ transform = Transform3D(0.0773803, 0, 0.997002, 0, 1, 0, -0.997002, 0, 0.0773803
 
 [node name="Pallet2" parent="." instance=ExtResource("32_pa76a")]
 transform = Transform3D(-0.100501, 0, 0.994937, 0, 1, 0, -0.994937, 0, -0.100501, 11.7483, 0.724314, 3.89314)
+
+[node name="fence_end" parent="." instance=ExtResource("31_sfo7y")]
+transform = Transform3D(0.0108438, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108819, 21.5332, 0.598508, -5.94716)
+
+[node name="fence_end3" parent="." instance=ExtResource("31_sfo7y")]
+transform = Transform3D(-0.0108433, 0.0198796, 4.99995, 0.00959396, 4.99995, -0.0198588, -4.99998, 0.00955079, -0.0108814, 21.5332, 0.598508, 6.05284)
+
+[node name="fence_end2" parent="." instance=ExtResource("32_1u30x")]
+transform = Transform3D(0.0108437, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108817, 21.5332, 0.598508, -1.94716)
