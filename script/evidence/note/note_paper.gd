@@ -6,7 +6,6 @@ var erased_words = []
 func is_altered() -> bool:
 	return false
 
-
 func is_solved() -> bool:
 	return false
 
@@ -17,6 +16,7 @@ var random_note: Dictionary
 var text: String
 var text_lines: Array
 var word_positions = []
+
 func _ready() -> void:
 	random_note = note_options.pick_random()
 	text = random_note.text
@@ -36,7 +36,8 @@ func _ready() -> void:
 # have a random sentence.
 
 func enter_inspect_mode():
-	print("hi")
+	super.enter_inspect_mode()
+	
 	print("entered with tool: ", active_tool)
 	if active_tool is Knife:
 		print("used cut")

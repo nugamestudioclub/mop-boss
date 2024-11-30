@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Evidence
 
 @onready var bottle_body = $Bottle/Bottle_Body
 

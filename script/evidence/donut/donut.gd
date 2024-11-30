@@ -1,5 +1,4 @@
-extends RigidBody3D
-
+extends Evidence
 
 """ setup gives the donut a random color"""
 func setup():

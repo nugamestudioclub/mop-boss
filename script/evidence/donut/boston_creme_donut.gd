@@ -1,5 +1,4 @@
-extends RigidBody3D
-
+extends Evidence
 
 func setup():
 	pass

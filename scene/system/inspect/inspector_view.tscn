@@ -20,3 +20,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.045, -0.1, -0.135)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="OmniLight3D3"]
 radius = 0.1
+
+[node name="Inspecting" type="Node3D" parent="."]

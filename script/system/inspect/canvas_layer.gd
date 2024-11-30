@@ -23,7 +23,8 @@ var inspected_original_freeze: Dictionary = {}
 # Inspector paths
 @onready var inspector_gui = $Control
 @onready var inspector_world = inspector_gui.get_node("SubViewportContainer/Viewport/World")
-@onready var inspector_camera = inspector_world.get_node("Camera3D")
+@onready var world_inspecting = inspector_world.get_node("Inspecting")
+@onready var world_camera = inspector_world.get_node("Camera3D")
 
 """Opens the inspect viewport"""
 func _enter_inspect_mode():
@@ -33,7 +34,7 @@ func _enter_inspect_mode():
 	
 	# Enable viewport pop-up
 	inspector_gui.show()
-	inspector_camera.fov = DEFAULT_FOV
+	world_camera.fov = DEFAULT_FOV
 
 """Moves object to inspect view saving previous state"""
 func _start_inspecting(node: Node3D):
@@ -47,7 +48,7 @@ func _start_inspecting(node: Node3D):
 	# Add object
 	node.freeze = true
 	node.global_position = Vector3.ZERO
-	node.reparent(inspector_world)
+	node.reparent(world_inspecting)
 	
 	G_highlight.remove_highlight(node)
 	G_node3d.scale_to_fit(node, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
@@ -70,9 +71,8 @@ func _exit_inspect_mode():
 	inspector_gui.hide()
 	
 	# Remove all nodes from inspector
-	for node in inspector_world.get_children():
-		if node.is_in_group(inspect_group):
-			_stop_inspecting(node)
+	for node in world_inspecting.get_children():
+		_stop_inspecting(node)
 
 """Moves object from inspect window into previous state"""
 func _stop_inspecting(node: Node3D):
@@ -108,7 +108,7 @@ func _ready():
 func _input(event):
 	# Attempt highlight
 	if event is InputEventMouseMotion:
-		var held_object = hand_player.held_object if hand_player.held_object else []
+		var held_object = [hand_player.held_object] if hand_player.held_object else []
 		target = G_raycast.get_mouse_target(camera_player, held_object)
 		
 		if highlighted_node != target:
@@ -135,8 +135,8 @@ func _input(event):
 	
 	# Zooming
 	elif Input.is_action_just_pressed("zoom_in"):
-		var new_fov =inspector_camera.fov - ZOOM_INCREMENT
-		inspector_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
+		var new_fov =world_camera.fov - ZOOM_INCREMENT
+		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
 	elif Input.is_action_just_pressed("zoom_out"):
-		var new_fov = inspector_camera.fov + ZOOM_INCREMENT
-		inspector_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
+		var new_fov = world_camera.fov + ZOOM_INCREMENT
+		world_camera.fov = clamp(new_fov, ZOOM_INCREMENT, DEFAULT_FOV)
