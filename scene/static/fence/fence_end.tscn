@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dhuw8hkjapuv6"]
+[gd_scene load_steps=13 format=4 uid="uid://dhuw8hkjapuv6"]
 
 [ext_resource type="Texture2D" uid="uid://dnj3j2ea4kvox" path="res://asset/image/metal_0019_opacity_2k.jpg" id="1_a670h"]
 [ext_resource type="Texture2D" uid="uid://basws15yqpmka" path="res://asset/image/metal_0019_metallic_2k.jpg" id="2_5a6ki"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3d5tt"]
 size = Vector3(0.85, 0.7, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu4yw"]
+metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w14ca"]
 
@@ -96,11 +99,13 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Circle_002" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.1, -1.33582e-11, -1.45519e-11, -8.86757e-12, 0.1, 5.82077e-11, 0, -2.91038e-11, 0.0999999, -0.00959396, 4.73112e-05, 0.0198588)
+material_override = SubResource("StandardMaterial3D_vu4yw")
 mesh = SubResource("ArrayMesh_6hsw5")
 skeleton = NodePath("")
 
 [node name="Circle_004" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.1, -1.33582e-11, -1.45519e-11, -8.86757e-12, 0.1, 5.82077e-11, 0, -2.91038e-11, 0.0999999, 2.05541, 3.24005, 0.0198588)
+material_override = SubResource("StandardMaterial3D_vu4yw")
 mesh = SubResource("ArrayMesh_e1gxe")
 skeleton = NodePath("")
 

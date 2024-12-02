@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dvmc56pfj4tfj"]
+[gd_scene load_steps=7 format=4 uid="uid://dvmc56pfj4tfj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -6,6 +6,9 @@ bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_brq8b"]
 size = Vector3(1.35, 0.271094, 2.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cupg0"]
+albedo_color = Color(0.363457, 0.287568, 0.137517, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtpre"]
 resource_name = "Material"
@@ -62,5 +65,6 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+material_override = SubResource("StandardMaterial3D_cupg0")
 mesh = SubResource("ArrayMesh_tyxhd")
 skeleton = NodePath("")
