@@ -61,6 +61,7 @@ func _input(event):
 			if held_object != null:
 				_stop_holding(held_object)
 			elif _can_hold(target):
+				print(target.is_in_group(hold_group))
 				_start_holding(target)
 				
 	elif Input.is_action_just_pressed("interact"):

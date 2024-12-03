@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3e7j54lwq8nl"]
+[gd_scene load_steps=7 format=3 uid="uid://be2anpgly6jni"]
 
 [ext_resource type="Script" path="res://script/evidence/body_part/blood.gd" id="1_1g65r"]
 [ext_resource type="Texture2D" uid="uid://bftkl262bjhli" path="res://asset/image/blood_a.png" id="2_tlcum"]
@@ -6,6 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
 friction = 0.5
 bounce = 0.5
+absorbent = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km054"]
 resource_local_to_scene = true
@@ -20,7 +21,7 @@ material = SubResource("StandardMaterial3D_km054")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
 size = Vector3(0.816956, 0.0334778, 0.816772)
 
-[node name="Blood" type="RigidBody3D" groups=["holdable", "inspectable"]]
+[node name="Blood" type="RigidBody3D" groups=["inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 freeze = true
