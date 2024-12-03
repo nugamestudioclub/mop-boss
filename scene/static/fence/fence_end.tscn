@@ -1,13 +1,15 @@
 [gd_scene load_steps=14 format=4 uid="uid://dhuw8hkjapuv6"]
 
-[ext_resource type="Texture2D" uid="uid://dnj3j2ea4kvox" path="res://asset/image/metal_0019_opacity_2k.jpg" id="1_a670h"]
-[ext_resource type="Texture2D" uid="uid://basws15yqpmka" path="res://asset/image/metal_0019_metallic_2k.jpg" id="2_5a6ki"]
-[ext_resource type="Texture2D" uid="uid://b7wmmckxi4cjp" path="res://asset/image/metal_0019_normal_directx_2k.png" id="3_uh31t"]
+[ext_resource type="Texture2D" uid="uid://cy471qgac6wcp" path="res://asset/image/chain_link/Tile Check for chain link_Chain Link_BaseColor.png" id="1_vklwh"]
+[ext_resource type="Texture2D" uid="uid://btfts26e2sgps" path="res://asset/image/chain_link/Tile Check for chain link_Chain Link_Metallic.png" id="2_s5xyn"]
+[ext_resource type="Texture2D" uid="uid://c75skhxkscmr1" path="res://asset/image/chain_link/Tile Check for chain link_Chain Link_Normal.png" id="3_hanu2"]
+[ext_resource type="Texture2D" uid="uid://dqippvf62g7xe" path="res://asset/image/chain_link/Tile Check for chain link_Chain Link_Roughness.png" id="4_aukuo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3d5tt"]
 size = Vector3(0.85, 0.7, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uelnh"]
+albedo_color = Color(0.400698, 0.400698, 0.400698, 1)
 metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehavg"]
@@ -44,9 +46,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_frnx1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycghx"]
-metallic = 1.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nadla"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_m2mws"]
@@ -82,12 +81,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m2mws")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kg4a"]
-blend_mode = 1
-albedo_texture = ExtResource("1_a670h")
+transparency = 1
+albedo_texture = ExtResource("1_vklwh")
 metallic = 1.0
-metallic_texture = ExtResource("2_5a6ki")
+metallic_texture = ExtResource("2_s5xyn")
+roughness_texture = ExtResource("4_aukuo")
 normal_enabled = true
-normal_texture = ExtResource("3_uh31t")
+normal_texture = ExtResource("3_hanu2")
 uv1_scale = Vector3(0.75, 0.75, 0.75)
 
 [node name="fence_end" type="StaticBody3D"]
@@ -108,7 +108,7 @@ skeleton = NodePath("")
 
 [node name="Circle_006" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.1, 9.66338e-13, 1.45519e-11, 5.40012e-12, 0.1, 5.82077e-11, 0, -2.91038e-11, 0.1, 2.05541, 3.24005, 0.0198588)
-material_override = SubResource("StandardMaterial3D_ycghx")
+material_override = SubResource("StandardMaterial3D_uelnh")
 mesh = SubResource("ArrayMesh_f5ww7")
 skeleton = NodePath("")
 
