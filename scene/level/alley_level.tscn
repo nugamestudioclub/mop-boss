@@ -200,7 +200,7 @@ transform = Transform3D(-4.35046e-08, -0.995268, -0.097166, 1, -4.37114e-08, 0, 
 transform = Transform3D(0.225482, -0.973107, 0.0471278, 0.0411193, 0.0578361, 0.997479, -0.973379, -0.222975, 0.0530544, 12.191, 0.273572, 3.77353)
 
 [node name="Tetractys" type="Node3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0.605, -3.49466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7738, 0.605049, -3.92731)
 
 [node name="BowlingPin" parent="Props/Tetractys" instance=ExtResource("9_r5qke")]
 transform = Transform3D(-0.276711, 0, 0.960953, 0, 1, 0, -0.960953, 0, -0.276711, 0.114637, 0, 0.403279)
