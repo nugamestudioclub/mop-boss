@@ -17,7 +17,7 @@ const NOTCHES: int = 16
 const RADS_PER_TURN := TAU / NOTCHES
 
 var correct_combo = [0, 0, 0, 0, 0]
-var current_combo = [0, 0, 0, 0, 0]
+var current_combo = [0]
 
 signal on_unlock()
 
@@ -48,6 +48,7 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 	cooldown = false
 	
 	# Restart the timer
+	delay_timer.stop()
 	delay_timer.start()
 
 func enter_inspect_mode():
@@ -61,24 +62,40 @@ func _on_delay_timer_timeout() -> void:
 	var current_stage = current_combo[-1]
 	var correct_stage = correct_combo[current_combo.size() - 1]
 	
+	print("timer triggered")
 	# Check correctness after the delay
 	if current_stage == correct_stage:
 		# Unlock if the full combo is correct
 		if not unlocked and is_solved():
 			_unlock()
+			return
 		
 		print("click")
+		$CorrectClick.play()
 		current_combo.append(current_stage)  # Advance to the next combo
+		print("current combo: ", current_combo)
 	else:
+		var special: String = chosen_variant.get("special", "")
+		var is_right = special == "listen_click_right"
+		var is_left = special == "listen_click_left"
+		#if not (is_left or is_right): return
 		print("should be:", correct_stage)
 		print("is:", current_stage)
 		print("clack")
-		
 		var distance_right = ((correct_stage - current_stage) + NOTCHES) % NOTCHES
 		var distance_left = ((current_stage - correct_stage) + NOTCHES) % NOTCHES
+		$RandomClick.play()
 		if distance_right < distance_left:
+			if is_left:
+				pass
+			else:
+				pass
 			print("SFX: sound indicating to the right")
 		else:
+			if is_left:
+				pass
+			else:
+				pass
 			print("SFX : sound indicating to the left")
 		# binary search, if you know to the right or left can easily figure it out
 		#current_combo[-1] = 0  # Reset the current combo position

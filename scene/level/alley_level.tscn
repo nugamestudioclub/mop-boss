@@ -405,6 +405,6 @@ transform = Transform3D(-0.0108433, 0.0198796, 4.99995, 0.00959396, 4.99995, -0.
 transform = Transform3D(0.0108437, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108817, 21.533, 0.6, -1.947)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 10.0
+volume_db = 3.0
 script = ExtResource("33_qq5ej")
 music_queue = Array[AudioStream]([ExtResource("34_u111y"), ExtResource("35_4srot"), ExtResource("36_yrsi8")])

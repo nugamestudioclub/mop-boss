@@ -21,6 +21,8 @@
 			"use_lock_pick": {
 				"tool": "LockPick"
 			},
+			"listen_click_left": { },
+			"listen_click_right": { },
 			"leave_alone": {
 
 			}
@@ -49,7 +51,7 @@
 				},
 				{
 					"color": "purple",
-					"numbers": "west_dumpster_ground"
+					"special": "listen_click_right"
 				},
 				{
 					"color": "yellow",
@@ -58,8 +60,7 @@
 				},
 				{
 					"color": "red",
-					"numbers": "north_wall",
-					"order": "reverse"
+					"special": "listen_click_left"
 				},
 				{
 					"color": "blue",

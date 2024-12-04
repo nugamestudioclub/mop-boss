@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://y4bh18ohvhpx"
-path="res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-8d5ba2c12a585c3fe001184ac4366bb1.scn"
+path="res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-0abbf8f3cbb1dc36a41d59d64d0b949c.scn"
 
 [deps]
 
-source_file="res://asset/mesh/Old Fashioned Dial Phone Optimization Smooth.fbx"
-dest_files=["res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-8d5ba2c12a585c3fe001184ac4366bb1.scn"]
+source_file="res://asset/mesh/Dial Phone/Old Fashioned Dial Phone Optimization Smooth.fbx"
+dest_files=["res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-0abbf8f3cbb1dc36a41d59d64d0b949c.scn"]
 
 [params]
 
