@@ -41,4 +41,5 @@ script = ExtResource("3_4db25")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_1qfc8")

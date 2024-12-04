@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cd3thnrs5dmjp"
+path="res://.godot/imported/MBSFX  Writing 2.wav-fde7d5b4351e5fb438a810606758defa.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/MBSFX  Writing 2.wav"
+dest_files=["res://.godot/imported/MBSFX  Writing 2.wav-fde7d5b4351e5fb438a810606758defa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

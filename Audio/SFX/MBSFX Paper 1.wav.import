@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvheji0782rpl"
+path="res://.godot/imported/MBSFX Paper 1.wav-a4b80c18d155479b2a70085a1a83c3ce.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/MBSFX Paper 1.wav"
+dest_files=["res://.godot/imported/MBSFX Paper 1.wav-a4b80c18d155479b2a70085a1a83c3ce.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

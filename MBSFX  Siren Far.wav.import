@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l2qeufj1p2th"
+path="res://.godot/imported/MBSFX  Siren Far.wav-d816f116029c973b7acc8dd570fe95a9.sample"
+
+[deps]
+
+source_file="res://MBSFX  Siren Far.wav"
+dest_files=["res://.godot/imported/MBSFX  Siren Far.wav-d816f116029c973b7acc8dd570fe95a9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
