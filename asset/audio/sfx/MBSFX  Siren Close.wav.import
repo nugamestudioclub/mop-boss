@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgjf8bnjmsykv"
+path="res://.godot/imported/MBSFX  Siren Close.wav-f01e41ca2196f85e36ff03ce8d2879d5.sample"
+
+[deps]
+
+source_file="res://asset/audio/sfx/MBSFX  Siren Close.wav"
+dest_files=["res://.godot/imported/MBSFX  Siren Close.wav-f01e41ca2196f85e36ff03ce8d2879d5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

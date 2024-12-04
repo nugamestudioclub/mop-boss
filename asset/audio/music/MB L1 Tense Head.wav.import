@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1eq8imevyvtf"
+path="res://.godot/imported/MB L1 Tense Head.wav-85302369f2f077b9d17be805a023c247.sample"
+
+[deps]
+
+source_file="res://asset/audio/music/MB L1 Tense Head.wav"
+dest_files=["res://.godot/imported/MB L1 Tense Head.wav-85302369f2f077b9d17be805a023c247.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
