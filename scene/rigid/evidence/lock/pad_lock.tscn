@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=4 uid="uid://cn05psfb42ija"]
+[gd_scene load_steps=29 format=4 uid="uid://cn05psfb42ija"]
 
 [ext_resource type="Script" path="res://script/evidence/lock/pad_lock.gd" id="1_e27pp"]
 [ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://asset/mesh/locks/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
-[ext_resource type="AudioStream" uid="uid://h2hjdb35d25u" path="res://asset/audio/sfx/MBSFX Click 1.wav" id="3_uph6b"]
-[ext_resource type="AudioStream" uid="uid://cobxp1qftai36" path="res://asset/audio/sfx/MBSFX Click 2.wav" id="4_itv22"]
+[ext_resource type="AudioStream" uid="uid://dwtbiqce58qsj" path="res://asset/audio/sfx/clickleft.wav" id="3_argup"]
+[ext_resource type="AudioStream" uid="uid://m4hqw7nbyf6p" path="res://asset/audio/sfx/clickright.wav" id="4_xpoir"]
 [ext_resource type="AudioStream" uid="uid://cciaslwpw2xj3" path="res://asset/audio/sfx/MBSFX Correct Lock Click.wav" id="5_h1o8l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
@@ -208,14 +208,6 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.005
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k52se"]
-playback_mode = 1
-random_pitch = 1.5
-streams_count = 2
-stream_0/stream = ExtResource("3_uph6b")
-stream_0/weight = 1.5
-stream_1/stream = ExtResource("4_itv22")
-
 [node name="PadLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -296,9 +288,16 @@ font_size = 26
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.113848, 0.247239, 0.00281192)
 mesh = SubResource("CylinderMesh_8srlj")
 
-[node name="RandomClick" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_k52se")
-volume_db = 24.0
+[node name="LeftClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_argup")
+volume_db = 18.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="RightClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xpoir")
+volume_db = 22.0
+pitch_scale = 12.0
 bus = &"SFX"
 
 [node name="CorrectClick" type="AudioStreamPlayer" parent="."]

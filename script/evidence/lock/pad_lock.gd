@@ -95,15 +95,17 @@ func _on_delay_timer_timeout() -> void:
 		var distance_left = ((current_stage - correct_stage) + NOTCHES) % NOTCHES
 		if distance_right < distance_left:
 			if is_left:
-				$RandomClick.play()
+				$LeftClick.play()
 				print("SFX")
 			else:
-				pass
+				$RightClick.play()
 			print("SFX: sound indicating to the right")
 		else:
 			if not is_left:
-				$RandomClick.play()
+				$LeftClick.play()
 				print("SFX")
+			else:
+				$RightClick.play()
 			print("SFX : sound indicating to the left")
 		# binary search, if you know to the right or left can easily figure it out
 		#current_combo[-1] = 0  # Reset the current combo position
