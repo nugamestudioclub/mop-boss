@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtugr1603iqws"
+path="res://.godot/imported/MBSFX  Static Short 2.wav-1898dfb6828492d4d517c0438bd3cf8f.sample"
+
+[deps]
+
+source_file="res://asset/audio/sfx/MBSFX  Static Short 2.wav"
+dest_files=["res://.godot/imported/MBSFX  Static Short 2.wav-1898dfb6828492d4d517c0438bd3cf8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

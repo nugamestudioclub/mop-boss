@@ -15,6 +15,10 @@ run/main_scene="res://scene/level/office_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://asset/audio/default_bus_layout.tres"
+
 [autoload]
 
 G_raycast="*res://script/global/G_raycast.gd"
@@ -32,6 +36,21 @@ empty_spawner=""
 full_spawner="Nodes that signify where puzzle elements can spawn."
 tool="This is a tool that can be used on puzzles"
 evidence=""
+
+[importer_defaults]
+
+wav={
+"compress/mode": 0,
+"edit/loop_begin": 0,
+"edit/loop_end": -1,
+"edit/loop_mode": 0,
+"edit/normalize": false,
+"edit/trim": false,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
+}
 
 [input]
 

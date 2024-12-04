@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2kt7jviuhf47"
+path="res://.godot/imported/MBSFX  Static Med 1.wav-6c28a47ca23c1489c5a40242e49363b2.sample"
+
+[deps]
+
+source_file="res://asset/audio/sfx/MBSFX  Static Med 1.wav"
+dest_files=["res://.godot/imported/MBSFX  Static Med 1.wav-6c28a47ca23c1489c5a40242e49363b2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

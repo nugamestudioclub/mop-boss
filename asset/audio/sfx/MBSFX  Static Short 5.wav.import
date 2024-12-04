@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ow7ruw6miqcw"
+path="res://.godot/imported/MBSFX  Static Short 5.wav-fec0ed587d9bdaa7041ca927722f81e1.sample"
+
+[deps]
+
+source_file="res://asset/audio/sfx/MBSFX  Static Short 5.wav"
+dest_files=["res://.godot/imported/MBSFX  Static Short 5.wav-fec0ed587d9bdaa7041ca927722f81e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
