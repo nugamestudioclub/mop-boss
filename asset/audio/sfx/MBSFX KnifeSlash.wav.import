@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ocmp1opy7yc6"
-path="res://.godot/imported/MBSFX KnifeSlash.wav-58b77e2aadd28e8340030c18e9c61aad.sample"
+path="res://.godot/imported/MBSFX KnifeSlash.wav-aa8c3a612dcf440a7061eb8a7e66aa05.sample"
 
 [deps]
 
-source_file="res://MBSFX KnifeSlash.wav"
-dest_files=["res://.godot/imported/MBSFX KnifeSlash.wav-58b77e2aadd28e8340030c18e9c61aad.sample"]
+source_file="res://asset/audio/sfx/MBSFX KnifeSlash.wav"
+dest_files=["res://.godot/imported/MBSFX KnifeSlash.wav-aa8c3a612dcf440a7061eb8a7e66aa05.sample"]
 
 [params]
 

@@ -60,6 +60,7 @@ func _start_inspecting(node: Node3D):
 	# Tell object its inspected
 	if node.has_method("enter_inspect_mode"):
 		node.enter_inspect_mode()
+	$PickupSound.play()
 
 """Closes the inspect viewport, removes all objects"""
 func exit_inspect_mode():

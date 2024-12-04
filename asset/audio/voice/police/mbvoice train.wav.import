@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dyyf2n2817x8l"
-path="res://.godot/imported/mbvoice train.wav-f10e93e856b68fb34a4ac51363f5125f.sample"
+path="res://.godot/imported/mbvoice train.wav-a9d6e48b192082bef22f682d36d5354e.sample"
 
 [deps]
 
-source_file="res://mbvoice train.wav"
-dest_files=["res://.godot/imported/mbvoice train.wav-f10e93e856b68fb34a4ac51363f5125f.sample"]
+source_file="res://asset/audio/voice/police/mbvoice train.wav"
+dest_files=["res://.godot/imported/mbvoice train.wav-a9d6e48b192082bef22f682d36d5354e.sample"]
 
 [params]
 

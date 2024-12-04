@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://0fbw7br03x42"
-path="res://.godot/imported/mbvoice heya.wav-4911d92bb94c8384d0a95647ad224f4e.sample"
+path="res://.godot/imported/mbvoice heya.wav-782214fb133a896535b6c0734f19bbae.sample"
 
 [deps]
 
-source_file="res://mbvoice heya.wav"
-dest_files=["res://.godot/imported/mbvoice heya.wav-4911d92bb94c8384d0a95647ad224f4e.sample"]
+source_file="res://asset/audio/voice/mafia_boss/mbvoice heya.wav"
+dest_files=["res://.godot/imported/mbvoice heya.wav-782214fb133a896535b6c0734f19bbae.sample"]
 
 [params]
 

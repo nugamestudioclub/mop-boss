@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://biojviylb7a63"
-path="res://.godot/imported/mbvoice carcrash.wav-158263c82b7c2bfa0def7b91ec5f6a43.sample"
+path="res://.godot/imported/mbvoice carcrash.wav-2092fc01f73504837c1decbbe5b3f0e4.sample"
 
 [deps]
 
-source_file="res://mbvoice carcrash.wav"
-dest_files=["res://.godot/imported/mbvoice carcrash.wav-158263c82b7c2bfa0def7b91ec5f6a43.sample"]
+source_file="res://asset/audio/voice/police/mbvoice carcrash.wav"
+dest_files=["res://.godot/imported/mbvoice carcrash.wav-2092fc01f73504837c1decbbe5b3f0e4.sample"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj0fuwsbur2y0"]
+[gd_scene load_steps=8 format=3 uid="uid://dj0fuwsbur2y0"]
 
 [ext_resource type="Script" path="res://script/system/inspect/canvas_layer.gd" id="1_a7vqq"]
 [ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://scene/system/inspect/inspector_view.tscn" id="3_1tuoq"]
+[ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_y0hro"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -64,3 +65,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("3_1tuoq")]
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y0hro")
+volume_db = 3.0

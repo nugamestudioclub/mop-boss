@@ -31,6 +31,7 @@ func _start_holding(object):
 	held_object.linear_damp = 3
 	var material = held_object.physics_material_override
 	material.absorbent = !material.absorbent
+	$PickupSound.play()
 
 func _stop_holding(object):
 	print("Exiting hold")

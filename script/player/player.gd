@@ -3,6 +3,7 @@ extends RigidBody3D # like a class, gives access to all functions of rigid body
 # RigidBody
 @export var can_move: bool = true
 @export var sprinting: bool = false
+@export var start_reversed: bool = false
 
 # Camera parameters
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -58,6 +59,8 @@ func is_on_floor():
 # Called when the node enters the scene tree for the **first time.**
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # sets default mouse to locked
+	#if start_reversed:
+		#$TwistPivot/PitchPivot.rotate_y(PI)
 
 # Called every frame. (delta: float) is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

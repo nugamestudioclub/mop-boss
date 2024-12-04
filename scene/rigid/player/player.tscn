@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=8 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
+[ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_xv04b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
 friction = 0.0
@@ -43,3 +44,7 @@ script = ExtResource("3_4db25")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_1qfc8")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Hand"]
+stream = ExtResource("3_xv04b")
+volume_db = 3.0

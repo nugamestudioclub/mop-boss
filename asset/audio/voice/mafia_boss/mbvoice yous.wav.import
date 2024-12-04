@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dvvfomo2iqybf"
-path="res://.godot/imported/mbvoice yous.wav-60cbf79dc7718b641f4f8175e507f727.sample"
+path="res://.godot/imported/mbvoice yous.wav-7a7cfc62db80be752a2a8ec946bd43fc.sample"
 
 [deps]
 
-source_file="res://mbvoice yous.wav"
-dest_files=["res://.godot/imported/mbvoice yous.wav-60cbf79dc7718b641f4f8175e507f727.sample"]
+source_file="res://asset/audio/voice/mafia_boss/mbvoice yous.wav"
+dest_files=["res://.godot/imported/mbvoice yous.wav-7a7cfc62db80be752a2a8ec946bd43fc.sample"]
 
 [params]
 

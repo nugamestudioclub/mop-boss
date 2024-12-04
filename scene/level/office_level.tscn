@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://c8kv4ewhqa5ms" path="res://asset/image/walls/Walls_Roughness.png" id="10_1wnob"]
 [ext_resource type="Texture2D" uid="uid://7bdxu2lq6dpy" path="res://asset/image/carpet [CLR].png" id="12_e2ngi"]
 [ext_resource type="Texture2D" uid="uid://4qr1t6la5j2i" path="res://asset/image/carpet [NRM].png" id="13_7miyl"]
-[ext_resource type="AudioStream" uid="uid://0fbw7br03x42" path="res://mbvoice heya.wav" id="16_0cw2t"]
-[ext_resource type="AudioStream" uid="uid://chcfmq5o4t1en" path="res://MBSFX Phone Ring.wav" id="16_d6iti"]
-[ext_resource type="AudioStream" uid="uid://clvj0jre6pnaj" path="res://mbvoice mess.wav" id="18_pnokh"]
-[ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://mbvoice yous.wav" id="19_j8ir5"]
-[ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://mbvoice capisce.wav" id="20_l3kln"]
+[ext_resource type="AudioStream" uid="uid://0fbw7br03x42" path="res://asset/audio/voice/mafia_boss/mbvoice heya.wav" id="16_0cw2t"]
+[ext_resource type="AudioStream" uid="uid://chcfmq5o4t1en" path="res://asset/audio/sfx/MBSFX Phone Ring.wav" id="16_d6iti"]
+[ext_resource type="AudioStream" uid="uid://clvj0jre6pnaj" path="res://asset/audio/voice/mafia_boss/mbvoice mess.wav" id="18_pnokh"]
+[ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://asset/audio/voice/mafia_boss/mbvoice yous.wav" id="19_j8ir5"]
+[ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://asset/audio/voice/mafia_boss/mbvoice capisce.wav" id="20_l3kln"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
 albedo_texture = ExtResource("3_lbw26")

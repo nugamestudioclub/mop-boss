@@ -19,6 +19,7 @@ height = 0.17474
 radius = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8f4"]
+albedo_color = Color(0.621498, 0.227267, 0.148358, 1)
 albedo_texture = ExtResource("2_jcrxw")
 metallic = 1.0
 metallic_texture = ExtResource("3_niiyy")

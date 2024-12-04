@@ -57,14 +57,21 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 var LEVEL_MAX_TIME = 110
 var LEVEL_MIN_TIME = 90
 
-var EVENT_MAX_TIME_BETWEEN = 40
-var EVENT_MIN_TIME_BETWEEN = 20
+#var EVENT_MAX_TIME_BETWEEN = 40
+#var EVENT_MIN_TIME_BETWEEN = 20
 
+var minutes_away_voices = {
+	10: preload("res://asset/audio/voice/police/mbvoice 10sec.wav"),
+	60: preload("res://asset/audio/voice/police/mbvoice 1min.wav"),
+	180: preload("res://asset/audio/voice/police/mbvoice 3min.wav"),
+	240: preload("res://asset/audio/voice/police/mbvoice 4min.wav"),
+	300: preload("res://asset/audio/voice/police/mbvoice 5min.wav")
+}
 var EVENT_TYPES = {
-	"roadblock_2mins": [preload("res://mbvoice add2min.wav"), 120], 
-	"carcrash_1min": [preload("res://mbvoice carcrash.wav"), 60], 
-	"detour_30second": [preload("res://mbvoice detour.wav"), 30],
-	"train_5mins": [preload("res://mbvoice train.wav"), 300]
+	"roadblock_2mins": [preload("res://asset/audio/voice/police/mbvoice add2min.wav"), 120], 
+	"carcrash_1min": [preload("res://asset/audio/voice/police/mbvoice carcrash.wav"), 60], 
+	"detour_30second": [preload("res://asset/audio/voice/police/mbvoice detour.wav"), 30],
+	#"train_5mins": [preload("res://asset/audio/voice/police/mbvoice train.wav"), 300],
 }
 var EVENT_TIMELINE = []
 var EVENT_TIMINGS = []
@@ -75,13 +82,14 @@ var EVENT_MIN = 4
 func _generate_radio_events() -> void:
 	var event_total = randi_range(EVENT_MIN, EVENT_MAX)
 	EVENT_TIMELINE = []
+	EVENT_TIMINGS = []
+	LEVEL_TIME = 90
 	
 	for i in range(event_total):
 		var new_event = EVENT_TYPES.keys().pick_random()
-		EVENT_TIMELINE.append(new_event)
+		#EVENT_TIMELINE.append(new_event)
 		var event_time_between = EVENT_TYPES[new_event][1]
-		EVENT_TIMINGS.append(event_time_between)
-		LEVEL_TIME += event_time_between
+		#EVENT_TIMINGS.append(event_time_between)
 
 var voice_play_next
 func _play_next_event():
@@ -98,12 +106,9 @@ func _play_next_event():
 	$StaticSound.play()
 	
 	EVENT_TIMELINE.remove_at(0)
-	if EVENT_TIMELINE.is_empty():
-		$SirenClose.play()
 	return true
 
 func wait(seconds) -> void:
-	print(seconds)
 	await get_tree().create_timer(seconds).timeout
 
 func _ready() -> void:
@@ -115,16 +120,22 @@ func _ready() -> void:
 	print(explain_events)
 	
 	while true:
-		if EVENT_TIMELINE == []:
-			break
-		
 		var event_time_between = EVENT_TIMINGS[0]
 		EVENT_TIMINGS.remove_at(0)
-		await wait(event_time_between)
-		
 		
 		var event_played = _play_next_event()
+		LEVEL_TIME += event_time_between
 		print(EVENT_TIMELINE)
+		
+		for i in range(event_time_between):
+			await wait(1)
+			LEVEL_TIME -= 1
+			if LEVEL_TIME in minutes_away_voices.keys():
+				voice_play_next = minutes_away_voices[LEVEL_TIME]
+				$StaticSound.play()
+			if LEVEL_TIME == 22 and event_played == null:
+				$SirenClose.play()
+		print("time left (seconds): ", LEVEL_TIME)
 		
 		if event_played == null:
 			level_manager.end_level()

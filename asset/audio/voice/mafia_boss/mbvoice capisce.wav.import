@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d2a5gwe2s685o"
-path="res://.godot/imported/mbvoice capisce.wav-0887b17412c7c5a178d0a4d487e6be75.sample"
+path="res://.godot/imported/mbvoice capisce.wav-6c1c43c21410ce74cbfbdff4471f880a.sample"
 
 [deps]
 
-source_file="res://mbvoice capisce.wav"
-dest_files=["res://.godot/imported/mbvoice capisce.wav-0887b17412c7c5a178d0a4d487e6be75.sample"]
+source_file="res://asset/audio/voice/mafia_boss/mbvoice capisce.wav"
+dest_files=["res://.godot/imported/mbvoice capisce.wav-6c1c43c21410ce74cbfbdff4471f880a.sample"]
 
 [params]
 

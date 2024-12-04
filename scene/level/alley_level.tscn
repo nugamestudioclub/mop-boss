@@ -1,13 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=42 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="3_ryyl0"]
 [ext_resource type="Script" path="res://script/class/category/category_item.gd" id="4_gsakb"]
-[ext_resource type="PackedScene" uid="uid://qnoci234wh17" path="res://scene/rigid/evidence/donut/donut_boston.tscn" id="5_8dpmd"]
 [ext_resource type="PackedScene" uid="uid://cvvyy68ab0106" path="res://scene/rigid/evidence/body_part/left_arm.tscn" id="6_2q5k2"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/system/generation/node_spawner.tscn" id="6_4exd3"]
-[ext_resource type="PackedScene" uid="uid://dpmcwnggfd3dr" path="res://scene/system/category/donut_category.tscn" id="7_555ks"]
 [ext_resource type="PackedScene" uid="uid://bklabnmd3pxkl" path="res://scene/rigid/evidence/body_part/left_foot.tscn" id="7_jx4ku"]
 [ext_resource type="PackedScene" uid="uid://7nt3rprfhbn" path="res://scene/static/prop/dumpster.tscn" id="7_xcaps"]
 [ext_resource type="PackedScene" uid="uid://fp31eix4h4je" path="res://scene/system/category/note_category.tscn" id="8_b2dvn"]
@@ -107,15 +105,12 @@ density_texture = SubResource("NoiseTexture3D_5a5n2")
 script = SubResource("GDScript_58cnf")
 
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56498, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8894, 1.56498, 1.70906)
+start_reversed = true
 
 [node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
 
 [node name="LockCategory" parent="LevelGenerationManager" instance=ExtResource("3_owdbc")]
-
-[node name="BostonDonut" type="Node" parent="LevelGenerationManager"]
-script = ExtResource("4_gsakb")
-scene = ExtResource("5_8dpmd")
 
 [node name="LeftArm" type="Node" parent="LevelGenerationManager"]
 script = ExtResource("4_gsakb")
@@ -156,7 +151,7 @@ font_size = 110
 outline_size = 0
 
 [node name="WestDumpsterGround" type="Label3D" parent="LockCodes"]
-transform = Transform3D(0.978517, -0.20617, -9.01196e-09, -1.37474e-15, -4.37114e-08, 1, -0.20617, -0.978517, -4.27723e-08, 8.32463, 0.001, -2.11047)
+transform = Transform3D(0.978517, -0.20617, -9.01196e-09, -1.37474e-15, -4.37114e-08, 1, -0.20617, -0.978517, -4.27723e-08, 8.32463, 0.521325, -2.11047)
 modulate = Color(0.352941, 0.835294, 0.615686, 1)
 text = "3AE58"
 font = ExtResource("13_qxlqj")
@@ -184,18 +179,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 transform = Transform3D(0.0963857, -0.608557, 0.787635, 0.995038, 0.0785338, -0.0610881, -0.0246803, 0.789614, 0.613107, 11.8441, 0.358174, 3.96966)
 
 [node name="ChemicalBottle" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28361, 0.243991, 3.71034)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28361, 0.355916, 3.71034)
 
 [node name="ChemicalBottle2" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(0.937889, 0, -0.346936, 0, 1, 0, 0.346936, 0, 0.937889, 9.21901, 0.244001, 4.13282)
+transform = Transform3D(0.937889, 0, -0.346936, 0, 1, 0, 0.346936, 0, 0.937889, 9.21901, 0.355926, 4.13282)
 contents = 1
 
 [node name="ChemicalBottle3" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(0.852778, 0.0140033, 0.522085, -0.0128116, 0.999901, -0.00589268, -0.522116, -0.0016636, 0.852873, 8.48146, 0.244001, 4.13282)
+transform = Transform3D(0.852778, 0.0140033, 0.522085, -0.0128116, 0.999901, -0.00589268, -0.522116, -0.0016636, 0.852873, 8.48146, 0.355926, 4.13282)
 contents = 2
 
 [node name="ChemicalBottle4" parent="Props/Tools" instance=ExtResource("18_jc5e5")]
-transform = Transform3D(-0.0115557, 0.00574471, 0.999917, -0.0128116, 0.999901, -0.00589268, -0.999851, -0.0128786, -0.011481, 8.48161, 0.243991, 3.72434)
+transform = Transform3D(-0.0115557, 0.00574471, 0.999917, -0.0128116, 0.999901, -0.00589268, -0.999851, -0.0128786, -0.011481, 8.48161, 0.355916, 3.72434)
 contents = 3
 
 [node name="PaperClip" parent="Props/Tools" instance=ExtResource("19_mmnbt")]
@@ -363,16 +358,12 @@ weight = 100
 [node name="NodeSpawner1" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2771, 0.676967, -4.14242)
 
-[node name="DonutCategory" parent="Props/NodeSpawner1" instance=ExtResource("7_555ks")]
-
 [node name="NoteCategory" parent="Props/NodeSpawner1" instance=ExtResource("8_b2dvn")]
 
 [node name="NodeSpawner2" parent="Props" groups=["empty_spawner"] instance=ExtResource("6_4exd3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4897, 0.682199, -4.50883)
 
 [node name="NoteCategory" parent="Props/NodeSpawner2" instance=ExtResource("8_b2dvn")]
-
-[node name="DonutCategory" parent="Props/NodeSpawner2" instance=ExtResource("7_555ks")]
 
 [node name="Buildings" parent="." instance=ExtResource("27_k1spg")]
 

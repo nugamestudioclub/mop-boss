@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://chcfmq5o4t1en"
-path="res://.godot/imported/MBSFX Phone Ring.wav-90d6bcb180488a2fadbf953f67e0f1ce.sample"
+path="res://.godot/imported/MBSFX Phone Ring.wav-b3581319e3eb3c7a84cf13444b9f084d.sample"
 
 [deps]
 
-source_file="res://MBSFX Phone Ring.wav"
-dest_files=["res://.godot/imported/MBSFX Phone Ring.wav-90d6bcb180488a2fadbf953f67e0f1ce.sample"]
+source_file="res://asset/audio/sfx/MBSFX Phone Ring.wav"
+dest_files=["res://.godot/imported/MBSFX Phone Ring.wav-b3581319e3eb3c7a84cf13444b9f084d.sample"]
 
 [params]
 
