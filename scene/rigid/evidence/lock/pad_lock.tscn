@@ -296,11 +296,13 @@ font_size = 26
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.113848, 0.247239, 0.00281192)
 mesh = SubResource("CylinderMesh_8srlj")
 
-[node name="RandomClick" type="AudioStreamPlayer3D" parent="."]
+[node name="RandomClick" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_k52se")
-volume_db = 10.0
+volume_db = 24.0
+bus = &"SFX"
 
-[node name="CorrectClick" type="AudioStreamPlayer3D" parent="."]
+[node name="CorrectClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_h1o8l")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_delay_timer_timeout"]

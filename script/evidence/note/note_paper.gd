@@ -123,12 +123,15 @@ func _confirm_crossout():
 		recorded_erased[line] = []
 	recorded_erased[line].append(copy)
 	print("used pen to crossout SFX")
+	$CrossoutSound.play()
 
 
 func _confirm_cut():
 	if cut >= line:
+		if cut != line:
+			$CutSound.play()
+			print("sliced SFX")
 		cut = line
-		print("sliced SFX")
 
 func _move_cut():
 	if cut >= line:

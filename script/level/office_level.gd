@@ -7,12 +7,16 @@ var cleaned_evidences = G_game_state.cleaned_evidences
 func _ready() -> void:
 	start_level()
 
+var intro_sequence_index = 0
 # Start office level
 func start_level():
 	G_game_state.fade_in_scene()
 	
 	# if the player came back from a cleanup
 	var checkPerformance: bool = (total_evidences != null)
+	if not checkPerformance:
+		intro_sequence_index = 0
+		_on_line_finished()
 	
 	print(total_evidences)
 	print(cleaned_evidences)
@@ -37,3 +41,12 @@ func call_player(checkPerformance: bool):
 	
 	# New task voicelines
 	print("Voice lines for new cleanup job")
+
+
+func _on_line_finished():
+	var wait_time = 0.2
+	if intro_sequence_index == 0: wait_time = 2.5
+	elif intro_sequence_index == $IntroSequence.get_child_count(): return
+	await get_tree().create_timer(wait_time).timeout
+	$IntroSequence.get_child(intro_sequence_index).play()
+	intro_sequence_index += 1

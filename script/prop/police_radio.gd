@@ -60,15 +60,15 @@ var LEVEL_MIN_TIME = 90
 var EVENT_MAX_TIME_BETWEEN = 40
 var EVENT_MIN_TIME_BETWEEN = 20
 
-var EVENT_TYPES = [
-	"stop for donuts", 
-	"speed up (too much coffee)", 
-	"clear their throat",
-	"run out of donuts :("
-	]
+var EVENT_TYPES = {
+	"roadblock_2mins": [preload("res://mbvoice add2min.wav"), 120], 
+	"carcrash_1min": [preload("res://mbvoice carcrash.wav"), 60], 
+	"detour_30second": [preload("res://mbvoice detour.wav"), 30],
+	"train_5mins": [preload("res://mbvoice train.wav"), 300]
+}
 var EVENT_TIMELINE = []
 var EVENT_TIMINGS = []
-var LEVEL_TIME = 0
+var LEVEL_TIME = 90
 var EVENT_MAX = 6
 var EVENT_MIN = 4
 
@@ -77,23 +77,29 @@ func _generate_radio_events() -> void:
 	EVENT_TIMELINE = []
 	
 	for i in range(event_total):
-		var new_event = EVENT_TYPES.pick_random()
+		var new_event = EVENT_TYPES.keys().pick_random()
 		EVENT_TIMELINE.append(new_event)
-		var event_time_between = randi_range(EVENT_MIN_TIME_BETWEEN, EVENT_MAX_TIME_BETWEEN)
+		var event_time_between = EVENT_TYPES[new_event][1]
 		EVENT_TIMINGS.append(event_time_between)
 		LEVEL_TIME += event_time_between
 
+var voice_play_next
 func _play_next_event():
 	if EVENT_TIMELINE == []:
 		print("no more events")
 		return null
 	
-	#var current_event = EVENT_TIMELINE[0]
+	var current_event = EVENT_TIMELINE[0]
 	
 	print("play the chatter over radio")
 	print("something something about time left")
 	
+	voice_play_next = EVENT_TYPES[current_event][0]
+	$StaticSound.play()
+	
 	EVENT_TIMELINE.remove_at(0)
+	if EVENT_TIMELINE.is_empty():
+		$SirenClose.play()
 	return true
 
 func wait(seconds) -> void:
@@ -123,3 +129,8 @@ func _ready() -> void:
 		if event_played == null:
 			level_manager.end_level()
 			break
+
+
+func _on_static_sound_finished():
+	$PoliceVoice.stream = voice_play_next
+	$PoliceVoice.play()

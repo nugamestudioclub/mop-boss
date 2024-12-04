@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://b3ldwjlv1f6iy"]
+[gd_scene load_steps=14 format=4 uid="uid://b3ldwjlv1f6iy"]
 
 [ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_gwbgh"]
 [ext_resource type="Script" path="res://script/class/tool.gd" id="1_xkrdb"]
+[ext_resource type="AudioStream" uid="uid://ocmp1opy7yc6" path="res://MBSFX KnifeSlash.wav" id="3_5ist8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -130,3 +131,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0221856, -0.00144031, 0)
 mesh = SubResource("ArrayMesh_alq7q")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_g218j")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5ist8")

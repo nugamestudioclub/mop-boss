@@ -23,12 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://clqoe4uvw2yq3" path="res://scene/rigid/tool/chemical_bottle.tscn" id="18_jc5e5"]
 [ext_resource type="PackedScene" uid="uid://bpwyxaec5rtng" path="res://scene/rigid/tool/paper_clip.tscn" id="19_mmnbt"]
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
-[ext_resource type="PackedScene" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
+[ext_resource type="PackedScene" uid="uid://c7tlhfmkggm4n" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
 [ext_resource type="PackedScene" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
 [ext_resource type="PackedScene" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
-[ext_resource type="PackedScene" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
+[ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
 [ext_resource type="PackedScene" uid="uid://dhuw8hkjapuv6" path="res://scene/static/fence/fence_end.tscn" id="31_sfo7y"]
 [ext_resource type="PackedScene" uid="uid://bqs86sis2c5fp" path="res://scene/static/fence/fence_middle.tscn" id="32_1u30x"]
 [ext_resource type="PackedScene" path="res://scene/rigid/prop/pallet.tscn" id="32_pa76a"]
@@ -405,6 +405,7 @@ transform = Transform3D(-0.0108433, 0.0198796, 4.99995, 0.00959396, 4.99995, -0.
 transform = Transform3D(0.0108437, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108817, 21.533, 0.6, -1.947)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 3.0
+volume_db = -1.0
+bus = &"Music "
 script = ExtResource("33_qq5ej")
 music_queue = Array[AudioStream]([ExtResource("34_u111y"), ExtResource("35_4srot"), ExtResource("36_yrsi8")])

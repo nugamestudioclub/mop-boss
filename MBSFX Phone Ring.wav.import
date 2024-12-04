@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chcfmq5o4t1en"
+path="res://.godot/imported/MBSFX Phone Ring.wav-90d6bcb180488a2fadbf953f67e0f1ce.sample"
+
+[deps]
+
+source_file="res://MBSFX Phone Ring.wav"
+dest_files=["res://.godot/imported/MBSFX Phone Ring.wav-90d6bcb180488a2fadbf953f67e0f1ce.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

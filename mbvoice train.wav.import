@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyyf2n2817x8l"
+path="res://.godot/imported/mbvoice train.wav-f10e93e856b68fb34a4ac51363f5125f.sample"
+
+[deps]
+
+source_file="res://mbvoice train.wav"
+dest_files=["res://.godot/imported/mbvoice train.wav-f10e93e856b68fb34a4ac51363f5125f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

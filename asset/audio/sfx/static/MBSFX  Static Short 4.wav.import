@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d1lnxutpc7lkd"
-path="res://.godot/imported/MBSFX  Static Short 4.wav-3386ba9867a5d5892e0662e60c1a2dad.sample"
+path="res://.godot/imported/MBSFX  Static Short 4.wav-f1fd0bcb62042a9546d396c4c68ab979.sample"
 
 [deps]
 
-source_file="res://asset/audio/sfx/MBSFX  Static Short 4.wav"
-dest_files=["res://.godot/imported/MBSFX  Static Short 4.wav-3386ba9867a5d5892e0662e60c1a2dad.sample"]
+source_file="res://asset/audio/sfx/static/MBSFX  Static Short 4.wav"
+dest_files=["res://.godot/imported/MBSFX  Static Short 4.wav-f1fd0bcb62042a9546d396c4c68ab979.sample"]
 
 [params]
 

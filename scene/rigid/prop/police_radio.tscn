@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://c0m2d2h4bqotd"]
+[gd_scene load_steps=65 format=4 uid="uid://c0m2d2h4bqotd"]
 
 [ext_resource type="Script" path="res://script/prop/police_radio.gd" id="1_4ui5v"]
 [ext_resource type="Texture2D" uid="uid://co8yul5ja5nu5" path="res://asset/mesh/Police Radio/Police Radio Texture/Police Radio_Body_BaseColor.png" id="1_w54p0"]
@@ -25,6 +25,15 @@
 [ext_resource type="Texture2D" uid="uid://caua8dpf8w0dm" path="res://asset/mesh/Police Radio/Police Radio Texture/Police Radio_Piece_Metallic.png" id="22_812wl"]
 [ext_resource type="Texture2D" uid="uid://duw4a4w3ocfxu" path="res://asset/mesh/Police Radio/Police Radio Texture/Police Radio_Piece_Normal.png" id="23_nxul8"]
 [ext_resource type="Texture2D" uid="uid://cfrbdvf46w6dk" path="res://asset/mesh/Police Radio/Police Radio Texture/Police Radio_Piece_Roughness.png" id="24_u5ipx"]
+[ext_resource type="AudioStream" uid="uid://c2kt7jviuhf47" path="res://asset/audio/sfx/static/MBSFX  Static Med 1.wav" id="26_pb36w"]
+[ext_resource type="AudioStream" uid="uid://cqgfcww4grcgy" path="res://asset/audio/sfx/static/MBSFX  Static Med 2.wav" id="27_32e5w"]
+[ext_resource type="AudioStream" uid="uid://bb2j87a7q6aml" path="res://asset/audio/sfx/static/MBSFX  Static Short 1.wav" id="28_ig1q8"]
+[ext_resource type="AudioStream" uid="uid://gqkykjsk8f5y" path="res://asset/audio/sfx/static/MBSFX  Static Short 3.wav" id="29_n131x"]
+[ext_resource type="AudioStream" uid="uid://dtugr1603iqws" path="res://asset/audio/sfx/static/MBSFX  Static Short 2.wav" id="30_6lxo0"]
+[ext_resource type="AudioStream" uid="uid://d1lnxutpc7lkd" path="res://asset/audio/sfx/static/MBSFX  Static Short 4.wav" id="31_hsrni"]
+[ext_resource type="AudioStream" uid="uid://ow7ruw6miqcw" path="res://asset/audio/sfx/static/MBSFX  Static Short 5.wav" id="32_rcbfy"]
+[ext_resource type="AudioStream" uid="uid://bqdmnewq0im4n" path="res://asset/audio/sfx/MBSFX  Siren Loop.wav" id="33_yalyg"]
+[ext_resource type="AudioStream" uid="uid://dgjf8bnjmsykv" path="res://asset/audio/sfx/MBSFX  Siren Close.wav" id="34_qcb5f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -332,6 +341,18 @@ shadow_mesh = SubResource("ArrayMesh_elfeh")
 height = 0.0434955
 radius = 0.0139318
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vr8g4"]
+random_pitch = 2.0
+random_volume_offset_db = 2.0
+streams_count = 7
+stream_0/stream = ExtResource("26_pb36w")
+stream_1/stream = ExtResource("27_32e5w")
+stream_2/stream = ExtResource("28_ig1q8")
+stream_3/stream = ExtResource("29_n131x")
+stream_4/stream = ExtResource("30_6lxo0")
+stream_5/stream = ExtResource("31_hsrni")
+stream_6/stream = ExtResource("32_rcbfy")
+
 [node name="PoliceRadio" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -397,3 +418,20 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Knob2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0133398, 0)
 shape = SubResource("CylinderShape3D_qjq1t")
+
+[node name="StaticSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vr8g4")
+
+[node name="PoliceVoice" type="AudioStreamPlayer" parent="."]
+
+[node name="SirenLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_yalyg")
+volume_db = -31.0
+autoplay = true
+bus = &"Music "
+
+[node name="SirenClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_qcb5f")
+volume_db = -5.0
+
+[connection signal="finished" from="StaticSound" to="." method="_on_static_sound_finished"]

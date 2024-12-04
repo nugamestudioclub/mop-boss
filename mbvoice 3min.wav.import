@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ojrh66eh0l5d"
+path="res://.godot/imported/mbvoice 3min.wav-4370e9d3d5d39fa2034fec81e4fea062.sample"
+
+[deps]
+
+source_file="res://mbvoice 3min.wav"
+dest_files=["res://.godot/imported/mbvoice 3min.wav-4370e9d3d5d39fa2034fec81e4fea062.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

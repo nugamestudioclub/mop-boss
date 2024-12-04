@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=27 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="1_eeakp"]
 [ext_resource type="Script" path="res://script/level/office_level.gd" id="1_ib6ec"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://c8kv4ewhqa5ms" path="res://asset/image/walls/Walls_Roughness.png" id="10_1wnob"]
 [ext_resource type="Texture2D" uid="uid://7bdxu2lq6dpy" path="res://asset/image/carpet [CLR].png" id="12_e2ngi"]
 [ext_resource type="Texture2D" uid="uid://4qr1t6la5j2i" path="res://asset/image/carpet [NRM].png" id="13_7miyl"]
+[ext_resource type="AudioStream" uid="uid://0fbw7br03x42" path="res://mbvoice heya.wav" id="16_0cw2t"]
+[ext_resource type="AudioStream" uid="uid://chcfmq5o4t1en" path="res://MBSFX Phone Ring.wav" id="16_d6iti"]
+[ext_resource type="AudioStream" uid="uid://clvj0jre6pnaj" path="res://mbvoice mess.wav" id="18_pnokh"]
+[ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://mbvoice yous.wav" id="19_j8ir5"]
+[ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://mbvoice capisce.wav" id="20_l3kln"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
 albedo_texture = ExtResource("3_lbw26")
@@ -127,7 +132,6 @@ transform = Transform3D(-4.99828, 0.00907101, -0.130858, 0.00959396, 4.99995, -0
 [node name="Rug" type="CSGBox3D" parent="."]
 transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, -0.16034, 0.0585327, 0.747321)
 material_override = SubResource("StandardMaterial3D_cmiey")
-use_collision = true
 size = Vector3(5.81262, 0.0203857, 2.41058)
 
 [node name="Player" parent="." instance=ExtResource("2_vm0w1")]
@@ -138,3 +142,32 @@ environment = SubResource("Environment_i66h2")
 
 [node name="DialPhone" parent="." instance=ExtResource("5_u8po7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.25756, -2)
+
+[node name="IntroSequence" type="Node" parent="."]
+
+[node name="PhoneRing" type="AudioStreamPlayer" parent="IntroSequence"]
+stream = ExtResource("16_d6iti")
+volume_db = 1.0
+
+[node name="Line1" type="AudioStreamPlayer" parent="IntroSequence"]
+stream = ExtResource("16_0cw2t")
+volume_db = 20.0
+
+[node name="Line2" type="AudioStreamPlayer" parent="IntroSequence"]
+stream = ExtResource("18_pnokh")
+volume_db = 16.0
+
+[node name="Line3" type="AudioStreamPlayer" parent="IntroSequence"]
+stream = ExtResource("19_j8ir5")
+volume_db = 15.0
+
+[node name="Line4" type="AudioStreamPlayer" parent="IntroSequence"]
+stream = ExtResource("20_l3kln")
+volume_db = 20.0
+pitch_scale = 1.1
+
+[connection signal="finished" from="IntroSequence/PhoneRing" to="." method="_on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line1" to="." method="_on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line2" to="." method="_on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line3" to="." method="_on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line4" to="." method="_on_line_finished"]

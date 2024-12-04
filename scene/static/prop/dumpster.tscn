@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://7nt3rprfhbn"]
+[gd_scene load_steps=26 format=4 uid="uid://7nt3rprfhbn"]
 
 [ext_resource type="Script" path="res://script/prop/dumpster.gd" id="1_iinq5"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/system/generation/node_spawner.tscn" id="2_g8y2q"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_ou7dt"]
+[ext_resource type="AudioStream" uid="uid://ltpps03ytkt4" path="res://asset/audio/sfx/MBSFX Unlock 1.wav" id="4_gdmua"]
+[ext_resource type="AudioStream" uid="uid://ci6vfiinss3r0" path="res://asset/audio/sfx/MBSFX Unlock 2.wav" id="5_vf7ed"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3sid"]
 albedo_color = Color(0.282353, 0.290196, 0.27451, 1)
@@ -177,6 +179,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bsbib")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4bjto"]
+random_pitch = 2.0
+random_volume_offset_db = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("4_gdmua")
+stream_1/stream = ExtResource("5_vf7ed")
+
 [node name="Dumpster" type="Node3D"]
 
 [node name="Dumpster" type="StaticBody3D" parent="."]
@@ -255,3 +264,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 node_a = NodePath("..")
 angular_limit/enable = true
 angular_limit/relaxation = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_4bjto")
+volume_db = 5.0

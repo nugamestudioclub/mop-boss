@@ -57,6 +57,15 @@ func enter_inspect_mode():
 		current_combo = correct_combo
 		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
 
+func _unhandled_key_input(event: InputEvent):
+	if event.is_pressed(): return
+	match event.keycode:
+		KEY_1:
+			$CorrectClick.play()
+			print("hi")
+		KEY_2:
+			$RandomClick.play()
+
 func _on_delay_timer_timeout() -> void:
 	if unlocked: return
 	var current_stage = current_combo[-1]
@@ -78,24 +87,23 @@ func _on_delay_timer_timeout() -> void:
 		var special: String = chosen_variant.get("special", "")
 		var is_right = special == "listen_click_right"
 		var is_left = special == "listen_click_left"
-		#if not (is_left or is_right): return
+		if not (is_left or is_right): return
 		print("should be:", correct_stage)
 		print("is:", current_stage)
 		print("clack")
 		var distance_right = ((correct_stage - current_stage) + NOTCHES) % NOTCHES
 		var distance_left = ((current_stage - correct_stage) + NOTCHES) % NOTCHES
-		$RandomClick.play()
 		if distance_right < distance_left:
 			if is_left:
-				pass
+				$RandomClick.play()
+				print("SFX")
 			else:
 				pass
 			print("SFX: sound indicating to the right")
 		else:
-			if is_left:
-				pass
-			else:
-				pass
+			if not is_left:
+				$RandomClick.play()
+				print("SFX")
 			print("SFX : sound indicating to the left")
 		# binary search, if you know to the right or left can easily figure it out
 		#current_combo[-1] = 0  # Reset the current combo position
