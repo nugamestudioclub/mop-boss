@@ -1,6 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://dmlv4mrgrwdpf"]
+[gd_scene load_steps=15 format=4 uid="uid://dmlv4mrgrwdpf"]
 
 [ext_resource type="Script" path="res://script/class/tool.gd" id="1_pbqn4"]
+[ext_resource type="Texture2D" uid="uid://58sqkf2478w7" path="res://asset/mesh/Hammer/Hammer_Hammer_BaseColor.png" id="2_jcrxw"]
+[ext_resource type="Texture2D" uid="uid://bxr6m8e0g3qa1" path="res://asset/mesh/Hammer/Hammer_Hammer_Metallic.png" id="3_niiyy"]
+[ext_resource type="Texture2D" uid="uid://cn5m2hwe052cl" path="res://asset/mesh/Hammer/Hammer_Hammer_Normal.png" id="4_7evdd"]
+[ext_resource type="Texture2D" uid="uid://dccudc28w3mkg" path="res://asset/mesh/Hammer/Hammer_Hammer_Roughness.png" id="5_mntbe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -14,8 +18,13 @@ radius = 0.045
 height = 0.17474
 radius = 0.05
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gok83"]
-albedo_color = Color(0.20871, 0.20871, 0.20871, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8f4"]
+albedo_texture = ExtResource("2_jcrxw")
+metallic = 1.0
+metallic_texture = ExtResource("3_niiyy")
+roughness_texture = ExtResource("5_mntbe")
+normal_enabled = true
+normal_texture = ExtResource("4_7evdd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cpb7"]
 resource_name = "standardSurface1"
@@ -59,9 +68,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x0hp5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj8f4"]
-albedo_color = Color(0.621498, 0.227267, 0.148358, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6c23x"]
 _surfaces = [{
@@ -120,7 +126,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.678, 0.0559516)
 
 [node name="Hammer_Head" type="MeshInstance3D" parent="Hammer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00650413, -0.0151272)
-material_override = SubResource("StandardMaterial3D_gok83")
+material_override = SubResource("StandardMaterial3D_kj8f4")
 mesh = SubResource("ArrayMesh_1jhnn")
 skeleton = NodePath("")
 
