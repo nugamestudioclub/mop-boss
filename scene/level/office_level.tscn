@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=22 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="1_eeakp"]
 [ext_resource type="Script" path="res://script/level/office_level.gd" id="1_ib6ec"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c3b2ayi4we11n" path="res://asset/image/walls/Walls_Metallic.png" id="8_x0i2b"]
 [ext_resource type="Texture2D" uid="uid://44rhf6i7au4u" path="res://asset/image/walls/Walls_Normal.png" id="9_sep62"]
 [ext_resource type="Texture2D" uid="uid://c8kv4ewhqa5ms" path="res://asset/image/walls/Walls_Roughness.png" id="10_1wnob"]
+[ext_resource type="Texture2D" uid="uid://7bdxu2lq6dpy" path="res://asset/image/carpet [CLR].png" id="12_e2ngi"]
+[ext_resource type="Texture2D" uid="uid://4qr1t6la5j2i" path="res://asset/image/carpet [NRM].png" id="13_7miyl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
 albedo_texture = ExtResource("3_lbw26")
@@ -34,7 +36,14 @@ uv1_scale = Vector3(5, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmiey"]
 albedo_color = Color(0.829446, 0, 0.185604, 1)
+albedo_texture = ExtResource("12_e2ngi")
 metallic_specular = 0.0
+normal_enabled = true
+normal_texture = ExtResource("13_7miyl")
+uv1_scale = Vector3(2, 1, 1)
+uv1_triplanar = true
+uv2_scale = Vector3(2, 2, 2)
+uv2_triplanar = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n55bi"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -116,7 +125,7 @@ transform = Transform3D(-4.99828, 0.00907101, -0.130858, 0.00959396, 4.99995, -0
 transform = Transform3D(-4.99828, 0.00907101, -0.130858, 0.00959396, 4.99995, -0.0198588, 0.130821, -0.0201031, -4.99825, 0.69076, 0.0134234, -3.73713)
 
 [node name="Rug" type="CSGBox3D" parent="."]
-transform = Transform3D(0.980928, 0, 0.194371, 0, 1, 0, -0.194371, 0, 0.980928, -0.16034, 0.0585327, 0.747321)
+transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, -0.16034, 0.0585327, 0.747321)
 material_override = SubResource("StandardMaterial3D_cmiey")
 use_collision = true
 size = Vector3(5.81262, 0.0203857, 2.41058)
