@@ -3,11 +3,11 @@ extends Node3D
 @onready var level_generation_manager = $LevelGenerationManager
 
 # FOR DEBUGGING PURPOSES
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed: return
-		elif event.keycode == KEY_R:
-			start_level()
+#func _input(event):
+	#if event is InputEventKey:
+		#if event.pressed: return
+		#elif event.keycode == KEY_R:
+			#start_level()
 
 func _ready() -> void:
 	start_level()

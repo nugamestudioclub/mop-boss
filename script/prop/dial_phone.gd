@@ -3,12 +3,12 @@ extends InspectableObject
 
 
 # Player pressed a key
-func _unhandled_input(event: InputEvent):
-	if not event is InputEventKey: return
-	
-	if event.keycode == KEY_0:
-		var current_scene = get_tree().get_current_scene()
-		current_scene.end_level()
+#func _unhandled_input(event: InputEvent):
+	#if not event is InputEventKey: return
+	#
+	#if event.keycode == KEY_0:
+		#var current_scene = get_tree().get_current_scene()
+		#current_scene.end_level()
 
 @onready var rotary = $Mesh/RotaryDial_low
 @onready var rotary_default: Vector3 = rotary.rotation

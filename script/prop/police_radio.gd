@@ -87,9 +87,9 @@ func _generate_radio_events() -> void:
 	
 	for i in range(event_total):
 		var new_event = EVENT_TYPES.keys().pick_random()
-		#EVENT_TIMELINE.append(new_event)
+		EVENT_TIMELINE.append(new_event)
 		var event_time_between = EVENT_TYPES[new_event][1]
-		#EVENT_TIMINGS.append(event_time_between)
+		EVENT_TIMINGS.append(event_time_between)
 
 var voice_play_next
 func _play_next_event():
@@ -120,12 +120,15 @@ func _ready() -> void:
 	print(explain_events)
 	
 	while true:
-		var event_time_between = EVENT_TIMINGS[0]
-		EVENT_TIMINGS.remove_at(0)
+		var event_time_between = 0
+		if not EVENT_TIMINGS.is_empty():
+			event_time_between = EVENT_TIMINGS[0]
+			EVENT_TIMINGS.remove_at(0)
 		
 		var event_played = _play_next_event()
 		LEVEL_TIME += event_time_between
 		print(EVENT_TIMELINE)
+		if event_time_between == 0: event_time_between = LEVEL_TIME
 		
 		for i in range(event_time_between):
 			await wait(1)
@@ -133,10 +136,11 @@ func _ready() -> void:
 			if LEVEL_TIME in minutes_away_voices.keys():
 				voice_play_next = minutes_away_voices[LEVEL_TIME]
 				$StaticSound.play()
+				print("played voice line for " + str(LEVEL_TIME/60) + " minutes left")
 			if LEVEL_TIME == 22 and event_played == null:
 				$SirenClose.play()
+				print("The siren is close")
 		print("time left (seconds): ", LEVEL_TIME)
-		
 		if event_played == null:
 			level_manager.end_level()
 			break

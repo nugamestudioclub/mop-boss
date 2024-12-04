@@ -18,7 +18,7 @@ func _ready() -> void:
 # Play a specific track by index
 func play_track(track_index: int) -> void:
 	if track_index >= 0 and track_index < music_queue.size():
-		print("Playing track:", music_queue[track_index].resource_path)  # Debug print
+		#print("Playing track:", music_queue[track_index].resource_path)  # Debug print
 		self.stream = music_queue[track_index]  # Set the current track
 		self.play()  # Start playback
 	else:
@@ -26,7 +26,7 @@ func play_track(track_index: int) -> void:
 
 # Handle the transition when a track finishes
 func _on_track_finished() -> void:
-	print("Track finished, moving to next track...")
+	#print("Track finished, moving to next track...")
 
 	current_track += 1  # Move to the next track
 

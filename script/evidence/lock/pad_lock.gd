@@ -57,14 +57,14 @@ func enter_inspect_mode():
 		current_combo = correct_combo
 		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
 
-func _unhandled_key_input(event: InputEvent):
-	if event.is_pressed(): return
-	match event.keycode:
-		KEY_1:
-			$CorrectClick.play()
-			print("hi")
-		KEY_2:
-			$RandomClick.play()
+#func _unhandled_key_input(event: InputEvent):
+	#if event.is_pressed(): return
+	#match event.keycode:
+		#KEY_1:
+			#$CorrectClick.play()
+			#print("hi")
+		#KEY_2:
+			#$RandomClick.play()
 
 func _on_delay_timer_timeout() -> void:
 	if unlocked: return

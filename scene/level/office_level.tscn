@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=28 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="1_eeakp"]
 [ext_resource type="Script" path="res://script/level/office_level.gd" id="1_ib6ec"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://clvj0jre6pnaj" path="res://asset/audio/voice/mafia_boss/mbvoice mess.wav" id="18_pnokh"]
 [ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://asset/audio/voice/mafia_boss/mbvoice yous.wav" id="19_j8ir5"]
 [ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://asset/audio/voice/mafia_boss/mbvoice capisce.wav" id="20_l3kln"]
+[ext_resource type="PackedScene" uid="uid://35isyowowj1" path="res://scene/rigid/prop/newspaper.tscn" id="21_u03fr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
 albedo_texture = ExtResource("3_lbw26")
@@ -165,6 +166,10 @@ volume_db = 15.0
 stream = ExtResource("20_l3kln")
 volume_db = 20.0
 pitch_scale = 1.1
+
+[node name="Newspaper" parent="." instance=ExtResource("21_u03fr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.258008, 1.08456, -1.88628)
+visible = false
 
 [connection signal="finished" from="IntroSequence/PhoneRing" to="." method="_on_line_finished"]
 [connection signal="finished" from="IntroSequence/Line1" to="." method="_on_line_finished"]

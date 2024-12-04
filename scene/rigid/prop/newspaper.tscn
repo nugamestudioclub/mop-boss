@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://35isyowowj1"]
+
+[ext_resource type="Script" path="res://script/newspaper.gd" id="1_3mg07"]
+[ext_resource type="Texture2D" uid="uid://0off42jcmwnr" path="res://asset/image/news_win.png" id="2_tbscm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
+size = Vector3(0.816956, 0.0334778, 0.816772)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mctpo"]
+transparency = 1
+albedo_texture = ExtResource("2_tbscm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_doexx"]
+material = SubResource("StandardMaterial3D_mctpo")
+size = Vector2(0.7, 0.7)
+
+[node name="Newspaper" type="RigidBody3D" groups=["holdable", "inspectable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809579, 0)
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_80xyh")
+continuous_cd = true
+max_contacts_reported = 1
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_3mg07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
+shape = SubResource("BoxShape3D_kheio")
+
+[node name="Newspaper" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_doexx")

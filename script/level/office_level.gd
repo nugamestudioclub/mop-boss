@@ -4,6 +4,11 @@ extends Node3D
 var total_evidences = G_game_state.total_evidences
 var cleaned_evidences = G_game_state.cleaned_evidences
 
+const WIN_THRESHOLD = 0.8
+
+var win_newspaper = preload("res://asset/image/news_win.png")
+var lose_newspaper = preload("res://asset/image/news_lose.png")
+
 func _ready() -> void:
 	start_level()
 
@@ -36,6 +41,16 @@ func call_player(checkPerformance: bool):
 	if checkPerformance:
 		var score = cleaned_evidences/total_evidences
 		print("Cleaned up", score * 100, "percent of evidence")
+		$Newspaper.show()
+		var newspaper_image: Texture2D
+		if score >= WIN_THRESHOLD:
+			newspaper_image = win_newspaper
+			print("win")
+		else:
+			newspaper_image = lose_newspaper
+			print("lose")
+		$Newspaper.get_node("Newspaper").mesh.material.albedo_texture = newspaper_image
+		
 		
 		print("Voice lines based on performance")
 	
