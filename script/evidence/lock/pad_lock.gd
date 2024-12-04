@@ -24,13 +24,8 @@ signal on_unlock()
 func _ready() -> void:
 	super._ready()
 	chosen_variant = padlock_variants.pick_random()
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
-	material.roughness = 0.3
-	material.metallic = 0.6
-	for child in G_node.get_descendants(self):
-		if child is MeshInstance3D and child.name != "padlock_codes":
-			child.material_override = material
+	var color = chosen_variant["color"]
+	G_lock.create_specific_pattern_of_color(color, self)
 	
 	correct_combo = G_lock.randomize_combo(chosen_variant, 5, NOTCHES)
 

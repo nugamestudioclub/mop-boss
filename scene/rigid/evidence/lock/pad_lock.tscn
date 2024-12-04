@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cn05psfb42ija"]
+[gd_scene load_steps=26 format=4 uid="uid://cn05psfb42ija"]
 
 [ext_resource type="Script" path="res://script/evidence/lock/pad_lock.gd" id="1_e27pp"]
 [ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://asset/mesh/locks/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
@@ -196,6 +196,15 @@ shadow_mesh = SubResource("ArrayMesh_hptqg")
 height = 0.262846
 radius = 0.204422
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsfck"]
+albedo_color = Color(1, 0.32103, 0.285022, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8srlj"]
+material = SubResource("StandardMaterial3D_dsfck")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.005
+
 [node name="PadLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -263,5 +272,17 @@ node_b = NodePath("..")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="PoliceText" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.201256, 0.0338874, -0.0017684)
+pixel_size = 0.0017
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "POLICE"
+font_size = 26
+
+[node name="RedDot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.113848, 0.247239, 0.00281192)
+mesh = SubResource("CylinderMesh_8srlj")
 
 [connection signal="timeout" from="Timer" to="." method="_on_delay_timer_timeout"]

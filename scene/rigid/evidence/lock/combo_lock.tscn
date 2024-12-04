@@ -290,11 +290,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j2tn3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cle23"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2el6"]
 albedo_color = Color(1, 0.32103, 0.285022, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gd1ux"]
-material = SubResource("StandardMaterial3D_cle23")
+material = SubResource("StandardMaterial3D_l2el6")
 top_radius = 0.03
 bottom_radius = 0.03
 height = 0.005
@@ -389,14 +389,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.264168, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
-[node name="RedDot" type="Node3D" parent="."]
+[node name="PoliceText" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.104386, -0.126383, -0.203184)
+pixel_size = 0.001
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "POLICE"
+font_size = 26
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RedDot"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.100644, -0.123303, 0.191754)
+[node name="RedDot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.100525, -0.123303, 0.187712)
 mesh = SubResource("CylinderMesh_gd1ux")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="RedDot"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.100525, -0.123303, -0.194378)
-mesh = SubResource("CylinderMesh_gd1ux")
-skeleton = NodePath("../..")

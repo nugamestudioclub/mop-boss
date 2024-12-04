@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cs445ri13mdsu"]
+[gd_scene load_steps=19 format=4 uid="uid://cs445ri13mdsu"]
 
 [ext_resource type="Script" path="res://script/evidence/lock/key_lock.gd" id="1_t6qea"]
 
@@ -149,6 +149,15 @@ size = Vector3(0.14, 0.3, 0.45)
 height = 0.1
 radius = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cle23"]
+albedo_color = Color(1, 0.32103, 0.285022, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4nhgl"]
+material = SubResource("StandardMaterial3D_cle23")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.005
+
 [node name="KeyLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
@@ -196,3 +205,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.394135, 0)
 [node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
 node_a = NodePath("../..")
 node_b = NodePath("..")
+
+[node name="PoliceText" type="Label3D" parent="."]
+transform = Transform3D(-0.199009, 0, 0.979998, 0, 1, 0, -0.979998, 0, -0.199009, 0.0744646, -0.126383, -0.111568)
+pixel_size = 0.0025
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "POLICE"
+font_size = 26
+
+[node name="RedDot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0842247, -0.123303, 0.124557)
+mesh = SubResource("CylinderMesh_4nhgl")

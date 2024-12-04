@@ -70,3 +70,41 @@ func update_combo(current_combo: Array, shape_idx, spin_direction: int, maximum:
 	elif spin_direction < 0:
 		position = (position + 1) % maximum  # Decrement and wrap around
 	return position
+
+func create_specific_pattern_of_color(color: String, node: Node3D):
+	var material = StandardMaterial3D.new()
+	#"green": "00FF00", A  green  yesdot notext
+	#"blue": "0000FF",  B  metal  yesdot  notext
+	#"yellow": "FFFF00",C metal  nodot notext
+	#"red": "FF0000",   D green  yesdot  yestext
+	#"purple": "800080",E metal  yesdot yestext
+	#"orange": "FFA500" F metal  nodot  yestext
+	match color:
+		"green", "red":
+			material.albedo_color = Color.DARK_GREEN
+			material.roughness = 0.9
+			material.metallic = 0.1
+		"blue", "purple", "orange", "yellow":
+			material.albedo_color = Color.LIGHT_GRAY
+			material.roughness = 0.0
+			material.metallic = 0.8
+		_:
+			print(color)
+	match color:
+		"red", "green", "blue", "purple":
+			node.get_node("RedDot").show()
+		"orange", "yellow":
+			node.get_node("RedDot").hide()
+		_:
+			print(color)
+	match color:
+		"orange",  "purple", "red":
+			node.get_node("PoliceText").show()
+		"green", "blue", "yellow":
+			node.get_node("PoliceText").hide()
+		_:
+			print(color)
+	# TODO: overriding textures, problematic
+	for child in G_node.get_descendants(node):
+		if child is MeshInstance3D and child.name != "RedDot" and child.name != "padlock_codes":
+			child.material_override = material

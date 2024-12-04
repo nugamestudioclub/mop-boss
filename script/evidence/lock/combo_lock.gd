@@ -38,14 +38,9 @@ func _ready() -> void:
 	var dial_count = randi_range(3, 5)
 	print("i have a dial count of ", dial_count)
 	chosen_variant = combolock_variants[dial_count].pick_random()
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
-	material.roughness = 0.3
-	material.metallic = 0.6
-	# TODO: overriding textures, problematic
-	for child in G_node.get_descendants(self):
-		if child is MeshInstance3D:
-			child.material_override = material
+	var color = chosen_variant["color"]
+	G_lock.create_specific_pattern_of_color(color, self)
+	
 	# get rid of extra dials
 	for i in range($Dials.get_child_count()):
 		if i >= dial_count:

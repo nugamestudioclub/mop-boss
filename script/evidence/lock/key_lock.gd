@@ -23,14 +23,8 @@ var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json
 func _ready() -> void:
 	super._ready()
 	chosen_variant = keylock_variants.pick_random()
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(lock_definitions["colors"][chosen_variant["color"]])
-	material.roughness = 0.3
-	material.metallic = 0.6
-	
-	for child in get_children():
-		if child is MeshInstance3D:
-			child.material_override = material
+	var color = chosen_variant["color"]
+	G_lock.create_specific_pattern_of_color(color, self)
 
 var open = false
 func is_solved() -> bool:
