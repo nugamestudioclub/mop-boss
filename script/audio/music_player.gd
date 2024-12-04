@@ -1,21 +1,12 @@
 extends AudioStreamPlayer
 
-# Variables
-var music_queue: Array = []  # List of music files
 var current_track: int = 0   # Index of the current track
 var loop_start_index: int = 1  # The looping starts from "MB L1 Tense B1.wav"
 
-# Called when the node enters the scene tree for the first time.
+@export var music_queue: Array[AudioStream]
+
 func _ready() -> void:
-	# Preload the audio files and add them to the queue
-	music_queue = [
-		preload("res://Audio/Music/MB L1 Tense Head.wav"),  # Intro track
-		preload("res://audio/Music/MB L1 Tense B1.wav"),    # Looping track 1
-		preload("res://audio/Music/MB L1 Tense B2.wav")     # Looping track 2
-	]
-	
-	# Connect the "finished" signal to detect when a track ends
-	self.connect("finished", Callable(self, "_on_track_finished"))
+	finished.connect(_on_track_finished)
 	
 	# Start by playing the first track
 	play_track(current_track)
