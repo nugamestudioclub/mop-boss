@@ -22,7 +22,6 @@ var current_combo = [0, 0, 0, 0, 0]
 signal on_unlock()
 
 func _ready() -> void:
-	super._ready()
 	chosen_variant = padlock_variants.pick_random()
 	var color = chosen_variant["color"]
 	G_lock.create_specific_pattern_of_color(color, self)

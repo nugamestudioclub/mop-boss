@@ -21,7 +21,6 @@ var chosen_variant: Dictionary
 var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json").data["definitions"]
 
 func _ready() -> void:
-	super._ready()
 	chosen_variant = keylock_variants.pick_random()
 	var color = chosen_variant["color"]
 	G_lock.create_specific_pattern_of_color(color, self)

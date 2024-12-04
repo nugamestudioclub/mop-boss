@@ -30,6 +30,9 @@ func end_level():
 # Send the player a phone call from the boss
 func call_player(checkPerformance: bool):
 	if checkPerformance:
+		var score = cleaned_evidences/total_evidences
+		print("Cleaned up", score * 100, "percent of evidence")
+		
 		print("Voice lines based on performance")
 	
 	# New task voicelines

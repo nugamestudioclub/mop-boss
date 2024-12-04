@@ -67,6 +67,8 @@ var EVENT_TYPES = [
 	"run out of donuts :("
 	]
 var EVENT_TIMELINE = []
+var EVENT_TIMINGS = []
+var LEVEL_TIME = 0
 var EVENT_MAX = 6
 var EVENT_MIN = 4
 
@@ -77,6 +79,9 @@ func _generate_radio_events() -> void:
 	for i in range(event_total):
 		var new_event = EVENT_TYPES.pick_random()
 		EVENT_TIMELINE.append(new_event)
+		var event_time_between = randi_range(EVENT_MIN_TIME_BETWEEN, EVENT_MAX_TIME_BETWEEN)
+		EVENT_TIMINGS.append(event_time_between)
+		LEVEL_TIME += event_time_between
 
 func _play_next_event():
 	if EVENT_TIMELINE == []:
@@ -104,8 +109,13 @@ func _ready() -> void:
 	print(explain_events)
 	
 	while true:
-		var event_time_between = randi_range(EVENT_MIN_TIME_BETWEEN, EVENT_MAX_TIME_BETWEEN)
+		if EVENT_TIMELINE == []:
+			break
+		
+		var event_time_between = EVENT_TIMINGS[0]
+		EVENT_TIMINGS.remove_at(0)
 		await wait(event_time_between)
+		
 		
 		var event_played = _play_next_event()
 		print(EVENT_TIMELINE)
