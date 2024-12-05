@@ -5,9 +5,9 @@ var hold_button = MOUSE_BUTTON_LEFT
 var hold_group = "holdable"
 
 # Idk hand parameters
-var held_object: RigidBody3D = null
-var object_radius = null
-var object_mass = null
+var held_objects: Dictionary = {}
+var target = null
+var highlighted = null
 
 @onready var player: RigidBody3D = self.get_owner()
 @onready var camera_player: Camera3D = $"../PlayerPov"
@@ -19,33 +19,49 @@ signal drop_hold_on_node(node: Node3D)
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _start_holding(object):
-	held_object = object
-	
-	var scale_object = held_object.scale
-	object_radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
-	object_mass = object.mass
+func _start_holding(object: RigidBody3D):	
+	var scale_object = object.scale
+	var radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
+	var material = object.physics_material_override
+	held_objects[object] = {
+	"radius": radius,
+	"mass": object.mass,
+	"linear_damp": object.linear_damp,
+	"physics_material": material.absorbent
+	}
 	enter_hold_on_node.emit(object)
 	print("Entering hold")
 	
-	held_object.linear_damp = 3
-	var material = held_object.physics_material_override
-	material.absorbent = !material.absorbent
+	object.linear_damp = 3
+	material.absorbent = false
 	$PickupSound.play()
 
-func _stop_holding(object):
+func _stop_holding(object: RigidBody3D):
 	print("Exiting hold")
+	var material = object.physics_material_override
 	drop_hold_on_node.emit(object)
 	
-	var material = object.physics_material_override
-	material.absorbent = !material.absorbent
-	held_object = null
-	object_radius = null
-	object_mass = null
+	object.linear_damp = held_objects[object]["linear_damp"]
+	material.absorbent = held_objects[object]["physics_material"]
+	
+	held_objects.erase(object)
 
-func force_stop_holding_hand():
-	if held_object == null: return
-	_stop_holding(held_object)
+func stop_holding_all():
+	var all_objects = held_objects.keys()
+	for object in all_objects:
+		_stop_holding(object)
+
+func _throw(object):
+	var object_mass = held_objects[object]["mass"]
+	var throw_strength = object.global_position  - player.global_position
+	
+	object.apply_central_impulse(throw_strength * object_mass * 8)
+	_stop_holding(object)
+
+func throw_all():
+	var all_objects = held_objects.keys()
+	for object in all_objects:
+		_throw(object)
 
 func _can_hold(object):
 	return (object is RigidBody3D and 
@@ -53,34 +69,43 @@ func _can_hold(object):
 	object.visible)
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed: return
-		
-		var target = G_raycast.get_mouse_target(camera_player)
-		
-		if event.button_index == hold_button and player.can_move:
-			if held_object != null:
-				_stop_holding(held_object)
-			elif _can_hold(target):
-				print(target.is_in_group(hold_group))
-				_start_holding(target)
-				
-	elif Input.is_action_just_pressed("interact"):
-		if held_object != null:
-			var throw_strength = held_object.global_position  - player.global_position
-			
-			held_object.apply_central_impulse(throw_strength * object_mass * 8)
-			_stop_holding(held_object)
+	if Input.is_action_just_pressed("hold"):
+		print(target, _can_hold(target))
+		if _can_hold(target):
+			_start_holding(target)
+	elif Input.is_action_just_pressed("throw"):
+		throw_all()
+	elif Input.is_action_just_pressed("ui_cancel"):
+		stop_holding_all()
+
+func _largest_object_radius(held_objects):
+	var max_radius = 0
+	for object in held_objects:
+		var object_radius = held_objects[object]["radius"]
+		if object_radius > max_radius:
+			max_radius = object_radius
+	return max_radius
 
 func _physics_process(delta):
-	if held_object != null:
-		var origin_object = held_object.global_transform.origin
-		#var rotation_object = held_object.global_rotation
+	var exclude = [player]
+	exclude.append_array(held_objects.keys())
+	target = G_raycast.get_mouse_target(camera_player, exclude)
+	
+	if target != highlighted:
+		if highlighted != null:
+			G_highlight.remove_highlight(highlighted)
+			highlighted = null
+		if target != null and _can_hold(target):
+			G_highlight.add_highlight(target)
+			highlighted = target
+	
+	if held_objects != {}:
+		#var origin_object = held_object.global_transform.origin
 		var origin_hand = self.global_transform.origin
-		#var rotation_hand = self.global_rotation
 		
 		# prevent the hand from phasing through walls
-		var raycast_hand_result = G_raycast.raycast_mouse(camera_player, (2 + object_radius), [player, held_object])
+		var object_radius = _largest_object_radius(held_objects)
+		var raycast_hand_result = G_raycast.raycast_mouse(camera_player, (2 + object_radius), exclude)
 		
 		if raycast_hand_result.has("position"):
 			var barrier_intersect = raycast_hand_result.position
@@ -91,16 +116,56 @@ func _physics_process(delta):
 		else:
 			self.position = Vector3(0, 0, -2) #broken with offset based on current calculations
 			# probably fix by calculating from expected hand position; used to be (0.2, -0.4, -2)
-		
-		# prevent object from trying to phase through wall
-		
-		var raycast_object_result = G_raycast.raycast_to(origin_object, origin_hand, [held_object]) #delta_origin + object_radius
-		#print(raycast_result)
-		var move_factor = 2
-		if raycast_object_result.has("position"): #and object_colliders > 0:
-			#print("GO TO PLAYER")
-			origin_hand = camera_player.global_transform.origin
-		
-		var delta_origin = (origin_hand - origin_object)
-		
-		held_object.set_linear_velocity(delta_origin * 240 * delta * move_factor)
+		for object in held_objects:
+			update_object(object, delta)
+
+var orbit_time = 0.0  # A running timer for the orbit
+
+#func _physics_process(delta):
+	#orbit_time += delta  # Increment the timer with the frame's delta time
+	#if held_objects != {}:
+		#for object in held_objects:
+			#update_object(object, delta)
+
+func update_object(object, delta):
+	var hand_origin = self.global_transform.origin
+	var object_origin = object.global_transform.origin
+
+	# Orbit parameters
+	var orbit_radius = 0.0 + held_objects[object]["radius"]  # Adjust as needed
+	var orbit_speed = 2.0  # Speed of orbit
+	var orbit_index = held_objects.keys().find(object)  # Unique index for the object
+	var angle = orbit_time * orbit_speed + orbit_index * 2 * PI / held_objects.size()
+	var move_factor = 2
+
+	# Calculate orbit position
+	var orbit_offset = Vector3(
+		orbit_radius * cos(angle),
+		0.0,  # Adjust for vertical orbit by adding sin(angle) to Y
+		orbit_radius * sin(angle)
+	)
+	var target_position = hand_origin + orbit_offset
+
+	# Move object to orbit position
+	var delta_position: Vector3 = (target_position - object_origin)
+	object.set_linear_velocity(delta_position * 240 * delta * move_factor)
+	
+	#func update_object(object, delta):
+		#var origin_object = object.global_transform.origin
+		#var origin_hand = self.global_transform.origin
+		#
+		## prevent object from trying to phase through wall
+		#var exclude = [player]
+		#exclude.append_array(held_objects.keys())
+		#var raycast_object_result = G_raycast.raycast_to(origin_object, origin_hand, exclude)
+		#
+		#var move_factor = 2
+		#if raycast_object_result.has("position"):
+			##print("GO TO PLAYER")
+			#origin_hand = camera_player.global_transform.origin
+		#
+		#var delta_origin: Vector3 = (origin_hand - origin_object)
+		#var squared_delta = delta_origin.length()
+		#delta_origin *= squared_delta
+		#
+		#object.set_linear_velocity(delta_origin * 240 * delta * move_factor)

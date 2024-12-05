@@ -77,7 +77,7 @@ volumetric_fog_density = 0.1
 [node name="OfficeLevel" type="Node3D"]
 script = ExtResource("1_ib6ec")
 
-[node name="InspectLayer" parent="." instance=ExtResource("1_eeakp")]
+[node name="InspectManager" parent="." instance=ExtResource("1_eeakp")]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ht3ci")

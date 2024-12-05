@@ -128,7 +128,7 @@ scene = ExtResource("8_c8bai")
 script = ExtResource("4_gsakb")
 scene = ExtResource("9_ydcr3")
 
-[node name="InspectLayer" parent="." instance=ExtResource("3_ryyl0")]
+[node name="InspectManager" parent="." instance=ExtResource("3_ryyl0")]
 
 [node name="LockCodes" type="Node3D" parent="."]
 script = ExtResource("13_h5l1k")

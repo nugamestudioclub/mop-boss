@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # Inspect parameters
 const DEFAULT_FOV = 75
-const ZOOM_INCREMENT = 5
+const ZOOM_INCREMENT = 1
 var inspect_button = MOUSE_BUTTON_RIGHT
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -50,12 +50,12 @@ func _start_inspecting(node: Node3D):
 	node.global_position = Vector3.ZERO
 	node.reparent(world_inspecting)
 	
-	G_highlight.remove_highlight(node)
+	#G_highlight.remove_highlight(node)
 	G_node3d.scale_to_fit(node, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
 	
 	if node is Evidence:
 		node.active_tool = player.hand.held_object
-		player.hand.force_stop_holding_hand()
+		player.hand.stop_holding_all()
 	
 	# Tell object its inspected
 	if node.has_method("enter_inspect_mode"):
@@ -126,22 +126,19 @@ func _input(event):
 	if inspector_gui.visible: return
 	# Attempt highlight
 	var exclude = []
-	if hand_player.held_object: exclude.append(hand_player.held_object)
+	#if hand_player.held_object: exclude.append(hand_player.held_object)
 	target = G_raycast.get_mouse_target(camera_player, exclude)
 	
 	if highlighted_node != target and target != null:
 		if highlighted_node != null:
-			G_highlight.remove_highlight(highlighted_node)
+			#G_highlight.remove_highlight(highlighted_node)
 			highlighted_node = null
 		if target.is_in_group("holdable") and target.visible:
-			G_highlight.add_highlight(target)
+			#G_highlight.add_highlight(target)
 			highlighted_node = target
 	
 	# Attempt inspect
-	if event is InputEventMouseButton:
-		if event.pressed: return
-		
-		if event.button_index == inspect_button:
-			if _is_inspectable(target):
-				_enter_inspect_mode()
-				_start_inspecting(target)
+	if Input.is_action_just_pressed("interact"):
+		if _is_inspectable(target):
+			_enter_inspect_mode()
+			_start_inspecting(target)
