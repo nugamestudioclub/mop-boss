@@ -66,9 +66,9 @@ func throw_all():
 	for object in all_objects:
 		_throw(object)
 
-func get_held_tool():
+func get_primary_held():
 	var held_tool = null
-	if held_objects.size() == 1:
+	if held_objects.size() > 0:
 		held_tool = held_objects.keys()[0]
 	return held_tool
 
@@ -80,9 +80,7 @@ func _can_hold(object):
 func _input(event):
 	if player.inspect_inventory.inspect_mode: return
 	
-	var primary_object = null
-	if held_objects.keys().size() > 0:
-		primary_object = held_objects.keys()[0]
+	var primary_object = get_primary_held()
 	
 	if Input.is_action_just_pressed("hold"): 
 		if _can_hold(target):
