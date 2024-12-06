@@ -50,4 +50,4 @@ func enter_inspect_mode():
 	print(can_lock_pick, can_hammer)
 	if can_hammer or can_lock_pick:
 		_unlock()
-		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
+		player.inspect_inventory.exit_inspect_mode()

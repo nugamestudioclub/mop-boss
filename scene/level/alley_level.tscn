@@ -1,8 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=41 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
-[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/gui.tscn" id="3_ryyl0"]
 [ext_resource type="Script" path="res://script/class/category/category_item.gd" id="4_gsakb"]
 [ext_resource type="PackedScene" uid="uid://cvvyy68ab0106" path="res://scene/rigid/evidence/body_part/left_arm.tscn" id="6_2q5k2"]
 [ext_resource type="PackedScene" uid="uid://bd44n2ohln754" path="res://scene/system/generation/node_spawner.tscn" id="6_4exd3"]
@@ -127,8 +126,6 @@ scene = ExtResource("8_c8bai")
 [node name="RightLeg" type="Node" parent="LevelGenerationManager"]
 script = ExtResource("4_gsakb")
 scene = ExtResource("9_ydcr3")
-
-[node name="InspectManager" parent="." instance=ExtResource("3_ryyl0")]
 
 [node name="LockCodes" type="Node3D" parent="."]
 script = ExtResource("13_h5l1k")

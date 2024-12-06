@@ -55,7 +55,7 @@ func enter_inspect_mode():
 	super.enter_inspect_mode()
 	if active_tool is Tool and active_tool.type == Tool.Type.HAMMER and chosen_variant.get("special", "") == "use_hammer":
 		current_combo = correct_combo
-		get_tree().current_scene.get_node("InspectLayer").exit_inspect_mode()
+		player.inspect_inventory.exit_inspect_mode()
 
 #func _unhandled_key_input(event: InputEvent):
 	#if event.is_pressed(): return

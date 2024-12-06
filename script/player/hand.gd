@@ -143,7 +143,7 @@ func update_object(object, delta):
 	var orbit_speed = 2.0  # Speed of orbit
 	var orbit_index = held_objects.keys().find(object)  # Unique index for the object
 	var angle = orbit_time * orbit_speed + orbit_index * 2 * PI / held_objects.size()
-	var move_factor = 3
+	var move_factor = 5
 	
 	# Calculate orbit position
 	var orbit_offset = Vector3(

@@ -16,9 +16,7 @@ var inspected_original_transform: Dictionary = {}
 var inspected_original_freeze: Dictionary = {}
 
 # Player paths
-@onready var player: RigidBody3D = $"../Player"
-@onready var camera_player = player.get_node("TwistPivot/PitchPivot/PlayerPov")
-@onready var hand_player = player.get_node("TwistPivot/PitchPivot/Hand")
+@onready var player: RigidBody3D = get_parent()
 
 # Inspector paths
 @onready var inspector_gui = $Control
@@ -127,7 +125,9 @@ func _input(event):
 	# Attempt highlight
 	var exclude = []
 	#if hand_player.held_object: exclude.append(hand_player.held_object)
-	target = G_raycast.get_mouse_target(camera_player, exclude)
+	print(player)
+	print(player.camera)
+	target = G_raycast.get_mouse_target(player.camera, exclude)
 	
 	if highlighted_node != target and target != null:
 		if highlighted_node != null:
