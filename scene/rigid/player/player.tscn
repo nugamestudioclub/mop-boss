@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PitchPivot" type="Node3D" parent="TwistPivot"]
 
-[node name="PlayerPov" type="Camera3D" parent="TwistPivot/PitchPivot"]
+[node name="Camera" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="Hand" type="Node3D" parent="TwistPivot/PitchPivot"]

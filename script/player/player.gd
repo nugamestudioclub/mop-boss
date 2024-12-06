@@ -25,7 +25,7 @@ var pitch_input := 0.0
 # Basically waitForChild()
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
-@onready var camera := $TwistPivot/PitchPivot/PlayerPov
+@onready var camera := $TwistPivot/PitchPivot/Camera
 @onready var hand := $TwistPivot/PitchPivot/Hand
 @onready var inspect_inventory = $InspectInventory
 
