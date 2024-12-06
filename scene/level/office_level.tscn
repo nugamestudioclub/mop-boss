@@ -168,8 +168,7 @@ pitch_scale = 1.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.258008, 1.08456, -1.88628)
 visible = false
 
-[connection signal="finished" from="IntroSequence/PhoneRing" to="." method="_on_line_finished"]
-[connection signal="finished" from="IntroSequence/Line1" to="." method="_on_line_finished"]
-[connection signal="finished" from="IntroSequence/Line2" to="." method="_on_line_finished"]
-[connection signal="finished" from="IntroSequence/Line3" to="." method="_on_line_finished"]
-[connection signal="finished" from="IntroSequence/Line4" to="." method="_on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line1" to="." method="on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line2" to="." method="on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line3" to="." method="on_line_finished"]
+[connection signal="finished" from="IntroSequence/Line4" to="." method="on_line_finished"]

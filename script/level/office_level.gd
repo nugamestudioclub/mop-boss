@@ -37,7 +37,7 @@ func end_level():
 
 # Send the player a phone call from the boss
 func call_player(checkPerformance: bool):
-	_start_call()
+	on_line_finished()
 	
 	if checkPerformance:
 		var score = cleaned_evidences/total_evidences
@@ -58,9 +58,10 @@ func call_player(checkPerformance: bool):
 	# New task voicelines
 	print("Voice lines for new cleanup job")
 
-
-# GRRR DOES NOT EMIT FINISHED() IF YOU DO STOP()
-func _start_call():
-	for audio in $IntroSequence.get_children():
-		audio.play()
-		await $IntroSequence.get_child(intro_sequence_index).finished
+func on_line_finished():
+	var wait_time = 0.2
+	if intro_sequence_index == 0: wait_time = 2.5
+	elif intro_sequence_index == $IntroSequence.get_child_count(): return
+	await get_tree().create_timer(wait_time).timeout
+	$IntroSequence.get_child(intro_sequence_index).play()
+	intro_sequence_index += 1

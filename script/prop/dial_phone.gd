@@ -65,7 +65,9 @@ func _on_timer_timeout():
 				go_back = true
 
 @onready var ring = $"../IntroSequence/PhoneRing"
+@onready var level_manager = $".."
 
 func enter_inspect_mode():
 	ring.stop()
+	level_manager.on_line_finished()
 	super.enter_inspect_mode()
