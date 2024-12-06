@@ -50,7 +50,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xtlwe")
 
 [node name="PaperClip" type="RigidBody3D" groups=["holdable", "inspectable"]]
-mass = 4.0
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 continuous_cd = true
 max_contacts_reported = 1
