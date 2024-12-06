@@ -63,3 +63,9 @@ func _process(delta: float):
 
 func _on_timer_timeout():
 				go_back = true
+
+@onready var ring = $"../IntroSequence/PhoneRing"
+
+func enter_inspect_mode():
+	ring.stop()
+	super.enter_inspect_mode()
