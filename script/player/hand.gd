@@ -3,7 +3,7 @@ extends Node3D
 # Hand customize
 var hold_button = MOUSE_BUTTON_LEFT
 var hold_group = "holdable"
-var max_objects: int = 4
+var max_objects: int = 1
 
 # Idk hand parameters
 var held_objects: Dictionary = {}
@@ -19,7 +19,9 @@ signal drop_hold_on_node(node: Node3D)
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _start_holding(object: RigidBody3D):	
+func _start_holding(object: RigidBody3D):
+	if not held_objects.size() < max_objects: return
+	
 	var scale_object = object.scale
 	var radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
 	var material = object.physics_material_override
@@ -75,14 +77,39 @@ func _can_hold(object):
 	object.visible)
 
 func _input(event):
-	if Input.is_action_just_pressed("hold"):
-		print(target, _can_hold(target), held_objects.size())
-		if _can_hold(target) and held_objects.size() < max_objects:
-			_start_holding(target)
+	var primary_object = null
+	if held_objects.keys().size() > 0:
+		primary_object = held_objects.keys()[0]
+	
+	if Input.is_action_just_pressed("hold") and _can_hold(target):
+		_start_holding(target)
 	elif Input.is_action_just_pressed("throw"):
 		throw_all()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		stop_holding_all()
+	
+	elif Input.is_action_just_pressed("store") and primary_object != null:
+		_stop_holding(primary_object)
+		player.object_inventory.store_object(primary_object)
+		$PickupSound.play()
+	elif Input.is_action_just_pressed("slot_1"):
+		var object = player.object_inventory.retrieve_slot_object(1)
+		if object != null:
+			if primary_object != null:
+				_stop_holding(primary_object)
+			_start_holding(object)
+	elif Input.is_action_just_pressed("slot_2"):
+		var object = player.object_inventory.retrieve_slot_object(2)
+		if object != null:
+			if primary_object != null:
+				_stop_holding(primary_object)
+			_start_holding(object)
+	elif Input.is_action_just_pressed("slot_3"):
+		var object = player.object_inventory.retrieve_slot_object(3)
+		if object != null:
+			if primary_object != null:
+				_stop_holding(primary_object)
+			_start_holding(object)
 
 func _largest_object_radius(held_objects):
 	var max_radius = 0

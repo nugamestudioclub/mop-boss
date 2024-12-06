@@ -28,6 +28,7 @@ var pitch_input := 0.0
 @onready var camera := $TwistPivot/PitchPivot/Camera
 @onready var hand := $TwistPivot/PitchPivot/Hand
 @onready var inspect_inventory = $InspectInventory
+@onready var object_inventory = $ObjectInventory
 
 var target: Node3D = null
 

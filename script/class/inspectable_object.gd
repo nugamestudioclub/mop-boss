@@ -2,7 +2,7 @@ class_name InspectableObject
 extends RigidBody3D
 
 # PLAYER
-@onready var player = get_tree().get_current_scene().get_node("Player")
+@onready var player = get_tree().current_scene.get_node("Player")
 
 # OBJECT STATE
 var is_inspected := false
