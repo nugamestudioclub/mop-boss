@@ -8,7 +8,7 @@ extends RigidBody3D
 var is_inspected := false
 
 # INPUT PARAMETERS
-const MOUSE_SENSITIVITY := 0.5
+const MOUSE_SENSITIVITY := 0.25
 const DEG_PER_PRESS := 3
 
 # INPUT LISTENING MEMORY
@@ -68,7 +68,7 @@ func _input(event):
 
 # Player moved their mouse
 func _handle_mouse_motion(event):
-	if event.button_mask == 2:
+	if Input.is_action_pressed("hold_mode"):
 		rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY))
 		rotate_z(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
 

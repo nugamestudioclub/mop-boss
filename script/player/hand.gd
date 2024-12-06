@@ -11,7 +11,6 @@ var target = null
 var highlighted = null
 
 @onready var player: RigidBody3D = self.get_owner()
-@onready var camera_player: Camera3D = $"../PlayerPov"
 
 signal enter_hold_on_node(node: Node3D)
 signal drop_hold_on_node(node: Node3D)
@@ -96,7 +95,7 @@ func _largest_object_radius(held_objects):
 func _physics_process(delta):
 	var exclude = [player]
 	exclude.append_array(held_objects.keys())
-	target = G_raycast.get_mouse_target(camera_player, exclude)
+	target = G_raycast.get_mouse_target(player.camera, exclude)
 	
 	if target != highlighted:
 		if highlighted != null:
@@ -112,11 +111,11 @@ func _physics_process(delta):
 		
 		# prevent the hand from phasing through walls
 		var object_radius = _largest_object_radius(held_objects)
-		var raycast_hand_result = G_raycast.raycast_mouse(camera_player, (2 + object_radius), exclude)
+		var raycast_hand_result = G_raycast.raycast_mouse(player.camera, (2 + object_radius), exclude)
 		
 		if raycast_hand_result.has("position"):
 			var barrier_intersect = raycast_hand_result.position
-			var direction = (camera_player.global_position - barrier_intersect).normalized()
+			var direction = (player.camera.global_position - barrier_intersect).normalized()
 			
 			origin_hand = barrier_intersect + (direction * object_radius)
 			self.global_position = origin_hand

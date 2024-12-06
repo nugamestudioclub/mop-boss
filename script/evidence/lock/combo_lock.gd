@@ -63,7 +63,7 @@ func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_positio
 
 	# Spin the dial based on input type
 	var dial_delta = RADS_PER_TURN
-	var spin_direction = G_lock.get_input_axis("rotate_view_down", "rotate_view_up")
+	var spin_direction = G_lock.get_input_axis("spin_down", "spin_up")
 	dial_delta *= spin_direction
 
 	# Spin the dial if there is one

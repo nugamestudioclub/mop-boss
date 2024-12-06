@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgw1p2k80x3qu"]
+
+[ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
+[ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
+[ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_xv04b"]
+[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/inspect_inventory.tscn" id="4_v58mf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
+friction = 0.0
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5wrld"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8yiy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1qfc8"]
+
+[node name="Player" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_56f34")
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_xucho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_5wrld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_y8yiy")
+
+[node name="TwistPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
+
+[node name="Camera" type="Camera3D" parent="TwistPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Hand" type="Node3D" parent="TwistPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+script = ExtResource("3_4db25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_1qfc8")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Hand"]
+stream = ExtResource("3_xv04b")
+volume_db = 3.0
+
+[node name="InspectInventory" parent="." instance=ExtResource("4_v58mf")]

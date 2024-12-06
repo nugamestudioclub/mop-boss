@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # Inspect parameters
 const DEFAULT_FOV = 75
-const ZOOM_INCREMENT = 1
+const ZOOM_INCREMENT = 0.75
 var inspect_button = MOUSE_BUTTON_RIGHT
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
