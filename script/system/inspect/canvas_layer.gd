@@ -54,7 +54,7 @@ func _start_inspecting(node: Node3D):
 	G_node3d.scale_to_fit(node, 1.3)  # 1.3 is a magic number so that all inspected objects are 1.3x some uniform size
 	
 	if node is Evidence:
-		node.active_tool = player.hand.held_object
+		node.active_tool = player.hand.get_held_tool()
 		player.hand.stop_holding_all()
 	
 	# Tell object its inspected

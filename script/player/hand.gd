@@ -3,6 +3,7 @@ extends Node3D
 # Hand customize
 var hold_button = MOUSE_BUTTON_LEFT
 var hold_group = "holdable"
+var max_objects: int = 4
 
 # Idk hand parameters
 var held_objects: Dictionary = {}
@@ -63,6 +64,12 @@ func throw_all():
 	for object in all_objects:
 		_throw(object)
 
+func get_held_tool():
+	var held_tool = null
+	if held_objects.size() == 1:
+		held_tool = held_objects.keys()[0]
+	return held_tool
+
 func _can_hold(object):
 	return (object is RigidBody3D and 
 	object.is_in_group(hold_group) and 
@@ -70,8 +77,8 @@ func _can_hold(object):
 
 func _input(event):
 	if Input.is_action_just_pressed("hold"):
-		print(target, _can_hold(target))
-		if _can_hold(target):
+		print(target, _can_hold(target), held_objects.size())
+		if _can_hold(target) and held_objects.size() < max_objects:
 			_start_holding(target)
 	elif Input.is_action_just_pressed("throw"):
 		throw_all()
@@ -136,8 +143,8 @@ func update_object(object, delta):
 	var orbit_speed = 2.0  # Speed of orbit
 	var orbit_index = held_objects.keys().find(object)  # Unique index for the object
 	var angle = orbit_time * orbit_speed + orbit_index * 2 * PI / held_objects.size()
-	var move_factor = 2
-
+	var move_factor = 3
+	
 	# Calculate orbit position
 	var orbit_offset = Vector3(
 		orbit_radius * cos(angle),
