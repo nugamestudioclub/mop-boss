@@ -124,6 +124,7 @@ func _largest_object_radius(held_objects):
 func _physics_process(delta):
 	var exclude = [player]
 	exclude.append_array(held_objects.keys())
+	print(exclude)
 	target = G_raycast.get_mouse_target(player.camera, exclude)
 	
 	if target != highlighted:

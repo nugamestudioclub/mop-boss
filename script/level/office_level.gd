@@ -16,6 +16,7 @@ var intro_sequence_index = 0
 # Start office level
 func start_level():
 	G_game_state.fade_in_scene()
+	# TODO: add game loading / intro screen with mop boss
 	
 	# if the player came back from a cleanup
 	var checkPerformance: bool = (total_evidences != null)

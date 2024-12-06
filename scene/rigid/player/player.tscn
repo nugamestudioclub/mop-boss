@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=14 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://scene/rigid/player/head.gd" id="4_lg44b"]
 [ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/inspect_inventory.tscn" id="4_v58mf"]
 [ext_resource type="PackedScene" uid="uid://bel4ewk2fujks" path="res://scene/system/inventory/object_inventory.tscn" id="5_04l17"]
+[ext_resource type="AudioStream" uid="uid://cdf1slw2hs6w2" path="res://asset/audio/sfx/cough/cough.wav" id="5_drxtq"]
+[ext_resource type="AudioStream" uid="uid://d4cftb2kuy8yq" path="res://asset/audio/sfx/cough/cough2.wav" id="6_2xolp"]
+[ext_resource type="AudioStream" uid="uid://clntldkt26jvi" path="res://asset/audio/sfx/cough/cough3.wav" id="7_vght4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
 friction = 0.0
@@ -56,7 +59,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 script = ExtResource("4_lg44b")
 
 [node name="CoughSound" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
-stream = ExtResource("3_xv04b")
+stream = ExtResource("5_drxtq")
+volume_db = 3.0
+pitch_scale = 1.05
+
+[node name="CoughSound2" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
+stream = ExtResource("6_2xolp")
+volume_db = 3.0
+
+[node name="CoughSound3" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
+stream = ExtResource("7_vght4")
 volume_db = 3.0
 
 [node name="InspectInventory" parent="." instance=ExtResource("4_v58mf")]

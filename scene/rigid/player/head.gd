@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var cough_sound = $CoughSound  # Reference to the AudioStreamPlayer or AudioStreamPlayer3D
+@onready var cough_sounds = [$CoughSound, $CoughSound2,$CoughSound3]
 var cough_timer: Timer = null  # Holds the dynamically created Timer
 
 func start_cough():
@@ -9,7 +9,7 @@ func start_cough():
 	
 	# Create the timer dynamically
 	cough_timer = Timer.new()
-	cough_timer.wait_time = 1  # Set the interval to 1 second
+	cough_timer.wait_time = 1.75  # Set the interval to 1 second
 	cough_timer.one_shot = false  # Make it repeat
 	cough_timer.connect("timeout", _on_cough_timer_timeout)
 	add_child(cough_timer)  # Add it as a child of the player
@@ -29,5 +29,7 @@ func stop_cough():
 	print("player stops coughing")
 
 func _on_cough_timer_timeout():
-	if cough_sound:
-		cough_sound.play()  # Play the cough sound
+	var sound = cough_sounds.pick_random()
+	
+	if sound:
+		sound.play()  # Play the cough sound
