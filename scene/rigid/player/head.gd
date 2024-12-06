@@ -9,7 +9,7 @@ func start_cough():
 	
 	# Create the timer dynamically
 	cough_timer = Timer.new()
-	cough_timer.wait_time = 0.5  # Set the interval to 1 second
+	cough_timer.wait_time = 1  # Set the interval to 1 second
 	cough_timer.one_shot = false  # Make it repeat
 	cough_timer.connect("timeout", _on_cough_timer_timeout)
 	add_child(cough_timer)  # Add it as a child of the player

@@ -11,11 +11,6 @@ const MAX_SMOG_TIME: float = 8.0
 @onready var fog_timer: Timer = Timer.new()  # Reference to the Timer node
 
 func _ready():
-	#smog_timer.one_shot = true
-	#smog_timer.wait_time = MAX_SMOG_TIME
-	#smog_timer.connect("timeout", _on_smog_timeout)
-	#add_child(smog_timer)
-	
 	connect("body_entered", _on_body_entered)
 	connect("body_exited", _on_body_exited)
 	
@@ -30,25 +25,15 @@ func _on_body_entered(body: Node):
 		player.head.start_cough()
 		#world_environment.environment.fog_density += 1
 		start_fog_increase()
-		
-		# Start the timer
-		smog_timer.start()
 
 func _on_body_exited(body: Node):
 	if body == player:
 		print("player exited smog")
 		player.head.stop_cough()
 		stop_fog_increase()
-		
-		# Stop the timer
-		smog_timer.stop()
 
-#func _on_smog_timeout():
-	#print("smog timer expired! ending level...")
-	##level_manager.end_level()
-
-var target_fog_density = 0.4  # Desired final fog density
-var fog_increase_step = 0.005  # Amount to increase per step
+var target_fog_density = 0.15  # Desired final fog density
+var fog_increase_step = 0.0015  # Amount to increase per step
 var out_of_bounds: bool = false
 
 func start_fog_increase():
@@ -67,7 +52,6 @@ func _on_fog_timer_timeout():
 		if current_density < target_fog_density:
 			world_environment.environment.fog_density = min(current_density + fog_increase_step, target_fog_density)
 		else:
-			out_of_bounds = false
 			fog_timer.stop()
 			level_manager.end_level()
 	else:
