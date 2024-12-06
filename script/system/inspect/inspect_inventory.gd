@@ -8,6 +8,8 @@ var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
 var inspect_group := "inspectable"
 
+var inspect_mode = false
+
 # Inspected memory
 var target: Node3D = null
 var highlighted_node: Node3D = null
@@ -27,6 +29,7 @@ var inspected_original_freeze: Dictionary = {}
 """Opens the inspect viewport"""
 func _enter_inspect_mode():
 	# Player
+	inspect_mode = true
 	Input.set_mouse_mode(inspect_mouse_mode)
 	player.can_move = false
 	
@@ -63,6 +66,7 @@ func _start_inspecting(node: Node3D):
 """Closes the inspect viewport, removes all objects"""
 func exit_inspect_mode():
 	# Player
+	inspect_mode = false
 	Input.set_mouse_mode(default_mouse_mode)
 	player.can_move = true
 	

@@ -3,6 +3,7 @@ extends Node3D
 # Hand customize
 var hold_button = MOUSE_BUTTON_LEFT
 var hold_group = "holdable"
+var hold_strength = 2
 var max_objects: int = 1
 
 # Idk hand parameters
@@ -77,16 +78,19 @@ func _can_hold(object):
 	object.visible)
 
 func _input(event):
+	if player.inspect_inventory.inspect_mode: return
+	
 	var primary_object = null
 	if held_objects.keys().size() > 0:
 		primary_object = held_objects.keys()[0]
 	
-	if Input.is_action_just_pressed("hold") and _can_hold(target):
-		_start_holding(target)
+	if Input.is_action_just_pressed("hold"): 
+		if _can_hold(target):
+			_start_holding(target)
+		else:
+			stop_holding_all()
 	elif Input.is_action_just_pressed("throw"):
 		throw_all()
-	elif Input.is_action_just_pressed("ui_cancel"):
-		stop_holding_all()
 	
 	elif Input.is_action_just_pressed("store") and primary_object != null:
 		_stop_holding(primary_object)
@@ -128,7 +132,7 @@ func _physics_process(delta):
 		if highlighted != null:
 			G_highlight.remove_highlight(highlighted)
 			highlighted = null
-		if target != null and _can_hold(target):
+		if target != null and _can_hold(target) and not player.inspect_inventory.inspect_mode:
 			G_highlight.add_highlight(target)
 			highlighted = target
 	
@@ -169,7 +173,6 @@ func update_object(object, delta):
 	var orbit_speed = 2.0  # Speed of orbit
 	var orbit_index = held_objects.keys().find(object)  # Unique index for the object
 	var angle = orbit_time * orbit_speed + orbit_index * 2 * PI / held_objects.size()
-	var move_factor = 5
 	
 	# Calculate orbit position
 	var orbit_offset = Vector3(
@@ -181,7 +184,7 @@ func update_object(object, delta):
 
 	# Move object to orbit position
 	var delta_position: Vector3 = (target_position - object_origin)
-	object.set_linear_velocity(delta_position * 240 * delta * move_factor)
+	object.set_linear_velocity(delta_position * 240 * delta * hold_strength)
 	
 	#func update_object(object, delta):
 		#var origin_object = object.global_transform.origin
