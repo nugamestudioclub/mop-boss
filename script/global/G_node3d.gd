@@ -91,3 +91,15 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 	## Calculate the new position in world space
 	#var new_position = rotated_position + world_position
 	#object.global_transform.origin = new_position
+
+# Enable rigid body colliders to get in the way
+func enable_rigid_colliders():
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = false
+
+# Stop rigid body colliders from getting in the way
+func disable_rigid_colliders():
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = true

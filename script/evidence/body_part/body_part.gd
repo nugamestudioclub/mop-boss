@@ -13,5 +13,5 @@ func enter_inspect_mode():
 	if active_tool is Tool and active_tool.type == Tool.Type.TRASH_BAG:
 		player.inspect_inventory.exit_inspect_mode()
 		hide()
-		_disable_rigid_colliders()
+		G_node3d.disable_rigid_colliders()
 		is_in_trash = true

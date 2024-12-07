@@ -44,16 +44,12 @@ color = Color(0, 0, 0, 0.286275)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
-grow_horizontal = 2
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Viewport" type="SubViewport" parent="Control/SubViewportContainer"]
@@ -65,6 +61,10 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("2_1fer2")]
+
+[node name="Inspected" type="Node3D" parent="Control/SubViewportContainer/Viewport/World"]
+
+[node name="Tools" type="Node3D" parent="Control/SubViewportContainer/Viewport/World"]
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sthf5")
