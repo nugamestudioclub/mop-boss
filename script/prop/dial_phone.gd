@@ -22,7 +22,14 @@ var elapsed: float = 0.0
 var end = 0.0
 var go_back = false
 
-func _on_holes_input_event(_camera, event, _event_position, _normal, shape_idx):
+func _input_event_collider(
+	camera: Camera3D,
+	event: InputEvent,
+	event_position: Vector3,
+	normal: Vector3,
+	shape_idx: int,
+	collider: CollisionObject3D):
+	
 	if not is_inspected: return
 	
 	if event is InputEventMouseButton:

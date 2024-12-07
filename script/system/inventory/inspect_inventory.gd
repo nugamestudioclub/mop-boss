@@ -22,7 +22,8 @@ func start_inspecting(object: RigidBody3D):
 		#node.active_tool = player.hand.get_primary_held()
 	
 	# Tell object its inspected
-	object.enter_inspect_mode()
+	if object.has_method("enter_inspect_mode"):
+		object.enter_inspect_mode()
 
 """Moves object from inspect window into previous state"""
 func stop_inspecting(node: Node3D):

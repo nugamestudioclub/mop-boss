@@ -24,8 +24,8 @@ var inspect_mouse_mode = Input.MOUSE_MODE_VISIBLE
 func open_inventory():
 	# Add object in hand if there is any
 	var held_object = player.hand.get_primary_held()
-	if held_object != null:
-		player.hand.stop_holding_all()
+	player.hand.stop_holding_all()
+	if inspect.is_inspectable(held_object):
 		inspect.start_inspecting(held_object)
 	
 	# Player

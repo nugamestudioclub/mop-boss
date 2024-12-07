@@ -483,5 +483,4 @@ shape = SubResource("CylinderShape3D_72058")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="input_event" from="Holes" to="." method="_on_holes_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

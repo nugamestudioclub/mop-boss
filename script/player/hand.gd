@@ -83,14 +83,15 @@ func _input(event):
 	
 	var primary_object = get_primary_held()
 	
-	if target != null and can_hold(target):
-		if Input.is_action_just_pressed("hold"):
+	if can_hold(target):
+		if Input.is_action_just_released("hold"):
 			print("OK YO")
 			start_holding(target)
 	else:
-		if Input.is_action_just_pressed("drop"): 
+		print("wtf")
+		if Input.is_action_just_released("drop"): 
 			stop_holding_all()
-		elif Input.is_action_just_pressed("throw"):
+		elif Input.is_action_just_released("throw"):
 			throw_all()
 	
 	if Input.is_action_just_pressed("store") and primary_object is Tool:
@@ -125,6 +126,7 @@ func _largest_object_radius(held_objects):
 	return max_radius
 
 func _physics_process(delta):
+	print(target)
 	var exclude = [player]
 	exclude.append_array(held_objects.keys())
 	target = G_raycast.get_mouse_target(player.camera, exclude)
