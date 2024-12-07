@@ -61,7 +61,7 @@ func call_player(checkPerformance: bool):
 
 func on_line_finished():
 	var wait_time = 0.2
-	if intro_sequence_index == 0: wait_time = 2.5
+	if intro_sequence_index == 0: wait_time = 4
 	elif intro_sequence_index == $IntroSequence.get_child_count(): return
 	await get_tree().create_timer(wait_time).timeout
 	$IntroSequence.get_child(intro_sequence_index).play()

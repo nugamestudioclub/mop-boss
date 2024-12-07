@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=14 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
@@ -19,6 +19,13 @@ absorbent = true
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8yiy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1qfc8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_er8qe"]
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("5_drxtq")
+stream_1/stream = ExtResource("6_2xolp")
+stream_2/stream = ExtResource("7_vght4")
 
 [node name="Player" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_56f34")
@@ -58,16 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 script = ExtResource("4_lg44b")
 
 [node name="CoughSound" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
-stream = ExtResource("5_drxtq")
+stream = SubResource("AudioStreamRandomizer_er8qe")
 volume_db = 3.0
 pitch_scale = 1.05
-
-[node name="CoughSound2" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
-stream = ExtResource("6_2xolp")
-volume_db = 3.0
-
-[node name="CoughSound3" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Head"]
-stream = ExtResource("7_vght4")
-volume_db = 3.0
 
 [node name="Inventory" parent="." instance=ExtResource("8_cjycl")]

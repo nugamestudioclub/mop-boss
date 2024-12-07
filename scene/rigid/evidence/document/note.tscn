@@ -122,7 +122,7 @@ stream_1/stream = ExtResource("9_kihmt")
 stream_2/stream = ExtResource("10_psra0")
 
 [node name="Note" type="RigidBody3D" groups=["holdable", "inspectable"]]
-mass = 0.4
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_80xyh")
 continuous_cd = true
 max_contacts_reported = 1

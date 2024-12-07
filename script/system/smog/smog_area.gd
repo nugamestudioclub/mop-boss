@@ -6,8 +6,6 @@ extends Area3D
 @onready var world_environment = $"../WorldEnvironment"
 @onready var default_fog = world_environment.environment.fog_density
 
-const MAX_SMOG_TIME: float = 8.0
-
 @onready var fog_timer: Timer = Timer.new()  # Reference to the Timer node
 
 func _ready():
@@ -15,7 +13,7 @@ func _ready():
 	connect("body_exited", _on_body_exited)
 	
 	fog_timer.one_shot = false
-	fog_timer.wait_time = 0.1
+	fog_timer.wait_time = 0.25
 	fog_timer.connect("timeout", _on_fog_timer_timeout)
 	add_child(fog_timer)
 
@@ -23,7 +21,6 @@ func _on_body_entered(body: Node):
 	if body == player:
 		print("player entered smog")
 		player.head.start_cough()
-		#world_environment.environment.fog_density += 1
 		start_fog_increase()
 
 func _on_body_exited(body: Node):
@@ -33,7 +30,7 @@ func _on_body_exited(body: Node):
 		stop_fog_increase()
 
 var target_fog_density = 0.15  # Desired final fog density
-var fog_increase_step = 0.0015  # Amount to increase per step
+var fog_increase_step = 0.0025  # Amount to increase per step
 var out_of_bounds: bool = false
 
 func start_fog_increase():

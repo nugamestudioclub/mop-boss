@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var cough_sounds = [$CoughSound, $CoughSound2,$CoughSound3]
+@onready var cough_sound = $CoughSound
 var cough_timer: Timer = null  # Holds the dynamically created Timer
 
 func start_cough():
@@ -29,7 +29,4 @@ func stop_cough():
 	print("player stops coughing")
 
 func _on_cough_timer_timeout():
-	var sound = cough_sounds.pick_random()
-	
-	if sound:
-		sound.play()  # Play the cough sound
+	cough_sound.play()  # Play the cough sound
