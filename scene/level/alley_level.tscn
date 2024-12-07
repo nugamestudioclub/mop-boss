@@ -1,5 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://b4d3iiivouw3k"]
 
+[ext_resource type="Script" path="res://script/level/alley_level.gd" id="1_e281c"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
 [ext_resource type="PackedScene" uid="uid://nyov4ccxlxij" path="res://scene/system/category/lock_category.tscn" id="3_owdbc"]
 [ext_resource type="Script" path="res://script/class/category/category_item.gd" id="4_gsakb"]
@@ -22,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlv4mrgrwdpf" path="res://scene/rigid/tool/hammer.tscn" id="20_ev0ie"]
 [ext_resource type="PackedScene" path="res://scene/rigid/tool/trash_bag.tscn" id="22_ivc8r"]
 [ext_resource type="PackedScene" uid="uid://bn4k15sj2gjhu" path="res://scene/rigid/tool/black_light.tscn" id="23_qpe6i"]
-[ext_resource type="PackedScene" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
+[ext_resource type="PackedScene" uid="uid://bmar2pdmva2dn" path="res://scene/system/category/blood_category.tscn" id="25_f04sn"]
 [ext_resource type="PackedScene" uid="uid://b3ldwjlv1f6iy" path="res://scene/rigid/tool/knife.tscn" id="25_fye0o"]
 [ext_resource type="PackedScene" path="res://scene/system/category/body_parts_category.tscn" id="26_bxjnx"]
 [ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
@@ -34,45 +35,6 @@
 [ext_resource type="AudioStream" uid="uid://b1eq8imevyvtf" path="res://asset/audio/music/MB L1 Tense Head.wav" id="34_u111y"]
 [ext_resource type="AudioStream" uid="uid://d0yxt3cyqummg" path="res://asset/audio/music/MB L1 Tense B1.wav" id="35_4srot"]
 [ext_resource type="AudioStream" uid="uid://cloejbw0ganxs" path="res://asset/audio/music/MB L1 Tense B2.wav" id="36_yrsi8"]
-
-[sub_resource type="GDScript" id="GDScript_58cnf"]
-script/source = "extends Node3D
-
-@onready var level_generation_manager = $LevelGenerationManager
-
-# FOR DEBUGGING PURPOSES
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed: return
-		elif event.keycode == KEY_R:
-			start_level()
-
-func _ready() -> void:
-	start_level()
-
-func start_level():
-	G_game_state.fade_in_scene()
-	level_generation_manager.clear_level()
-	level_generation_manager.generate_level()
-
-func end_level():
-	# TODO: pass information to office scene, like performance stats (so boss can call and say hey)
-	var total_evidences = 0
-	var cleaned_evidences = 0
-	for evidence in get_tree().get_nodes_in_group(\"evidence\"):
-		total_evidences += 1
-		print(evidence.name, evidence.is_altered())
-		if evidence.is_altered():
-			cleaned_evidences +=1
-	
-	G_game_state.total_evidences = total_evidences
-	G_game_state.cleaned_evidences = cleaned_evidences
-	G_game_state.fade_out_scene()
-	
-	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
-	await get_tree().process_frame
-	get_tree().change_scene_to_file(\"res://scene/level/office_level.tscn\")
-"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_516dq"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -108,7 +70,7 @@ size = Vector3(126, 10, 65.5)
 size = Vector3(35.5, 10, 13)
 
 [node name="AlleyLevel" type="Node3D"]
-script = SubResource("GDScript_58cnf")
+script = ExtResource("1_e281c")
 
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8894, 1.56498, 1.70906)

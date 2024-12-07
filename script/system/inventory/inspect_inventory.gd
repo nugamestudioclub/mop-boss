@@ -12,7 +12,7 @@ func start_inspecting(object: RigidBody3D):
 	
 	# Add object
 	object.freeze = true
-	object.global_position = Vector3.ZERO
+	object.global_position = self.global_position
 	object.reparent(self)
 	
 	#G_highlight.remove_highlight(node)

@@ -65,8 +65,10 @@ render_target_update_mode = 4
 [node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("2_o1s4t")]
 
 [node name="Inspect" parent="Control/SubViewportContainer/Viewport/World" instance=ExtResource("2_c5p2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
 
 [node name="Tool" parent="Control/SubViewportContainer/Viewport/World" instance=ExtResource("3_8kou7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 
 [node name="StoreSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_q0mmb")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjerhiu7dcu21"]
+[gd_scene load_steps=6 format=3 uid="uid://bmar2pdmva2dn"]
 
 [ext_resource type="Script" path="res://script/class/category/blood_category.gd" id="1_36m2c"]
 [ext_resource type="Script" path="res://script/class/category/category_item.gd" id="2_kq2ig"]
-[ext_resource type="PackedScene" uid="uid://c3e7j54lwq8nl" path="res://scene/rigid/evidence/body_part/blood_brick.tscn" id="3_54xip"]
-[ext_resource type="PackedScene" uid="uid://dlv2vknbtjxwk" path="res://scene/rigid/evidence/body_part/blood_asphalt.tscn" id="4_vip3u"]
-[ext_resource type="PackedScene" uid="uid://coysmtn6kc5x0" path="res://scene/rigid/evidence/body_part/blood_concrete.tscn" id="5_kf0ae"]
+[ext_resource type="PackedScene" path="res://scene/rigid/evidence/body_part/blood_brick.tscn" id="3_54xip"]
+[ext_resource type="PackedScene" path="res://scene/rigid/evidence/body_part/blood_asphalt.tscn" id="4_vip3u"]
+[ext_resource type="PackedScene" path="res://scene/rigid/evidence/body_part/blood_concrete.tscn" id="5_kf0ae"]
 
 [node name="BloodCategory" type="Node"]
 script = ExtResource("1_36m2c")
