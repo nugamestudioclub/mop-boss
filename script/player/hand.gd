@@ -91,8 +91,9 @@ func _input(event):
 		print("wtf")
 		if Input.is_action_just_released("drop"): 
 			stop_holding_all()
-		elif Input.is_action_just_released("throw"):
-			throw_all()
+	
+	if Input.is_action_just_released("throw"):
+		throw_all()
 
 func _largest_object_radius(held_objects):
 	var max_radius = 0

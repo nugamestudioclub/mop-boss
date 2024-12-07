@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dg5b4qlf8dmql" path="res://scene/static/building/alley_level_buildings.tscn" id="27_k1spg"]
 [ext_resource type="PackedScene" uid="uid://dhuw8hkjapuv6" path="res://scene/static/fence/fence_end.tscn" id="31_sfo7y"]
 [ext_resource type="PackedScene" uid="uid://bqs86sis2c5fp" path="res://scene/static/fence/fence_middle.tscn" id="32_1u30x"]
-[ext_resource type="PackedScene" path="res://scene/rigid/prop/pallet.tscn" id="32_pa76a"]
+[ext_resource type="PackedScene" uid="uid://bpcrd2vwrvbsq" path="res://scene/rigid/prop/pallet.tscn" id="32_pa76a"]
 [ext_resource type="Script" path="res://script/audio/music_player.gd" id="33_qq5ej"]
 [ext_resource type="PackedScene" uid="uid://6judvpuc3fo3" path="res://scene/system/smog/smog_area.tscn" id="34_2uqwp"]
 [ext_resource type="AudioStream" uid="uid://b1eq8imevyvtf" path="res://asset/audio/music/MB L1 Tense Head.wav" id="34_u111y"]

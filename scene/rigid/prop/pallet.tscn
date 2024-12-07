@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dvmc56pfj4tfj"]
+[gd_scene load_steps=7 format=4 uid="uid://bpcrd2vwrvbsq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -49,7 +49,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bgrte")
 
 [node name="Pallet" type="RigidBody3D" groups=["holdable", "inspectable"]]
-mass = 2.0
+mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 continuous_cd = true
 max_contacts_reported = 1
