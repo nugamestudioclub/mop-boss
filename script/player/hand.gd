@@ -182,3 +182,30 @@ func update_object(object, delta):
 	# Move object to orbit position
 	var delta_position: Vector3 = (target_position - object_origin)
 	object.set_linear_velocity(delta_position * 240 * delta * hold_strength)
+	
+	# EXPERIMENTAL: trying to point object forward
+	if Input.is_action_pressed("aim"):
+		# Player's camera forward direction (camera looks along -Z)
+		var direction = -player.camera.global_transform.basis.z
+
+		# Object's current forward direction (assuming forward is -Z)
+		var current_forward = -object.global_transform.basis.z
+
+		# Compute rotation axis
+		var rot_axis = current_forward.cross(direction)
+		var axis_length = rot_axis.length()
+
+		# Only proceed if we have a meaningful axis
+		if axis_length > 0.0001:
+			rot_axis = rot_axis.normalized()
+
+			# Compute angle difference
+			var dot = clamp(current_forward.dot(direction), -1.0, 1.0)
+			var angle_diff = acos(dot)
+
+			# Add a threshold to prevent jitter when nearly aligned
+			var angle_threshold = 0.01
+			if angle_diff > angle_threshold:
+				var rotation_strength = 0.25 # adjust as needed
+				var torque = rot_axis * angle_diff * rotation_strength
+				object.apply_torque(torque)
