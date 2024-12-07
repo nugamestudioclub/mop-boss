@@ -18,22 +18,25 @@ var input_event_reference := {}
 func enter_inspect_mode():
 	is_inspected = true
 	_start_input_listening()
-	G_node3d.disable_rigid_colliders()
+	G_node3d.disable_rigid_colliders(self)
 	print("ENTER INSPECT")
 
 # Object has exited inspect mode
 func exit_inspect_mode():
 	is_inspected = false
 	_stop_input_listening()
-	G_node3d.enable_rigid_colliders()
+	G_node3d.enable_rigid_colliders(self)
 	print("EXIT INSPECT")
 
 # Start listening for inputs from all object colliders
 func _start_input_listening():
 	for collider in G_node.get_descendants(self):
 		if not collider is CollisionObject3D: continue
+		if input_event_reference.has(collider): continue
+		
 		var callable := func(camera, event, event_position, normal, shape_idx):
-				_input_event_collider(camera, event, event_position, normal, shape_idx, collider)
+			_input_event_collider(camera, event, event_position, normal, shape_idx, collider)
+		
 		collider.input_event.connect(callable)
 		input_event_reference[collider] = callable
 
@@ -42,6 +45,7 @@ func _stop_input_listening():
 	for collider in G_node.get_descendants(self):
 		if not collider is CollisionObject3D: continue
 		if not input_event_reference.has(collider): continue
+		
 		collider.input_event.disconnect(input_event_reference[collider])
 		input_event_reference.erase(collider)
 

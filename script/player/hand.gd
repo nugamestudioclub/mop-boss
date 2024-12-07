@@ -20,26 +20,27 @@ signal drop_hold_on_node(node: Node3D)
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _start_holding(object: RigidBody3D):
+func start_holding(object: RigidBody3D):
 	if not held_objects.size() < max_objects: return
 	
 	var scale_object = object.scale
 	var radius = 0.5 * max(scale_object.x, scale_object.y, scale_object.z)
 	var material = object.physics_material_override
 	held_objects[object] = {
-	"radius": radius,
-	"mass": object.mass,
-	"linear_damp": object.linear_damp,
-	"physics_material": material.absorbent
+		"radius": radius,
+		"mass": object.mass,
+		"linear_damp": object.linear_damp,
+		"physics_material": material.absorbent
 	}
 	enter_hold_on_node.emit(object)
 	print("Entering hold")
 	
 	object.linear_damp = 3
 	material.absorbent = false
+	print(held_objects)
 	$PickupSound.play()
 
-func _stop_holding(object: RigidBody3D):
+func stop_holding(object: RigidBody3D):
 	print("Exiting hold")
 	var material = object.physics_material_override
 	drop_hold_on_node.emit(object)
@@ -52,14 +53,14 @@ func _stop_holding(object: RigidBody3D):
 func stop_holding_all():
 	var all_objects = held_objects.keys()
 	for object in all_objects:
-		_stop_holding(object)
+		stop_holding(object)
 
 func _throw(object):
 	var object_mass = held_objects[object]["mass"]
 	var throw_strength = object.global_position  - player.global_position
 	
 	object.apply_central_impulse(throw_strength * object_mass * 8)
-	_stop_holding(object)
+	stop_holding(object)
 
 func throw_all():
 	var all_objects = held_objects.keys()
@@ -72,46 +73,48 @@ func get_primary_held():
 		held_tool = held_objects.keys()[0]
 	return held_tool
 
-func _can_hold(object):
+func can_hold(object):
 	return (object is RigidBody3D and 
 	object.is_in_group(hold_group) and 
 	object.visible)
 
 func _input(event):
-	if player.inspect_inventory.inspect_mode: return
+	if player.inventory.is_open: return
 	
 	var primary_object = get_primary_held()
 	
-	if Input.is_action_just_pressed("hold"): 
-		if _can_hold(target):
-			_start_holding(target)
-		else:
+	if target != null and can_hold(target):
+		if Input.is_action_just_pressed("hold"):
+			print("OK YO")
+			start_holding(target)
+	else:
+		if Input.is_action_just_pressed("drop"): 
 			stop_holding_all()
-	elif Input.is_action_just_pressed("throw"):
-		throw_all()
+		elif Input.is_action_just_pressed("throw"):
+			throw_all()
 	
-	elif Input.is_action_just_pressed("store") and primary_object != null:
-		_stop_holding(primary_object)
-		player.object_inventory.store_object(primary_object)
+	if Input.is_action_just_pressed("store") and primary_object is Tool:
+		stop_holding(primary_object)
+		player.inventory.tool.store_object(primary_object)
 		$PickupSound.play()
 	elif Input.is_action_just_pressed("slot_1"):
-		var object = player.object_inventory.retrieve_slot_object(1)
+		var object = player.inventory.tool.retrieve_slot_object(1)
 		if object != null:
 			if primary_object != null:
-				_stop_holding(primary_object)
-			_start_holding(object)
+				stop_holding(primary_object)
+			start_holding(object)
 	elif Input.is_action_just_pressed("slot_2"):
-		var object = player.object_inventory.retrieve_slot_object(2)
+		var object = player.inventory.tool.retrieve_slot_object(2)
 		if object != null:
 			if primary_object != null:
-				_stop_holding(primary_object)
-			_start_holding(object)
+				stop_holding(primary_object)
+			start_holding(object)
 	elif Input.is_action_just_pressed("slot_3"):
-		var object = player.object_inventory.retrieve_slot_object(3)
+		var object = player.inventory.tool.retrieve_slot_object(3)
 		if object != null:
 			if primary_object != null:
-				_stop_holding(primary_object)
-			_start_holding(object)
+				stop_holding(primary_object)
+			start_holding(object)
 
 func _largest_object_radius(held_objects):
 	var max_radius = 0
@@ -124,14 +127,13 @@ func _largest_object_radius(held_objects):
 func _physics_process(delta):
 	var exclude = [player]
 	exclude.append_array(held_objects.keys())
-	print(exclude)
 	target = G_raycast.get_mouse_target(player.camera, exclude)
 	
 	if target != highlighted:
 		if highlighted != null:
 			G_highlight.remove_highlight(highlighted)
 			highlighted = null
-		if target != null and _can_hold(target) and not player.inspect_inventory.inspect_mode:
+		if target != null and can_hold(target) and not player.inventory.is_open:
 			G_highlight.add_highlight(target)
 			highlighted = target
 	
@@ -157,12 +159,6 @@ func _physics_process(delta):
 
 var orbit_time = 0.0  # A running timer for the orbit
 
-#func _physics_process(delta):
-	#orbit_time += delta  # Increment the timer with the frame's delta time
-	#if held_objects != {}:
-		#for object in held_objects:
-			#update_object(object, delta)
-
 func update_object(object, delta):
 	var hand_origin = self.global_transform.origin
 	var object_origin = object.global_transform.origin
@@ -184,23 +180,3 @@ func update_object(object, delta):
 	# Move object to orbit position
 	var delta_position: Vector3 = (target_position - object_origin)
 	object.set_linear_velocity(delta_position * 240 * delta * hold_strength)
-	
-	#func update_object(object, delta):
-		#var origin_object = object.global_transform.origin
-		#var origin_hand = self.global_transform.origin
-		#
-		## prevent object from trying to phase through wall
-		#var exclude = [player]
-		#exclude.append_array(held_objects.keys())
-		#var raycast_object_result = G_raycast.raycast_to(origin_object, origin_hand, exclude)
-		#
-		#var move_factor = 2
-		#if raycast_object_result.has("position"):
-			##print("GO TO PLAYER")
-			#origin_hand = camera_player.global_transform.origin
-		#
-		#var delta_origin: Vector3 = (origin_hand - origin_object)
-		#var squared_delta = delta_origin.length()
-		#delta_origin *= squared_delta
-		#
-		#object.set_linear_velocity(delta_origin * 240 * delta * move_factor)

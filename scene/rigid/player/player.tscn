@@ -1,14 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=13 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
 [ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_xv04b"]
 [ext_resource type="Script" path="res://scene/rigid/player/head.gd" id="4_lg44b"]
-[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inspect/inspect_inventory.tscn" id="4_v58mf"]
-[ext_resource type="PackedScene" uid="uid://bel4ewk2fujks" path="res://scene/system/inventory/object_inventory.tscn" id="5_04l17"]
 [ext_resource type="AudioStream" uid="uid://cdf1slw2hs6w2" path="res://asset/audio/sfx/cough/cough.wav" id="5_drxtq"]
 [ext_resource type="AudioStream" uid="uid://d4cftb2kuy8yq" path="res://asset/audio/sfx/cough/cough2.wav" id="6_2xolp"]
 [ext_resource type="AudioStream" uid="uid://clntldkt26jvi" path="res://asset/audio/sfx/cough/cough3.wav" id="7_vght4"]
+[ext_resource type="PackedScene" uid="uid://64qfgewityni" path="res://scene/system/inventory/inventory.tscn" id="8_cjycl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56f34"]
 friction = 0.0
@@ -71,6 +70,4 @@ volume_db = 3.0
 stream = ExtResource("7_vght4")
 volume_db = 3.0
 
-[node name="InspectInventory" parent="." instance=ExtResource("4_v58mf")]
-
-[node name="ObjectInventory" parent="." instance=ExtResource("5_04l17")]
+[node name="Inventory" parent="." instance=ExtResource("8_cjycl")]

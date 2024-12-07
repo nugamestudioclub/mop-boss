@@ -1,5 +1,14 @@
 extends Node
 
+"""Ge first ancestor with name"""
+func get_ancestor_node(node: Node, ancestor_name: String) -> Node:
+	var current = node
+	while current:
+		if current.name == ancestor_name:
+			return current
+		current = current.get_parent()
+	return null
+
 """ Gets children, children of children, etc """
 func get_descendants(in_node: Node, array: Array[Node] = []) -> Array[Node]:
 	#array.push_back(in_node)

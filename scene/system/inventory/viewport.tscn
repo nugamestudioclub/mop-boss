@@ -2,7 +2,7 @@
 
 [node name="World" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(-0.182235, 0.00858041, 0.983218, 0, 0.999962, -0.00872653, -0.983255, -0.00159028, -0.182228, 1.15, 0.05, -0.165)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -20,5 +20,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.045, -0.1, -0.135)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="OmniLight3D3"]
 radius = 0.1
-
-[node name="Inspecting" type="Node3D" parent="."]

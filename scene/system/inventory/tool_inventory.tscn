@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3jxjnv8q121f"]
+
+[ext_resource type="Script" path="res://script/system/inventory/tool_inventory.gd" id="1_n5far"]
+
+[node name="Tool" type="Node3D"]
+script = ExtResource("1_n5far")

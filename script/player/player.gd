@@ -1,20 +1,20 @@
-extends RigidBody3D # like a class, gives access to all functions of rigid body
+extends RigidBody3D
 
-# RigidBody
+# States
 @export var can_move: bool = true
 @export var sprinting: bool = false
-@export var start_reversed: bool = false
 
-# Camera parameters
+# Camera Parameters
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-# Player movement parameters
+# Movement Parameters
 const walk_acceleration: float = 50 # meters / second^2
 const jump_velocity: float = 4.5 # meters / second
 const walk_velocity: float = 0.5 # meters / second
 const sprint_factor: float = 2 
 
+# Movement Input Parameters
 var mouse_sensitivity := 0.001
 var min_pitch := -60
 var max_pitch := 60
@@ -22,48 +22,27 @@ var max_pitch := 60
 var twist_input := 0.0
 var pitch_input := 0.0
 
-# Basically waitForChild()
+# Player Objects
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var camera := $TwistPivot/PitchPivot/Camera
 @onready var hand := $TwistPivot/PitchPivot/Hand
 @onready var head := $TwistPivot/PitchPivot/Head
-@onready var inspect_inventory = $InspectInventory
-@onready var object_inventory = $ToolInventory
+@onready var inventory = $Inventory
 
-var target: Node3D = null
-
-# Character properties
+# Character Properties
 @onready var character_height = $CollisionShape3D.shape.height
 @onready var player_mass: float = self.mass
-
-# Dot product is_on_floor parameters
-const max_jump_angle = 45
-const min_dot_product =  cos(deg_to_rad(max_jump_angle))
 
 """Checks whether the player is on the floor or falling"""
 func is_on_floor():
 	# Method #1, shoot a raycast right under player, check if there is an object under
 	var raycast_result = G_raycast.raycast_length(position, Vector3.DOWN, character_height/2, [self])
 	return raycast_result.has("collider")
-	
-	# Method #2, get normals of objects player is touching (check if it's flat)
-	#var state = PhysicsServer3D.body_get_direct_state(get_rid())
-	#var on_floor = false
-	#var i := 0
-	#while i < state.get_contact_count():
-		#var normal := state.get_contact_local_normal(i)
-		## The dot product is equal to cos of the desired angle (cos of 45 degrees = 0.7)
-		#on_floor = normal.dot(Vector3.UP) > min_dot_product #  1.0 UP / 0.0 SIDE / -1.0 DOWN 
-		#if on_floor: break 
-		#i += 1
-	#return on_floor
 
 # Called when the node enters the scene tree for the **first time.**
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # sets default mouse to locked
-	#if start_reversed:
-		#$TwistPivot/PitchPivot.rotate_y(PI)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # Called every frame. (delta: float) is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -103,10 +82,6 @@ func _process(_delta: float) -> void:
 		pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
 			deg_to_rad(min_pitch),
 			deg_to_rad(max_pitch))
-			#pitch_pivot.rotate_x(pitch_input)
-			#pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-				#deg_to_rad(min_pitch),
-				#deg_to_rad(max_pitch))
 		
 		twist_input = 0.0
 		pitch_input = 0.0
@@ -117,9 +92,6 @@ func _process(_delta: float) -> void:
 	
 	# For future reference, apply_central force based on time already, so no * delta
 	apply_central_force((walk_force - damp_force) * player_mass)
-	
-	# Debug velocity
-	#print("CURR_VELOCITY: ", self.linear_velocity.length())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

@@ -24,10 +24,12 @@ var go_back = false
 
 func _on_holes_input_event(_camera, event, _event_position, _normal, shape_idx):
 	if not is_inspected: return
+	
 	if event is InputEventMouseButton:
+		if event.pressed: return
 		# check rotaty isn't being moved right now
 		# and user is left clicking
-		if event.button_index == 1 and not event.pressed and rotary.rotation == rotary_default:
+		if event.button_index == 1 and rotary.rotation == rotary_default:
 			moving_hole_index = shape_idx
 			elapsed = 0.0
 			go_back = false
@@ -68,6 +70,7 @@ func _on_timer_timeout():
 @onready var level_manager = $".."
 
 func enter_inspect_mode():
-	ring.stop()
-	level_manager.on_line_finished()
+	if ring.playing:
+		ring.stop()
+		level_manager.on_line_finished()
 	super.enter_inspect_mode()

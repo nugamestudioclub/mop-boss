@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj0fuwsbur2y0"]
+[gd_scene load_steps=10 format=3 uid="uid://64qfgewityni"]
 
-[ext_resource type="Script" path="res://script/system/inspect/inspect_inventory.gd" id="1_5j65y"]
-[ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://scene/system/inspect/inspect_viewport.tscn" id="2_1fer2"]
-[ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_sthf5"]
+[ext_resource type="Script" path="res://script/system/inventory/inventory.gd" id="1_iq2i4"]
+[ext_resource type="PackedScene" uid="uid://dj0fuwsbur2y0" path="res://scene/system/inventory/inspect_inventory.tscn" id="2_c5p2g"]
+[ext_resource type="PackedScene" uid="uid://dm3wdhbtlahxm" path="res://scene/system/inventory/viewport.tscn" id="2_o1s4t"]
+[ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="2_q0mmb"]
+[ext_resource type="PackedScene" uid="uid://d3jxjnv8q121f" path="res://scene/system/inventory/tool_inventory.tscn" id="3_8kou7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3dv2"]
 sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
@@ -20,8 +22,8 @@ fog_enabled = true
 [sub_resource type="World3D" id="World3D_kosc6"]
 environment = SubResource("Environment_nowte")
 
-[node name="InspectInventory" type="CanvasLayer"]
-script = ExtResource("1_5j65y")
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_iq2i4")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -60,12 +62,12 @@ physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("2_1fer2")]
+[node name="World" parent="Control/SubViewportContainer/Viewport" instance=ExtResource("2_o1s4t")]
 
-[node name="Inspected" type="Node3D" parent="Control/SubViewportContainer/Viewport/World"]
+[node name="Inspect" parent="Control/SubViewportContainer/Viewport/World" instance=ExtResource("2_c5p2g")]
 
-[node name="Tools" type="Node3D" parent="Control/SubViewportContainer/Viewport/World"]
+[node name="Tool" parent="Control/SubViewportContainer/Viewport/World" instance=ExtResource("3_8kou7")]
 
-[node name="PickupSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_sthf5")
+[node name="StoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q0mmb")
 volume_db = 3.0

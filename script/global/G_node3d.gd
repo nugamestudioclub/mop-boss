@@ -93,13 +93,14 @@ func rotate_around_point(object: Node, world_position: Vector3, angles_degrees: 
 	#object.global_transform.origin = new_position
 
 # Enable rigid body colliders to get in the way
-func enable_rigid_colliders():
-	for child in get_children():
+func enable_rigid_colliders(node3d: Node3D):
+	for child in node3d.get_children():
 		if child is CollisionShape3D:
 			child.disabled = false
 
 # Stop rigid body colliders from getting in the way
-func disable_rigid_colliders():
-	for child in get_children():
+func disable_rigid_colliders(node3d: Node3D):
+	for child in node3d.get_children():
 		if child is CollisionShape3D:
 			child.disabled = true
+			print(child.name)
