@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c5jwmdf7s7xg2"]
 
-[ext_resource type="Script" path="res://script/evidence/note/note_paper.gd" id="1_fvhw8"]
+[ext_resource type="Script" path="res://script/evidence/document/note_paper.gd" id="1_fvhw8"]
 [ext_resource type="Texture2D" uid="uid://btpn2feqe0j3f" path="res://asset/image/note.png" id="2_e3cin"]
 [ext_resource type="FontFile" uid="uid://bvpi8agp3sir0" path="res://asset/font/CourierPrime-Regular.ttf" id="3_k685s"]
 [ext_resource type="Texture2D" uid="uid://biqpl53erb20s" path="res://asset/image/crossout.png" id="4_haep4"]
@@ -12,6 +12,9 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80xyh"]
 friction = 0.5
 bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
+size = Vector3(0.816956, 0.0334778, 0.816772)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgplj"]
 size = Vector3(0.851394, 0.01, 0.7888)
@@ -94,11 +97,10 @@ material = SubResource("ShaderMaterial_n1dgu")
 resource_local_to_scene = true
 material = SubResource("ShaderMaterial_n1dgu")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kheio"]
-size = Vector3(0.816956, 0.0334778, 0.816772)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr0ds"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_haep4")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lggv1"]
@@ -128,6 +130,10 @@ linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_fvhw8")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
+shape = SubResource("BoxShape3D_kheio")
+
 [node name="Actions" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Actions"]
@@ -143,7 +149,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0
 mesh = SubResource("QuadMesh_212kk")
 
 [node name="Label3D" type="Label3D" parent="MeshInstance3D2"]
-transform = Transform3D(0.27, 0, 0, 0, -0.27, -2.36041e-08, 0, 2.36041e-08, -0.27, -0.339036, -0.318972, -0.02)
+transform = Transform3D(0.27, 0, 0, 0, -0.27, -2.36041e-08, 0, 2.36041e-08, -0.27, -0.339, -0.319, 0)
 double_sided = false
 render_priority = 1
 modulate = Color(0, 0, 0, 0.964706)
@@ -164,12 +170,8 @@ vertical_alignment = 0
 line_spacing = 33.025
 width = 539.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.00752258, 0.0055542)
-shape = SubResource("BoxShape3D_kheio")
-
 [node name="Crossout" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.340368, 0.0317333, -0.304388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34, 0.015, -0.304)
 visible = false
 
 [node name="Image" type="MeshInstance3D" parent="Crossout"]

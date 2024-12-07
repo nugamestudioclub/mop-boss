@@ -54,9 +54,8 @@ func enter_inspect_mode():
 	else:
 		knife_mode = false
 		if active_tool is Tool and active_tool.type == Tool.Type.TRASH_BAG:
-			player.inspect_inventory.exit_inspect_mode()
+			player.inventory.inspect.exit_inspect_mode()
 			hide()
-			G_node3d.disable_rigid_colliders(self)
 			trashed = true
 
 func exit_inspect_mode():
