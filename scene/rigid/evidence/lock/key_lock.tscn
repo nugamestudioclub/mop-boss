@@ -202,9 +202,10 @@ shape = SubResource("CylinderShape3D_w8mcc")
 [node name="AnchorPoint" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.394135, 0)
 
-[node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
-node_a = NodePath("../..")
-node_b = NodePath("..")
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.394135, 0)
+node_a = NodePath("..")
+node_b = NodePath("../AnchorPoint")
 
 [node name="PoliceText" type="Label3D" parent="."]
 transform = Transform3D(-0.199009, 0, 0.979998, 0, 1, 0, -0.979998, 0, -0.199009, 0.0744646, -0.126383, -0.111568)

@@ -14,7 +14,10 @@ var lock_definitions: Dictionary = preload("res://asset/json/evidence/locks.json
 #@onready var combo_rod = $LockPivot/combo_rod
 @onready var collision_rod = $collision_rod
 @onready var pivot = $UnlockPivot
+
+#
 @onready var anchor_point = $AnchorPoint
+@onready var pin_joint = $PinJoint3D
 
 const FACES: int = 16
 const RADS_PER_TURN := TAU/FACES
@@ -41,6 +44,11 @@ func _ready() -> void:
 	var color = chosen_variant["color"]
 	G_lock.create_specific_pattern_of_color(color, self)
 	
+	# BAD TEMPORARY FIX
+	anchor_point.reparent(self.get_parent())
+	pin_joint.node_a = self.get_path()
+	pin_joint.node_b = anchor_point.get_path()
+	
 	# get rid of extra dials
 	for i in range($Dials.get_child_count()):
 		if i >= dial_count:
@@ -50,13 +58,18 @@ func _ready() -> void:
 	print(correct_combo)
 	print(current_combo)
 
-
-
 func enter_inspect_mode():
 	super.enter_inspect_mode()
+	pin_joint.node_a = anchor_point.get_path()
+	
+	print("SO TRUE")
 	if active_tool is Tool and active_tool.type == Tool.Type.HAMMER and chosen_variant.get("special", "") == "use_hammer":
 		current_combo = correct_combo
 		player.inspect_inventory.exit_inspect_mode()
+
+func exit_inspect_mode():
+	super.exit_inspect_mode()
+	pin_joint.node_a = self.get_path()
 
 func _input_event_collider(_camera: Camera3D, _event: InputEvent, _event_position: Vector3,
 	_normal: Vector3, shape_idx: int, collision_object: CollisionObject3D) -> void:

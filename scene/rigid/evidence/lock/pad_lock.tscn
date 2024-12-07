@@ -209,6 +209,7 @@ bottom_radius = 0.03
 height = 0.005
 
 [node name="PadLock" type="RigidBody3D" groups=["holdable", "inspectable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_0cwl4")
 continuous_cd = true
@@ -268,9 +269,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.174949, 0.162366)
 [node name="AnchorPoint" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.53147, 0)
 
-[node name="PinJoint3D" type="PinJoint3D" parent="AnchorPoint"]
-node_a = NodePath("../..")
-node_b = NodePath("..")
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00580597, 0.53147, 0)
+node_a = NodePath("..")
+node_b = NodePath("../AnchorPoint")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
