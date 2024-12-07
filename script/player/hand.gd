@@ -93,29 +93,6 @@ func _input(event):
 			stop_holding_all()
 		elif Input.is_action_just_released("throw"):
 			throw_all()
-	
-	if Input.is_action_just_pressed("store") and primary_object is Tool:
-		stop_holding(primary_object)
-		player.inventory.tool.store_object(primary_object)
-		$PickupSound.play()
-	elif Input.is_action_just_pressed("slot_1"):
-		var object = player.inventory.tool.retrieve_slot_object(1)
-		if object != null:
-			if primary_object != null:
-				stop_holding(primary_object)
-			start_holding(object)
-	elif Input.is_action_just_pressed("slot_2"):
-		var object = player.inventory.tool.retrieve_slot_object(2)
-		if object != null:
-			if primary_object != null:
-				stop_holding(primary_object)
-			start_holding(object)
-	elif Input.is_action_just_pressed("slot_3"):
-		var object = player.inventory.tool.retrieve_slot_object(3)
-		if object != null:
-			if primary_object != null:
-				stop_holding(primary_object)
-			start_holding(object)
 
 func _largest_object_radius(held_objects):
 	var max_radius = 0
