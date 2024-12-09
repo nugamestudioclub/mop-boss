@@ -54,7 +54,7 @@ func close_inventory():
 		player.hand.start_holding(object)
 	store_sound.play()
 
-func _input(event):
+func _input(_event):
 	# Exit inspect	
 	if Input.is_action_just_pressed("inventory"):
 		if is_open:

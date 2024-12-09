@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=28 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="Script" path="res://script/level/office_level.gd" id="1_ib6ec"]
 [ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/static/prop/desk.tscn" id="1_n72gg"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://asset/audio/voice/mafia_boss/mbvoice yous.wav" id="19_j8ir5"]
 [ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://asset/audio/voice/mafia_boss/mbvoice capisce.wav" id="20_l3kln"]
 [ext_resource type="PackedScene" path="res://scene/rigid/prop/newspaper.tscn" id="21_u03fr"]
+[ext_resource type="PackedScene" uid="uid://cugle7l8c38pt" path="res://scene/static/prop/book_shelf.tscn" id="21_wh8xr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
 albedo_texture = ExtResource("3_lbw26")
@@ -167,6 +168,9 @@ pitch_scale = 1.1
 [node name="Newspaper" parent="." instance=ExtResource("21_u03fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.258008, 1.08456, -1.88628)
 visible = false
+
+[node name="BookShelf" parent="." instance=ExtResource("21_wh8xr")]
+transform = Transform3D(-4.99998, 0.00955079, -0.0108817, 0.00959396, 4.99995, -0.0198588, 0.0108436, -0.0198796, -4.99995, 4.51228, 0.0500002, -0.564948)
 
 [connection signal="finished" from="IntroSequence/Line1" to="." method="on_line_finished"]
 [connection signal="finished" from="IntroSequence/Line2" to="." method="on_line_finished"]

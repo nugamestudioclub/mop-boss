@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mpetlelyc4bf" path="res://asset/mesh/Desk/Desk Texture/Desk_Roughness.png" id="4_78fmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vto0t"]
-size = Vector3(0.234509, 0.202698, 0.413124)
+size = Vector3(0.0873748, 0.387604, 0.413124)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed4rf"]
 albedo_texture = ExtResource("1_dcd3p")

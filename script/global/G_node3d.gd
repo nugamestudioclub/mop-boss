@@ -103,4 +103,3 @@ func disable_rigid_colliders(node3d: Node3D):
 	for child in node3d.get_children():
 		if child is CollisionShape3D:
 			child.disabled = true
-			print(child.name)

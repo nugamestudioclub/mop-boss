@@ -23,12 +23,12 @@ var end = 0.0
 var go_back = false
 
 func _input_event_collider(
-	camera: Camera3D,
+	_camera: Camera3D,
 	event: InputEvent,
-	event_position: Vector3,
-	normal: Vector3,
+	_event_position: Vector3,
+	_normal: Vector3,
 	shape_idx: int,
-	collider: CollisionObject3D):
+	_collider: CollisionObject3D):
 	
 	if not is_inspected: return
 	
