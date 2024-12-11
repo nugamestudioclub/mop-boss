@@ -152,6 +152,14 @@ func update_object(object, delta):
 	)
 	var target_position = hand_origin + orbit_offset
 
+	# prevent object from trying to phase through wall
+	var exclude = [player]
+	exclude.append(object)
+	var raycast_object_result = G_raycast.raycast_to(object_origin, hand_origin, exclude)
+
+	if raycast_object_result.has("position"):
+		target_position = player.camera.global_transform.origin
+	
 	# Move object to orbit position
 	var delta_position: Vector3 = (target_position - object_origin)
 	object.set_linear_velocity(delta_position * 240 * delta * hold_strength)
