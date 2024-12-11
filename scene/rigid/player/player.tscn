@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
 [ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_xv04b"]
-[ext_resource type="Script" path="res://scene/rigid/player/head.gd" id="4_lg44b"]
+[ext_resource type="Script" path="res://script/player/head.gd" id="4_lg44b"]
 [ext_resource type="AudioStream" uid="uid://cdf1slw2hs6w2" path="res://asset/audio/sfx/cough/cough.wav" id="5_drxtq"]
 [ext_resource type="AudioStream" uid="uid://d4cftb2kuy8yq" path="res://asset/audio/sfx/cough/cough2.wav" id="6_2xolp"]
 [ext_resource type="AudioStream" uid="uid://clntldkt26jvi" path="res://asset/audio/sfx/cough/cough3.wav" id="7_vght4"]
