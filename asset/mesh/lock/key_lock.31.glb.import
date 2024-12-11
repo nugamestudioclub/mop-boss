@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b16wxj0xsw6gq"
-path="res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"
+uid="uid://baqxki0twtlba"
+path="res://.godot/imported/key_lock.31.glb-1fb8f219f0a6f7aa960a9edfd9b81120.scn"
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer.fbx"
-dest_files=["res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"]
+source_file="res://asset/mesh/lock/key_lock.31.glb"
+dest_files=["res://.godot/imported/key_lock.31.glb-1fb8f219f0a6f7aa960a9edfd9b81120.scn"]
 
 [params]
 
@@ -27,11 +27,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1

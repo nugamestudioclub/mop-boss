@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://cn05psfb42ija"]
 
 [ext_resource type="Script" path="res://script/evidence/lock/pad_lock.gd" id="1_e27pp"]
-[ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://asset/mesh/locks/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
+[ext_resource type="Texture2D" uid="uid://b783fq0v8rcsd" path="res://asset/mesh/lock/pad_lock/pad_lock.37_DefaultMaterial_BaseColor.png" id="2_ecyyp"]
 [ext_resource type="AudioStream" uid="uid://dwtbiqce58qsj" path="res://asset/audio/sfx/clickleft.wav" id="3_argup"]
 [ext_resource type="AudioStream" uid="uid://m4hqw7nbyf6p" path="res://asset/audio/sfx/clickright.wav" id="4_xpoir"]
 [ext_resource type="AudioStream" uid="uid://cciaslwpw2xj3" path="res://asset/audio/sfx/MBSFX Correct Lock Click.wav" id="5_h1o8l"]

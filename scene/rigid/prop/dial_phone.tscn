@@ -1,14 +1,14 @@
 [gd_scene load_steps=37 format=4 uid="uid://6v12aapc3bv"]
 
 [ext_resource type="Script" path="res://script/prop/dial_phone.gd" id="1_68g2q"]
-[ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_xbcc7"]
-[ext_resource type="Texture2D" uid="uid://21l2b0tucdh4" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Metallic.png" id="2_4pssm"]
-[ext_resource type="Texture2D" uid="uid://bsx8vewxtp533" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Normal.png" id="3_migh4"]
-[ext_resource type="Texture2D" uid="uid://q3wokua2crus" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Roughness.png" id="4_ocqp6"]
-[ext_resource type="Texture2D" uid="uid://6n0cigtveyeq" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Cord_BaseColor.png" id="5_wkuod"]
-[ext_resource type="Texture2D" uid="uid://d3u48vh3ybxp7" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Cord_Metallic.png" id="6_42h22"]
-[ext_resource type="Texture2D" uid="uid://yhk2ww66nm5w" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Cord_Normal.png" id="7_x38n3"]
-[ext_resource type="Texture2D" uid="uid://d4ghsq0mxigyg" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Cord_Roughness.png" id="8_7mmmj"]
+[ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_xbcc7"]
+[ext_resource type="Texture2D" uid="uid://21l2b0tucdh4" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Metallic.png" id="2_4pssm"]
+[ext_resource type="Texture2D" uid="uid://bsx8vewxtp533" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Normal.png" id="3_migh4"]
+[ext_resource type="Texture2D" uid="uid://q3wokua2crus" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Roughness.png" id="4_ocqp6"]
+[ext_resource type="Texture2D" uid="uid://6n0cigtveyeq" path="res://asset/mesh/dial_phone/Dial Phone Textures/Cord_BaseColor.png" id="5_wkuod"]
+[ext_resource type="Texture2D" uid="uid://d3u48vh3ybxp7" path="res://asset/mesh/dial_phone/Dial Phone Textures/Cord_Metallic.png" id="6_42h22"]
+[ext_resource type="Texture2D" uid="uid://yhk2ww66nm5w" path="res://asset/mesh/dial_phone/Dial Phone Textures/Cord_Normal.png" id="7_x38n3"]
+[ext_resource type="Texture2D" uid="uid://d4ghsq0mxigyg" path="res://asset/mesh/dial_phone/Dial Phone Textures/Cord_Roughness.png" id="8_7mmmj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

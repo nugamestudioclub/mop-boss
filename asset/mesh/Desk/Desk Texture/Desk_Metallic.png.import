@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddll8o6bhmrfc"
-path.s3tc="res://.godot/imported/Desk_Metallic.png-b1aac15931482f5e2cb7090f3546b698.s3tc.ctex"
+path.s3tc="res://.godot/imported/Desk_Metallic.png-70374316b5a6addf7fac3d9aaa8b2cc5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Desk/Desk Texture/Desk_Metallic.png"
-dest_files=["res://.godot/imported/Desk_Metallic.png-b1aac15931482f5e2cb7090f3546b698.s3tc.ctex"]
+source_file="res://asset/mesh/desk/Desk Texture/Desk_Metallic.png"
+dest_files=["res://.godot/imported/Desk_Metallic.png-70374316b5a6addf7fac3d9aaa8b2cc5.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mpetlelyc4bf"
-path.s3tc="res://.godot/imported/Desk_Roughness.png-eb7b63a31fdb494921cfd98030448371.s3tc.ctex"
+path.s3tc="res://.godot/imported/Desk_Roughness.png-3517255d5d54546654d255f65504c0c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Desk/Desk Texture/Desk_Roughness.png"
-dest_files=["res://.godot/imported/Desk_Roughness.png-eb7b63a31fdb494921cfd98030448371.s3tc.ctex"]
+source_file="res://asset/mesh/desk/Desk Texture/Desk_Roughness.png"
+dest_files=["res://.godot/imported/Desk_Roughness.png-3517255d5d54546654d255f65504c0c1.s3tc.ctex"]
 
 [params]
 

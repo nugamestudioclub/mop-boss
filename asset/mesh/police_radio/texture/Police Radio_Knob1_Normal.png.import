@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxr6m8e0g3qa1"
-path.s3tc="res://.godot/imported/Hammer_Hammer_Metallic.png-c3f797560b9f6d601774413077269f35.s3tc.ctex"
+uid="uid://bmy48aqcrn6be"
+path.s3tc="res://.godot/imported/Police Radio_Knob1_Normal.png-2400a1909bf758c2f3aa7c24d7007a2e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer_Hammer_Metallic.png"
-dest_files=["res://.godot/imported/Hammer_Hammer_Metallic.png-c3f797560b9f6d601774413077269f35.s3tc.ctex"]
+source_file="res://asset/mesh/police_radio/texture/Police Radio_Knob1_Normal.png"
+dest_files=["res://.godot/imported/Police Radio_Knob1_Normal.png-2400a1909bf758c2f3aa7c24d7007a2e.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://model/Police Radio/Police Radio Texture/Police Radio_Knob1_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

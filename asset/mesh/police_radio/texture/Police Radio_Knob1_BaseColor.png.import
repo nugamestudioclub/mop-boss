@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxr6m8e0g3qa1"
-path.s3tc="res://.godot/imported/Hammer_Hammer_Metallic.png-c3f797560b9f6d601774413077269f35.s3tc.ctex"
+uid="uid://cffwcm8opbvwf"
+path.s3tc="res://.godot/imported/Police Radio_Knob1_BaseColor.png-3dc22afe23d04503a01cb4cb4c4a5d6d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer_Hammer_Metallic.png"
-dest_files=["res://.godot/imported/Hammer_Hammer_Metallic.png-c3f797560b9f6d601774413077269f35.s3tc.ctex"]
+source_file="res://asset/mesh/police_radio/texture/Police Radio_Knob1_BaseColor.png"
+dest_files=["res://.godot/imported/Police Radio_Knob1_BaseColor.png-3dc22afe23d04503a01cb4cb4c4a5d6d.s3tc.ctex"]
 
 [params]
 

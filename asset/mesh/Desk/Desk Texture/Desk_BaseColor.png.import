@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwqwepyx6chnp"
-path.s3tc="res://.godot/imported/Desk_BaseColor.png-60362232b4aff697b989b855578be085.s3tc.ctex"
+path.s3tc="res://.godot/imported/Desk_BaseColor.png-a8286bb034d10f013dec662461dbf688.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Desk/Desk Texture/Desk_BaseColor.png"
-dest_files=["res://.godot/imported/Desk_BaseColor.png-60362232b4aff697b989b855578be085.s3tc.ctex"]
+source_file="res://asset/mesh/desk/Desk Texture/Desk_BaseColor.png"
+dest_files=["res://.godot/imported/Desk_BaseColor.png-a8286bb034d10f013dec662461dbf688.s3tc.ctex"]
 
 [params]
 

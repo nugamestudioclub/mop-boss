@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cn5m2hwe052cl"
-path.s3tc="res://.godot/imported/Hammer_Hammer_Normal.png-85dc01793151556ed9fde82ca9576944.s3tc.ctex"
+path.s3tc="res://.godot/imported/Hammer_Hammer_Normal.png-d2bff9407e40cbf440ddf0c41ad06de2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Hammer/Hammer_Hammer_Normal.png"
-dest_files=["res://.godot/imported/Hammer_Hammer_Normal.png-85dc01793151556ed9fde82ca9576944.s3tc.ctex"]
+source_file="res://asset/mesh/hammer/Hammer_Hammer_Normal.png"
+dest_files=["res://.godot/imported/Hammer_Hammer_Normal.png-d2bff9407e40cbf440ddf0c41ad06de2.s3tc.ctex"]
 
 [params]
 

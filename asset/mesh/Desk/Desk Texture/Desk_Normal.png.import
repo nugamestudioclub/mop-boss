@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://batainn0cyv8y"
-path.s3tc="res://.godot/imported/Desk_Normal.png-830900efa7d55e8f0939e2489a0d696d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Desk_Normal.png-268c390825c24f9d86469d69fb87585b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Desk/Desk Texture/Desk_Normal.png"
-dest_files=["res://.godot/imported/Desk_Normal.png-830900efa7d55e8f0939e2489a0d696d.s3tc.ctex"]
+source_file="res://asset/mesh/desk/Desk Texture/Desk_Normal.png"
+dest_files=["res://.godot/imported/Desk_Normal.png-268c390825c24f9d86469d69fb87585b.s3tc.ctex"]
 
 [params]
 

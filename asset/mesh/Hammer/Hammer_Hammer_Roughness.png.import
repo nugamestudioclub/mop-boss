@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dccudc28w3mkg"
-path.s3tc="res://.godot/imported/Hammer_Hammer_Roughness.png-b4d213af875496be482c4f8d9ef0e920.s3tc.ctex"
+path.s3tc="res://.godot/imported/Hammer_Hammer_Roughness.png-69f5d4daa57a3e28b3985d37c40f3322.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/mesh/Hammer/Hammer_Hammer_Roughness.png"
-dest_files=["res://.godot/imported/Hammer_Hammer_Roughness.png-b4d213af875496be482c4f8d9ef0e920.s3tc.ctex"]
+source_file="res://asset/mesh/hammer/Hammer_Hammer_Roughness.png"
+dest_files=["res://.godot/imported/Hammer_Hammer_Roughness.png-69f5d4daa57a3e28b3985d37c40f3322.s3tc.ctex"]
 
 [params]
 

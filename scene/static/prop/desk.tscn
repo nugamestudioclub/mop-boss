@@ -1,12 +1,12 @@
 [gd_scene load_steps=26 format=4 uid="uid://d3hnepsprm6va"]
 
-[ext_resource type="Texture2D" uid="uid://dwqwepyx6chnp" path="res://asset/mesh/Desk/Desk Texture/Desk_BaseColor.png" id="1_dcd3p"]
-[ext_resource type="Texture2D" uid="uid://ddll8o6bhmrfc" path="res://asset/mesh/Desk/Desk Texture/Desk_Metallic.png" id="2_ugptk"]
-[ext_resource type="Texture2D" uid="uid://batainn0cyv8y" path="res://asset/mesh/Desk/Desk Texture/Desk_Normal.png" id="3_x75vl"]
-[ext_resource type="Texture2D" uid="uid://mpetlelyc4bf" path="res://asset/mesh/Desk/Desk Texture/Desk_Roughness.png" id="4_78fmh"]
+[ext_resource type="Texture2D" uid="uid://dwqwepyx6chnp" path="res://asset/mesh/desk/Desk Texture/Desk_BaseColor.png" id="1_dcd3p"]
+[ext_resource type="Texture2D" uid="uid://ddll8o6bhmrfc" path="res://asset/mesh/desk/Desk Texture/Desk_Metallic.png" id="2_ugptk"]
+[ext_resource type="Texture2D" uid="uid://batainn0cyv8y" path="res://asset/mesh/desk/Desk Texture/Desk_Normal.png" id="3_x75vl"]
+[ext_resource type="Texture2D" uid="uid://mpetlelyc4bf" path="res://asset/mesh/desk/Desk Texture/Desk_Roughness.png" id="4_78fmh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vto0t"]
-size = Vector3(0.0873748, 0.387604, 0.413124)
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0atm"]
+size = Vector3(0.225, 0.2, 0.41)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed4rf"]
 albedo_texture = ExtResource("1_dcd3p")
@@ -323,8 +323,8 @@ shadow_mesh = SubResource("ArrayMesh_ont13")
 transform = Transform3D(4.99998, -0.00955079, 0.0108821, 0.00959396, 4.99995, -0.0198588, -0.010844, 0.0198796, 4.99995, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999978, -6.47469e-09, 4.65661e-09, -1.56842e-08, 0.999964, -3.72529e-08, 1.21072e-08, 5.82077e-08, 0.999956, -0.00127753, 0.10097, -5.05154e-05)
-shape = SubResource("BoxShape3D_vto0t")
+transform = Transform3D(0.999952, -2.30448e-08, 4.42378e-09, -3.40451e-08, 0.999923, -2.28174e-08, 2.39816e-08, 7.91624e-08, 0.999905, -0.00127753, 0.102571, -5.05156e-05)
+shape = SubResource("BoxShape3D_t0atm")
 
 [node name="Desk_low" type="Node3D" parent="."]
 transform = Transform3D(0.1, -1.35287e-11, 0, -9.0381e-12, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

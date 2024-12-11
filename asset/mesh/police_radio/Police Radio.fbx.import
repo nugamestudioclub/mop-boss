@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b16wxj0xsw6gq"
-path="res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"
+uid="uid://bs3irorcwb7n6"
+path="res://.godot/imported/Police Radio.fbx-b62c704ad5eb4a562480832367942e8c.scn"
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer.fbx"
-dest_files=["res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"]
+source_file="res://asset/mesh/police_radio/Police Radio.fbx"
+dest_files=["res://.godot/imported/Police Radio.fbx-b62c704ad5eb4a562480832367942e8c.scn"]
 
 [params]
 

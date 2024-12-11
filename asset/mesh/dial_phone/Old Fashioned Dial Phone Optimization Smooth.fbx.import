@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b16wxj0xsw6gq"
-path="res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"
+uid="uid://y4bh18ohvhpx"
+path="res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-9ab54248b67941e672208f6d366f2946.scn"
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer.fbx"
-dest_files=["res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"]
+source_file="res://asset/mesh/dial_phone/Old Fashioned Dial Phone Optimization Smooth.fbx"
+dest_files=["res://.godot/imported/Old Fashioned Dial Phone Optimization Smooth.fbx-9ab54248b67941e672208f6d366f2946.scn"]
 
 [params]
 

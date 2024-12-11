@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=4 uid="uid://b3ldwjlv1f6iy"]
 
-[ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_gwbgh"]
+[ext_resource type="Texture2D" uid="uid://dsvtifdvvswkk" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_BaseColor.png" id="1_gwbgh"]
 [ext_resource type="Script" path="res://script/class/tool.gd" id="1_xkrdb"]
 [ext_resource type="AudioStream" uid="uid://ocmp1opy7yc6" path="res://asset/audio/sfx/MBSFX KnifeSlash.wav" id="3_5ist8"]
-[ext_resource type="Texture2D" uid="uid://21l2b0tucdh4" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Metallic.png" id="3_u2u8u"]
-[ext_resource type="Texture2D" uid="uid://bsx8vewxtp533" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Normal.png" id="4_2jn4q"]
-[ext_resource type="Texture2D" uid="uid://d4ghsq0mxigyg" path="res://asset/mesh/Dial Phone/Dial Phone Textures/Cord_Roughness.png" id="5_30w2f"]
+[ext_resource type="Texture2D" uid="uid://21l2b0tucdh4" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Metallic.png" id="3_u2u8u"]
+[ext_resource type="Texture2D" uid="uid://bsx8vewxtp533" path="res://asset/mesh/dial_phone/Dial Phone Textures/Old_Fashioned_Dial_Phone_Normal.png" id="4_2jn4q"]
+[ext_resource type="Texture2D" uid="uid://d4ghsq0mxigyg" path="res://asset/mesh/dial_phone/Dial Phone Textures/Cord_Roughness.png" id="5_30w2f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

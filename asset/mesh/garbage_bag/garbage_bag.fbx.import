@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b16wxj0xsw6gq"
-path="res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"
+uid="uid://b3j0cyv63lk1e"
+path="res://.godot/imported/garbage_bag.fbx-886d0e7b1c9a3561dee77b5b1805ebf8.scn"
 
 [deps]
 
-source_file="res://asset/mesh/hammer/Hammer.fbx"
-dest_files=["res://.godot/imported/Hammer.fbx-870f922ad9857f9db735105c2ae85f93.scn"]
+source_file="res://asset/mesh/garbage_bag/garbage_bag.fbx"
+dest_files=["res://.godot/imported/garbage_bag.fbx-886d0e7b1c9a3561dee77b5b1805ebf8.scn"]
 
 [params]
 
