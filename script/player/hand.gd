@@ -150,19 +150,19 @@ func update_object(object, delta):
 		0.0,  # Adjust for vertical orbit by adding sin(angle) to Y
 		orbit_radius * sin(angle)
 	)
-	var target_position = hand_origin + orbit_offset
+	var target_origin = hand_origin + orbit_offset
 
 	# prevent object from trying to phase through wall
 	var exclude = [player]
 	exclude.append(object)
-	var raycast_object_result = G_raycast.raycast_to(object_origin, hand_origin, exclude)
+	var raycast_object_result = G_raycast.raycast_to(object_origin, target_origin, exclude)
 
 	if raycast_object_result.has("position"):
-		target_position = player.camera.global_transform.origin
+		target_origin = player.camera.global_transform.origin
 	
 	# Move object to orbit position
-	var delta_position: Vector3 = (target_position - object_origin)
-	object.set_linear_velocity(delta_position * 240 * delta * hold_strength)
+	var delta_origin: Vector3 = (target_origin - object_origin)
+	object.set_linear_velocity(delta_origin * 240 * delta * hold_strength)
 	
 	# EXPERIMENTAL: trying to point object forward
 	if Input.is_action_pressed("aim"):
