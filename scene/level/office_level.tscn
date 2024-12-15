@@ -85,38 +85,38 @@ material_override = SubResource("StandardMaterial3D_ht3ci")
 use_collision = true
 size = Vector3(10, 0.1, 10)
 
-[node name="Floor2" type="CSGBox3D" parent="."]
+[node name="Ceilling" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 material_override = SubResource("StandardMaterial3D_ht3ci")
 use_collision = true
 size = Vector3(10, 0.1, 10)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Floor2"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="Ceilling"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, -0.0999999, -2)
 light_size = 0.5
 light_specular = 1.5
 shadow_enabled = true
 spot_range = 10.0
 
-[node name="Floor4" type="CSGBox3D" parent="."]
+[node name="WallSouth" type="CSGBox3D" parent="."]
 transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 3.82137e-15, -4.37114e-08, 1, -1, -4.37114e-08, 1.91069e-15, 0, 1.8, 4.9)
 material_override = SubResource("StandardMaterial3D_ht8xf")
 use_collision = true
 size = Vector3(0.2, 10, 3.5)
 
-[node name="Floor6" type="CSGBox3D" parent="."]
+[node name="WallNorth" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 1.8, -5.1)
 material_override = SubResource("StandardMaterial3D_ht8xf")
 use_collision = true
 size = Vector3(0.2, 10, 3.5)
 
-[node name="Floor5" type="CSGBox3D" parent="."]
+[node name="WallWest" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -5, 1.8, -0.1)
 material_override = SubResource("StandardMaterial3D_ht8xf")
 use_collision = true
 size = Vector3(0.2, 10, 3.5)
 
-[node name="Floor7" type="CSGBox3D" parent="."]
+[node name="WallEast" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5, 1.8, -0.0999997)
 material_override = SubResource("StandardMaterial3D_ht8xf")
 use_collision = true
