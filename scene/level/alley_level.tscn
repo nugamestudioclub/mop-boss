@@ -73,7 +73,7 @@ size = Vector3(35.5, 10, 13)
 script = ExtResource("1_e281c")
 
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8894, 1.56498, 1.70906)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8894, 1.56498, 1.70906)
 
 [node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
 

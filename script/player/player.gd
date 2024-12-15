@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 		
 		# Calculate movement direction relative to twist_pivot | normalized to fix diagonal
 		# Use the mass and acceleration to calculate force | F = ma
-		var directional_vector: Vector3 = twist_pivot.basis * cardinal_direction.normalized()
+		var directional_vector: Vector3 = twist_pivot.global_basis * cardinal_direction.normalized()
 
 		walk_force = directional_vector * walk_acceleration
 		if sprinting: walk_force *= sprint_factor
