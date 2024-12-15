@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://dbyueqwfjjvkx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1dtt"]
-size = Vector3(2.37864, 2.43648, 3.29304)
+size = Vector3(0.714, 0.731, 0.988)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nx7b"]
 albedo_color = Color(0.47788, 0.47788, 0.47788, 1)
@@ -46,10 +46,11 @@ shadow_mesh = SubResource("ArrayMesh_ebmp4")
 transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999927, -5.72672e-08, 6.56582e-08, -1.38361e-07, 0.999832, -9.49949e-08, 1.15018e-07, -7.96281e-08, 0.999786, 0.00444231, -0.876974, -1.63346)
+transform = Transform3D(0.999927, -5.72672e-08, 6.56582e-08, -1.38361e-07, 0.999832, -9.49949e-08, 1.15018e-07, -7.96281e-08, 0.999786, 0, -0.263, -0.49)
 shape = SubResource("BoxShape3D_i1dtt")
 
 [node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="barnlight3" type="MeshInstance3D" parent="Mesh"]
 material_override = SubResource("StandardMaterial3D_6nx7b")
