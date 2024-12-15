@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=52 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="Script" path="res://script/level/alley_level.gd" id="1_e281c"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c0m2d2h4bqotd" path="res://scene/rigid/prop/police_radio.tscn" id="9_f48pa"]
 [ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/rigid/prop/bowling_pin.tscn" id="9_r5qke"]
 [ext_resource type="PackedScene" uid="uid://bkpnjy6ux6b6y" path="res://scene/rigid/evidence/body_part/right_leg.tscn" id="9_ydcr3"]
+[ext_resource type="PackedScene" uid="uid://c3f2ri46nylhg" path="res://scene/static/light/barnlight_side.tscn" id="11_vkim6"]
+[ext_resource type="PackedScene" uid="uid://dbyueqwfjjvkx" path="res://scene/static/light/barnlight_diagonal.tscn" id="12_lt5nl"]
 [ext_resource type="Script" path="res://script/evidence/lock/lock_codes.gd" id="13_h5l1k"]
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://asset/font/edosz.ttf" id="13_qxlqj"]
 [ext_resource type="PackedScene" uid="uid://cgw1p2k80x3qu" path="res://scene/rigid/player/player.tscn" id="15_biuw2"]
@@ -35,23 +37,16 @@
 [ext_resource type="AudioStream" uid="uid://b1eq8imevyvtf" path="res://asset/audio/music/MB L1 Tense Head.wav" id="34_u111y"]
 [ext_resource type="AudioStream" uid="uid://d0yxt3cyqummg" path="res://asset/audio/music/MB L1 Tense B1.wav" id="35_4srot"]
 [ext_resource type="AudioStream" uid="uid://cloejbw0ganxs" path="res://asset/audio/music/MB L1 Tense B2.wav" id="36_yrsi8"]
+[ext_resource type="Texture2D" uid="uid://debj5axild4hj" path="res://asset/image/Sidewalk [Clr].png" id="37_5htv0"]
+[ext_resource type="Texture2D" uid="uid://dtwedqxa3x0o4" path="res://asset/image/Sidewalk [Nrm].png" id="38_t842h"]
+[ext_resource type="Texture2D" uid="uid://excqixrx0m1k" path="res://asset/image/concrete [Clr].png" id="39_q7qi0"]
+[ext_resource type="Texture2D" uid="uid://dxfgjanylsbil" path="res://asset/image/concrete [Nrm].png" id="40_oixc0"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_516dq"]
-sky_horizon_color = Color(0.666667, 0.678431, 0.694118, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ugwn"]
+size = Vector3(126, 10, 62)
 
-[sub_resource type="Sky" id="Sky_4a2fm"]
-sky_material = SubResource("ProceduralSkyMaterial_516dq")
-
-[sub_resource type="Environment" id="Environment_uifmc"]
-background_mode = 2
-sky = SubResource("Sky_4a2fm")
-tonemap_mode = 2
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
-fog_enabled = true
-volumetric_fog_enabled = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuftl"]
+size = Vector3(34, 10, 17)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ybxwp"]
 
@@ -63,11 +58,43 @@ density = 0.6
 albedo = Color(0.662682, 0.767038, 0.800834, 1)
 density_texture = SubResource("NoiseTexture3D_5a5n2")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1ugwn"]
-size = Vector3(126, 10, 65.5)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n55bi"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uuftl"]
-size = Vector3(35.5, 10, 13)
+[sub_resource type="Sky" id="Sky_rn2fq"]
+sky_material = SubResource("ProceduralSkyMaterial_n55bi")
+
+[sub_resource type="Environment" id="Environment_qd4sf"]
+background_mode = 2
+sky = SubResource("Sky_rn2fq")
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+tonemap_mode = 2
+tonemap_white = 5.0
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.604192, 0.599532, 0.55998, 1)
+fog_light_energy = 0.2
+fog_density = 0.025
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o7qb"]
+albedo_color = Color(0.775064, 0.775063, 0.775063, 1)
+albedo_texture = ExtResource("37_5htv0")
+normal_enabled = true
+normal_texture = ExtResource("38_t842h")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqgjq"]
+albedo_color = Color(0.359069, 0.359069, 0.359069, 1)
+albedo_texture = ExtResource("39_q7qi0")
+normal_enabled = true
+normal_texture = ExtResource("40_oixc0")
+uv1_scale = Vector3(30, 30, 30)
 
 [node name="AlleyLevel" type="Node3D"]
 script = ExtResource("1_e281c")
@@ -75,30 +102,145 @@ script = ExtResource("1_e281c")
 [node name="Player" parent="." instance=ExtResource("15_biuw2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8894, 1.56498, 1.70906)
 
-[node name="LevelGenerationManager" parent="." instance=ExtResource("2_f8ws1")]
+[node name="System" type="Node3D" parent="."]
 
-[node name="LockCategory" parent="LevelGenerationManager" instance=ExtResource("3_owdbc")]
+[node name="LevelGenerationManager" parent="System" instance=ExtResource("2_f8ws1")]
 
-[node name="LeftArm" type="Node" parent="LevelGenerationManager"]
+[node name="LockCategory" parent="System/LevelGenerationManager" instance=ExtResource("3_owdbc")]
+
+[node name="LeftArm" type="Node" parent="System/LevelGenerationManager"]
 script = ExtResource("4_gsakb")
 scene = ExtResource("6_2q5k2")
 
-[node name="LeftFoot" type="Node" parent="LevelGenerationManager"]
+[node name="LeftFoot" type="Node" parent="System/LevelGenerationManager"]
 script = ExtResource("4_gsakb")
 scene = ExtResource("7_jx4ku")
 
-[node name="RightHand" type="Node" parent="LevelGenerationManager"]
+[node name="RightHand" type="Node" parent="System/LevelGenerationManager"]
 script = ExtResource("4_gsakb")
 scene = ExtResource("8_c8bai")
 
-[node name="RightLeg" type="Node" parent="LevelGenerationManager"]
+[node name="RightLeg" type="Node" parent="System/LevelGenerationManager"]
 script = ExtResource("4_gsakb")
 scene = ExtResource("9_ydcr3")
 
-[node name="LockCodes" type="Node3D" parent="."]
+[node name="SmogArea" parent="System" instance=ExtResource("34_2uqwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="System/SmogArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.5, 39)
+shape = SubResource("BoxShape3D_1ugwn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="System/SmogArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.5, -40.75)
+shape = SubResource("BoxShape3D_1ugwn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="System/SmogArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.25, 4.5, -0.5)
+shape = SubResource("BoxShape3D_uuftl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="System/SmogArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 4.5, -0.5)
+shape = SubResource("BoxShape3D_uuftl")
+
+[node name="Lighting" type="Node3D" parent="System"]
+
+[node name="Sun" type="DirectionalLight3D" parent="System/Lighting"]
+transform = Transform3D(-0.951546, 0.131322, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957624, 0.28378, -1.90735e-06, -4.76837e-07, 0)
+light_energy = 0.4
+shadow_enabled = true
+sky_mode = 2
+
+[node name="FogVolume" type="FogVolume" parent="System/Lighting"]
+transform = Transform3D(1, -1.19144e-10, 0, 9.91349e-11, 1, -4.65661e-10, 0, 0, 1, 0, 0, 0)
+size = Vector3(47.86, 1.5, 15.42)
+material = SubResource("FogMaterial_detjd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="System/Lighting"]
+environment = SubResource("Environment_qd4sf")
+
+[node name="BarnlightSide" parent="System/Lighting" instance=ExtResource("11_vkim6")]
+transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, 16.394, 5.86404, -5.34766)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide"]
+transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="BarnlightSide4" parent="System/Lighting" instance=ExtResource("11_vkim6")]
+transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, -5.60596, 5.86404, -5.34766)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide4"]
+transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="BarnlightSide2" parent="System/Lighting" instance=ExtResource("11_vkim6")]
+transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, 11.394, 5.86404, 5.31795)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide2"]
+transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="BarnlightSide3" parent="System/Lighting" instance=ExtResource("11_vkim6")]
+transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, -10.606, 5.86404, 5.31795)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide3"]
+transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="BarnlightDiagonal" parent="System/Lighting" instance=ExtResource("12_lt5nl")]
+transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, 1.93957, 5.86404, -6.21171)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal"]
+transform = Transform3D(1, 4.65661e-09, 2.09548e-09, -2.08274e-10, 0.642788, 0.766045, 4.65661e-10, -0.766044, 0.642787, -4.00099, -1.34003, -0.730591)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 40.0
+
+[node name="BarnlightDiagonal2" parent="System/Lighting" instance=ExtResource("12_lt5nl")]
+transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, 0.939568, 3.86404, 5.78829)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal2"]
+transform = Transform3D(1, 0, 0, 0, 0.642787, 0.766045, 0, -0.766044, 0.642788, 0.000915766, -0.347681, -0.725857)
+light_energy = 2.0
+light_size = 0.5
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 40.0
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="System"]
+volume_db = -1.0
+bus = &"Music "
+script = ExtResource("33_qq5ej")
+music_queue = Array[AudioStream]([ExtResource("34_u111y"), ExtResource("35_4srot"), ExtResource("36_yrsi8")])
+
+[node name="Graffiti" type="Node3D" parent="."]
 script = ExtResource("13_h5l1k")
 
-[node name="SouthWall" type="Label3D" parent="LockCodes"]
+[node name="SouthWall" type="Label3D" parent="Graffiti"]
 transform = Transform3D(1.195, 0, 0, 0, 1.195, 0, 0, 0, 1.195, 2.99675, 1.291, -6.12915)
 modulate = Color(0.184314, 0.27451, 0.992157, 1)
 text = "3 A E 5 8"
@@ -106,7 +248,7 @@ font = ExtResource("15_xvcf3")
 font_size = 104
 outline_size = 0
 
-[node name="NorthWall" type="Label3D" parent="LockCodes"]
+[node name="NorthWall" type="Label3D" parent="Graffiti"]
 transform = Transform3D(-0.991881, -0.127168, -8.6713e-08, -0.127168, 0.991881, -1.11174e-08, 8.74228e-08, 0, -1, 1.01465, 5.22988, 6.16619)
 pixel_size = 0.02
 modulate = Color(0.938106, 0.780886, 0.887358, 1)
@@ -115,7 +257,7 @@ font = ExtResource("13_qxlqj")
 font_size = 110
 outline_size = 0
 
-[node name="WestDumpsterGround" type="Label3D" parent="LockCodes"]
+[node name="WestDumpsterGround" type="Label3D" parent="Graffiti"]
 transform = Transform3D(0.978517, -0.20617, -9.01196e-09, -1.37474e-15, -4.37114e-08, 1, -0.20617, -0.978517, -4.27723e-08, 8.32463, 0.521325, -2.11047)
 modulate = Color(0.352941, 0.835294, 0.615686, 1)
 text = "3AE58"
@@ -123,7 +265,7 @@ font = ExtResource("13_qxlqj")
 font_size = 92
 outline_size = 0
 
-[node name="WestDumpsterSurface" type="Label3D" parent="LockCodes"]
+[node name="WestDumpsterSurface" type="Label3D" parent="Graffiti"]
 transform = Transform3D(-0.043602, 0, -0.999049, 0, 1, 0, 0.999049, 0, -0.043602, 6.444, 1.197, -4.023)
 pixel_size = 0.004
 modulate = Color(0.922539, 0.721593, 0.858375, 1)
@@ -254,9 +396,6 @@ transform = Transform3D(-0.975818, 0, 0.218586, 0, 1, 0, -0.218586, 0, -0.975818
 [node name="Dumpster3" parent="Props/Dumpsters" instance=ExtResource("7_xcaps")]
 transform = Transform3D(0.999584, 0, 0.0288289, 0, 1, 0, -0.0288289, 0, 0.999584, -5.72895, 0.781009, -3.92913)
 
-[node name="Desks" type="Node3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
-
 [node name="MurderElements" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605, 0)
 
@@ -330,57 +469,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4897, 0.682199, -4.50883)
 
 [node name="NoteCategory" parent="Props/NodeSpawner2" instance=ExtResource("8_b2dvn")]
 
-[node name="Buildings" parent="." instance=ExtResource("27_k1spg")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_uifmc")
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.951546, 0.131323, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957625, 0.28378, 0, 0, 0)
-light_energy = 0.4
-shadow_enabled = true
-
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.716, 0.22, -1.326)
-size = Vector3(47.86, 1.5, 15.42)
-material = SubResource("FogMaterial_detjd")
-
-[node name="Pallet" parent="." instance=ExtResource("32_pa76a")]
+[node name="Pallet" parent="Props" instance=ExtResource("32_pa76a")]
 transform = Transform3D(0.0773803, 0, 0.997002, 0, 1, 0, -0.997002, 0, 0.0773803, 8.83498, 0.724314, 3.89314)
 
-[node name="Pallet2" parent="." instance=ExtResource("32_pa76a")]
+[node name="Pallet2" parent="Props" instance=ExtResource("32_pa76a")]
 transform = Transform3D(-0.100501, 0, 0.994937, 0, 1, 0, -0.994937, 0, -0.100501, 11.7483, 0.724314, 3.89314)
 
-[node name="fence_end" parent="." instance=ExtResource("31_sfo7y")]
+[node name="Buildings" parent="." instance=ExtResource("27_k1spg")]
+
+[node name="Fence" type="Node3D" parent="."]
+
+[node name="FenceEnd" parent="Fence" instance=ExtResource("31_sfo7y")]
 transform = Transform3D(0.0108438, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108819, 21.533, 0.6, -5.947)
 
-[node name="fence_end3" parent="." instance=ExtResource("31_sfo7y")]
+[node name="FenceEnd2" parent="Fence" instance=ExtResource("31_sfo7y")]
 transform = Transform3D(-0.0108433, 0.0198796, 4.99995, 0.00959396, 4.99995, -0.0198588, -4.99998, 0.00955079, -0.0108814, 21.533, 0.6, 6.053)
 
-[node name="fence_end2" parent="." instance=ExtResource("32_1u30x")]
+[node name="FenceMiddle" parent="Fence" instance=ExtResource("32_1u30x")]
 transform = Transform3D(0.0108437, -0.0198796, -4.99995, 0.00959396, 4.99995, -0.0198588, 4.99998, -0.00955079, 0.0108817, 21.533, 0.6, -1.947)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -1.0
-bus = &"Music "
-script = ExtResource("33_qq5ej")
-music_queue = Array[AudioStream]([ExtResource("34_u111y"), ExtResource("35_4srot"), ExtResource("36_yrsi8")])
+[node name="Floor" type="Node3D" parent="."]
 
-[node name="SmogArea" parent="." instance=ExtResource("34_2uqwp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, 0.5)
+[node name="Sidewalk2" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, -4.5)
+use_collision = true
+size = Vector3(32, 1, 3)
+material = SubResource("StandardMaterial3D_7o7qb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SmogArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.5, 38.25)
-shape = SubResource("BoxShape3D_1ugwn")
+[node name="Sidewalk4" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.1, -29)
+use_collision = true
+size = Vector3(3, 1, 49)
+material = SubResource("StandardMaterial3D_7o7qb")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="SmogArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.5, -39.75)
-shape = SubResource("BoxShape3D_1ugwn")
+[node name="Sidewalk5" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.1, 29)
+use_collision = true
+size = Vector3(3, 1, 49)
+material = SubResource("StandardMaterial3D_7o7qb")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="SmogArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.25, 4.5, -0.5)
-shape = SubResource("BoxShape3D_uuftl")
+[node name="SidewalkCorner" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.1, -4.5)
+use_collision = true
+radius = 1.5
+height = 0.99
+sides = 12
+material = SubResource("StandardMaterial3D_7o7qb")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="SmogArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.25, 4.5, -0.5)
-shape = SubResource("BoxShape3D_uuftl")
+[node name="SidewalkCorner2" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.1, 4.5)
+use_collision = true
+radius = 1.5
+height = 0.99
+sides = 12
+material = SubResource("StandardMaterial3D_7o7qb")
+
+[node name="Sidewalk3" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1, 0)
+use_collision = true
+size = Vector3(10, 1, 12)
+material = SubResource("StandardMaterial3D_7o7qb")
+
+[node name="Sidewalk" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 4.5)
+use_collision = true
+size = Vector3(32, 1, 3)
+material = SubResource("StandardMaterial3D_7o7qb")
+
+[node name="AlleyFloor" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6116, 0.000259995, -2.49065)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_rqgjq")

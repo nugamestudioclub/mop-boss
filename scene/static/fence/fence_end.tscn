@@ -90,7 +90,7 @@ normal_enabled = true
 normal_texture = ExtResource("3_hanu2")
 uv1_scale = Vector3(0.75, 0.75, 0.75)
 
-[node name="fence_end" type="StaticBody3D"]
+[node name="FenceEnd" type="StaticBody3D"]
 transform = Transform3D(4.99998, -0.00955079, 0.0108821, 0.00959396, 4.99995, -0.0198588, -0.010844, 0.0198796, 4.99995, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

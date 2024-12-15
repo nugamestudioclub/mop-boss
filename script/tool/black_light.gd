@@ -1,7 +1,7 @@
 extends InspectableObject
 
 @onready var alley_level = $"/root/AlleyLevel"
-@onready var lock_codes = alley_level.get_node("LockCodes")
+@onready var lock_codes = alley_level.get_node("Graffiti")
 @onready var player_hand = alley_level.get_node("Player").hand
 
 

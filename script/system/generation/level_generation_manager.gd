@@ -3,6 +3,8 @@ extends Node
 const empty_tag = "empty_spawner"
 const full_tag = "full_spawner"
 
+# TODO: IMPROVE THIS GENERATION MANAGER
+
 #@onready var empty_spawners: Array[Node] = get_tree().get_nodes_in_group(empty_tag)
 
 var required_categories: Array # Array[Category]

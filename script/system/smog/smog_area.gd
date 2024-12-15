@@ -1,9 +1,9 @@
 extends Area3D
 
-@onready var player = $"../Player"
+@onready var player = $"../../Player"
 @onready var smog_timer: Timer = Timer.new()  # Create a Timer dynamically
-@onready var level_manager = $".."
-@onready var world_environment = $"../WorldEnvironment"
+@onready var level_manager = $"../.."
+@onready var world_environment = $"../Lighting/WorldEnvironment"
 @onready var default_fog = world_environment.environment.fog_density
 
 @onready var fog_timer: Timer = Timer.new()  # Reference to the Timer node

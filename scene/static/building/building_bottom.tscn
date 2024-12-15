@@ -600,10 +600,9 @@ transform = Transform3D(0.033, 0, 0, 0, 0.033, 0, 0, 0, 0.033, 0.0642891, 0, 0)
 [node name="Walls" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 163.334, 0)
 material_override = SubResource("StandardMaterial3D_7ll53")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ek5o6")
 skeleton = NodePath("")
-
-[node name="Roof" type="Node3D" parent="Mesh"]
 
 [node name="Door" type="Node3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
@@ -611,24 +610,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
 [node name="Door2" type="MeshInstance3D" parent="Mesh/Door"]
 transform = Transform3D(3.36296, 0, 0, 0, 7.03273, 0, 0, 0, 0.48511, -9.7458e-15, 41.2591, -7.37815)
 material_override = SubResource("StandardMaterial3D_2t4u0")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_frao0")
 skeleton = NodePath("")
 
 [node name="Door_Frame" type="MeshInstance3D" parent="Mesh/Door"]
 transform = Transform3D(3.54102, 0, 0, 0, 7.1904, 0, 0, 0, 1.23261, -1.51601e-14, 41.2257, -5.69203)
 material_override = SubResource("StandardMaterial3D_2t4u0")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_6oh83")
 skeleton = NodePath("")
 
 [node name="Concrete_onto_door" type="MeshInstance3D" parent="Mesh/Door"]
 transform = Transform3D(4.47409, 0, 0, 0, 1, 0, 0, 0, 2.37777, 0, 79.219, -6.41796)
 material_override = SubResource("StandardMaterial3D_2t4u0")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_naes4")
 skeleton = NodePath("")
 
 [node name="Concrete_onto_door2" type="MeshInstance3D" parent="Mesh/Door"]
 transform = Transform3D(5.31931, 0, 0, 0, 0.694293, 0, 0, 0, 2.37777, -2.16573e-15, 86.9224, 3.38877)
 material_override = SubResource("StandardMaterial3D_2t4u0")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ujyjg")
 skeleton = NodePath("")
 
@@ -637,24 +640,28 @@ skeleton = NodePath("")
 [node name="Concrete_Bottom1" type="MeshInstance3D" parent="Mesh/Concrete_Bottom"]
 transform = Transform3D(21.6, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.003, 4.002, -89.9)
 material_override = SubResource("StandardMaterial3D_1jgae")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_nel7k")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom2" type="MeshInstance3D" parent="Mesh/Concrete_Bottom"]
 transform = Transform3D(-9.50548e-07, 0, -2.37777, 0, 0.86447, 0, 21.746, 0, -1.03936e-07, -90.464, 4.002, 0)
 material_override = SubResource("StandardMaterial3D_1jgae")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_c7dee")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom3" type="MeshInstance3D" parent="Mesh/Concrete_Bottom"]
 transform = Transform3D(-9.50548e-07, -3.30346e-15, 2.37777, -1.9011e-06, 0.86447, 0, 21.746, 7.55744e-08, 1.03936e-07, 90.464, 4.002, 0)
 material_override = SubResource("StandardMaterial3D_1jgae")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_3piix")
 skeleton = NodePath("")
 
 [node name="Concrete_Bottom4" type="MeshInstance3D" parent="Mesh/Concrete_Bottom"]
 transform = Transform3D(21.59, 0, 0, 0, 0.86447, 0, 0, 0, 2.37777, -0.003, 4.002, 90.102)
 material_override = SubResource("StandardMaterial3D_1jgae")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_m6pmm")
 skeleton = NodePath("")
 
@@ -664,12 +671,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.279)
 [node name="Concrete_WIndow_Bottom1" type="MeshInstance3D" parent="Mesh/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ojktx")
 skeleton = NodePath("")
 
 [node name="Concrete_Window_Bottom3" type="MeshInstance3D" parent="Mesh/Window_Concrete_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_jsp4h")
 skeleton = NodePath("")
 
@@ -679,18 +688,21 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -99.629, 0, 0)
 [node name="Concrete_WIndow_Bottom12" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_t4w1k")
 skeleton = NodePath("")
 
 [node name="Concrete_Window_Bottom32" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_huptu")
 skeleton = NodePath("")
 
 [node name="Concrete_WIndow_Bottom2" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.66294e-15, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_gmg20")
 skeleton = NodePath("")
 
@@ -700,17 +712,25 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 96.156, 0, 0)
 [node name="Concrete_WIndow_Bottom13" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8181, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_gpaep")
 skeleton = NodePath("")
 
 [node name="Concrete_Window_Bottom33" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6766, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_hocgg")
 skeleton = NodePath("")
 
 [node name="Concrete_WIndow_Bottom22" type="MeshInstance3D" parent="Mesh/Window_Concrete_Side1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.66294e-15, 70.679, -1.77967)
 material_override = SubResource("StandardMaterial3D_xf662")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_yvost")
 skeleton = NodePath("")
+
+[node name="ShadowBox" type="CSGBox3D" parent="."]
+transform = Transform3D(0.257872, 0, 0, 0, 0.0328084, 0, 0, 0, 0.161908, 0.0606625, 2.30592, -0.0824214)
+use_collision = true
+size = Vector3(24.8294, 142.212, 39.7673)
