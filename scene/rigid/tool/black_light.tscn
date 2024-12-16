@@ -6,13 +6,13 @@
 friction = 0.5
 bounce = 0.5
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_iay8a"]
-height = 0.457619
-radius = 0.1
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b4ugw"]
+height = 0.315
+radius = 0.075
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oa8x5"]
-height = 0.17
-radius = 0.15
+height = 0.16
+radius = 0.11
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rv20q"]
 albedo_color = Color(0.378971, 0.393374, 0.462045, 1)
@@ -57,8 +57,8 @@ albedo_color = Color(0.427451, 0.403922, 0.941176, 0.427451)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_thfh7"]
 material = SubResource("StandardMaterial3D_558e1")
-top_radius = 0.135
-bottom_radius = 0.135
+top_radius = 0.1
+bottom_radius = 0.1
 height = 0.02
 
 [node name="BlackLight" type="RigidBody3D" groups=["holdable", "inspectable"]]
@@ -71,15 +71,15 @@ angular_damp = 1.0
 script = ExtResource("1_l0oho")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, -0.000331613, 0, 0.000331613, 1, 0, 0, 0, 1, -0.000505805, 0.206698, 0)
-shape = SubResource("CylinderShape3D_iay8a")
+transform = Transform3D(1.44972e-11, 4.37114e-08, -1, 1, -0.000331657, 0, -0.000331657, -1, -4.37114e-08, -0.00020233, 0, 0.262383)
+shape = SubResource("CylinderShape3D_b4ugw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, -0.000331613, 0, 0.000331613, 1, 0, 0, 0, 1, -0.000505805, 0.517744, 0)
+transform = Transform3D(1.44972e-11, 4.37114e-08, -1, 1, -0.000331657, 0, -0.000331657, -1, -4.37114e-08, -0.000202317, 0, 0.0272881)
 shape = SubResource("CylinderShape3D_oa8x5")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1.43301e-16, 3.27835e-09, -0.075, 0.075, -3.27835e-09, -9.92617e-24, -3.27835e-09, -0.075, -3.27835e-09, 0, 0, 0.4)
 
 [node name="Circle" type="MeshInstance3D" parent="Mesh"]
 material_override = SubResource("StandardMaterial3D_rv20q")
@@ -87,7 +87,7 @@ mesh = SubResource("ArrayMesh_snsgx")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.663295, 0)
+transform = Transform3D(1.91069e-15, -1, 1.06581e-14, 1, 1.91069e-15, 4.37114e-08, -4.37114e-08, 1.06581e-14, 1, -0.00020231, 0, -0.26892)
 visible = false
 light_color = Color(0.425903, 0.402105, 0.942769, 1)
 light_energy = 2.0
@@ -96,6 +96,6 @@ spot_range = 7.34098
 spot_angle = 30.951
 
 [node name="ColorDisk" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584138, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.000202314, 0, -0.0316567)
 visible = false
 mesh = SubResource("CylinderMesh_thfh7")
