@@ -145,11 +145,12 @@ shape = SubResource("BoxShape3D_uuftl")
 
 [node name="Lighting" type="Node3D" parent="System"]
 
-[node name="Sun" type="DirectionalLight3D" parent="System/Lighting"]
+[node name="Moon" type="DirectionalLight3D" parent="System/Lighting"]
 transform = Transform3D(-0.951546, 0.131322, -0.278054, -0.303538, -0.256339, 0.91769, 0.0492371, 0.957624, 0.28378, -1.90735e-06, -4.76837e-07, 0)
-light_energy = 0.4
+light_color = Color(0.202546, 0.323819, 0.478374, 1)
+light_energy = 0.2
+light_volumetric_fog_energy = 1.5
 shadow_enabled = true
-sky_mode = 2
 
 [node name="FogVolume" type="FogVolume" parent="System/Lighting"]
 transform = Transform3D(1, -1.19144e-10, 0, 9.91349e-11, 1, -4.65661e-10, 0, 0, 1, 0, 0, 0)

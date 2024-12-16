@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cfr3ixqn46ve6"]
+[gd_scene load_steps=36 format=4 uid="uid://cfr3ixqn46ve6"]
 
 [ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://asset/mesh/building/Variant A Round Window/Building Texture Round Window_BaseColor.png" id="1_8bd8c"]
 [ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://asset/mesh/building/Variant A Round Window/Building Texture Round Window_Metallic.png" id="2_g0kb6"]
@@ -472,6 +472,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mk4yp")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4t13s"]
+size = Vector3(6.6, 4.6, 6.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4w7ee"]
+size = Vector3(6.6, 4.6, 6.6)
+
 [node name="BuildingTop" type="Node3D"]
 
 [node name="Mesh" type="Node3D" parent="."]
@@ -586,7 +592,13 @@ cast_shadow = 0
 mesh = SubResource("ArrayMesh_ufbuc")
 skeleton = NodePath("")
 
-[node name="ShadowBox" type="CSGBox3D" parent="."]
-transform = Transform3D(0.257872, 0, 0, 0, 0.0328084, 0, 0, 0, 0.161908, -0.0132175, 2.30592, -0.0588625)
-use_collision = true
-size = Vector3(24.688, 142.212, 40.0583)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30752, 0)
+
+[node name="CollisionBox" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4t13s")
+
+[node name="ShadowBox" type="MeshInstance3D" parent="StaticBody3D"]
+cast_shadow = 3
+mesh = SubResource("BoxMesh_4w7ee")
+skeleton = NodePath("../..")
