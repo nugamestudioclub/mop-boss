@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b4d3iiivouw3k"]
+[gd_scene load_steps=53 format=3 uid="uid://b4d3iiivouw3k"]
 
 [ext_resource type="Script" path="res://script/level/alley_level.gd" id="1_e281c"]
 [ext_resource type="PackedScene" uid="uid://m0usocqlci16" path="res://scene/system/generation/level_generation_manager.tscn" id="2_f8ws1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://uxvfsbplmkwq" path="res://scene/rigid/prop/bowling_pin.tscn" id="9_r5qke"]
 [ext_resource type="PackedScene" uid="uid://bkpnjy6ux6b6y" path="res://scene/rigid/evidence/body_part/right_leg.tscn" id="9_ydcr3"]
 [ext_resource type="PackedScene" uid="uid://c3f2ri46nylhg" path="res://scene/static/light/barnlight_side.tscn" id="11_vkim6"]
+[ext_resource type="PackedScene" uid="uid://bpl2ewg3mx2x" path="res://scene/static/prop/light_bulb.tscn" id="12_hbm4t"]
 [ext_resource type="PackedScene" uid="uid://dbyueqwfjjvkx" path="res://scene/static/light/barnlight_diagonal.tscn" id="12_lt5nl"]
 [ext_resource type="Script" path="res://script/evidence/lock/lock_codes.gd" id="13_h5l1k"]
 [ext_resource type="FontFile" uid="uid://cm84f63cyqbvm" path="res://asset/font/edosz.ttf" id="13_qxlqj"]
@@ -164,8 +165,11 @@ environment = SubResource("Environment_qd4sf")
 [node name="BarnlightSide" parent="System/Lighting" instance=ExtResource("11_vkim6")]
 transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, 16.394, 5.86404, -5.34766)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide"]
-transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+[node name="LightBulb" parent="System/Lighting/BarnlightSide" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e-06, 0.999992, 0.000266241, -1, 4.69247e-06, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide/LightBulb"]
+transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -177,8 +181,11 @@ spot_angle = 60.0
 [node name="BarnlightSide4" parent="System/Lighting" instance=ExtResource("11_vkim6")]
 transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, -5.60596, 5.86404, -5.34766)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide4"]
-transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+[node name="LightBulb" parent="System/Lighting/BarnlightSide4" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e-06, 0.999992, 0.000266241, -1, 4.69247e-06, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide4/LightBulb"]
+transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -190,8 +197,11 @@ spot_angle = 60.0
 [node name="BarnlightSide2" parent="System/Lighting" instance=ExtResource("11_vkim6")]
 transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, 11.394, 5.86404, 5.31795)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide2"]
-transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+[node name="LightBulb" parent="System/Lighting/BarnlightSide2" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e-06, 0.999992, 0.000266241, -1, 4.69247e-06, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide2/LightBulb"]
+transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -203,8 +213,11 @@ spot_angle = 60.0
 [node name="BarnlightSide3" parent="System/Lighting" instance=ExtResource("11_vkim6")]
 transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, -10.606, 5.86404, 5.31795)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide3"]
-transform = Transform3D(1, 3.95812e-09, 5.46243e-09, -1.01591e-09, -3.95812e-08, 1, 1.86265e-09, -1, -4.28408e-08, 0.000173569, 0.0902978, -0.000358343)
+[node name="LightBulb" parent="System/Lighting/BarnlightSide3" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e-06, 0.999992, 0.000266241, -1, 4.69247e-06, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide3/LightBulb"]
+transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -216,8 +229,11 @@ spot_angle = 60.0
 [node name="BarnlightDiagonal" parent="System/Lighting" instance=ExtResource("12_lt5nl")]
 transform = Transform3D(-0.999996, 0.00191016, -0.00217632, 0.00191879, 0.99999, -0.00397176, 0.00216871, -0.00397592, -0.99999, 1.93957, 5.86404, -6.21171)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal"]
-transform = Transform3D(1, 4.65661e-09, 2.09548e-09, -2.08274e-10, 0.642788, 0.766045, 4.65661e-10, -0.766044, 0.642787, -4.00099, -1.34003, -0.730591)
+[node name="LightBulb" parent="System/Lighting/BarnlightDiagonal" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999997, 0.000984914, 0.00224077, -0.00234962, 0.642789, 0.76604, -0.00068585, -0.766043, 0.642789, -0.00574768, -0.397371, -0.70364)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal/LightBulb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -229,8 +245,11 @@ spot_angle = 40.0
 [node name="BarnlightDiagonal2" parent="System/Lighting" instance=ExtResource("12_lt5nl")]
 transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, 0.939568, 3.86404, 5.78829)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal2"]
-transform = Transform3D(1, 0, 0, 0, 0.642787, 0.766045, 0, -0.766044, 0.642788, 0.000915766, -0.347681, -0.725857)
+[node name="LightBulb" parent="System/Lighting/BarnlightDiagonal2" instance=ExtResource("12_hbm4t")]
+transform = Transform3D(0.999997, 0.000984914, 0.00224077, -0.00234962, 0.642789, 0.76604, -0.00068585, -0.766043, 0.642789, -0.00574768, -0.397371, -0.70364)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal2/LightBulb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000247002, 0.000453949, 0.114122)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0

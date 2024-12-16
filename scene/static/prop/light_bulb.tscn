@@ -341,12 +341,14 @@ transform = Transform3D(1.43301e-16, 3.27835e-09, -0.075, 0.075, -3.27835e-09, -
 [node name="Screw" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_j806o")
 skeleton = NodePath("")
 
 [node name="Trim" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_36yie")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ux2s3")
 skeleton = NodePath("")
 
@@ -354,18 +356,21 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_yaajq")
 transparency = 0.75
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ado83")
 skeleton = NodePath("")
 
 [node name="Filament" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_theqr")
 skeleton = NodePath("")
 
 [node name="Wire" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0, 0.0449814, -0.0239238, 1.00371, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_jyrqq")
 skeleton = NodePath("")
 
@@ -373,23 +378,27 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239238, 0.990159, 0)
 material_override = SubResource("StandardMaterial3D_rloy0")
 transparency = 0.75
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_mtqt7")
 skeleton = NodePath("")
 
 [node name="Housing" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239238, 0.990159, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_pdd18")
 skeleton = NodePath("")
 
 [node name="Structure" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.0281134, 0, 0, 0, 0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_1knq6")
 skeleton = NodePath("")
 
 [node name="Support" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0, 0.0449814, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_kodqk")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_023bf")
 skeleton = NodePath("")

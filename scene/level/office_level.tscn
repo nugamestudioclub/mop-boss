@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lcq68fky8ib" path="res://asset/image/floor/Floor_Roughness.png" id="6_bsv2o"]
 [ext_resource type="PackedScene" uid="uid://c0uxtd23dfpc1" path="res://scene/static/light/barnlight_down.tscn" id="7_jykbf"]
 [ext_resource type="Texture2D" uid="uid://bma6la1kxpiik" path="res://asset/image/walls/Walls_BaseColor.png" id="7_rinow"]
-[ext_resource type="PackedScene" uid="uid://bpl2ewg3mx2x" path="res://scene/rigid/prop/light_bulb.tscn" id="8_o7j2p"]
+[ext_resource type="PackedScene" uid="uid://bpl2ewg3mx2x" path="res://scene/static/prop/light_bulb.tscn" id="8_o7j2p"]
 [ext_resource type="Texture2D" uid="uid://c3b2ayi4we11n" path="res://asset/image/walls/Walls_Metallic.png" id="8_x0i2b"]
 [ext_resource type="Texture2D" uid="uid://44rhf6i7au4u" path="res://asset/image/walls/Walls_Normal.png" id="9_sep62"]
 [ext_resource type="Texture2D" uid="uid://c8kv4ewhqa5ms" path="res://asset/image/walls/Walls_Roughness.png" id="10_1wnob"]
@@ -100,7 +100,7 @@ transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, 
 transform = Transform3D(0.999992, 0.000266256, 0.00408656, -0.00408656, 3.60841e-06, 0.999992, 0.000266243, -1, 4.68967e-06, -0.0015454, -0.805385, 0.00319886)
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Ceilling/BarnlightDown/LightBulb"]
-transform = Transform3D(0.999991, -0.000266237, -0.00408656, 0.000266258, 1, 3.64287e-06, 0.00408656, -4.73158e-06, 0.999992, -0.00015831, 0.000294685, 0.0740199)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.00015831, 0.000294685, 0.0740199)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0

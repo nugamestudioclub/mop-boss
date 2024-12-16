@@ -14,8 +14,10 @@ radius = 0.075
 height = 0.16
 radius = 0.11
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rv20q"]
-albedo_color = Color(0.378971, 0.393374, 0.462045, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72rr0"]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+metallic = 0.8
+roughness = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76ve4"]
 
@@ -81,8 +83,8 @@ shape = SubResource("CylinderShape3D_oa8x5")
 [node name="Mesh" type="Node3D" parent="."]
 transform = Transform3D(1.43301e-16, 3.27835e-09, -0.075, 0.075, -3.27835e-09, -9.92617e-24, -3.27835e-09, -0.075, -3.27835e-09, 0, 0, 0.4)
 
-[node name="Circle" type="MeshInstance3D" parent="Mesh"]
-material_override = SubResource("StandardMaterial3D_rv20q")
+[node name="Body" type="MeshInstance3D" parent="Mesh"]
+material_override = SubResource("StandardMaterial3D_72rr0")
 mesh = SubResource("ArrayMesh_snsgx")
 skeleton = NodePath("")
 
