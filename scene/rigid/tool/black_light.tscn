@@ -102,6 +102,7 @@ visible = false
 light_color = Color(0.161348, 0.57704, 0.399342, 1)
 light_energy = 10.0
 light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 light_cull_mask = 4294966274
 shadow_enabled = true
 spot_range = 7.34098
