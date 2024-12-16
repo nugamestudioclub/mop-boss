@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cf3g8q41lvu3c"]
+[gd_scene load_steps=30 format=3 uid="uid://cf3g8q41lvu3c"]
 
 [ext_resource type="Script" path="res://script/level/office_level.gd" id="1_ib6ec"]
 [ext_resource type="PackedScene" uid="uid://d3hnepsprm6va" path="res://scene/static/prop/desk.tscn" id="1_n72gg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lcq68fky8ib" path="res://asset/image/floor/Floor_Roughness.png" id="6_bsv2o"]
 [ext_resource type="PackedScene" uid="uid://c0uxtd23dfpc1" path="res://scene/static/light/barnlight_down.tscn" id="7_jykbf"]
 [ext_resource type="Texture2D" uid="uid://bma6la1kxpiik" path="res://asset/image/walls/Walls_BaseColor.png" id="7_rinow"]
+[ext_resource type="PackedScene" uid="uid://bpl2ewg3mx2x" path="res://scene/rigid/prop/light_bulb.tscn" id="8_o7j2p"]
 [ext_resource type="Texture2D" uid="uid://c3b2ayi4we11n" path="res://asset/image/walls/Walls_Metallic.png" id="8_x0i2b"]
 [ext_resource type="Texture2D" uid="uid://44rhf6i7au4u" path="res://asset/image/walls/Walls_Normal.png" id="9_sep62"]
 [ext_resource type="Texture2D" uid="uid://c8kv4ewhqa5ms" path="res://asset/image/walls/Walls_Roughness.png" id="10_1wnob"]
@@ -95,14 +96,18 @@ size = Vector3(10, 0.1, 10)
 [node name="BarnlightDown" parent="Ceilling" instance=ExtResource("7_jykbf")]
 transform = Transform3D(0.999996, -0.00191016, 0.00217641, 0.00191879, 0.99999, -0.00397176, -0.0021688, 0.00397592, 0.99999, -0.5, -0.0999999, -2)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Ceilling/BarnlightDown"]
-transform = Transform3D(1, 2.32831e-10, 4.62023e-10, -4.43833e-10, -4.19095e-08, 1, 6.98492e-10, -1, -4.23752e-08, -0.00144883, -0.755069, 0.00299899)
-light_volumetric_fog_energy = 2.0
+[node name="LightBulb" parent="Ceilling/BarnlightDown" instance=ExtResource("8_o7j2p")]
+transform = Transform3D(0.999992, 0.000266256, 0.00408656, -0.00408656, 3.60841e-06, 0.999992, 0.000266243, -1, 4.68967e-06, -0.0015454, -0.805385, 0.00319886)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Ceilling/BarnlightDown/LightBulb"]
+transform = Transform3D(0.999991, -0.000266237, -0.00408656, 0.000266258, 1, 3.64287e-06, 0.00408656, -4.73158e-06, 0.999992, -0.00015831, 0.000294685, 0.0740199)
+light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
+light_cull_mask = 4294967293
 shadow_enabled = true
 spot_range = 10.0
-spot_angle = 50.0
+spot_angle = 60.0
 
 [node name="WallSouth" type="CSGBox3D" parent="."]
 transform = Transform3D(4.37114e-08, -1, -4.37114e-08, 3.82137e-15, -4.37114e-08, 1, -1, -4.37114e-08, 1.91069e-15, 0, 1.8, 4.9)
