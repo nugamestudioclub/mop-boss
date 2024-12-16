@@ -101,6 +101,7 @@ transform = Transform3D(0.999992, 0.000266256, 0.00408656, -0.00408656, 3.60841e
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Ceilling/BarnlightDown/LightBulb"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.00015831, 0.000294685, 0.0740199)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0

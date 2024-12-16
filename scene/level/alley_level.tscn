@@ -170,6 +170,7 @@ transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide/LightBulb"]
 transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -186,6 +187,7 @@ transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide4/LightBulb"]
 transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -202,6 +204,7 @@ transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide2/LightBulb"]
 transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -218,6 +221,7 @@ transform = Transform3D(0.999992, 0.000266258, 0.00408656, -0.00408656, 3.60562e
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightSide3/LightBulb"]
 transform = Transform3D(1, 2.91038e-09, -3.5152e-10, 0, 1, 9.31323e-10, 3.53793e-10, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -234,6 +238,7 @@ transform = Transform3D(0.999997, 0.000984914, 0.00224077, -0.00234962, 0.642789
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal/LightBulb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
@@ -250,6 +255,7 @@ transform = Transform3D(0.999997, 0.000984914, 0.00224077, -0.00234962, 0.642789
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="System/Lighting/BarnlightDiagonal2/LightBulb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000247002, 0.000453949, 0.114122)
+light_color = Color(0.8142, 0.79855, 0.726574, 1)
 light_energy = 2.0
 light_size = 0.5
 light_specular = 1.0
