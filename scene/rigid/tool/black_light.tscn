@@ -86,11 +86,23 @@ material_override = SubResource("StandardMaterial3D_rv20q")
 mesh = SubResource("ArrayMesh_snsgx")
 skeleton = NodePath("")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="UV" type="SpotLight3D" parent="."]
 transform = Transform3D(1.91069e-15, -1, 1.06581e-14, 1, 1.91069e-15, 4.37114e-08, -4.37114e-08, 1.06581e-14, 1, -0.00020231, 0, -0.26892)
 visible = false
 light_color = Color(0.425903, 0.402105, 0.942769, 1)
 light_energy = 2.0
+light_cull_mask = 4294967293
+shadow_enabled = true
+spot_range = 7.34098
+spot_angle = 30.951
+
+[node name="Show" type="SpotLight3D" parent="UV"]
+transform = Transform3D(1, -4.2364e-23, 0, -4.2364e-23, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+light_color = Color(0.161348, 0.57704, 0.399342, 1)
+light_energy = 10.0
+light_indirect_energy = 0.0
+light_cull_mask = 4294966274
 shadow_enabled = true
 spot_range = 7.34098
 spot_angle = 30.951

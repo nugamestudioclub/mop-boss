@@ -4,13 +4,18 @@ extends InspectableObject
 @onready var lock_codes = alley_level.get_node("Graffiti")
 @onready var player_hand = alley_level.get_node("Player").hand
 
+@onready var ColorDisk = $ColorDisk
+@onready var UV = $UV
+@onready var Show = UV.get_node("Show")
+
 
 func _toggle_visibility(node: Node3D, is_shown: bool):
 	if node != self: return
-	$SpotLight3D.visible = is_shown
-	$ColorDisk.visible = is_shown
-	for code in lock_codes.get_children():
-		code.visible = is_shown
+	ColorDisk.visible = is_shown
+	UV.visible = is_shown
+	Show.visible = is_shown
+	#for code in lock_codes.get_children():
+		#code.visible = is_shown
 
 
 func _enter_hold_on_node(node: Node3D): _toggle_visibility(node, true)
