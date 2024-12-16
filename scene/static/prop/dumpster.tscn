@@ -208,7 +208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36476, -0.243836, 0.015785
 shape = SubResource("BoxShape3D_wbuq7")
 
 [node name="Mesh" type="Node3D" parent="Dumpster"]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="Metal_Cylinder" type="MeshInstance3D" parent="Dumpster/Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0431803, -0.0382596)
@@ -233,7 +233,7 @@ physics_material_override = SubResource("PhysicsMaterial_rb0x0")
 freeze = true
 
 [node name="Dumpster_left" type="MeshInstance3D" parent="DoorLeft"]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0.226459, -0.280405)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_uefnk")
 mesh = SubResource("ArrayMesh_c8pys")
 skeleton = NodePath("")
@@ -252,7 +252,7 @@ physics_material_override = SubResource("PhysicsMaterial_id6e1")
 freeze = true
 
 [node name="Dumpster_right" type="MeshInstance3D" parent="DoorRight"]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0.0690951, 0.226459, -0.280405)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.0690951, 0, 0)
 material_override = SubResource("StandardMaterial3D_lqgcp")
 mesh = SubResource("ArrayMesh_g7ouq")
 skeleton = NodePath("")
