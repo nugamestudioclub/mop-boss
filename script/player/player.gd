@@ -7,9 +7,9 @@ extends RigidBody3D
 # Camera Parameters
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
-var jump_trauma = 0.8
-var sprint_trauma = 0.011
-var walk_trauma = 0.008
+var jump_trauma = 0.5
+var sprint_trauma = 0.4
+var walk_trauma = 0.1
 var stop_trauma = 0.5
 
 # Movement Parameters
@@ -65,9 +65,10 @@ func _process(_delta: float) -> void:
 		walk_force = directional_vector * walk_acceleration
 		if sprinting: 
 			walk_force *= sprint_factor
-			camera.add_trauma(sprint_trauma)
+			#camera.add_trauma_force(sprint_trauma)
 		elif directional_vector != Vector3.ZERO:
-			camera.add_trauma(walk_trauma)
+			#camera.add_trauma_force(walk_trauma)
+			pass
 		
 		# Pause locking the mouse
 		if Input.is_action_just_pressed("ui_cancel"):
@@ -78,12 +79,18 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_just_pressed("jump") and is_on_floor():
 			var jump_force = (Vector3.UP * jump_velocity * player_mass)
 			apply_central_impulse(jump_force)
-			camera.add_trauma(jump_trauma)
+			camera.add_trauma_impulse(jump_trauma)
 		# Check if player is sprinting
 		elif Input.is_action_just_pressed("sprint"):
-			sprinting = true
+			if not sprinting:
+				sprinting = true
+				print("started sprinting")
+				camera.add_trauma_force(sprint_trauma)
 		elif Input.is_action_just_released("sprint"):
-			sprinting = false
+			if sprinting:
+				sprinting = false
+				print("stopped sprinting")
+				camera.add_trauma_force(-sprint_trauma)
 		
 		# Rotate charcter based on mouse motion detected previously
 		twist_pivot.rotate_y(twist_input)

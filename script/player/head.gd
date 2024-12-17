@@ -31,4 +31,4 @@ func stop_cough():
 
 func _on_cough_timer_timeout():
 	cough_sound.play()  # Play the cough sound
-	camera.add_trauma(1.0)
+	camera.add_trauma_impulse(5.0)

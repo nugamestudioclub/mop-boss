@@ -1,10 +1,9 @@
 extends Camera3D
 
-# arbitrary scale, keeping it simple 0 to 1 ratio
-@export var max_trauma: float = 1.0
-@export var min_trauma: float = 0.0
-
+# Configuration variables
+@export var max_trauma: float = 10.0
 @export var trauma_reduction_rate := 1.0
+@export var continuous_trauma_decay: float = 0.95
 
 @export var max_x: float = 10.0
 @export var max_y: float = 10.0
@@ -13,7 +12,9 @@ extends Camera3D
 @export var noise: FastNoiseLite = null
 @export var noise_speed := 50.0
 
-var trauma := 0.0
+# Trauma levels
+var impulsive_trauma := 0.0
+var constant_trauma := 0.0
 
 var time := 0.0
 
@@ -24,23 +25,29 @@ func _ready() -> void:
 	noise.set_seed(1)
 
 func _process(delta):
-	if trauma == min_trauma: return
-	
 	time += delta
-	trauma = max(trauma - delta * trauma_reduction_rate, min_trauma)
 	
-	self.rotation_degrees.x = default_rotation.x + max_x * get_shake_intensity() * get_noise_from_seed(0)
-	self.rotation_degrees.y = default_rotation.y + max_y * get_shake_intensity() * get_noise_from_seed(1)
-	self.rotation_degrees.z = default_rotation.z + max_z * get_shake_intensity() * get_noise_from_seed(2)
-	
-	print(default_rotation.x + max_x * get_shake_intensity() * get_noise_from_seed(0))
+	print("impulsive:", impulsive_trauma, " constant: ", constant_trauma)
+	# decay impulsive trauma
+	impulsive_trauma = max(impulsive_trauma - (delta * trauma_reduction_rate), 0.0)
 
-func add_trauma(trauma_amount: float = min_trauma):
-	trauma = clamp(trauma + trauma_amount, min_trauma, max_trauma)
+	# overall trauma
+	var total_trauma = impulsive_trauma + constant_trauma
+	if total_trauma == 0.0: return
 
-func get_shake_intensity() -> float:
-	# trauma squared if you will
-	return trauma * trauma
+	# shake camera
+	self.rotation_degrees.x = default_rotation.x + max_x * get_shake_intensity(total_trauma) * get_noise_from_seed(0)
+	self.rotation_degrees.y = default_rotation.y + max_y * get_shake_intensity(total_trauma) * get_noise_from_seed(1)
+	self.rotation_degrees.z = default_rotation.z + max_z * get_shake_intensity(total_trauma) * get_noise_from_seed(2)
+
+func add_trauma_impulse(amount: float):
+	impulsive_trauma = min(impulsive_trauma + amount, max_trauma)
+
+func add_trauma_force(amount: float):
+	constant_trauma = min(constant_trauma + amount, max_trauma)
+
+func get_shake_intensity(total_trauma: float) -> float:
+	return total_trauma * total_trauma
 
 func get_noise_from_seed(_seed: int) -> float:
 	noise.seed = _seed
