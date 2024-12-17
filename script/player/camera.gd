@@ -1,4 +1,3 @@
-#For usage instructions, see the YouTube video below:
 extends Camera3D
 
 @export var max_trauma: float = 10.0
@@ -10,7 +9,6 @@ extends Camera3D
 @export var max_y: float = 10.0
 @export var max_z: float = 5.0
 
-#@export var noise : OpenSimplexNoise = null
 @export var noise: FastNoiseLite = null
 @export var noise_speed := 50.0
 
@@ -38,6 +36,7 @@ func add_trauma(trauma_amount: float = 0.0):
 	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
 
 func get_shake_intensity() -> float:
+	# trauma squared if you will
 	return trauma * trauma
 
 func get_noise_from_seed(_seed: int) -> float:
