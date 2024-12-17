@@ -175,7 +175,7 @@ func update_object(object, delta):
 			
 			# Calculate movement direction relative to twist_pivot | normalized to fix diagonal
 			# Use the mass and acceleration to calculate force | F = ma
-			var directional_vector: Vector3 = self.global_basis * cardinal_direction.normalized()
+			var _directional_vector: Vector3 = self.global_basis * cardinal_direction.normalized()
 			
 			object.look_at(look_position, Vector3.BACK)
 		

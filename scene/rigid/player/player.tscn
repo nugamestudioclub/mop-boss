@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=15 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
+[ext_resource type="Script" path="res://script/player/camera.gd" id="2_2cx3u"]
 [ext_resource type="Script" path="res://script/player/hand.gd" id="3_4db25"]
 [ext_resource type="AudioStream" uid="uid://cy4ng2hj1eo4j" path="res://asset/audio/sfx/MBSFX Paper 2.wav" id="3_xv04b"]
 [ext_resource type="Script" path="res://script/player/head.gd" id="4_lg44b"]
@@ -49,6 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Camera" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+script = ExtResource("2_2cx3u")
 
 [node name="Hand" type="Node3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

@@ -3,6 +3,8 @@ extends Node3D
 @onready var cough_sound = $CoughSound
 var cough_timer: Timer = null  # Holds the dynamically created Timer
 
+@onready var camera = $"../Camera"
+
 func start_cough():
 	if cough_timer:  # If the timer already exists, don't create another
 		return
@@ -30,3 +32,4 @@ func stop_cough():
 
 func _on_cough_timer_timeout():
 	cough_sound.play()  # Play the cough sound
+	camera.add_trauma()
