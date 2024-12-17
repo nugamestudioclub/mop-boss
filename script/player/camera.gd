@@ -1,6 +1,7 @@
 extends Camera3D
 
-@export var max_trauma: float = 10.0
+# arbitrary scale, keeping it simple 0 to 1 ratio
+@export var max_trauma: float = 1.0
 @export var min_trauma: float = 0.0
 
 @export var trauma_reduction_rate := 1.0
@@ -23,8 +24,10 @@ func _ready() -> void:
 	noise.set_seed(1)
 
 func _process(delta):
+	if trauma == min_trauma: return
+	
 	time += delta
-	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
+	trauma = max(trauma - delta * trauma_reduction_rate, min_trauma)
 	
 	self.rotation_degrees.x = default_rotation.x + max_x * get_shake_intensity() * get_noise_from_seed(0)
 	self.rotation_degrees.y = default_rotation.y + max_y * get_shake_intensity() * get_noise_from_seed(1)
@@ -32,8 +35,8 @@ func _process(delta):
 	
 	print(default_rotation.x + max_x * get_shake_intensity() * get_noise_from_seed(0))
 
-func add_trauma(trauma_amount: float = 0.0):
-	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
+func add_trauma(trauma_amount: float = min_trauma):
+	trauma = clamp(trauma + trauma_amount, min_trauma, max_trauma)
 
 func get_shake_intensity() -> float:
 	# trauma squared if you will
