@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://35isyowowj1"]
+[gd_scene load_steps=8 format=3 uid="uid://cp4lv4l742enq"]
 
 [ext_resource type="Script" path="res://script/newspaper.gd" id="1_3mg07"]
 [ext_resource type="Texture2D" uid="uid://0off42jcmwnr" path="res://asset/image/news_win.png" id="2_tbscm"]
@@ -18,6 +18,11 @@ albedo_texture = ExtResource("2_tbscm")
 material = SubResource("StandardMaterial3D_mctpo")
 size = Vector2(0.7, 0.7)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_5m11d"]
+material = SubResource("StandardMaterial3D_mctpo")
+flip_faces = true
+size = Vector2(0.7, 0.7)
+
 [node name="Newspaper" type="RigidBody3D" groups=["holdable", "inspectable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809579, 0)
 mass = 0.4
@@ -34,3 +39,6 @@ shape = SubResource("BoxShape3D_kheio")
 
 [node name="Newspaper" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_doexx")
+
+[node name="Newspaper2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_5m11d")
