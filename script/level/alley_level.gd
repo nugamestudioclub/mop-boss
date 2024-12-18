@@ -25,8 +25,10 @@ func end_level():
 	
 	G_game_state.total_evidences = total_evidences
 	G_game_state.cleaned_evidences = cleaned_evidences
+	
 	fade_scene.play("fade_out")
-
+	await fade_scene.animation_finished
+	
 	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
 	await get_tree().process_frame
 	get_tree().change_scene_to_packed(G_game_state.office_level)

@@ -34,6 +34,7 @@ func start_level():
 # End office level
 func end_level():
 	fade_scene.play("fade_out")
+	await fade_scene.animation_finished
 	
 	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
 	await get_tree().process_frame
@@ -45,7 +46,7 @@ func call_player(checkPerformance: bool):
 	
 	if checkPerformance:
 		var score = cleaned_evidences/total_evidences
-		print("Cleaned up", score * 100, "percent of evidence")
+		print("Cleaned up ", score * 100, " percent of evidence")
 		$Newspaper.show()
 		var newspaper_image: Texture2D
 		if score >= WIN_THRESHOLD:
