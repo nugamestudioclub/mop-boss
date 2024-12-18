@@ -29,7 +29,7 @@ func _on_body_exited(body: Node):
 		player.head.stop_cough()
 		stop_fog_increase()
 
-var target_fog_density = 0.15  # Desired final fog density
+var target_fog_density = 0.10  # Desired final fog density
 var fog_increase_step = 0.0025  # Amount to increase per step
 var out_of_bounds: bool = false
 
@@ -39,7 +39,9 @@ func start_fog_increase():
 	fog_timer.start()
 
 func stop_fog_increase():
+	if not fog_timer.is_inside_tree(): return
 	out_of_bounds = false
+	
 	fog_timer.stop()
 	fog_timer.start()
 
