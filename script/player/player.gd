@@ -8,7 +8,7 @@ extends RigidBody3D
 var default_mouse_mode = Input.MOUSE_MODE_CAPTURED
 var pause_mouse_mode = Input.MOUSE_MODE_VISIBLE
 var jump_trauma = 0.5
-var sprint_trauma = 0.4
+var sprint_trauma = 0.2
 var walk_trauma = 0.1
 var stop_trauma = 0.5
 
@@ -65,10 +65,10 @@ func _process(_delta: float) -> void:
 		walk_force = directional_vector * walk_acceleration
 		if sprinting: 
 			walk_force *= sprint_factor
-			#camera.add_trauma_force(sprint_trauma)
-		elif directional_vector != Vector3.ZERO:
-			#camera.add_trauma_force(walk_trauma)
-			pass
+			var speed = linear_velocity.length()
+			camera.set_trauma_force(sprint_trauma * speed)
+		else:
+			camera.set_trauma_force(0)
 		
 		# Pause locking the mouse
 		if Input.is_action_just_pressed("ui_cancel"):
@@ -85,12 +85,14 @@ func _process(_delta: float) -> void:
 			if not sprinting:
 				sprinting = true
 				print("started sprinting")
-				camera.add_trauma_force(sprint_trauma)
+				#camera.add_trauma_force(sprint_trauma)
+				camera.smooth_zoom(2.5)
 		elif Input.is_action_just_released("sprint"):
 			if sprinting:
 				sprinting = false
 				print("stopped sprinting")
-				camera.add_trauma_force(-sprint_trauma)
+				#camera.add_trauma_force(-sprint_trauma)
+				camera.smooth_zoom(-2.5)
 		
 		# Rotate charcter based on mouse motion detected previously
 		twist_pivot.rotate_y(twist_input)

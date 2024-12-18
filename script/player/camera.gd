@@ -46,9 +46,15 @@ func add_trauma_impulse(amount: float):
 func add_trauma_force(amount: float):
 	constant_trauma = min(constant_trauma + amount, max_trauma)
 
+func set_trauma_force(amount: float):
+	constant_trauma = min(amount, max_trauma)
+
 func get_shake_intensity(total_trauma: float) -> float:
 	return total_trauma * total_trauma
 
 func get_noise_from_seed(_seed: int) -> float:
 	noise.seed = _seed
 	return noise.get_noise_1d(time * noise_speed)
+
+func smooth_zoom(fov_increment):
+	self.fov += fov_increment
