@@ -1,19 +1,20 @@
 extends Node3D
 
 @onready var level_generation_manager = $System/LevelGenerationManager
+@onready var fade_scene = $System/FadeScene
 
 # FOR DEBUGGING PURPOSES
 #func _input(event):
 	#if event is InputEventKey:
 		#if event.pressed: return
-		#elif event.keycode == KEY_R:
+		#elif+ event.keycode == KEY_R:
 			#start_level()
 
 func _ready() -> void:
 	start_level()
 
 func start_level():
-	G_game_state.fade_in_scene()
+	fade_scene.play("fade_in")
 	level_generation_manager.clear_level()
 	level_generation_manager.generate_level()
 
@@ -24,8 +25,8 @@ func end_level():
 	
 	G_game_state.total_evidences = total_evidences
 	G_game_state.cleaned_evidences = cleaned_evidences
-	G_game_state.fade_out_scene()
-	
+	fade_scene.play("fade_out")
+
 	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
 	await get_tree().process_frame
-	get_tree().change_scene_to_file("res://scene/level/office_level.tscn")
+	get_tree().change_scene_to_packed(G_game_state.office_level)

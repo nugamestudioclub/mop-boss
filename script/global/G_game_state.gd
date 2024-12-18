@@ -6,6 +6,9 @@ extends Node
 var total_evidences = null
 var cleaned_evidences = null
 
+var alley_level = preload("res://scene/level/alley_level.tscn")
+var office_level = preload("res://scene/level/office_level.tscn")
+
 # TODO: UNIMPLEMENTED, makes scene less and less dark
 func fade_in_scene():
 	pass

@@ -9,13 +9,16 @@ const WIN_THRESHOLD = 0.8
 var win_newspaper = preload("res://asset/image/news_win.png")
 var lose_newspaper = preload("res://asset/image/news_lose.png")
 
+@onready var fade_scene = $FadeScene
+
+
 func _ready() -> void:
 	start_level()
 
 var intro_sequence_index = 0
 # Start office level
 func start_level():
-	G_game_state.fade_in_scene()
+	fade_scene.play("fade_in")
 	# TODO: add game loading / intro screen with mop boss
 	
 	# if the player came back from a cleanup
@@ -30,11 +33,11 @@ func start_level():
 
 # End office level
 func end_level():
-	G_game_state.fade_out_scene()
+	fade_scene.play("fade_out")
 	
 	# Switch to scene at the START of the next frame (to avoid interupting other scripts)
 	await get_tree().process_frame
-	get_tree().change_scene_to_file("res://scene/level/alley_level.tscn")
+	get_tree().change_scene_to_packed(G_game_state.alley_level)
 
 # Send the player a phone call from the boss
 func call_player(checkPerformance: bool):
