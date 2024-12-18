@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://clvj0jre6pnaj" path="res://asset/audio/voice/mafia_boss/mbvoice mess.wav" id="18_pnokh"]
 [ext_resource type="AudioStream" uid="uid://dvvfomo2iqybf" path="res://asset/audio/voice/mafia_boss/mbvoice yous.wav" id="19_j8ir5"]
 [ext_resource type="AudioStream" uid="uid://d2a5gwe2s685o" path="res://asset/audio/voice/mafia_boss/mbvoice capisce.wav" id="20_l3kln"]
-[ext_resource type="PackedScene" path="res://scene/rigid/prop/newspaper.tscn" id="21_u03fr"]
+[ext_resource type="PackedScene" uid="uid://cp4lv4l742enq" path="res://scene/rigid/prop/newspaper.tscn" id="21_u03fr"]
 [ext_resource type="PackedScene" uid="uid://cugle7l8c38pt" path="res://scene/static/prop/book_shelf.tscn" id="21_wh8xr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht3ci"]
