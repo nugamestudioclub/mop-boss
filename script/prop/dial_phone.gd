@@ -73,7 +73,8 @@ func _process(delta: float):
 func _on_timer_timeout():
 				go_back = true
 
-@onready var ring = $"../IntroSequence/PhoneRing"
+@onready var intro_sequence = $"../System/IntroSequence"
+@onready var ring = intro_sequence.get_node("PhoneRing")
 @onready var level_manager = $".."
 
 func enter_inspect_mode():

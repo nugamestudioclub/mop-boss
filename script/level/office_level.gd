@@ -9,7 +9,9 @@ const WIN_THRESHOLD = 0.8
 var win_newspaper = preload("res://asset/image/news_win.png")
 var lose_newspaper = preload("res://asset/image/news_lose.png")
 
-@onready var fade_scene = $FadeScene
+@onready var fade_scene = $System/FadeScene
+@onready var intro_sequence = $System/IntroSequence
+@onready var newspaper = $Newspaper
 
 
 func _ready() -> void:
@@ -47,7 +49,7 @@ func call_player(checkPerformance: bool):
 	if checkPerformance:
 		var score = cleaned_evidences/total_evidences
 		print("Cleaned up ", score * 100, " percent of evidence")
-		$Newspaper.show()
+		newspaper.show()
 		var newspaper_image: Texture2D
 		if score >= WIN_THRESHOLD:
 			newspaper_image = win_newspaper
@@ -55,7 +57,7 @@ func call_player(checkPerformance: bool):
 		else:
 			newspaper_image = lose_newspaper
 			print("lose")
-		$Newspaper.get_node("Newspaper").mesh.material.albedo_texture = newspaper_image
+		newspaper.get_node("Newspaper").mesh.material.albedo_texture = newspaper_image
 		
 		
 		print("Voice lines based on performance")
@@ -65,8 +67,11 @@ func call_player(checkPerformance: bool):
 
 func on_line_finished():
 	var wait_time = 0.2
+	
 	if intro_sequence_index == 0: wait_time = 4
-	elif intro_sequence_index == $IntroSequence.get_child_count(): return
+	elif intro_sequence_index == intro_sequence.get_child_count(): return
+	
 	await get_tree().create_timer(wait_time).timeout
-	$IntroSequence.get_child(intro_sequence_index).play()
+	
+	intro_sequence.get_child(intro_sequence_index).play()
 	intro_sequence_index += 1
