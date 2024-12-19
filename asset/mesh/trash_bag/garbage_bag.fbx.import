@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0rrcml0kc40x"
-path="res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"
+uid="uid://b3j0cyv63lk1e"
+path="res://.godot/imported/garbage_bag.fbx-baa3a321e6471d94a8f85025ddd3f648.scn"
 
 [deps]
 
-source_file="res://asset/mesh/knife.fbx"
-dest_files=["res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"]
+source_file="res://asset/mesh/trash_bag/garbage_bag.fbx"
+dest_files=["res://.godot/imported/garbage_bag.fbx-baa3a321e6471d94a8f85025ddd3f648.scn"]
 
 [params]
 

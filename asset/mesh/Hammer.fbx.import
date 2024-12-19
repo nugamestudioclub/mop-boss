@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d4mx00ey6b54w"
-path="res://.godot/imported/Hammer.fbx-8363226ab961c8688cae83df91dfdb4e.scn"
+path="res://.godot/imported/hammer.fbx-3707ad1a06fcd9e2c54940e6c4e34373.scn"
 
 [deps]
 
-source_file="res://asset/mesh/Hammer.fbx"
-dest_files=["res://.godot/imported/Hammer.fbx-8363226ab961c8688cae83df91dfdb4e.scn"]
+source_file="res://asset/mesh/hammer.fbx"
+dest_files=["res://.godot/imported/hammer.fbx-3707ad1a06fcd9e2c54940e6c4e34373.scn"]
 
 [params]
 

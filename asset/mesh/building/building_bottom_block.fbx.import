@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0rrcml0kc40x"
-path="res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"
+uid="uid://cb11a0ubtnawu"
+path="res://.godot/imported/building_bottom_block.fbx-a5aa19e491bd977cbe781fd6225ad817.scn"
 
 [deps]
 
-source_file="res://asset/mesh/knife.fbx"
-dest_files=["res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"]
+source_file="res://asset/mesh/building/building_bottom_block.fbx"
+dest_files=["res://.godot/imported/building_bottom_block.fbx-a5aa19e491bd977cbe781fd6225ad817.scn"]
 
 [params]
 

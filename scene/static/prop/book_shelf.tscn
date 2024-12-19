@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=4 uid="uid://cugle7l8c38pt"]
 
-[ext_resource type="Texture2D" uid="uid://dr2716ems7im7" path="res://asset/mesh/book_shelf/Bookshelf_BaseColor.png" id="1_ob8yb"]
-[ext_resource type="Texture2D" uid="uid://ncxvcnikok7c" path="res://asset/mesh/book_shelf/Bookshelf_Metallic.png" id="2_4pcdc"]
-[ext_resource type="Texture2D" uid="uid://h318q36emll4" path="res://asset/mesh/book_shelf/Bookshelf_Normal.png" id="3_267ca"]
-[ext_resource type="Texture2D" uid="uid://b7d2t0hq4pwid" path="res://asset/mesh/book_shelf/Bookshelf_Roughness.png" id="4_gfos3"]
+[ext_resource type="Texture2D" uid="uid://dr2716ems7im7" path="res://asset/mesh/book_shelf/textures/bookshelf_base_color.png" id="1_ob8yb"]
+[ext_resource type="Texture2D" uid="uid://ncxvcnikok7c" path="res://asset/mesh/book_shelf/textures/bookshelf_metallic.png" id="2_4pcdc"]
+[ext_resource type="Texture2D" uid="uid://h318q36emll4" path="res://asset/mesh/book_shelf/textures/bookshelf_normal.png" id="3_267ca"]
+[ext_resource type="Texture2D" uid="uid://b7d2t0hq4pwid" path="res://asset/mesh/book_shelf/textures/bookshelf_roughness.png" id="4_gfos3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vto0t"]
 size = Vector3(0.0873748, 0.387604, 0.413124)

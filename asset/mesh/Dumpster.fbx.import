@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cepd6dh5umxxa"
-path="res://.godot/imported/Dumpster.fbx-1f215a8a6c5654f35f8282e808da33c6.scn"
+path="res://.godot/imported/dumpster.fbx-c8a40982e6886b7d29d64b0dfa1692cb.scn"
 
 [deps]
 
-source_file="res://asset/mesh/Dumpster.fbx"
-dest_files=["res://.godot/imported/Dumpster.fbx-1f215a8a6c5654f35f8282e808da33c6.scn"]
+source_file="res://asset/mesh/dumpster.fbx"
+dest_files=["res://.godot/imported/dumpster.fbx-c8a40982e6886b7d29d64b0dfa1692cb.scn"]
 
 [params]
 

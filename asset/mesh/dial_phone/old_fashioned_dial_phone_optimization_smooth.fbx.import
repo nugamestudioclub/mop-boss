@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0rrcml0kc40x"
-path="res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"
+uid="uid://y4bh18ohvhpx"
+path="res://.godot/imported/old_fashioned_dial_phone_optimization_smooth.fbx-08321d015fbbb5449b64809634c5cc32.scn"
 
 [deps]
 
-source_file="res://asset/mesh/knife.fbx"
-dest_files=["res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"]
+source_file="res://asset/mesh/dial_phone/old_fashioned_dial_phone_optimization_smooth.fbx"
+dest_files=["res://.godot/imported/old_fashioned_dial_phone_optimization_smooth.fbx-08321d015fbbb5449b64809634c5cc32.scn"]
 
 [params]
 

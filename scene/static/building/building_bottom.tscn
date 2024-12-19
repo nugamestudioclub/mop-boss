@@ -1,8 +1,8 @@
 [gd_scene load_steps=45 format=4 uid="uid://drwrvxea14kdc"]
 
-[ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://asset/mesh/building/Variant A Round Window/Building Texture Round Window_BaseColor.png" id="1_ard1d"]
-[ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://asset/mesh/building/Variant A Round Window/Building Texture Round Window_Metallic.png" id="2_mu8sl"]
-[ext_resource type="Texture2D" uid="uid://ch0n3qfdxhqtb" path="res://asset/mesh/building/Variant A Round Window/Building Texture Round Window_Normal.png" id="3_tij8b"]
+[ext_resource type="Texture2D" uid="uid://cb7bc84kciytu" path="res://asset/mesh/building/Variant A Round Window/building_round_window_base_color.png" id="1_ard1d"]
+[ext_resource type="Texture2D" uid="uid://rlvgdjrbpjip" path="res://asset/mesh/building/Variant A Round Window/building_round_window_metallic.png" id="2_mu8sl"]
+[ext_resource type="Texture2D" uid="uid://ch0n3qfdxhqtb" path="res://asset/mesh/building/Variant A Round Window/building_round_window_normal.png" id="3_tij8b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ll53"]
 albedo_texture = ExtResource("1_ard1d")

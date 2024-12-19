@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=4 uid="uid://dmlv4mrgrwdpf"]
 
 [ext_resource type="Script" path="res://script/class/tool.gd" id="1_pbqn4"]
-[ext_resource type="Texture2D" uid="uid://58sqkf2478w7" path="res://asset/mesh/hammer/Hammer_Hammer_BaseColor.png" id="2_jcrxw"]
-[ext_resource type="Texture2D" uid="uid://bxr6m8e0g3qa1" path="res://asset/mesh/hammer/Hammer_Hammer_Metallic.png" id="3_niiyy"]
-[ext_resource type="Texture2D" uid="uid://cn5m2hwe052cl" path="res://asset/mesh/hammer/Hammer_Hammer_Normal.png" id="4_7evdd"]
-[ext_resource type="Texture2D" uid="uid://dccudc28w3mkg" path="res://asset/mesh/hammer/Hammer_Hammer_Roughness.png" id="5_mntbe"]
+[ext_resource type="Texture2D" uid="uid://58sqkf2478w7" path="res://asset/mesh/hammer/hammer_base_color.png" id="2_jcrxw"]
+[ext_resource type="Texture2D" uid="uid://bxr6m8e0g3qa1" path="res://asset/mesh/hammer/hammer_metallic.png" id="3_niiyy"]
+[ext_resource type="Texture2D" uid="uid://cn5m2hwe052cl" path="res://asset/mesh/hammer/hammer_normal.png" id="4_7evdd"]
+[ext_resource type="Texture2D" uid="uid://dccudc28w3mkg" path="res://asset/mesh/hammer/hammer_roughness.png" id="5_mntbe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5

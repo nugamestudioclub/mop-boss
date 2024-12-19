@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0rrcml0kc40x"
-path="res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"
+uid="uid://g2kyjkacbxn5"
+path="res://.godot/imported/black_light4.glb-f70434048b7186de67e2643b90b7f5b2.scn"
 
 [deps]
 
-source_file="res://asset/mesh/knife.fbx"
-dest_files=["res://.godot/imported/knife.fbx-a380cda8aa9cc7ed80e739dabf9c8322.scn"]
+source_file="res://asset/mesh/black_light4.glb"
+dest_files=["res://.godot/imported/black_light4.glb-f70434048b7186de67e2643b90b7f5b2.scn"]
 
 [params]
 
@@ -27,11 +27,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1

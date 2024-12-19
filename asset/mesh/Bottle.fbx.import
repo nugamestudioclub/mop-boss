@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://crfkubfn247py"
-path="res://.godot/imported/Bottle.fbx-a76c163b3b8c2d5f4830c49cdf8af086.scn"
+path="res://.godot/imported/bottle.fbx-ddbac56554588d24b530ae1c5664b051.scn"
 
 [deps]
 
-source_file="res://asset/mesh/Bottle.fbx"
-dest_files=["res://.godot/imported/Bottle.fbx-a76c163b3b8c2d5f4830c49cdf8af086.scn"]
+source_file="res://asset/mesh/bottle.fbx"
+dest_files=["res://.godot/imported/bottle.fbx-ddbac56554588d24b530ae1c5664b051.scn"]
 
 [params]
 

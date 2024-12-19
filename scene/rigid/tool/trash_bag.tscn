@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7tlhfmkggm4n"]
+[gd_scene load_steps=11 format=4 uid="uid://byreqwp7e0c3w"]
 
-[ext_resource type="Texture2D" uid="uid://dctue4jvqafep" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_BaseColor.png" id="1_eo8t1"]
 [ext_resource type="Script" path="res://script/class/tool.gd" id="1_klq7r"]
-[ext_resource type="Texture2D" uid="uid://cbh4qur5h4xf6" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Normal.png" id="2_e7wbk"]
-[ext_resource type="Texture2D" uid="uid://5jmofyccbn17" path="res://asset/mesh/Garbage Bag/Trash Bag Textures/Garbage Bag_Roughness.png" id="3_lvst1"]
+[ext_resource type="Texture2D" uid="uid://dctue4jvqafep" path="res://asset/mesh/trash_bag/textures/trash_bag_base_color.png" id="2_8a8u0"]
+[ext_resource type="Texture2D" uid="uid://cbh4qur5h4xf6" path="res://asset/mesh/trash_bag/textures/trash_bag_normal.png" id="3_e3tvv"]
+[ext_resource type="Texture2D" uid="uid://5jmofyccbn17" path="res://asset/mesh/trash_bag/textures/trash_bag_roughness.png" id="4_s2i1l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwl4"]
 friction = 0.5
@@ -14,10 +14,10 @@ height = 0.59989
 radius = 0.303278
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtdda"]
-albedo_texture = ExtResource("1_eo8t1")
-roughness_texture = ExtResource("3_lvst1")
+albedo_texture = ExtResource("2_8a8u0")
+roughness_texture = ExtResource("4_s2i1l")
 normal_enabled = true
-normal_texture = ExtResource("2_e7wbk")
+normal_texture = ExtResource("3_e3tvv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_po4ah"]
 resource_name = "standardSurface1"

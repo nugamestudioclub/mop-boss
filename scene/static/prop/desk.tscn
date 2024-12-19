@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=4 uid="uid://d3hnepsprm6va"]
 
-[ext_resource type="Texture2D" uid="uid://dwqwepyx6chnp" path="res://asset/mesh/desk/Desk Texture/Desk_BaseColor.png" id="1_dcd3p"]
-[ext_resource type="Texture2D" uid="uid://ddll8o6bhmrfc" path="res://asset/mesh/desk/Desk Texture/Desk_Metallic.png" id="2_ugptk"]
-[ext_resource type="Texture2D" uid="uid://batainn0cyv8y" path="res://asset/mesh/desk/Desk Texture/Desk_Normal.png" id="3_x75vl"]
-[ext_resource type="Texture2D" uid="uid://mpetlelyc4bf" path="res://asset/mesh/desk/Desk Texture/Desk_Roughness.png" id="4_78fmh"]
+[ext_resource type="Texture2D" uid="uid://dwqwepyx6chnp" path="res://asset/mesh/desk/textures/desk_base_color.png" id="1_dcd3p"]
+[ext_resource type="Texture2D" uid="uid://ddll8o6bhmrfc" path="res://asset/mesh/desk/textures/desk_metallic.png" id="2_ugptk"]
+[ext_resource type="Texture2D" uid="uid://batainn0cyv8y" path="res://asset/mesh/desk/textures/desk_normal.png" id="3_x75vl"]
+[ext_resource type="Texture2D" uid="uid://mpetlelyc4bf" path="res://asset/mesh/desk/textures/desk_roughness.png" id="4_78fmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t0atm"]
 size = Vector3(0.225, 0.2, 0.41)
