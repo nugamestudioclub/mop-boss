@@ -177,7 +177,27 @@ func update_object(object, delta):
 			# Use the mass and acceleration to calculate force | F = ma
 			var _directional_vector: Vector3 = self.global_basis * cardinal_direction.normalized()
 			
-			object.look_at(look_position, Vector3.BACK)
+			self.look_at(look_position, Vector3.RIGHT)
+			
+			# hand minus object
+			
+			var gap1: Vector3 = self.global_rotation - object.global_rotation
+			var gap2: Vector3 = Vector3(
+				fmod(self.global_rotation.x - object.global_rotation.x + TAU, TAU) - PI,
+				fmod(self.global_rotation.y - object.global_rotation.y + TAU, TAU) - PI,
+				fmod(self.global_rotation.z - object.global_rotation.z + TAU, TAU) - PI
+			)
+			
+			var gap = min(abs(gap1.length()), abs(gap2.length()))
+			if abs(gap1.length()) == gap:
+				gap = gap1 * gap1
+			else:
+				gap = gap2 * gap2
+				
+			
+			print(gap1, gap2, gap)
+			
+			object.set_angular_velocity(gap * 0.5 * object.mass)
 		
 		## Player's camera forward direction (camera looks along -Z)
 		#var direction = -player.camera.global_transform.basis.z

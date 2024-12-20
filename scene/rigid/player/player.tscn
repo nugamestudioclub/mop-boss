@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgw1p2k80x3qu"]
+[gd_scene load_steps=16 format=3 uid="uid://cgw1p2k80x3qu"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_xucho"]
 [ext_resource type="Script" path="res://script/player/camera.gd" id="2_2cx3u"]
@@ -22,6 +22,8 @@ rings = 4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8yiy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1qfc8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3j0gn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_er8qe"]
 random_volume_offset_db = 1.0
@@ -59,6 +61,10 @@ script = ExtResource("3_4db25")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_1qfc8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Hand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_3j0gn")
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="TwistPivot/PitchPivot/Hand"]
 stream = ExtResource("3_xv04b")
