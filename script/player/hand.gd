@@ -168,36 +168,26 @@ func update_object(object, delta):
 	
 	if result.has("position"):
 		var look_position = result.position
-	
-		# EXPERIMENTAL: trying to point object forward
-		if Input.is_action_pressed("aim"):
-			var cardinal_direction := Vector3(0, 0, -2)
-			
-			# Calculate movement direction relative to twist_pivot | normalized to fix diagonal
-			# Use the mass and acceleration to calculate force | F = ma
-			var _directional_vector: Vector3 = self.global_basis * cardinal_direction.normalized()
-			
-			self.look_at(look_position, Vector3.RIGHT)
-			
-			# hand minus object
-			
-			var gap1: Vector3 = self.global_rotation - object.global_rotation
-			var gap2: Vector3 = Vector3(
-				fmod(self.global_rotation.x - object.global_rotation.x + TAU, TAU) - PI,
-				fmod(self.global_rotation.y - object.global_rotation.y + TAU, TAU) - PI,
-				fmod(self.global_rotation.z - object.global_rotation.z + TAU, TAU) - PI
-			)
-			
-			var gap = min(abs(gap1.length()), abs(gap2.length()))
-			if abs(gap1.length()) == gap:
-				gap = gap1 * gap1
-			else:
-				gap = gap2 * gap2
-				
-			
-			print(gap1, gap2, gap)
-			
-			object.set_angular_velocity(gap * 0.5 * object.mass)
+	# Assuming 'aim' is the condition under which the object should orient itself towards 'look_position'
+	if Input.is_action_pressed("aim") and result.has("position"):
+		var look_position = result.position
+		var forward_dir = object.global_transform.basis.z.normalized()
+		var target_dir = (look_position - object.global_transform.origin).normalized()
+		
+		# Calculate the rotation needed to align forward_dir with target_dir
+		var cross_prod = forward_dir.cross(target_dir)
+		var dot_prod = forward_dir.dot(target_dir)
+		var angle_gap = acos(dot_prod)  # Get the angle between vectors
+
+		# Normalize the cross product to get the axis of rotation
+		var axis = cross_prod.normalized()
+		# Calculate the angular velocity needed to rotate towards the target direction
+		var angular_velocity = axis * angle_gap / delta
+
+		object.set_angular_velocity(angular_velocity * 5 * delta * hold_strength)  # Adjust by mass to normalize the effect
+
+			#object.rotate(gap * 0.5)
+			#object.global_rotation += gap * 0.01
 		
 		## Player's camera forward direction (camera looks along -Z)
 		#var direction = -player.camera.global_transform.basis.z

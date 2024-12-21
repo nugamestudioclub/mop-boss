@@ -73,15 +73,15 @@ angular_damp = 1.0
 script = ExtResource("1_l0oho")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.44972e-11, 4.37114e-08, -1, 1, -0.000331657, 0, -0.000331657, -1, -4.37114e-08, -0.00020233, 0, 0.262383)
+transform = Transform3D(1.44972e-11, 4.37114e-08, -1, 1, -0.000331657, 0, -0.000331657, -1, -4.37114e-08, -0.00020233, 0, 0.138833)
 shape = SubResource("CylinderShape3D_b4ugw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.44972e-11, 4.37114e-08, -1, 1, -0.000331657, 0, -0.000331657, -1, -4.37114e-08, -0.000202317, 0, 0.0272881)
+transform = Transform3D(1.44984e-11, 4.37114e-08, -1, 1, -0.000331684, 8.67362e-18, -0.000331684, -1, -4.37114e-08, -0.000202317, 0, 0.372724)
 shape = SubResource("CylinderShape3D_oa8x5")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(1.43301e-16, 3.27835e-09, -0.075, 0.075, -3.27835e-09, -9.92617e-24, -3.27835e-09, -0.075, -3.27835e-09, 0, 0, 0.4)
+transform = Transform3D(1.43301e-16, 3.27835e-09, 0.075, 0.075, -3.27835e-09, 0, 3.27835e-09, 0.075, -3.27835e-09, 0, 0, 0)
 
 [node name="Body" type="MeshInstance3D" parent="Mesh"]
 material_override = SubResource("StandardMaterial3D_72rr0")
@@ -89,10 +89,11 @@ mesh = SubResource("ArrayMesh_snsgx")
 skeleton = NodePath("")
 
 [node name="UV" type="SpotLight3D" parent="."]
-transform = Transform3D(1.91069e-15, -1, 1.06581e-14, 1, 1.91069e-15, 4.37114e-08, -4.37114e-08, 1.06581e-14, 1, -0.00020231, 0, -0.26892)
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 0, 0, 0.408314)
 visible = false
 light_color = Color(0.425903, 0.402105, 0.942769, 1)
 light_energy = 2.0
+light_size = 2.0
 light_cull_mask = 4294967293
 shadow_enabled = true
 spot_range = 8.0
@@ -105,12 +106,12 @@ light_color = Color(0.161348, 0.57704, 0.399342, 1)
 light_energy = 10.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 2.0
 light_cull_mask = 4294966274
 shadow_enabled = true
 spot_range = 8.0
 spot_angle = 50.0
 
 [node name="ColorDisk" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.000202314, 0, -0.0316567)
-visible = false
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.000202314, 0, 0.432589)
 mesh = SubResource("CylinderMesh_thfh7")
