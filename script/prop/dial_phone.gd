@@ -71,7 +71,7 @@ func _process(delta: float):
 
 
 func _on_timer_timeout():
-				go_back = true
+	go_back = true
 
 @onready var intro_sequence = $"../System/IntroSequence"
 @onready var ring = intro_sequence.get_node("PhoneRing")
@@ -82,3 +82,22 @@ func enter_inspect_mode():
 		ring.stop()
 		level_manager.on_line_finished()
 	super.enter_inspect_mode()
+
+var key_map = {
+	1: KEY_1,
+	2: KEY_2,
+	3: KEY_3,
+	4: KEY_4,
+	5: KEY_5,
+	6: KEY_6,
+	7: KEY_7,
+	8: KEY_8,
+	9: KEY_9,
+	10: KEY_0
+}
+
+func _handle_event_key(_event):
+	super._handle_event_key(_event)
+	#for i in range(1, 10):
+		#if _event.keycode == KEY_1:
+		
