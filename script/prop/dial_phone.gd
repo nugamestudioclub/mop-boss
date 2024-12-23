@@ -100,4 +100,7 @@ func _handle_event_key(_event):
 	super._handle_event_key(_event)
 	#for i in range(1, 10):
 		#if _event.keycode == KEY_1:
-		
+
+# index 0 is the default position, afterwards are the actual slots 
+func _rotate_to_index(index: int):
+	pass
